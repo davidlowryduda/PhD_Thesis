@@ -1,0 +1,1717 @@
+
+
+\section{Introduction}\label{sec:hyperboloid_introduction}
+\index{hyperboloid, one-sheeted}
+\index{H@$\mathcal{H}_{d,h}$}
+\index{N@$N_{d,h}(R)$}
+
+
+
+A one-sheeted $d$-dimensional hyperboloid $\mathcal{H}_{d,h}$ is a surface satisfying the
+equation
+\begin{equation}
+  X_1^2 + \cdots + X_{d-1}^2 = X_d^2 + h
+\end{equation}
+for some fixed positive integer $h$.
+In this chapter, we investigate the number of integer points lying on the hyperboloid
+$\mathcal{H}_{d,h}$.
+In particular, we investigate the asymptotics for the number $N_{d,h}(R)$ of integer
+points $\bm{m} = (m_1, \ldots, m_d) \in \mathbb{Z}^d$ lying on $\mathcal{H}_{d,h}$ and
+within the ball $\| \bm{m} \|^2 \leq R$ for large $R$.
+Stated differently, if $B(\sqrt{R})$ is the ball of radius $\sqrt R$ in $\mathbb{R}^d$,
+centered at the origin, then
+\begin{equation}
+  N_{d,h}(R) = \# \big(\mathbb{Z}^d \cap \mathcal{H}_{d,h} \cap B(\sqrt{R})\big).
+\end{equation}
+
+
+Heuristically, one should expect to be capable of determining the leading term asymptotic
+using the circle method on hyperboloids $\mathcal{H}_{d,h}$ of sufficiently high
+dimension.
+More recently, Oh and Shah~\cite{ohshah2014} used ergodic methods to study the
+three-dimensional hyperboloid $\mathcal{H}_{3,h}$ when $h$ is a positive square.
+They proved the following theorem.
+\begin{theorem}{Oh and Shah}
+  Suppose that $h$ is a square.
+  On $\mathcal{H}_{3,h}$, as $X \to \infty$,
+  \begin{equation}
+    N_{d,h}(X) = c X^{\frac{1}{2}}\log X + O \big( X^{\frac{1}{2}} (\log X)^{\frac{3}{4}}
+    \big)
+  \end{equation}
+  for some constant $c > 0$.
+\end{theorem}
+
+
+In this chapter, we sharpen and extend this theorem to any dimension $d \geq 3$ and any
+integral $h \geq 1$.
+We also prove a smoothed analogue, including smaller-order growth terms.
+The primary result is the following theorem.
+
+
+\begin{theorem}\label{theorem:hyperboloid_intro_sharp}
+  Let $d \geq 3$ and $h \geq 1$ be integers.
+  Let $N_{d,h}(R)$ denote the number of integer points $\bm{m}$ on the hyperboloid
+  $\mathcal{H}_{d,h}$ with $\| \bm{m} \|^2 \leq R$.
+  Then for any $\epsilon > 0$,
+  \begin{align}
+    N_{d,h}(R) &= \delta_{[d = 3]} \delta_{[h = a^2]} C'_3 R^{\frac{1}{2}} \log R + C_d
+    R^{\frac{d}{2} - 1} + O(R^{\frac{d}{2} - 1 - \lambda(d) + \epsilon}).
+  \end{align}
+  Here the Kronecker $\delta$ expressions indicate that the first term only occurs if $d =
+  3$ and if $h$ is a square, and $\lambda(d) > 0$ is a constant depending only on the
+  dimension $d$.
+\end{theorem}
+
+
+This Theorem is presented in greater detail as Theorem~\ref{thm:hyp:sharp_theorem_full},
+including the description of $\lambda(d)$.
+When $d = 3$, the power savings $\lambda(d)$ is exactly $\frac{1}{20}$.
+As $d$ gets larger, $\lambda(d)$ grows and limits towards $\frac{1}{3}$.
+Note that there is an error term with polynomial savings, which is a significant
+improvement over previous results.
+As a corollary, one recovers the Theorem of Oh and Shah.
+
+In addition to the sharp estimate of Theorem~\ref{theorem:hyperboloid_intro_sharp}, we
+consider smoothed approximations to $N_{d,h}(R)$.
+In~\eqref{eq:hyp:points_equals_sum}, we show that $N_{d,h}(R) = \sum_{2m^2+h \leq R}
+r_{d-1}(m^2 + h)$.
+Then sums of the form
+\begin{equation}
+  \sum_{m \in \mathbb{Z}} r_{d-1}(m^2 + h) e^{-\frac{2m^2 + h}{R}}
+\end{equation}
+count the number of points $\bm{m}$ on $\mathcal{H}_{d,h}$ with exponential decay in $\|
+\bm{m} \|$ once $\| \bm{m} \|^2 \geq R$.
+This smoothed sum should be thought of as giving a smooth approximation to $N_{d,h}(R)$.
+Through the methodology of this chapter, we prove the following smooth estimate.
+
+
+\begin{theorem}\label{theorem:hyperboloid_intro_smooth}
+  Let $d \geq 3$ and $h \geq 1$ be integers.
+  Then for each $h$ and $d$, there exist constants $C'$ and $C_m$ such that for any
+  $\epsilon > 0$,
+  \begin{align}
+    &\sum_{m \in \mathbb{Z}} r_{d-1}(m^2 + h) e^{-(2m^2 + h)/X} \\
+    &\qquad = \delta_{[d=3]} \delta_{[h = a^2]} C' X^{\frac{1}{2}} \log X + \sum_{0 \leq m
+    < \lceil \frac{d}{2} - 1 \rceil} C_{m} X^{\frac{d}{2} - 1 -\frac{m}{2}}
+    + O(X^{\frac{d}{4} - \frac{1}{2} + \epsilon}).
+  \end{align}
+  Here, $\delta_{[\text{condition}]}$ is a Kronecker $\delta$ and evaluates to $1$ if the
+  condition is true and $0$ otherwise.
+\end{theorem}
+
+
+
+See Theorem~\ref{thm:hyperboloid:smooth_full} in \S\ref{sec:hyp:proof_main_theorems} for a
+more complete statement.
+This Theorem suggests that for dimensions greater than $4$, there may be secondary main
+terms with lower power contributions.
+
+
+Theorems~\ref{theorem:hyperboloid_intro_sharp} and~\ref{theorem:hyperboloid_intro_smooth}
+can be thought of as average order estimates of the function $r_{d-1}(m^2+h)$.
+In particular, for $2m^2 + h \leq R$, the average value of $r_{d-1}(m^2+h)$ is about
+$R^{\frac{d-1}{2}-1}$.
+In the process of proving~\ref{theorem:hyperboloid_intro_sharp}, we also prove
+that this average order estimate holds on short-intervals, i.e.\ intervals
+around $R$ of length much less than $R$.
+
+
+\begin{theorem}\label{theorem:hyperboloid_intro_short}
+  Let $k \geq \frac{1}{2}$ be a full or half-integer.
+  Then for each dimension $d$, there is a constant $\lambda(d) > 0$ such that
+  \begin{equation}
+    \sum_{\lvert 2m^2 + h - X \rvert < X^{1 + \epsilon - \lambda(d)}} r_{d-1}(m^2 + h) \ll
+    X^{\frac{d}{2} - 1 + \epsilon - \lambda(d)}.
+  \end{equation}
+  The constant $\lambda(d)$ is the same constant as in
+  Theorem~\ref{theorem:hyperboloid_intro_sharp}.
+\end{theorem}
+
+
+This Theorem can be roughly interpreted to count the number of lattice points $\bm{m}$ on
+$\mathcal{H}_{d,h}$ with $\| \bm{m} \|$ very near $X$, or equivalently counting the number
+of lattice points within a sphere of radius slightly larger than $\sqrt X$ and outside of
+a sphere of radius a slightly smaller than $\sqrt X$.
+This Theorem can be compared to the main theorem in short intervals
+in~\cite{hkldwShort}, as described in Chapter~\ref{c:sums_apps}.
+
+
+\begin{remark}
+  To make heuristic sense of Theorem~\ref{theorem:hyperboloid_intro_short}, note that
+  there are on the order of $X^{\frac{1}{2} + \epsilon - \lambda(d)}$ integers $m$ such
+  that $\lvert 2m^2 + h - X \rvert < X^{1 + \epsilon - \lambda(d)}$.
+  Therefore, if each of these values of $r_{d-1}(2m^2 + h)$ is approximately the size we
+  expect, $X^{\frac{d-1}{2} - 1}$, then the total size should be
+  \begin{equation}
+    X^{\frac{d-1}{2} - 1} \cdot X^{\frac{1}{2} + \epsilon - \lambda(d)} = X^{\frac{d}{2} -
+    1 + \epsilon - \lambda(d)},
+  \end{equation}
+  which is exactly what is shown in Theorem~\ref{theorem:hyperboloid_intro_short}.
+\end{remark}
+
+
+
+
+\subsection*{Overview of Methodology}
+
+
+
+In order to count points on hyperboloids, let $d = 2k + 2$ (where $k$ may be a
+half-integer).
+Then in
+\begin{equation}
+  X_1^2 + \cdots + X_{2k+1}^2 = X_{2k+2}^2 + h,
+\end{equation}
+notice that for a point $\bm{X}$ on the hyperboloid,
+\begin{equation}
+  (X_1^2 + \cdots + X_{2k+1}^2) + X_{2k+2}^2 \leq R \iff 2X_{2k+2}^2 + h \leq R.
+\end{equation}
+It suffices to consider those points on the hyperboloid with $2X_{2k+2}^2 + h \leq R$.
+Recall the notation that $r_d(n)$ is the number of representations of $n$ as a sum of
+$d$ squares.
+Then, breaking the hyperboloid into each possible value of $X_{2k+2}^2 + h$ and summing
+across the number of representations as sums of squares, we have that
+\begin{equation}\label{eq:hyp:points_equals_sum}
+  N_{d,h}(R) = \sum_{2X_{2k+2}^2 + h \leq R} r_{2k+1}(X_{2k+2}^2 + h) = \sum_{2m^2 + h
+  \leq R} r_{2k+1}(m^2 + h).
+\end{equation}
+We will find the number of points on the hyperboloid by estimating this last sum.
+
+
+Consider the automorphic function
+\index{V@$\widetilde{V}(z)$}
+\begin{equation}
+  \widetilde{V}(z) = \theta^{2k+1}(z) \overline{\theta(z)}y^{\frac{k+1}{2}},
+\end{equation}
+where
+\index{theta@$\theta(z)$}
+\begin{equation}
+  \theta(z) = \sum_{n \in \mathbb{Z}} e^{2\pi i n^2 z}
+\end{equation}
+is the classical Jacobi theta function.
+Heuristically, the $h$th Fourier coefficient of $\widetilde{V}(z)$ is a weighted
+version of the sum $\sum_m r_{2k+1}(m^2+h)$, and so proper analysis of the the $h$th
+Fourier coefficient of $\widetilde{V}(z)$ will give an estimate for $N_{d,h}(R)$.
+
+
+More completely, let $P_h(z,s)$ denote a Poincar\'e series that isolates the $h$th Fourier
+coefficient.
+Then we will have that
+\begin{equation}
+  \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \langle P_h(\cdot, s),
+  \widetilde{V} \rangle = \sum_{m \in \mathbb{Z}}
+  \frac{r_{2k+1}(m^2+h)}{(2m^2+h)^{s+\frac{k-1}{2}}}.
+\end{equation}
+In order to understand the meromorphic properties of this Dirichlet series, we
+will use a spectral expansion of the Poincar\'e series and understand each of the terms in
+the spectral decomposition.
+As $\widetilde{V}(z)$ is not square integrable, it is necessary to modify
+$\widetilde{V}(z)$ by cancelling out the growth.
+We do that in the next section by subtracting carefully chosen Eisenstein series.
+
+
+Once the meromorphic properties of this Dirichlet series are understood, it only remains
+to perform some classical cutoff integral transforms.
+In Section~\ref{sec:hyp:proof_main_theorems}, we apply three Mellin integral
+transforms described in Chapter~\ref{c:background} and perform classical
+integral analysis in order to prove our main theorems of this chapter.
+
+
+
+
+\section{Altering $\widetilde{V}$ to be Square-Integrable}
+
+
+
+From the transformation laws of $\theta(z)$, we see that $\widetilde{V}$ satisfies the
+transformation law
+\begin{equation}\label{eq:V_transformation_law}
+  \widetilde{V}(\gamma z) = \frac{\varepsilon_d^{-2k} \kron{c}{d}^{2k} (cz+d)^k}{\lvert cz+d
+  \rvert^k} \widetilde{V}(z)
+\end{equation}
+for $\gamma = \Big( \begin{smallmatrix} a&b\\c&d \end{smallmatrix} \Big) \in \Gamma_0(4)$,
+and where
+\begin{equation}
+  \varepsilon_d = \begin{cases}
+    1 & d \equiv 1 \pmod 4 \\
+    i & d \equiv 3 \pmod 4
+  \end{cases}
+\end{equation}
+is the sign of the $d$th Gauss sum.
+Therefore when $k$ is an integer, $\widetilde{V}$ is a modular form of full-integral
+weight $k$ of nebentypus $\chi(\cdot) = \kron{-1}{\cdot}^k$ on $\Gamma_0(4)$.
+When $k$ is a half-integer, $\widetilde{V}$ is a modular form of half-integral weight $k$
+on $\Gamma_0(4)$ with a normalized theta multiplier system as described
+in~\eqref{eq:V_transformation_law}.
+
+
+Under the action of $\Gamma_0(4)$, the quotient $\Gamma_0(4)\backslash\mathcal{H}$
+has three cusps: at $0, \frac{1}{2}$, and $\infty$.
+We use $E_\mathfrak{a}^k(z,w)$ to denote the Eisenstein series of weight $k$ associated to
+the cusp $\mathfrak{a}$, as detailed extensively in \S\ref{sec:Eisen_summary}.
+We will soon see that $\widetilde{V}$ is non-cuspidal, and we will analyze the behavior of
+$\widetilde{V}$ at each of the cusps.
+In doing so, we will prove the following.
+
+
+\begin{proposition}
+  For $k \geq 1$, define $V(z)$ as
+  \begin{equation}
+    V(z) := \widetilde{V}(z) - E_\infty^k(z, \tfrac{k+1}{2}) - E_0^k(z, \tfrac{k+1}{2}).
+  \end{equation}
+  Then $V(z)$ is in $L^2(\Gamma_0(4)\backslash \mathcal{H}, k)$.
+
+  In the case when $k = \frac{1}{2}$, we define
+  \begin{equation}
+    V(z) := \widetilde{V}(z) - \const_{w = \frac{3}{4}} E_\infty^k(z, w) - \const_{w =
+    \frac{3}{4}} E_0^k(z,w),
+  \end{equation}
+  where $\const_{w=c} f(w)$ refers to the constant term in the Laurent expansion of $f(w)$
+  expanded at $w=c$.
+  Then $V(z)$ is in $L^2(\Gamma_0(4)\backslash \mathcal{H}, \frac{1}{2})$.
+\end{proposition}
+
+
+
+\begin{proof}
+
+Writing $\widetilde{V}$ directly as
+\begin{equation}
+  \widetilde{V}(z) = \sum_{m_1, \ldots, m_{2k+2} \in \mathbb{Z}} y^{\frac{k+1}{2}} e^{2\pi
+  i x(m_1^2 + \cdots m_{2k+1}^2 - m_{2k+2}^2)} e^{-2\pi y(m_1^2 + \cdots + m_{2k+2}^2)}
+\end{equation}
+shows that all terms have significant exponential decay in $y$, except when $m_1 = \cdots
+= m_{2k+2} = 0$, in which case there is the term $y^{\frac{k+1}{2}}$.
+Correspondingly, at the $\infty$ cusp, $\widetilde{V}(z)$ grows like $y^{\frac{k+1}{2}}$.
+However the function $\widetilde{V}(z) - y^{\frac{k+1}{2}}$ has exponential decay as $y
+\to \infty$.
+
+
+At the $0$ cusp, we use $\sigma_0 = \Big(\begin{smallmatrix} 0&-\frac{1}{2} \\ 2&0
+\end{smallmatrix}\Big)$, a matrix in $\SL(2, \mathbb{R})$ taking $0$ to $\infty$, and
+directly compute
+\begin{equation}
+  \widetilde{V}\big|_{\sigma_0}(z) = \theta^{2k+1}\Big(\frac{-1}{4z}\Big)
+  \overline{\theta\Big(\frac{-1}{4z}\Big)} \Im^{\frac{k+1}{2}} \Big(\frac{-1}{4z}\Big)
+  \frac{\lvert -2iz \rvert^k}{(-2iz)^k}
+\end{equation}
+
+
+At the $\tfrac{1}{2}$ cusp, $\widetilde{V}$ has exponential decay because each $\theta(z)$
+factor has exponential decay there.
+
+
+Thus $\widetilde{V}$ grows like $y^{\frac{k+1}{2}}$ at the $\infty$ and $0$ cusps, and has
+exponential decay at the $\frac{1}{2}$ cusp.
+To cancel and better understand these growth terms, we subtract spectral Eisenstein series
+associated to the cusps $0$ and $\infty$ with spectral parameter chosen so that the
+leading growth of the Eisenstein series perfectly cancels the growth of $\widetilde{V}$.
+We will use the properties of the full and half-integral weight Eisenstein series
+associated to the cusp $\mathfrak{a}$, $E_\mathfrak{a}^k(z,w)$, as described more fully in
+\S\ref{sec:Eisen_summary}.
+In particular, it is shown in \S\ref{sec:Eisen_summary} that the constant terms in the
+Fourier series of the Eisenstein series $E_\mathfrak{a}^k(z,w)$, expanded at the cusp
+$\mathfrak{a}$, is of the shape
+\begin{equation}
+  y^w + c(w)y^{1-w}
+\end{equation}
+for a constant $c(w)$ depending on $w$.
+Therefore, specializing the parameter $w = \frac{k+1}{2}$, the leading term from the
+constant term of each Eisenstein series perfectly cancels the growth of $\widetilde{V}$ at
+each cusp.
+Further, each Eisenstein series is small at each cusp other than its associated cusp, so
+for instance $E^k_\infty(z, \tfrac{k+1}{2})$ cancels the $y^{\frac{k+1}{2}}$ at the
+$\infty$ cusp and is otherwise small at each other cusp (see~\cite{Iwaniec97} for more).
+
+
+
+However, when $k$ is half-integral weight, the Eisenstein series
+$E_\mathfrak{a}(z,w)$ has a pole at $w = \frac{3}{4}$.
+When $k = \frac{1}{2}$, corresponding to the dimension $3$ hyperboloid,
+the two Eisenstein series $E^{\frac{1}{2}}_\infty(z,w)$ and
+$E_0^{\frac{1}{2}}(z,w)$ each have poles at
+$w = \frac{k+1}{2} = \frac{3}{4}$, and so we cannot subtract
+them from $\widetilde{V}$ directly.
+Referring again to \S\ref{sec:Eisen_summary}, it is clear that the constant term of the
+Laurent expansion at $w = \frac{3}{4}$ of each Eisenstein series contains the leading
+growth terms $y^{\frac{3}{4}}$.
+Since the constant term in the Laurent expansion is also modular, we conclude the $k =
+\frac{1}{2}$ case.
+%
+\end{proof}
+
+
+
+
+\section{Analytic Behavior}
+
+
+
+Let $P_h^k(z,s)$ denote the weight $k$ Poincar\'e series
+\begin{equation}
+  P_h^k(z,s) = \sum_{\gamma \in \Gamma_\infty \backslash \Gamma_0(4)} \Im(\gamma z)^s
+  e^{2\pi i h \gamma z} J(\gamma, z)^{-2k}
+\end{equation}
+where
+\begin{equation}
+  J(\gamma, z) = \frac{j(\gamma, z)}{\lvert j(\gamma, z) \rvert}
+\end{equation}
+and $j(\gamma, z) = \theta(\gamma z)/\theta(z) = \varepsilon^{-1} \kron{c}{d}
+(cz+d)^{\frac{1}{2}}$, exactly as for the Eisenstein series defined in
+Chapter~\ref{c:background}.
+
+
+Our basic strategy is to understand the Petersson inner product $\langle P_h^k(\cdot, s),
+V(z) \rangle$ in two different ways.
+On the one hand, we will compute it directly, giving the Dirichlet series $D_h(s)$ with
+coefficients $r_{2k+1}(m^2 + h)$.
+On the other hand, we will take a spectral expansion of $P_h^k$ and understand the
+meromorphic properties of each part of the spectral expansion.
+
+
+
+\subsection{Direct Expansion}\label{ssec:direct_expansion}
+
+
+
+We first understand $\langle P_h^k(\cdot, s), V \rangle$ directly, using the method of
+unfolding:
+\begin{align}
+  \langle P_h^k(\cdot, s), V \rangle &= \int \int_{\Gamma_0(4) \backslash \mathcal{H}}
+  P_h(z,s) \overline{V(z)} \frac{dx dy}{y^2} \\
+  &= \int_0^\infty \int_0^1 y^{s-1} e^{2\pi i h z} \overline{V(z)} dx \frac{dy}{y}.
+\end{align}
+Initially, we consider the case when $k > \frac{1}{2}$.
+We'll consider the three dimensional case, when $k = \frac{1}{2}$, afterwards.
+
+
+
+\subsubsection*{Dimension $\geq 4$}
+
+Writing $V = \widetilde{V} - E_\infty^k(z, \frac{k+1}{2}) - E_0^k(z, \frac{k+1}{2})$, we
+compute
+\begin{align}
+  &\langle P_h^k(\cdot, s), E_\infty^k(z, \tfrac{k+1}{2}) + E_0^k(z, \tfrac{k+1}{2})
+\rangle \\
+  &\quad = \frac{\overline{\rho_\infty^k(h, \frac{k+1}{2}) + \rho_0^k(h,
+  \frac{k+1}{2})}}{(4\pi h)^{s-1}} \frac{\Gamma(s + \frac{k}{2} - \frac{1}{2}) \Gamma(s -
+\frac{k}{2} - \frac{1}{2})}{\Gamma(s - \frac{k}{2})}.
+\end{align}
+Expanding $\widetilde{V}$, we can compute the remaining $x$ integral as
+\begin{align}
+  &\int_0^1 \overline{\widetilde{V}(z)} e^{2\pi i h x} dx = \int_0^1
+  \overline{\theta^{2k+1}(z)}\theta(z)y^{\frac{k+1}{2}} e^{2\pi i h x} dx \\
+  &\qquad = \sum_{m_1, \ldots, m_{2k+2}} y^{\frac{k+1}{2}} e^{2\pi y(m_1^2 + \cdots +
+m_{2k+2}^2)} \int_0^1 e^{-2\pi i x(m_1^2 + \cdots + m_{2k+1}^2 - m_{2k+2}^2 - h)} dx \\
+  &\qquad = \quad y^{\frac{k+1}{2}}
+  \sum_{\mathclap{\substack{\bm{m} \in \mathbb{Z}^{2k+2} \\
+  m_1^2 + \cdots + m_{2k+1}^2 = m_{2k+2}^2 + h}}} e^{-2\pi y(m_1^2 + \cdots m_{2k+2}^2)} =
+  \quad y^{\frac{k+1}{2}} \sum_{\mathclap{\substack{\bm{m} \in \mathbb{Z}^{2k+2} \\
+  m_1^2 + \cdots + m_{2k+1}^2 = m_{2k+2}^2 + h}}} e^{-2\pi y(2m_{2k+2}^2 + h)} \\
+  &\qquad = y^{\frac{k+1}{2}} \sum_{m \in \mathbb{Z}} r_{2k+1}(m^2 + h)
+  e^{-2\pi y (2m^2 + h)}.
+\end{align}
+To go from the penultimate line to the last line, we write $m = m_{2k+2}$ and count the
+number of representations of $m^2 + h$.
+We compute the remaining $y$ integral
+\begin{equation}
+  \int_0^\infty y^{s + \frac{k-1}{2}} \sum_{m \in \mathbb{Z}} r_{2k+1}(m^2 + h) e^{-2\pi
+  y(2m^2 + h)} \frac{dy}{y} = \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}(m^2 + h)}{(2m^2 +
+  h)^{s + \frac{k-1}{2}}} \frac{\Gamma(s + \frac{k-1}{2})}{(2\pi)^{s + \frac{k-1}{2}}}.
+\end{equation}
+
+
+
+Define
+\begin{equation}\label{eq:hyp:Dh_def}
+  D^k_h(s) := \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \langle
+  P_h^k(\cdot, s), V\rangle.
+\end{equation}
+Then our computation above shows that for $k \geq 1$, $D^k_h(s)$ can be written as
+\begin{equation}\label{eq:basic_expansion_final}
+  \sum_{m \in \mathbb{Z}}\frac{r_{2k+1}(m^2 + h)}{(2m^2 + h)^{s + \frac{k-1}{2}}} -
+  \mathfrak{E}_h^k(s)
+\end{equation}
+where
+\begin{equation}
+  \mathfrak{E}_h^k(s) =  \frac{(2\pi)^{\frac{k+1}{2}} (\overline{\rho_\infty^k(h,
+  \frac{k+1}{2}) + \rho_0^k(h, \frac{k+1}{2})})}{(2 h)^{s-1}} \frac{\Gamma(s - \frac{k}{2}
+- \frac{1}{2})}{\Gamma(s - \frac{k}{2})}.
+\end{equation}
+Notice that $\mathfrak{E}_h^k(s)$ has poles at $s = \frac{k+1}{2} - m$ for $m \in
+\mathbb{Z}_{\geq 0}$, coming from the Gamma function in the
+numerator, and clear meromorphic continuation.\footnote{$\mathfrak{E}$ is an E in an old
+  German font, which many mathematicians would pronounce as ``fraktur E'' or ``mathfrak
+E.'' We use it because those terms come from Eisenstein series.}
+
+
+
+After applying Stirling's approximation to estimate the Gamma functions, we have the
+following proposition.
+
+
+\begin{proposition}\label{prop:nonspectral_analytic_props_large_dim}
+  With the notation above and with $k \geq 1$, we have
+  \begin{equation}
+    D^k_h(s) := \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \langle
+    P_h^k(\cdot, s), V\rangle = \sum_{m \in \mathbb{Z}}\frac{r_{2k+1}(m^2 + h)}{(2m^2 +
+  h)^{s + \frac{k-1}{2}}} - \mathfrak{E}_h^k(s).
+  \end{equation}
+  The function $\mathfrak{E}_h^k(s)$ is analytic for $\Re s > \frac{1}{2}$ except for
+  simple poles at $s = \frac{k+1}{2} - m$ for $m \in \mathbb{Z}_{\geq 0}$, and has
+  meromorphic continuation to the plane.
+  For $\Re s > \frac{1}{2}$, we have the bound
+  \begin{equation}
+    \mathfrak{E}_h^k(s) \ll (1 + \lvert s \rvert)^{-\frac{1}{2}}.
+  \end{equation}
+\end{proposition}
+
+
+
+
+\subsubsection*{Dimension $3$}
+
+
+
+We proceed analogously, and write
+$V = \widetilde{V} - \const_{w = \frac{3}{4}} E_\infty^{\frac{1}{2}}(z, w) -
+\const_{w = \frac{3}{4}} E_0^{\frac{1}{2}} (z, w)$, initially for $\Re s \gg 1$.
+We now need to compute
+\begin{equation}
+  \langle P_h^{\frac{1}{2}} (\cdot, s), \const_{w = \frac{3}{4}}
+  E_\mathfrak{a}^{\frac{1}{2}} (\cdot, w) \rangle
+  =
+  \const_{w = \frac{3}{4}} \; \langle P_h^{\frac{1}{2}} (\cdot, s),
+  E_\mathfrak{a}^{\frac{1}{2}} (\cdot, w) \rangle.
+\end{equation}
+Computing the expression for the inner product
+$\langle P_h^{\frac{1}{2}} , E_\mathfrak{a}^{\frac{1}{2}}  \rangle$
+for $\Re s \gg 1$ directly and then taking the constant term in $w$ gives that
+\begin{equation}\label{eq:dim_3_constant_laurent}
+  \const_{w = \frac{3}{4}} \;
+  \langle P_h^{\frac{1}{2}} (\cdot, s), E_\mathfrak{a}^{\frac{1}{2}} (\cdot, w) \rangle
+  =
+  \const_{w = \frac{3}{4}}
+  \frac{\overline{\rho_{\mathfrak{a}}^{\frac{1}{2}} (h,w)}}{(4\pi h)^{s-1}}
+  \frac{\Gamma(s+\overline{w}-1)\Gamma(s-\overline{w})}{\Gamma(s - \frac{1}{4})}.
+\end{equation}
+We must now make sense of this constant term.
+
+
+
+In \S\ref{sec:Eisen_summary}, it is shown that $\rho_\mathfrak{a}^{\frac{1}{2}}(h,w)$
+has a simple pole at $w = \frac{3}{4}$ if and only if $h$ is a positive square,
+and otherwise is analytic.
+Thus the constant term~\eqref{eq:dim_3_constant_laurent} manifests in three ways:
+\begin{enumerate}
+  \item The constant terms of $\rho_{\mathfrak{a}}^{\frac{1}{2}}(h,w)$,
+    $\Gamma(s + \overline{w} - 1)$, and $\Gamma(s - \overline{w})$
+  \item The residue term of $\rho_{\mathfrak{a}}^{\frac{1}{2}}(h,w)$,
+    the constant term of $\Gamma(s + \overline{w} - 1)$,
+    and the linear term of $\Gamma(s - \overline{w})$
+  \item The residue term of $\rho_{\mathfrak{a}}^{\frac{1}{2}}(h,w)$,
+    the linear term of $\Gamma(s + \overline{w} - 1)$,
+    and the constant term of $\Gamma(s - \overline{w})$.
+\end{enumerate}
+Together, these mean that~\eqref{eq:dim_3_constant_laurent} can be written as
+\begin{equation} \label{eq:dim_3_laurent_simplify_I}
+  \begin{split}
+    &\const_{w = \frac{3}{4}} \; \langle P_h^{\frac{1}{2}} (\cdot, s),
+    E_\mathfrak{a}^{\frac{1}{2}} (\cdot, w) \rangle = \\
+    &\quad = \frac{\const_{w = \frac{3}{4}}
+    \rho_\mathfrak{a}^{\frac{1}{2}}(h,w)
+    \Gamma(s - \frac{1}{4})\Gamma(s - \frac{3}{4})}
+    {(4\pi h)^{s-1} \Gamma(s - \frac{1}{4})}
+    \\
+    &\qquad + \frac{\Res_{w = \frac{3}{4}}
+    \rho_{\mathfrak{a}}^{\frac{1}{2}}(h,w)}{(4\pi h)^{s-1}}
+    \bigg( \frac{\Gamma'(s - \frac{1}{4}) \Gamma(s - \frac{3}{4})}
+      {\Gamma(s - \frac{1}{4})}
+      +
+    \frac{\Gamma'(s - \frac{3}{4}) \Gamma(s - \frac{1}{4})}{\Gamma(s - \frac{1}{4})}\bigg)
+    \\
+    &\quad =\frac{\const_{w = \frac{3}{4}} \rho_\mathfrak{a}^{\frac{1}{2}}(h,w)
+    \Gamma(s - \frac{3}{4})}{(4\pi h)^{s-1}}
+    \\
+    &\qquad + \frac{\Res_{w = \frac{3}{4}}
+    \rho_{\mathfrak{a}}^{\frac{1}{2}}(h,w)}{(4\pi h)^{s-1}}
+    \bigg( \frac{\Gamma'(s - \frac{1}{4}) \Gamma(s - \tfrac{3}{4})}
+      {\Gamma(s - \frac{1}{4})}
+      +
+    \Gamma'(s - \tfrac{3}{4})\bigg).
+  \end{split}
+\end{equation}
+This expression has clear meromorphic continuation to the plane, and the poles and
+analytic behavior can be determined from the individual Gamma functions.
+This expression has a simple pole at $s = \frac{3}{4}$, and when
+$\rho_\mathfrak{a}^{\frac{1}{2}}(s,w)$ has a pole at $w = \frac{3}{4}$, this
+expression has a double pole in $s$ at $s = \frac{3}{4}$ coming
+from $\Gamma'(s - \frac{3}{4})$.
+These are the only poles in this expression when $\Re s > \frac{1}{2}$.
+
+
+
+
+As in the case when $k \geq 1$, we define
+\begin{equation}\label{eq:hyp:Dh_def_half}
+  D_h^{\frac{1}{2}}(s) :=
+  \frac{(2\pi)^{s - \frac{1}{4}}}{\Gamma(s - \frac{1}{4})}
+  \langle P_h^{\frac{1}{2}}(\cdot, s), V \rangle.
+\end{equation}
+At each cusp $\mathfrak{a}$, we also define
+\begin{equation}
+  \mathfrak{E}_{h, \mathfrak{a}}^{\frac{1}{2}}(s)
+  :=
+  \frac{(2\pi)^{s - \frac{1}{4}}}{\Gamma(s - \frac{1}{4})} \const_{w = \frac{3}{4}}
+  \langle P_h^{\frac{1}{2}}(\cdot, s), E_\mathfrak{a}^{\frac{1}{2}}(\cdot, w) \rangle.
+\end{equation}
+Notice that this is $(2\pi)^{s-\frac{1}{4}} \Gamma(s - \frac{1}{4})^{-1}$ times
+the expression in~\eqref{eq:dim_3_laurent_simplify_I}.
+Finally, define
+\begin{equation}
+  \mathfrak{E}_h^{\frac{1}{2}}(s)
+  :=
+  \mathfrak{E}_{h, \infty}^{\frac{1}{2}}(s) + \mathfrak{E}_{h, 0}^{\frac{1}{2}}(s).
+\end{equation}
+Then when $k \geq 1$, we have that
+\begin{equation}
+  D^{\frac{1}{2}}_h(s) = \frac{(2\pi)^{s - \frac{1}{4}}}{\Gamma(s - \frac{1}{4})}
+  \langle P_h^{\frac{1}{2}}(\cdot, s), V\rangle
+  =
+  \sum_{m \in \mathbb{Z}}
+  \frac{r_{3}(m^2 + h)}{(2m^2 + h)^{s - \frac{1}{4}}}
+  -
+  \mathfrak{E}_h^{\frac{1}{2}}(s).
+\end{equation}
+Although the intermediate steps are different, this final notation agrees with the
+notation for $k \geq 1$.
+
+
+
+To roughly understand the growth of $\Gamma'(s)$, it suffices to use Cauchy's
+Integral Formula by examining (for $\lvert \Im s \rvert \gg 1$)
+\begin{equation}
+  \Gamma'(s) = \frac{1}{2\pi i} \int_{B_1(s)} \frac{\Gamma(z)}{(z - s)^2}dz \ll \max_{0
+  \leq \theta \leq 2\pi} \lvert \Gamma(s + e^{i \theta}) \rvert,
+\end{equation}
+where $B_1(s)$ is the circle of radius $1$ around $s$.
+It is then straightforward to get rough bounds on $\Gamma'(s)$ through
+Stirling's Approximation.
+
+
+\begin{remark}
+  It is possible to get much stronger bounds, but it will turn out that this
+  rough bound suffices.
+\end{remark}
+
+
+We gather the relevant details from this section into the following proposition.
+
+
+\begin{proposition}\label{prop:nonspectral_analytic_props_dim_3}
+  With the notation above,
+  \begin{equation}
+    \begin{split}
+      D^{\frac{1}{2}}_h(s) = \frac{(2\pi)^{s - \frac{1}{4}}}{\Gamma(s - \frac{1}{4})}
+      \langle P_h^{\frac{1}{2}}(\cdot, s), V\rangle
+      =
+      \sum_{m \in \mathbb{Z}}
+      \frac{r_{3}(m^2 + h)}{(2m^2 + h)^{s - \frac{1}{4}}}
+      -
+      \mathfrak{E}_h^{\frac{1}{2}}(s).
+    \end{split}
+  \end{equation}
+  Further, $\mathfrak{E}_h^{\frac{1}{2}}(s)$ has meromorphic continuation to the plane,
+  and is analytic for $\Re s > \frac{1}{2}$ except for a pole at $s = \frac{3}{4}$.
+  If $h$ is a square, this is a double pole.
+  If $h$ is not a square, then this is a simple pole.
+
+  For $\Re s > \frac{1}{2}$, we have the bound
+  \begin{equation}
+    \mathfrak{E}_h^{\frac{1}{2}}(s) \ll (1 + \lvert s \rvert)^{\frac{1}{2}}.
+  \end{equation}
+\end{proposition}
+
+
+
+
+\subsection{Spectral Expansion}
+
+Fix an orthonormal basis of Maass forms of weight $k$ for $L^2(\Gamma_0(4)\backslash
+\mathcal{H}, k)$.
+This basis consists of Maass forms $\{\mu_j(z)\}$ of types $\frac{1}{2} + it_j$ and
+corresponding eigenvalues $\frac{1}{4} + t_j^2$, each with expansion
+\begin{equation}
+  \mu_j(z) = \sum_{n \neq 0} \rho_j(n) W_{\frac{n}{\lvert n \rvert} \frac{k}{2},
+  it_j}(4\pi \lvert n \rvert y) e^{2\pi i n x},
+\end{equation}
+as well as a finite number of Maass forms $\mu_{j,\ell}(z)$ with eigenvalues
+$\frac{\ell}{2}(1 - \frac{\ell}{2})$ with $1 \leq \ell \leq k$ for $\ell$ a (possibly
+half-integer) satisfying $\ell \equiv k \bmod 2$, each with expansion
+\begin{equation}
+  \mu_{j, \ell}(z) = \sum_{n \neq 0} \rho_{j,\ell}(n) W_{\frac{n}{\lvert n \rvert}
+  \frac{k}{2}, \frac{\ell-1}{2}}(4\pi \lvert n \rvert y) e^{2\pi i n x}.
+\end{equation}
+Note that for each $\ell$, there are finitely many such Maass forms, as these come from
+holomorphic cusp forms of weight $\ell$.
+These Maass forms contribute the so-called \emph{bottom of the spectrum}, as described
+in~\cite[Chapter 3]{GoldfeldHundleyI}.
+
+
+
+Then $P_h^k$ has a Selberg Spectral decomposition~\cite{IwaniecKowalski04,
+Goldfeld2006automorphic} of the form
+\begin{align}
+  P_h^k(z,s) &= \sum_j \langle P_h^k(\cdot, s), \mu_j \rangle \mu_j(z) + \sum_{\frac{1}{2}
+  \leq \ell \leq k} \sum_j \langle P_h^k(\cdot, s), \mu_{j, \ell}\rangle \mu_{j, \ell}(z)
+  \label{line:1:Ph_discrete} \\
+  &\quad + \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R_{\mathfrak{a}} \rangle
+  R_{\mathfrak{a}}(z) \label{line:2:Ph_residual} \\
+  &\quad + \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k(\cdot,
+  s), E_{\mathfrak{a}}^k (\cdot, u)\rangle E_{\mathfrak{a}}^k (z, u) du.
+  \label{line:3:Ph_continuous}
+\end{align}
+In this expansion, line~\eqref{line:1:Ph_discrete} is the \emph{discrete part of the
+spectrum}, line~\eqref{line:2:Ph_residual} is the \emph{residual part of the spectrum},
+and line~\eqref{line:3:Ph_continuous} is the \emph{continuous part of the spectrum}.
+\index{spectrum!discrete part}
+\index{spectrum!residual part}
+\index{spectrum!continuous part}
+The sums over $\mathfrak{a}$ are sums over the three cusps of $\Gamma_0(4)$.
+Note that the residual part of the spectrum exists only when $k$ is a half-integer, in
+which case
+\begin{equation}\label{eq:hyp:residual_spec_def}
+  R_{\mathfrak{a}}^k(z) = \Res_{w = \frac{3}{4}} E_{\mathfrak{a}}^k(z, w).
+\end{equation}
+
+
+Each of the inner products against $P_h^k$ can be directly evaluated.
+These computations are very similar to those computations in \S\ref{sec:Eisen_summary} and
+\S\ref{ssec:direct_expansion}, and we omit them.
+We collect these together in the following lemma.
+
+
+\begin{lemma}\label{lem:inner_product_list}
+  Maintaining the notation above, we have
+  \begin{align}
+    \langle P_h^k(\cdot, s), \mu_j \rangle &= \frac{\overline{\rho_j(h)}}{(4\pi h)^{s-1}}
+    \frac{\Gamma(s - \tfrac{1}{2} + it_j) \Gamma(s - \tfrac{1}{2} - it_j)}{\Gamma(s -
+    \frac{k}{2})} \\
+    \langle P_h^k(\cdot, s), \mu_{j,\ell} \rangle &=
+    \frac{\overline{\rho_{j,\ell}(h)}}{(4\pi h)^{s-1}} \frac{\Gamma(s + \frac{\ell}{2} -
+    1) \Gamma(s - \frac{\ell}{2})}{\Gamma(s - \frac{k}{2})} \\
+    \langle P_h(\cdot, s), R^k_{\mathfrak{a}} \rangle &= \frac{\Res_{w =
+    \frac{3}{4}}\overline{\rho_{\mathfrak{a}}^k(h,w)}}{(4\pi h)^{s - 1}}  \frac{\Gamma(s -
+    \frac{1}{4}) \Gamma(s - \frac{3}{4})}{\Gamma(s - \frac{k}{2})} \\
+    \langle P_h(\cdot, s), E_{\mathfrak{a}}^k(\cdot, \tfrac{1}{2} + it)\rangle &=
+    \frac{\overline{\rho_\mathfrak{a}(h, \tfrac{1}{2} + it)}}{(4\pi h)^{s-1}}
+    \frac{\Gamma(s - \tfrac{1}{2} + it) \Gamma(s - \tfrac{1}{2} - it)}{\Gamma(s -
+    \frac{k}{2})}.
+  \end{align}
+  Here, $\rho_j(h)$ is the $h$th coefficient of $\mu_j$, $\rho_{j, \ell}(h)$ is the $h$th
+  coefficient of $\mu_{j,\ell}$, $\rho_{\mathfrak{a}}(h, \tfrac{1}{2} + it)$ is the
+  $h$th coefficient of $E_{\mathfrak{a}}^k(z, \tfrac{1}{2} + it)$, and $R_\mathfrak{a}^k$
+  is as in~\eqref{eq:hyp:residual_spec_def}.
+\end{lemma}
+
+
+
+\subsection{Meromorphic Continuation of $\langle P_h^k, V \rangle$}
+
+
+
+In order to provide a meromorphic continuation for $D_h^k(s)$ (defined
+in~\eqref{eq:hyp:Dh_def} and~\eqref{eq:hyp:Dh_def_half}), we provide a meromorphic
+continuation for the expression coming from the spectral decomposition of $P_h^k(z,s)$.
+Inserting the spectral decomposition of $P_h^k(z,s)$ into $\langle P_h^k(\cdot, s), V
+\rangle$, we get
+\begin{align}
+  \langle P_h^k(\cdot, s), V \rangle &= \sum_j \langle P_h^k(\cdot, s), \mu_j \rangle
+  \langle \mu_j, V \rangle + \sum_{\frac{1}{2} \leq \ell \leq k} \sum_j \langle
+  P_h^k(\cdot, s), \mu_{j,\ell}\rangle \langle \mu_{j,\ell}, V \rangle
+  \label{line:Ph_spectral_discrete} \\
+  &\quad + \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R_\mathfrak{a}\rangle \langle
+  R_\mathfrak{a}, V \rangle \label{line:Ph_spectral_residual} \\
+  &\quad + \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k(\cdot,
+  s), E^k_{\mathfrak{a}}(\cdot, u) \rangle \langle E^k_{\mathfrak{a}}(\cdot, u), V \rangle
+  du, \label{line:Ph_spectral_continuous}
+\end{align}
+where we have again separated the expressions into separate lines for the discrete
+spectrum, the residual spectrum, and the continuous spectrum.
+To study the meromorphic continuation, we provide separate meromorphic continuations for
+the discrete spectrum, the residual spectrum, and the continuous spectrum in turn.
+
+
+
+\subsubsection*{Discrete Spectrum}
+\index{spectrum!discrete part}
+
+Consider the discrete spectrum appearing in line~\eqref{line:Ph_spectral_discrete}, which
+we rewrite for convenience:
+\begin{equation}
+  \langle P_h^k(\cdot, s), V \rangle = \sum_j \langle P_h^k(\cdot, s), \mu_j \rangle
+  \langle \mu_j, V \rangle + \sum_{\frac{1}{2} \leq \ell \leq k} \sum_j \langle
+  P_h^k(\cdot, s), \mu_{j,\ell}\rangle \langle \mu_{j,\ell}, V \rangle.
+\end{equation}
+Analysis of the discrete spectrum naturally breaks into two categories: analysis of the
+finitely many Maass forms $\{\mu_{j, \ell}\}_{j, \ell}$ coming from holomorphic cusp
+forms of weight $\ell$, and analysis of the infinitely many Maass forms $\{\mu_j\}_{j}$
+with corresponding types $\tfrac{1}{2} = it_j$.
+Taking inspiration from~\cite[\S3.10]{GoldfeldHundleyI}, we refer to the Maass
+forms $\{\mu_{j, \ell}\}_{j, \ell}$ as the \emph{old discrete spectrum}, and
+the Maass forms $\{\mu_j\}_j$ as the \emph{new discrete spectrum}.
+\index{discrete spectrum!old}
+\index{discrete spectrum!new}
+We will prove the following proposition in this section.
+
+
+\begin{proposition}\label{prop:hyperboloid_discrete_props}
+  Write $s = \sigma + it$.
+  The discrete spectrum component has meromorphic continuation to the plane, and
+  \begin{enumerate}
+
+    \item For $\Re s > \frac{1}{2}$, the new discrete spectrum is analytic and satisfies
+      the bound
+      \begin{equation}
+        \sum_j \langle P_h^k(\cdot, s), \mu_j\rangle \langle \mu_j, V \rangle \ll_{h,
+        \epsilon} (1 + \lvert t \rvert)^{\frac{3k}{2} + \frac{5}{2} + \epsilon}
+        e^{-\frac{\pi}{2} \lvert t \rvert}. \qquad (\tfrac{1}{2} < \Re s < 1)
+      \end{equation}
+      The new discrete spectrum has a line of poles on $\Re s = \frac{1}{2}$.
+
+    \item For $\Re s > \frac{k}{2} - 1$, the old discrete spectrum is analytic and
+      satisfies the bound
+      \begin{equation}
+        \sum_{\frac{1}{2} \leq \ell \leq k} \sum_j \langle P_h^k(\cdot, s),
+        \mu_{j,\ell}\rangle \langle \mu_{j,\ell}, V \rangle \ll (1 + \lvert t
+      \rvert)^{\frac{k}{2} - \frac{3}{2} + \sigma} e^{-\frac{\pi}{2}\lvert t \rvert}.
+      \end{equation}
+      In the region $\Re s > 0$, the old discrete spectrum has simple poles at $s =
+      \frac{k}{2} - 1 - m$ for $m \in \mathbb{Z}_{\geq 0}$.
+
+  \end{enumerate}
+\end{proposition}
+
+
+In order to prove this proposition, we prove a sequence of lemmata.
+%Yep, still an awesome word
+We first bound the infinite sum in the new discrete spectrum.
+
+
+\begin{lemma}\label{lem:discrete_newspectrum_innerproduct_bound}
+  With $\mu_j$ coming from the new discrete spectrum, and with the same notation as above,
+  we have
+  \begin{equation}
+    \sum_{T \leq \lvert t_j \rvert \leq 2T} \rho_j(h) \langle \mu_j, V \rangle = \sum_{T
+    \leq \lvert t_j \rvert \leq 2T} \rho_j(h) \langle \mu_j, \theta^{2k+1}
+    \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll T^{k + 3 + \epsilon}.
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+  First note that $E^k_\mathfrak{a}(z, \tfrac{k+1}{2})$ is orthogonal to the cusp form
+  $\mu_j$, which gives the first equality.
+  We recognize $\theta(z) y^{1/4}$ as a constant times $\Res_{u = \frac{3}{4}}
+  E_\infty^{\frac{1}{2}}(z,u)$.
+  Performing this on $\overline{\theta}$ transforms each inner product into
+  \begin{equation}
+    \Res_{u = \frac{3}{4}} \langle \mu_j, \theta^{2k+1}
+    \overline{E_\infty^{\frac{1}{2}}(\cdot,u)} y^{\frac{2k+1}{4}}\rangle.
+  \end{equation}
+  Using the standard unfolding argument on the Eisenstein series (which uses similar
+  methodology to the computations of $\langle P, V \rangle$ in
+  \S\ref{ssec:direct_expansion}), taking the residue at $u = \frac{3}{4}$, and using
+  Stirling's approximation shows that
+  \begin{equation}
+    \langle \mu_j, \theta^{2k+1} \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll \rho_j(h)
+    (1 + \lvert t_j \rvert)^k e^{-\pi \lvert t_j \rvert}.
+  \end{equation}
+  As noted in~\cite{hulseCountingSquare}, it is possible to understand bound $\rho_j(h)$
+  on average over $j$.
+  Through the standard Kuznetsof Trace Formula and arguing as in~\cite{HoffsteinHulse13},
+  one can show that $\rho_j(h) \ll_\epsilon e^{\frac{\pi}{2}\lvert t_j \rvert}(1 + \lvert
+  t_j \rvert)^\epsilon$ (on average) for full integral weight $k$.
+  By using Proskurin's generalization of the Kuznetsof Trace Formula, described
+  in~\cite{Duke88}, one can show the same for half integral weight $k$.
+  (This is closely related to an argument in~\cite{hulseCountingSquare}).
+
+
+  Therefore we have that
+  \begin{equation}
+    \langle \mu_j, \theta^{2k+1} \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll (1 +
+    \lvert t_j \rvert)^{k + 1 + \epsilon} e^{-\frac{\pi}{2} \lvert t_j \rvert}
+  \end{equation}
+  on average.
+  Recalling that there are $O(T^2 \log T)$ Maass forms with $T \leq \lvert t_j \rvert \leq
+  2T$, summing these terms together gives
+  \begin{equation}
+    \sum_{T \leq \lvert t_j \rvert \leq 2T} \rho_j(h) \langle \mu_j, \theta^{2k+1}
+    \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll (1 + \lvert t_j \rvert)^{k + 3 +
+    \epsilon}.
+  \end{equation}
+  This concludes the proof.
+\end{proof}
+
+
+It is also necessary to note that Selberg's Eigenvalue Conjecture is known for weight $k$
+Maass forms on $\Gamma_0(4)$.
+
+
+\begin{lemma}
+  Suppose $\mu_j$ is a Maass form appearing in the old discrete spectrum described above.
+  Denote the type of $\mu_j$ by $\frac{1}{2} + it_j$, so that $\mu_j$ is an eigenfunction
+  of the Laplacian with eigenvalue $\lambda = \frac{1}{4} + t_j^2$.
+  Then $\lambda > \frac{1}{4}$.
+  That is, there are no exceptional eigenvalues.
+\end{lemma}
+
+
+\begin{proof}
+  This is an argument given by Gergely Harcos at the Alfr\'ed R\'enyi Institute of
+  Mathematics in an answer at MathOverflow~\cite{GHfromMO}.
+  We sketch the argument here.
+  A half-integral weight Maass form with eigenvalue $(1 - t^2)/4$ has a Shimura lift to an
+  integral weight Maass form on $\Gamma_0(1)$ with eigenvalue $\frac{1}{4} - t^2$.
+  As Selberg's Eigenvalue Conjecture is known in this case (see~\cite{Blomer2013}), this
+  completes the proof.
+\end{proof}
+
+
+Now fix $s = \sigma + it$ with $\frac{1}{2} < \sigma < 1$.
+We write $\lvert t_j \rvert \sim T$ to mean $T \leq \lvert t_j \rvert \leq 2T$ for the
+rest of this section.
+Then
+\begin{equation}
+  \sum_{\lvert t_j \rvert \sim T} \langle P_h^k(\cdot, s), \mu_j \rangle \langle \mu_j, V
+  \rangle = \sum_{\lvert t_j \rvert \sim T} \frac{\Gamma(s - \frac{1}{2} + it_j) \Gamma(s
+- \frac{1}{2} - it_j)}{(4\pi h)^{s - 1} \Gamma(s - \frac{k}{2})} \rho_j(h) \langle \mu_j,
+V \rangle.
+\end{equation}
+In this expression it is clear that the rightmost poles in $s$ are at $s = \frac{1}{2} \pm
+it_j$, which occur on the line $\Re s = \frac{1}{2}$.
+By Stirling's Approximation, this is asymptotically
+\begin{equation}\label{eq:discrete_newspectrum_stepI}
+  \sum_{\lvert t_j \rvert \sim T} \frac{(1 + \lvert t + t_j \rvert)^{\sigma - 1} (1 +
+  \lvert t - t_j \rvert)^{\sigma - 1}}{(4\pi h)^{\sigma - 1 + it}(1 + \lvert t
+\rvert)^{\sigma - \frac{1}{2} - \frac{k}{2}}} e^{-\frac{\pi}{2}(\lvert t + t_j \rvert +
+\lvert t-t_j \rvert - \lvert t \rvert)} \rho_j(h) \langle \mu_j, V \rangle.
+\end{equation}
+Examination of the exponential contribution shows that there is large exponential decay in
+$t_j$ when $\lvert t_j \rvert > \lvert t \rvert$, so we only need to investigate the
+convergence when $\lvert t_j \rvert \leq \lvert t \rvert$.
+Then~\eqref{eq:discrete_newspectrum_stepI} is bounded by
+\begin{equation}
+  O_h\Big( \sum_{\lvert t_j \rvert \sim T} (1 + \lvert t \rvert)^{\frac{k}{2} -
+  \frac{1}{2}} e^{-\frac{\pi}{2} \lvert t \rvert} \rho_j(h) \langle \mu_j, V \rangle
+\Big),
+\end{equation}
+which, by Lemma~\ref{lem:discrete_newspectrum_innerproduct_bound}, is bounded by
+\begin{equation}
+  O_{h, \epsilon} \Big( (1 + \lvert t \rvert)^{\frac{3}{2}k + \frac{5}{2} + \epsilon}
+  e^{-\frac{\pi}{2}\lvert t \rvert}\Big).
+\end{equation}
+Summing dyadically gives the first part of the proposition.
+
+
+For the second part of the proposition, recall the inner product from
+Lemma~\ref{lem:inner_product_list}
+\begin{equation}
+  \langle P_h^k(\cdot, s), \mu_{j, \ell} \rangle =
+  \frac{\overline{\rho_{j,\ell}(h)}}{(4\pi h)}^{s-1} \frac{\Gamma(s + \frac{\ell}{2} - 1)
+  \Gamma(s - \frac{\ell}{2})}{\Gamma(s - \frac{k}{2})}.
+\end{equation}
+As the sum over $j$ and $\ell$ are each finite for the old discrete spectrum, the analytic
+properties in $s$ can be read directly from the inner products $\langle P_h^k, \mu_{j,
+\ell} \rangle$.
+The leading poles all come from the Gamma function $\Gamma(s - \frac{\ell}{2})$ in the
+numerator.
+Note that the first apparent pole is at $s = \frac{k}{2}$ is cancelled by the Gamma
+function in the denominator, but there are poles at $s = \frac{k}{2} - 1 - m$ for $m \in
+\mathbb{Z}_{\geq 0}$.
+
+
+
+\subsubsection*{Residual Spectrum}
+\index{spectrum!residual part}
+
+
+
+Consider the residual spectrum appearing in line~\eqref{line:Ph_spectral_residual}, which
+we rewrite for convenience:
+\begin{equation}
+  \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R_{\mathfrak{a}} \rangle \langle
+  R_{\mathfrak{a}}, V \rangle.
+\end{equation}
+The residual spectrum only occurs when $k$ is a half-integer.
+For each cusp, $\langle R_{\mathfrak{a}}, V \rangle$ evaluates to some constant and
+doesn't affect the analysis in $s$.
+Referring to Lemma~\ref{lem:inner_product_list}, we see that
+\begin{equation}
+  \langle P_h^k(\cdot, s), R_{\mathfrak{a}} \rangle = \frac{\Res_{w = \frac{3}{4}}
+  \overline{\rho_\mathfrak{a}^k(h,w)}}{(4\pi h)^{s-1}} \frac{\Gamma(s - \frac{1}{4})
+  \Gamma(s - \frac{3}{4})}{\Gamma(s - \frac{k}{2})}.
+\end{equation}
+As described in~\eqref{eq:Eisenstein_halfweight_generalshape_coeffs}, the residue in
+$\rho_\mathfrak{a}^k(h,w)$ comes from a potential pole in
+\begin{equation}
+  L\Big(2w - \tfrac{1}{2}, \big( \tfrac{h (-1)^{k - \frac{1}{2}}}{\cdot}\big) \Big)
+\end{equation}
+at $w = \frac{3}{4}$.
+This $L$-function has a pole if and only if the character is trivial, which occurs if and
+only if $h$ is a square, and $k = \frac{1}{2} + 2m$ for some $m \in \mathbb{Z}_{\geq 0}$.
+
+
+Therefore, if $h$ is not a square or if $k$ is not of the form $\frac{1}{2} + 2m$, then
+the residual spectrum vanishes.
+If $h$ is a square and $k = \frac{1}{2} + 2m$, then the residue is nonzero, and the
+analytic properties of the residual spectrum can be read directly from
+\begin{equation}\label{eq:hyperboloid:residual_analytic_descriptor}
+  \frac{\Gamma(s - \frac{1}{4}) \Gamma(s - \frac{3}{4})}{(4\pi h)^{s-1} \Gamma(s -
+  \frac{k}{2})}.
+\end{equation}
+We codify this in a proposition.
+
+
+\begin{proposition}\label{prop:hyperboloid_residual_props}
+  The residual spectrum in line~\eqref{line:Ph_spectral_residual} vanishes unless $h$ is a
+  square and $k = \frac{1}{2} + 2m$ for some $m \in \mathbb{Z}_{\geq 0}$, in which case
+  the residual spectrum has meromorphic continuation to the plane and is analytic for $\Re
+  s > 0$, except possibly for poles at $s = \frac{3}{4}$ and $s = \frac{1}{4}$.
+\end{proposition}
+
+
+
+\subsubsection*{Continuous Spectrum}
+\index{spectrum!continuous part}
+
+
+
+Consider the continuous spectrum appearing in line~\eqref{line:Ph_spectral_continuous},
+which we rewrite for convenience:
+\begin{equation}
+  \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k(\cdot, s),
+  E^k_{\mathfrak{a}}(\cdot, u) \rangle \langle E^k_{\mathfrak{a}}(\cdot, u), V \rangle du.
+\end{equation}
+Referring to Lemma~\ref{lem:inner_product_list}, we see that
+\begin{equation}
+  \langle P_h(\cdot, s), E_{\mathfrak{a}}^k(\cdot, \tfrac{1}{2} + it)\rangle =
+  \frac{\overline{\rho_\mathfrak{a}(h, \tfrac{1}{2} + it)}}{(4\pi h)^{s-1}} \frac{\Gamma(s
+  - \tfrac{1}{2} + it) \Gamma(s - \tfrac{1}{2} - it)}{\Gamma(s - \frac{k}{2})}.
+\end{equation}
+The Gamma functions can be approximated through Stirling's Approximation.
+Each $\rho_\mathfrak{a}(h, \tfrac{1}{2} + it)$ can understood through the
+Phragm\'en-Lindel\"of Principle to satisfy the bound $\rho_\mathfrak{a}(h, \frac{1}{2} +
+it) \ll (1 + \lvert t \rvert)^{\frac{1}{4} - \frac{k}{2} + \epsilon}$.
+
+
+The first apparent poles in $s$ can be read from the Gamma functions, and it is clear that
+there are no poles in $s$ for $\Re s > \frac{1}{2}$.
+
+
+The other inner products, $\langle E_\mathfrak{a}^k(\cdot, u), V \rangle$, can be
+understood through Zagier normalization~\cite{ZagierRankinSelberg}.
+In particular, since $V = c y^{\frac{1-k}{2}} + O(y^{-N})$ for some constant $c$ and any
+$N \geq 0$ as $y \to \infty$ (and more generally, at each cusp), Zagier normalization
+allows us to identify
+\begin{equation}\label{eq:continuous_stepI}
+  \langle E_\infty^k(\cdot, u), V \rangle = \int_0^\infty \widetilde{V}_0(y) y^{u-1}
+  \frac{dy}{y} = \frac{\Gamma(s + \frac{k+1}{2} - 1)}{(4\pi)^{u + \frac{k+1}{2} - 1}}
+  \sum_{n \geq 1} \frac{r_{2k+1}(n)r_1(n)}{n^{u + \frac{k+1}{2} - 1}}
+\end{equation}
+for $\frac{1-k}{2} < \Re u < \frac{k+1}{2}$ and give meromorphic continuation to the plane.
+Here, $\widetilde{V}_0$ is the $0$th Fourier coefficient of $\widetilde{V} = \theta^{2k+1}
+\overline{\theta}$, which was first defined in \S\ref{sec:hyperboloid_introduction}.
+Notice that the region of identification includes $\Re u = \frac{1}{2}$, as is necessary
+for this application.
+Similar expressions exist at the cusps $0$ and $\frac{1}{2}$.
+
+
+\begin{remark}
+  Zagier normalization also gives that the Dirichlet series at the right
+  in~\eqref{eq:continuous_stepI} has a potential pole at $u = \frac{k+1}{2}$, which agrees
+  with on-average estimates.
+  The function $r_1(n)$ is essentially a square indicator function, so the Dirichlet
+  series can be rewritten as
+  \begin{equation}
+    2\sum_{n \geq 1} \frac{r_{2k+1}(n^2)}{n^{2(u + \frac{k+1}{2} - 1)}},
+  \end{equation}
+  in which it is straightforward to use the Gaussian heuristic to confirm the pole from
+  Zagier normalization.
+\end{remark}
+
+
+Using the functional equation of the Eisenstein series to give the functional equation of
+the DIrichlet series in~\eqref{eq:continuous_stepI} and applying the Phragm\'en-Lindel\"of
+Convexity Principle guarantees that
+\begin{equation}
+  \langle E_\mathfrak{a}^k(\cdot, \tfrac{1}{2} + it), V \rangle \ll (1 + \lvert t
+  \rvert)^{2k - 1 + \epsilon}.
+\end{equation}
+Denote $\Re s = \sigma$, and suppose $\tfrac{1}{2} < \sigma < 1$.
+Applying Stirling's Approximation and the bounds above, we can now estimate
+\begin{align}
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2})} \langle P_h^k(\cdot, s),
+E^k_{\mathfrak{a}}(\cdot, u) \rangle \langle E^k_{\mathfrak{a}}(\cdot, u), V \rangle du \\
+  &\quad \ll \int_{-\infty}^\infty
+  \frac{(1 + \lvert t \rvert)^{(\frac{1}{4} - \frac{k}{2} + \epsilon) + (2k - 1 +
+  \epsilon)}}{(4\pi h)^{\sigma - 1}}
+  \frac{(1 + \lvert s + t \rvert)^{\sigma - 1} (1 + \lvert s - t \rvert)^{\sigma - 1}}{(1
+  + \lvert s \rvert)^{\sigma - \frac{1}{2} - \frac{k}{2}}}
+  e^{-\frac{\pi}{2}(\lvert s - t \rvert + \lvert s + t \rvert - \lvert s \rvert)}dt.
+\end{align}
+When $\lvert t \rvert > \lvert s \rvert$, there is significant exponential decay in $t$,
+effectively cutting off the integral to the interval $\lvert t \rvert \leq \lvert s
+\rvert$.
+Within this interval, the integral can be bounded by
+\begin{equation}
+  \int_{-\lvert s \rvert}^{\lvert s \rvert} (1 + \lvert t \rvert)^{\frac{3}{2}k -
+  \frac{3}{4} + \epsilon} (1 + \lvert s \rvert)^{\frac{k}{2} - \frac{1}{2}}
+  e^{-\frac{\pi}{2}\lvert s \rvert} dt \ll (1 + \lvert s \rvert)^{2k - \frac{1}{4} +
+  \epsilon} e^{-\frac{\pi}{2}\lvert s \rvert}.
+\end{equation}
+
+
+\begin{proposition}\label{prop:hyperboloid_continuous_props}
+  The continuous spectrum in line~\eqref{line:Ph_spectral_continuous} has meromorphic
+  continuation tot he plane and is analytic for $\Re s > \frac{1}{2}$ and has apparent
+  poles at $\Re s = \frac{1}{2}$.
+  For $\frac{1}{2} < \Re s < 1$, the continuous spectrum satisfies the bound
+  \begin{equation}
+    \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k(\cdot, s),
+    E^k_{\mathfrak{a}}(\cdot, u) \rangle \langle E^k_{\mathfrak{a}}(\cdot, u), V \rangle
+    du \ll (1 + \lvert s \rvert)^{2k - \frac{1}{4} + \epsilon} e^{-\frac{\pi}{2}\lvert s
+    \rvert}.
+  \end{equation}
+\end{proposition}
+
+
+
+\subsection{Analytic Behavior of $D_h^k(s)$}
+
+
+We are now ready to describe the analytic behavior of $D_h^k(s)$ for each $k \geq
+\frac{1}{2}$, for $\Re s > \frac{1}{2}$.
+Recall that $D_h^k(s)$ is defined in~\eqref{eq:hyp:Dh_def} and~\eqref{eq:hyp:Dh_def_half}
+as
+\begin{equation}
+  D_h^k(s) = \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \langle
+  P_h^{\frac{1}{2}}(\cdot, s), V \rangle.
+\end{equation}
+In Propositions~\ref{prop:nonspectral_analytic_props_large_dim} (for $k \geq 1$)
+and~\ref{prop:nonspectral_analytic_props_dim_3} (for $k = \frac{1}{2}$), it was shown that
+\begin{equation}\label{eq:hyperboloid_analytic_middlestep_I}
+  D_h^k(s) = \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}(m^2 + h)}{(2m^2 + h)^{s +
+  \frac{k-1}{2}}} - \mathfrak{E}_h^k(s)
+\end{equation}
+and the analytic properties of $\mathfrak{E}_h^k(s)$ are described.
+On the other hand, through the Spectral Expansion of $P_h^k$, we also have an expression
+for $\langle P_h^k(\cdot, s), V \rangle$, given
+in~\eqref{line:Ph_spectral_discrete}--\eqref{line:Ph_spectral_continuous}.
+Multiplying by $(2\pi)^{s + \frac{k-1}{2}} \Gamma(s + \frac{k-1}{2})^{-1}$ and
+rearranging~\eqref{eq:hyperboloid_analytic_middlestep_I}, we have
+\begin{equation}\label{eq:hyperboloid_dirichlet_decomposition}
+  \begin{split}
+    &\sum_{m \in \mathbb{Z}} \frac{r_{2k+1}(m^2 + h)}{(2m^2 + h)^{s + \frac{k-1}{2}}} =
+    \mathfrak{E}_h^k(s) \\
+    &\qquad + \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \bigg( \sum_j
+  \langle P_h^k, \mu_j \rangle \langle \mu_j, V \rangle + \sum_{\ell,j} \langle P_h^k,
+\mu_{j,\ell} \rangle \langle \mu_{j, \ell}, V \rangle \bigg) \\
+    &\qquad + \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})}
+\sum_\mathfrak{a} \langle P_h^k, R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle
+\\
+    &\qquad + \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \frac{1}{4\pi
+i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k, E_\mathfrak{a}^k\rangle \langle
+E_\mathfrak{a}^k, V\rangle,
+  \end{split}
+\end{equation}
+where the lines are separated into the Eisenstein correction factors in $V$, the discrete
+spectrum, the residual spectrum, and the continuous spectrum, respectively.
+The analytic properties of the discrete, residual, and continuous spectra are described in
+Propositions~\ref{prop:hyperboloid_discrete_props},~\ref{prop:hyperboloid_residual_props},
+and~\ref{prop:hyperboloid_continuous_props}, respectively.
+Assembling these propositions together, we have proved the following theorem.
+
+
+\begin{theorem}\label{thm:hyperboloid:mero_summary}
+  Let $h \geq 1$ be an integer and $k \geq \frac{1}{2}$ be either an integer or a
+  half-integer.
+  The Dirichlet series
+  \begin{equation}
+    \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}(m^2 + h)}{(2m^2 + h)^{s + \frac{k-1}{2}}}
+  \end{equation}
+  has meromorphic continuation to the plane, and is analytic for $\Re s > \frac{1}{2}$
+  except for
+  \begin{itemize}
+    \item simple poles at $s = \frac{k}{2} - 1 - m$ for $m \in \mathbb{Z}_{\geq 0}$,
+      coming from the discrete spectrum,
+    \item simple poles at $s = \frac{k+1}{2} - m$ for $m \in \mathbb{Z}_{\geq 0}$, coming
+      from the Eisenstein correction factors $\mathfrak{E}_h^k(s)$, and
+    \item a double pole at $s = \frac{3}{4}$ when $k = \frac{1}{2}$ and $h$ is a square,
+      also coming from $\mathfrak{E}_h^k(s)$.
+  \end{itemize}
+\end{theorem}
+
+
+
+\section{Integral Analysis}\label{sec:hyp:integral_analysis}
+
+We are now ready to perform the main integral analysis on $\langle P_h^k(\cdot, s),
+V\rangle$.
+In this section, we handle the $k > \frac{1}{2}$ case.
+We will examine
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\sigma)} \sum_{n \in \mathbb{Z}} \frac{r_{2k+1}(n^2 + h)}{(2n^2 +
+  h)^{s + \frac{k-1}{2}}} X^{s+\frac{k-1}{2}} V_Y(s) ds,
+\end{equation}
+which is closely related to studying
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\sigma)} \langle P_h^k(\cdot, s), V \rangle \frac{(2\pi)^{s +
+  \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} X^{s+\frac{k-1}{2}} V_Y(s) ds.
+\end{equation}
+We will use three integral kernels $V_Y(s)$ described in Chapter~\ref{c:background}.
+We denote the Mellin transform of $V_Y(s)$ by $v_Y(x)$ when appropriate.
+
+
+From the decomposition in~\eqref{eq:hyperboloid_dirichlet_decomposition}, it will suffice
+to consider the integral transforms applied to $\mathfrak{E}_h^k$, the discrete spectrum,
+the residual spectrum, and the continuous spectrum separately.
+In each integral, we will shift the line of integration to $\frac{1}{2} + \epsilon$ for a
+small $\epsilon > 0$ and analyze the poles and residues.
+
+
+
+\subsection{Integral Analysis of $\mathfrak{E}_h^k$}
+
+
+We first study
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\sigma)} \mathfrak{E}_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds.
+\end{equation}
+From Theorem~\ref{thm:hyperboloid:mero_summary} and
+Propositions~\ref{prop:nonspectral_analytic_props_large_dim}
+and~\ref{prop:nonspectral_analytic_props_dim_3}, we recognize that $\mathfrak{E}_h^k$ has
+poles at $s = \frac{k+1}{2} - m$ for $m \in \mathbb{Z}_{\geq 0}$.
+All of these poles are simple, except when $k = \frac{1}{2}$ and $h$ is a square, in which
+case the leading pole at $s = \frac{k+1}{2} = \frac{3}{4}$ is a double pole.
+As $\mathfrak{E}_h^k$ is of moderate growth for $\Re s > \frac{1}{2}$ and each kernel
+$V_Y(s)$ is of rapid decay, we may shift the line of integration to $\frac{1}{2} +
+\epsilon$ by Cauchy's Theorem we have
+\begin{equation}\label{eq:hyp:integral_MT}
+  \begin{split}
+    &\frac{1}{2\pi i} \int_{(\sigma)} \mathfrak{E}_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds \\
+    &\quad = \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \mathfrak{E}_h^k(s) X^{s +
+    \frac{k-1}{2}} V_Y(s) ds + \sum_{0 \leq m < \frac{k}{2}} R_{k-m,h}^k X^{k - m}
+    V_Y(\tfrac{k+1}{2} - m) \\
+    &\qquad + \delta_{[k=\frac{1}{2}]} \delta_{[h = a^2]} \bigg( R'_h X^{\frac{1}{2}} \log X
+  V_Y(\tfrac{3}{4}) + R'_h X^{\frac{1}{2}} V'_Y(\tfrac{3}{4}) \bigg)
+  \end{split}
+\end{equation}
+where
+\begin{equation}
+  R_{k-m,h}^k = \Res_{s = \frac{k+1}{2} - m} \mathfrak{E}_h^k(s)
+\end{equation}
+and where $R'_h$ is the coefficient of $(s - \tfrac{3}{4})^{-2}$ in the Laurent expansion
+of $\mathfrak{E}_h^{\frac{1}{2}}(s)$.
+The Kronecker $\delta$ symbol is used here to mean
+\begin{equation}
+  \delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} = \begin{cases}
+    1 & \text{if } k = \frac{1}{2} \; \text{and } h \; \text{is a square}, \\
+    0 & \text{otherwise}.
+  \end{cases}
+\end{equation}
+
+
+
+To estimate the shifted integral, recall from
+Propositions~\ref{prop:nonspectral_analytic_props_large_dim}
+and~\ref{prop:nonspectral_analytic_props_dim_3} that for $\Re s > \frac{1}{2}$, we know
+the bound $\mathfrak{E}_h^k(s) \ll (1 + \lvert s \rvert)^{\frac{1}{2}}$.
+Therefore as long as $V_Y(s) \ll (1 + \lvert s \rvert)^{-\frac{3}{2} - \epsilon}$, the
+integral converges absolutely.
+With respect to the three integral transforms, this means that
+\begin{align}
+  \frac{1}{2\pi i} &\int_{(\frac{1}{2} + \epsilon)} \mathfrak{E}_h^k(s) X^{s +
+  \frac{k-1}{2}} \Gamma(s + \tfrac{k-1}{2}) ds \ll X^{\frac{k}{2} + \epsilon}
+  \label{eq:hyperboloid:nonspectral_gamma_integral_bound} \\
+  \frac{1}{2\pi i} &\int_{(\frac{1}{2} + \epsilon)} \mathfrak{E}_h^k(s) X^{s +
+  \frac{k-1}{2}} \frac{e^{\pi s^2 / y^2}}{y} ds  \ll X^{\frac{k}{2} + \epsilon}
+  Y^{\frac{1}{2}} \label{eq:hyperboloid:nonspectral_concentrating_integral_bound}\\
+  \frac{1}{2\pi i} &\int_{(\frac{1}{2} + \epsilon)} \mathfrak{E}_h^k(s) X^{s +
+  \frac{k-1}{2}} \Phi_Y(s) ds  \ll X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2}+\epsilon}.
+  \label{eq:hyperboloid:nonspectral_compact_integral_bound}
+\end{align}
+
+
+
+\subsection{Integral analysis of the discrete spectrum}
+
+
+We now study the integral of the discrete spectrum.
+To condense notation, we introduce the notation
+\begin{equation}
+  \discrete_h^k(s) := \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \bigg(
+  \sum_j \langle P_h^k, \mu_j \rangle \langle \mu_j, V \rangle + \sum_{\ell,j} \langle
+P_h^k, \mu_{j,\ell} \rangle \langle \mu_{j, \ell}, V \rangle \bigg).
+\end{equation}
+Then the integral of the discrete spectrum can be written as
+\begin{equation}\label{eq:integral_analysis_discrete_I}
+  \frac{1}{2\pi i} \int_{(\sigma)} \discrete_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds.
+\end{equation}
+From Theorem~\ref{thm:hyperboloid:mero_summary} we recognize that the integrand has simple
+poles at $s = \frac{k}{2} - m$ for $m \in \mathbb{Z}_{\geq 0}$, coming from the finitely
+many terms of the ``old'' discrete spectrum.
+Therefore, shifting the line of integration to $\frac{1}{2} + \epsilon$ and applying
+Cauchy's Theorem shows that~\eqref{eq:integral_analysis_discrete_I} is equal to
+\begin{equation}
+  \sum_{0 \leq m \leq \frac{k-1}{2}} R^k_{k - \frac{1}{2} - m, h} X^{k - \frac{1}{2} - m}
+  V(\tfrac{k+1}{2} - m - \tfrac{1}{2}) + \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)}
+  \discrete_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds,
+\end{equation}
+where $R^k_{k - \frac{1}{2} - m}$ are the collected residues of the old discrete spectrum
+at $s = \frac{k}{2} - m$.
+
+
+
+To estimate the shifted integral, note that from applying Stirling's Approximation to
+$\Gamma(s+\frac{k-1}{2})^{-1}$ and using the approximations from
+Proposition~\ref{prop:hyperboloid_discrete_props} that $\discrete_h^k(s) \ll (1 + \lvert s
+\rvert)^{k + \frac{7}{2} +\epsilon}$.
+Therefore as long as $V_Y(s) \ll (1 + \lvert s \rvert)^{-k - \frac{9}{2} - 2\epsilon}$,
+the integral converges absolutely.
+The three integral transforms then give
+\begin{align}
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \discrete_h^k(s) X^{s + \frac{k-1}{2}}
+  \Gamma(s + \frac{k-1}{2})  ds \ll X^{\frac{k}{2} + \epsilon}
+  \label{eq:hyperboloid:discrete_gamma_integral_bound}\\
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \discrete_h^k(s) X^{s + \frac{k-1}{2}}
+  \frac{e^\pi s^2/Y^2}{Y} ds \ll X^{\frac{k}{2} + \epsilon} Y^{k + \frac{7}{2} + \epsilon}
+  \label{eq:hyperboloid:discrete_concentrating_integral_bound} \\
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \discrete_h^k(s) X^{s + \frac{k-1}{2}}
+  \Phi_Y(s) ds \ll X^{\frac{k}{2}+ \epsilon} Y^{k + \frac{7}{2} + 2\epsilon}.
+  \label{eq:hyperboloid:discrete_compact_integral_bound}
+\end{align}
+
+
+\subsection{Integral analysis of the residual spectrum}
+
+
+We now study the integral of the residual spectrum,
+\begin{equation}\label{eq:hyperboloid:integral_analysis_residual_I}
+  \frac{1}{2\pi i} \int_{(\sigma)} \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s +
+  \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k, R_\mathfrak{a}\rangle \langle
+R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} V_Y(s) ds.
+\end{equation}
+From Theorem~\ref{thm:hyperboloid:mero_summary},
+Proposition~\ref{prop:hyperboloid_residual_props}, and the analytic properties of the
+residual spectrum as described in~\eqref{eq:hyperboloid:residual_analytic_descriptor}, the
+residual spectrum is analytic for $\Re s > \frac{1}{2} + \epsilon$ and is bounded by $O((1
++ \lvert s \rvert)^{\frac{1}{2}})$.
+By Cauchy's Theorem the integral~\eqref{eq:hyperboloid:integral_analysis_residual_I} is
+equal to the shifted integral
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+  \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
+  R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} V_Y(s) ds.
+\end{equation}
+As long as $V_Y(s) \ll (1 + \lvert s \rvert)^{-\frac{3}{2} + \epsilon}$, this converges
+absolutely.
+The three integral transforms then satisfy the bounds
+\begin{align}
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+  \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
+    R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} \Gamma(s
+    + \tfrac{k-1}{2}) ds \ll X^{\frac{k}{2} + \epsilon}
+  \label{eq:hyperboloid:residual_gamma_integral_bound} \\
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+  \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
+  R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}}
+  \frac{e^{\pi s^2/Y^2}}{Y} ds \ll X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + \epsilon}
+  \label{eq:hyperboloid:residual_concentrating_integral_bound} \\
+  &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+  \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
+  R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} \Phi_Y(s)
+  ds \ll X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + 2\epsilon}.
+  \label{eq:hyperboloid:residual_compact_integral_bound}
+\end{align}
+
+
+
+\subsection{Integral analysis of the continuous spectrum}
+
+
+We now consider the last integral, the integral of the continuous spectrum:
+\begin{equation}\label{eq:hyperboloid:integral_analysis_continuous_I}
+  \frac{1}{2\pi i} \int_{(\sigma)} \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s +
+  \frac{k-1}{2})} \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k,
+  E_\mathfrak{a}^k\rangle \langle E_\mathfrak{a}^k, V\rangle X^{s+\frac{k-1}{2}} V_Y(s)
+  du \, ds.
+\end{equation}
+(Recall that we use $u$ to denote the variable within the Eisenstein series
+$E_\mathfrak{a}^k(z,u)$, though we omit this from the notation).
+By Theorem~\ref{thm:hyperboloid:mero_summary}, we know that the continuous spectrum is
+analytic for $\Re s > \frac{1}{2}$.
+By Cauchy's Theorem, the integral~\eqref{eq:hyperboloid:integral_analysis_continuous_I}
+is equal to the shifted integral
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+  \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \frac{1}{4\pi i} \sum_{\mathfrak{a}}
+  \int_{(\frac{1}{2})} \langle P_h^k, E_\mathfrak{a}^k\rangle \langle E_\mathfrak{a}^k,
+  V\rangle X^{s+\frac{k-1}{2}} V_Y(s) du \, ds.
+\end{equation}
+From Stirling's Approximation applied to $\Gamma(s + \frac{k-1}{2})^{-1}$ and the bounds
+from Proposition~\ref{prop:hyperboloid_continuous_props}, as long as $V_Y(s) \ll (1 +
+\lvert s \rvert)^{-\frac{3}{2}k - \frac{7}{4} - 2\epsilon}$, the shifted integral
+converges absolutely.
+The three integral transforms thus satisfy the bounds
+\begin{align}
+  \begin{split}
+    &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+    \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \frac{1}{4\pi i} \\
+    &\quad \times \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k,
+    E_\mathfrak{a}^k\rangle \langle
+    E_\mathfrak{a}^k, V\rangle X^{s+\frac{k-1}{2}} \Gamma(s + \tfrac{k-1}{2}) du \, ds \ll
+    X^{\frac{k}{2} + \epsilon} \label{eq:hyperboloid:continuous_gamma_integral_bound}
+  \end{split}
+  \\
+  \begin{split}
+    &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+    \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \frac{1}{4\pi i} \\
+    &\quad \times \sum_{\mathfrak{a}}
+    \int_{(\frac{1}{2})} \langle P_h^k, E_\mathfrak{a}^k\rangle \langle E_\mathfrak{a}^k,
+    V\rangle X^{s+\frac{k-1}{2}} \frac{e^{\pi s^2 / Y^2}}{Y} du\, ds \ll X^{\frac{k}{2} +
+    \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}
+    \label{eq:hyperboloid:continuous_concentrating_integral_bound}
+  \end{split}
+  \\
+  \begin{split}
+    &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
+    \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \frac{1}{4\pi i} \\
+    &\quad \times \sum_{\mathfrak{a}}
+    \int_{(\frac{1}{2})} \langle P_h^k, E_\mathfrak{a}^k\rangle \langle E_\mathfrak{a}^k,
+    V\rangle X^{s+\frac{k-1}{2}} \Phi_Y(s) du \, ds \ll X^{\frac{k}{2} + \epsilon}
+    Y^{\frac{3}{2}k + \frac{3}{4} + 2\epsilon}.
+    \label{eq:hyperboloid:continuous_compact_integral_bound}
+  \end{split}
+\end{align}
+
+
+
+\section{Proof of Main Theorems}\label{sec:hyp:proof_main_theorems}
+
+
+Using the integral analysis from the previous section, we now prove the main theorems of
+this chapter.
+
+
+\subsection{Smoothed Main Theorem}
+
+
+Consider the integral transform
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\sigma)} \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}{(m^s +
+  h)}}{(2m^2 + h)^{s + \frac{k-1}{2}}} X^{s + \frac{k-1}{2}} \Gamma(s + \tfrac{k-1}{2})
+  ds.
+\end{equation}
+On the one hand, by the standard properties of the transform (in
+\S\ref{sec:cutoff_integrals}), this is exactly the sum
+\begin{equation}
+  \sum_{m \in \mathbb{Z}} r_{2k+1}(m^2 + h) e^{-(2m^2 + h)/X}.
+\end{equation}
+On the other hand, by~\eqref{eq:hyperboloid_dirichlet_decomposition} and the analysis in
+the previous section (and in particular the bounds from
+lines~\eqref{eq:hyperboloid:nonspectral_gamma_integral_bound},
+\eqref{eq:hyperboloid:discrete_gamma_integral_bound},
+\eqref{eq:hyperboloid:residual_gamma_integral_bound},
+and~\eqref{eq:hyperboloid:continuous_gamma_integral_bound}, as well as the residual
+expression in~\eqref{eq:hyp:integral_MT}), this transform is equal to
+\begin{align}
+  &\sum_{0 \leq m < \frac{k}{2}} R_{k-m, h}^k \Gamma(k-m) X^{k-m} + \delta_{[k =
+\frac{1}{2}]} \delta_{[h = a^2]} \bigg( R'_h X^{\frac{1}{2}} \log X \Gamma(\tfrac{1}{2}) +
+R'_h \Gamma'(\tfrac{1}{2}) X^{\frac{1}{2}} \bigg) \\
+  &\qquad + \sum_{0 \leq m < \frac{k-1}{2}} R_{k - \frac{1}{2} - m,h}^k \Gamma(k -
+  \tfrac{1}{2} - m) X^{k - \frac{1}{2} - m} + O(X^{\frac{k}{2} + \epsilon}).
+\end{align}
+This proves the following theorem.
+\begin{theorem}\label{thm:hyperboloid:smooth_full}
+  Let $k \geq \frac{1}{2}$ be a full or half-integer.
+  Then
+  \begin{align}
+    &\sum_{m \in \mathbb{Z}} r_{2k+1}(m^2 + h) e^{-(2m^2 + h)/X} =\\
+    &\quad =\delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( R'_h X^{\frac{1}{2}} \log
+    X \Gamma(\tfrac{1}{2}) + R'_h \Gamma'(\tfrac{1}{2}) X^{\frac{1}{2}} \bigg) + \sum_{0
+    \leq m < \frac{k}{2}} R_{k-m, h}^k \Gamma(k-m) X^{k-m} \\
+    &\qquad + \sum_{0 \leq m < \frac{k-1}{2}} R_{k - \frac{1}{2} - m,h}^k \Gamma(k -
+    \tfrac{1}{2} - m) X^{k - \frac{1}{2} - m} + O(X^{\frac{k}{2} + \epsilon}).
+  \end{align}
+  Here, $\delta_{[\text{condition}]}$ is a Kronecker $\delta$ and evaluates to $1$ if the
+  condition is true and $0$ otherwise, and the constants $R^k_{\ell, h}$ and $R'_h$ are
+  residues as defined in \S\ref{sec:hyp:integral_analysis}.
+\end{theorem}
+
+
+
+\subsection{Main Theorem in Short-Intervals}
+
+
+Consider the integral transform
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\sigma)} \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}{(m^s +
+  h)}}{(2m^2 + h)^{s + \frac{k-1}{2}}} X^{s + \frac{k-1}{2}} \frac{e^{\pi s^2/Y^2}}{Y} ds.
+\end{equation}
+On the one hand, by the properties of this integral transform as described in
+\S\ref{sec:cutoff_integrals}, this is exactly the sum
+\begin{equation}
+  \sum_{m \in \mathbb{Z}} r_{2k+1}(m^2 + h) \exp\bigg( -\frac{Y^2
+  \log^2(X/(2m^2+h))}{4\pi} \bigg).
+\end{equation}
+When $2m^2 + h \in [X - X/Y, X + X/Y]$, the exponential damping term is almost constant.
+But for $m$ with $\lvert 2m^2 + h - X \rvert > X/Y^{1-\epsilon}$, the exponential term
+contributes significant exponential decay.
+Further, by the positivity of $r_{2k+1}$, we have that
+\begin{equation}
+  \sum_{\lvert 2m^2 + h - X \rvert < \frac{X}{Y}} r_{2k+1}(m^2 + h) \ll \frac{1}{2\pi i}
+  \int_{(\sigma)} \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}{(m^s + h)}}{(2m^2 + h)^{s +
+  \frac{k-1}{2}}} X^{s + \frac{k-1}{2}} \frac{e^{\pi s^2/Y^2}}{Y} ds.
+\end{equation}
+
+
+\begin{remark}
+  Roughly speaking, this should be interpreted to mean that this integral transform
+  concentrates the mass of the integral on those $m$ such that $2m^2 + h$ is within a
+  short interval around $X$.
+\end{remark}
+
+
+And on the other hand, by~\eqref{eq:hyperboloid_dirichlet_decomposition} and the analysis
+in the previous section (in particular the bounds from
+lines~\eqref{eq:hyperboloid:nonspectral_concentrating_integral_bound},
+\eqref{eq:hyperboloid:discrete_concentrating_integral_bound},
+\eqref{eq:hyperboloid:residual_concentrating_integral_bound},
+and~\eqref{eq:hyperboloid:continuous_concentrating_integral_bound}, as well as the
+residual expression in~\eqref{eq:hyp:integral_MT}), this transform is
+equal to
+\begin{align}
+  &\delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg(R'_h X^{\frac{1}{2}}\log X +R'_h
+X^{\frac{1}{2}} \frac{\pi}{Y} \bigg)\frac{\exp(\frac{\pi}{4Y})}{Y} + R_k^k X^k
+\frac{\exp(\frac{\pi k^2}{Y})}{Y} \\
+  &\quad + O(\frac{X^{k-\frac{1}{2}}}{Y}) + O(X^{\frac{k}{2}+\epsilon} Y^{k + \frac{7}{2}
+  + \epsilon}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}).
+\end{align}
+In this expression, we only kept the leading poles.
+As we are only seeking to create an upper bound, we simplify the above expression into the
+bound
+\begin{equation}\label{eq:hyp:short_interval_step_I}
+  O(\frac{X^{k+\epsilon}}{Y}) + O(X^{\frac{k}{2}+\epsilon} Y^{k + \frac{7}{2} + \epsilon})
+  + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}).
+\end{equation}
+
+
+We choose $Y$ to balance the expressions in~\eqref{eq:hyp:short_interval_step_I}.
+When $k \leq \frac{11}{2}$, the two terms
+\begin{equation}
+  O(\frac{X^{k+\epsilon}}{Y}) + O(X^{\frac{k}{2} + \epsilon} Y^{k + \frac{7}{2} +
+  \epsilon})
+\end{equation}
+dominate, and are balanced when $Y = X^{1/(2 + \frac{9}{k} + \frac{2\epsilon}{k})}$.
+This gives the overall bound
+\begin{equation}\label{eq:hyp:short_interval_bound_smallk}
+  O(X^{k + \epsilon - \lambda(k)}), \qquad \text{where } \lambda(k) = \frac{1}{2 +
+  \frac{9}{k}}.
+\end{equation}
+When $k \geq \frac{11}{2}$, the two terms
+\begin{equation}
+  O(\frac{X^{k+\epsilon}}{Y}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2} k +
+  \frac{3}{4} + \epsilon})
+\end{equation}
+dominate, and are balanced when $Y = X^{1/(3 + \frac{7}{2k} + \frac{2\epsilon}{k})}$.
+This gives the overall bound
+\begin{equation}\label{eq:hyp:short_interval_bound_largek}
+  O(X^{k + \epsilon - \lambda(k)}), \qquad \text{where } \lambda(k) = \frac{1}{3 +
+  \frac{7}{2k}}.
+\end{equation}
+
+
+We have now shown that
+\begin{equation}
+  \sum_{\lvert 2m^2 + h - X \rvert < X^{1 + \epsilon - \lambda(k)}} r_{2k+1}(m^2 + h) \ll
+  X^{k + \epsilon - \lambda(k)},
+\end{equation}
+where $\lambda(k)$ is defined by~\eqref{eq:hyp:short_interval_bound_smallk} or
+by~\eqref{eq:hyp:short_interval_bound_largek} depending on the size of $k$.
+This is the content of the second main theorem in this chapter.
+\begin{theorem}\label{thm:hyp:concentrating_theorem_full}
+  Let $k \geq \frac{1}{2}$ be a full or half-integer.
+  Then
+  \begin{equation}
+    \sum_{\lvert 2m^2 + h - X \rvert < X^{1 + \epsilon - \lambda(k)}} r_{2k+1}(m^2 + h)
+    \ll X^{k + \epsilon - \lambda(k)},
+  \end{equation}
+  where $\lambda(k)$ is defined as
+  \begin{equation}
+    \lambda(k) =
+    \begin{cases}
+      \frac{1}{2 + \frac{9}{k}} & \text{if } k \leq \frac{11}{2} \\
+      \frac{1}{3 + \frac{7}{2k}} & \text{if } k \geq \frac{11}{2}.
+    \end{cases}
+  \end{equation}
+\end{theorem}
+
+
+
+\subsection{Sharp Main Theorem}
+
+
+Finally, consider the integral transform
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(\sigma)} \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}{(m^s +
+  h)}}{(2m^2 + h)^{s + \frac{k-1}{2}}} X^{s + \frac{k-1}{2}} \Phi_Y(s) ds.
+\end{equation}
+On the one hand, by the description of this integral transform in
+\S\ref{sec:cutoff_integrals}, this is exactly the sum
+\begin{equation}\label{eq:hyp:sharp_main_estimate_I}
+  \sum_{\lvert 2m^2 + h \rvert \leq X} r_{2k+1}(m^2 + h) + \sum_{X \leq \lvert 2m^2+h
+  \rvert \leq X+\frac{X}{Y}} r_{2k+1}(m^2+h) \phi_Y(\tfrac{2m^2+h}{X}).
+\end{equation}
+As $r_{2k+1}$ is always positive, we can bound the second term above by
+\begin{equation}\label{eq:hyp:sharp_main_estimate_II}
+  \sum_{X \leq \lvert 2m^2+h \rvert \leq X+\frac{X}{Y}} r_{2k+1}(m^2+h)
+  \phi_Y(\tfrac{2m^2+h}{X}) \ll \sum_{\lvert 2m^2 + h - X \rvert \leq \frac{X}{Y}}
+  r_{2k+1}(m^2 + h).
+\end{equation}
+Notice that this is a short-interval type estimate, exactly as considered in
+Theorem~\ref{thm:hyp:concentrating_theorem_full}.
+
+
+On the other hand, by~\eqref{eq:hyperboloid_dirichlet_decomposition} and the analysis in
+the previous section (and in particular the bounds from
+lines~\eqref{eq:hyperboloid:nonspectral_compact_integral_bound},
+\eqref{eq:hyperboloid:discrete_compact_integral_bound},
+\eqref{eq:hyperboloid:residual_compact_integral_bound},
+and~\eqref{eq:hyperboloid:continuous_compact_integral_bound}, as well as the residual
+expression in~\eqref{eq:hyp:integral_MT}), this integral
+transform is equal to
+\begin{align}
+  &\sum_{0 \leq m < \frac{k}{2}} R_{k-m, h}^k X^{k-m} \big( \tfrac{1}{k-m} +
+O(\tfrac{1}{Y}) \big) \\
+  &\quad + \delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( R'_h X^{\frac{1}{2}} \log
+X \big(2 + O(\tfrac{1}{Y}) \big) + R'_h X^{\frac{1}{2}} \big( -4 + O(\tfrac{1}{Y}) \big)
+\bigg) \\
+  &\quad + \sum_{0 \leq m < \frac{k-1}{2}} R_{k - \frac{1}{2} - m,h}^k X^{k - \frac{1}{2}
+- m} \big( \tfrac{1}{k - \frac{1}{2} - m} + O(\tfrac{1}{Y})\big) \\
+  &\quad + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + \epsilon}) + O(X^{\frac{k}{2} +
+  \epsilon} Y^{k + \frac{7}{2} + 2\epsilon}) + O(X^{\frac{k}{2} + \epsilon}
+Y^{\frac{3}{2}k + \frac{3}{4} + 2\epsilon}).
+\end{align}
+We note that we have used that $\Phi_Y(s) = \frac{1}{s} + O(\frac{1}{Y})$ and
+$\Phi_Y'(s) = -\frac{1}{s^2} + O(\frac{1}{Y})$ from \S\ref{sec:cutoff_integrals}
+to simplify the residual terms involving the weight function $\Phi_Y$, giving
+the various big Oh terms in this expression.
+
+
+
+
+Keeping only the leading terms of growth, we rewrite this as
+\begin{align}
+  &\delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}} \log X -4
+R'_h X^{\frac{1}{2}} \bigg) + \tfrac{1}{k} R_{k, h}^k X^{k} +  O\big(\frac{X^{\frac{1}{2}}
+\log X}{Y}\big) \\
+  &\quad + \big(\frac{X^{k}}{Y}\big) + O(X^{\frac{k-1}{2}}) + O(X^{\frac{k}{2} + \epsilon}
+  Y^{k + \frac{7}{2} + 2\epsilon}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k +
+\frac{3}{4} + 2\epsilon}).
+\end{align}
+The collected error terms can be written as
+\begin{equation}
+  O(X^{\frac{k-1}{2}}) + \big(\frac{X^{k+\epsilon}}{Y}\big) + O(X^{\frac{k}{2} + \epsilon}
+  Y^{k + \frac{7}{2} + 2\epsilon}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k +
+\frac{3}{4} + 2\epsilon}).
+\end{equation}
+Notice that this is the exact same expression as in~\eqref{eq:hyp:short_interval_step_I},
+and so the choice of $Y$ that optimizes the error bound is the same!
+That is, we choose $Y = X^{\lambda(k)}$ where $\lambda(k)$ is defined as in
+Theorem~\ref{thm:hyp:concentrating_theorem_full}.
+
+
+By combining this optimal error term and choice of $Y = X^{\lambda(k)}$ with the
+expression~\eqref{eq:hyp:sharp_main_estimate_I} and the
+bound~\eqref{eq:hyp:sharp_main_estimate_II}, we have shown that
+\begin{align}
+  &\frac{1}{2\pi i} \int_{(\sigma)} \sum_{m \in \mathbb{Z}} \frac{r_{2k+1}{(m^s +
+h)}}{(2m^2 + h)^{s + \frac{k-1}{2}}} X^{s + \frac{k-1}{2}} \Phi_Y(s) ds \\
+  &\quad =\sum_{\lvert 2m^2 + h \rvert \leq X} r_{2k+1}(m^2 + h) +O \bigg( \sum_{\lvert
+  2m^2+h - X \rvert \leq X^{1 + \epsilon - \lambda(k)}} r_{2k+1}(m^2+h)\bigg)  \\
+  &\quad = \delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}}
+\log X -4 R'_h X^{\frac{1}{2}} \bigg) + \tfrac{1}{k} R_{k, h}^k X^{k} + O(X^{k + \epsilon
+- \lambda(k)}).
+\end{align}
+Rearranging, this shows that
+\begin{align}
+  &\sum_{\lvert 2m^2 + h \rvert \leq X} r_{2k+1}(m^2 + h) \\
+  &\quad = \delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}}
+\log X -4 R'_h X^{\frac{1}{2}} \bigg) + \tfrac{1}{k} R_{k, h}^k X^{k} + O(X^{k + \epsilon
+- \lambda(k)}) \\
+  &\quad + O \bigg( \sum_{\lvert 2m^2+h - X \rvert \leq X^{1 + \epsilon - \lambda(k)}}
+  r_{2k+1}(m^2+h)\bigg).
+\end{align}
+By Theorem~\ref{thm:hyp:concentrating_theorem_full}, the last big Oh term is bounded by
+$O(X^{k + \epsilon - \lambda(k)})$.
+This concludes the proof of the following theorem.
+
+
+\begin{theorem}\label{thm:hyp:sharp_theorem_full}
+  Let $k \geq \frac{1}{2}$ be a full or half-integer.
+  Then
+  \begin{align}
+    &\sum_{\lvert 2m^2 + h - X \rvert \leq X} r_{2k+1}(m^2 + h) \\
+    &\quad= \delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}}
+  \log X -4 R'_h X^{\frac{1}{2}} \bigg) + \tfrac{1}{k} R_{k, h}^k X^{k} + O(X^{k +
+\epsilon - \lambda(k)}),
+  \end{align}
+  where $\lambda(k)$ is defined as
+  \begin{equation}
+    \lambda(k) =
+    \begin{cases}
+      \frac{1}{2 + \frac{9}{k}} & \text{if } k \leq \frac{11}{2} \\
+      \frac{1}{3 + \frac{7}{2k}} & \text{if } k \geq \frac{11}{2}.
+    \end{cases}
+  \end{equation}
+  In particular, if $k = \frac{1}{2}$ then
+  \begin{align}
+    &\sum_{\lvert 2m^2 + h - X \rvert \leq X} r_{2k+1}(m^2 + h) \\
+    &\quad = \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}} \log X -4 R'_h
+  X^{\frac{1}{2}} \bigg) + 2R_{1/2, h}^{1/2} X^{\frac{1}{2}} + O(X^{\frac{1}{2} -
+\frac{1}{20} + \epsilon}),
+  \end{align}
+  and for $k \geq 1$
+  \begin{equation}
+    \sum_{\lvert 2m^2 + h - X \rvert \leq X} r_{2k+1}(m^2 + h)  = \tfrac{1}{k} R_{k, h}^k
+    X^{k} + O(X^{k + \epsilon - \lambda(k)}).
+  \end{equation}
+\end{theorem}
+
+
+\begin{remark}
+  It is interesting that the shape of the main term is different in the dimension $3$ case
+  (when $k = \frac{1}{2}$) compared to all higher dimensions.
+  There is a rough heuristic argument that explains this.
+  Counting solutions to $X^2 + Y^2 = Z^2 + h$ is the same as counting solutions to
+  $(Z-X)(Z+X) = Y^2 - h$, which can be thought of as counting the number of factorizations
+  of $Y^2 - h$ as $Y$ varies.
+  The number of factorizations of $Y^2 - h$ depends heavily on whether or not $h$ is a
+  square.
+  If $h$ is not a square, then there are expected to be relatively few factorizations.
+  If $h$ is a square, then there are expected to be logarithmically many factorizations in
+  $Y$.
+  Thus if $Y$ varies up to size $\sqrt X$ and there are $\log Y$ many factorizations on
+  average, we should expect $X^{\frac{1}{2}} \log X$ terms.
+
+
+  In higher dimensions, this factorization heuristic doesn't apply.
+  And in higher dimensions, the regularity of representation of integers as sums of many
+  squares should smooth away irregularities present in low dimension.
+\end{remark}
+
+
+
+
+
+% vim: tw=90 cc=90

@@ -1,0 +1,86 @@
+
+Let me describe briefly what we set out to prove and how different the final results
+actually are.\footnote{Jeff Hoffstein once told me that far too few published works
+  describe the difference between the original intent and the final version.
+I include that here, in this very informal section.}
+
+
+Chapters~\ref{c:sums} and~\ref{c:sums_apps} were inspired from a single question that Jeff
+Hoffstein asked after a talk from Winfried Kohnen during Jeff's Birthday Conference.
+Kohnen described new results on sign changes of cusp forms, and Jeff asked whether or not
+it was possible to prove that sums of coefficients of cusp forms change sign frequently.
+
+
+Very na{\"\i}vely, I thought that if I could understand this question, I would probably do
+is using the series $D(s, S_f) = \sum_{n \geq 1} S_f(n) n^{-s}$ and $D(s, S_f \times
+\overline{S_f}) = \sum_{n \geq 1} \lvert S_f(n) \rvert^s n^{-s}$.
+
+
+The reason for this is simple: one way to determine that a sequence changes signs often is
+to show that partial sums of squares are large while partial sums are small (indicating
+lots of cancellation).
+This fundamental idea was included within Kohnen's talk.
+As for the use of these Dirichlet series --- it's in some sense the first thing that a
+multiplicative number theorist might try.
+
+
+I doodled on this question for a few talks, and shared my doodles with Tom Hulse.
+Tom had two quick ideas: firstly, he knew of an exact set of conditions that guarantee
+sign changes in intervals; secondly, he knew a Mellin-Barnes transform to decouple
+denominators. This seemed like a short, quick project, so we set out to prove sign
+changes.
+
+
+We were wrong.
+This was not short nor quick, and as we delved into the problem it became apparent that
+there were significant obstacles in the way of understanding the spectral
+analysis.
+In some sense, we knew that these were understandable from the general philosophy
+of~\cite{HoffsteinHulse13}.
+Yet actually demonstrating the extent of cancellation required attention to different
+subtleties.
+And I engrossed myself into these details.
+
+
+Several months later, the question had totally shifted away from sign changes, and instead
+focused on the Cusp Form analogy to the Gauss Circle problem in various aspects, leading
+ultimately to the current line of research.
+In hindsight, it turns out that our analysis of $D(s, S_f)$ and $D(s, S_f \times
+\overline{S_f})$ have had only limited success in actually proving sign changes --- but
+they are great tools otherwise.
+
+
+
+Chapters~\ref{c:hyperboloid} and~\ref{c:hyperboloid_apps} accomplished almost exactly what
+was originally intended.
+In~\cite{hulseCountingSquare}, Hulse, K{\i}ral, Kuan, and Lim studied a problem
+inspired from the same work of Oh and Shah~\cite{ohshah2014} that studied lattice points
+on hyperboloids through ergodic methods.
+Shortly afterwards, a K{\i}ral, Kuan, and I began to look at lattice points on
+hyperboloids.
+Our initial investigations stalled, though I first learned much about the general
+techniques involving shifted convolution sums from those first forays into this problem.
+
+
+It is interesting to note that the combination of integral transforms that leads to the
+main theorem of Chapter~\ref{c:hyperboloid} was noticed by a combination of Kuan, Walker,
+and I originally while we were writing our sign changes paper~\cite{hkldwSigns}.
+We then forgot about this technique until we began to struggle with our forthcoming
+work on the Gauss Sphere problem, until Walker and I slowly realized that we were
+vastly overcomplicating a particular difficulty.
+
+
+Originally, the intention of Chapter~\ref{c:hyperboloid} was simply to prove the
+meromorphic continuation of the underlying Dirichlet series and to prove the smoothed sum
+result.
+This is a rare case of proving exactly what I had set out to prove, and then a little
+bit more.\footnote{As opposed to the normal pattern of failing in the original goal, and
+  then proving something else entirely.
+  As Jeff likes to say, it is important to be able to love the theorem that you can prove,
+as rarely can we prove the theorems that we love.}
+
+
+
+
+
+% vim: tw=90

@@ -1,0 +1,159 @@
+
+
+
+In this Chapter, we highlight one particular application of counting lattice points on
+one-sheeted hyperboloids.
+In particular, we describe how to understand sums of the form
+\begin{equation}
+  \sum_{n \leq X} d (n^2 + 1),
+\end{equation}
+where $d(n)$ denotes the number of divisors of $n$.
+These are classically interesting sums.
+
+
+
+\section*{Connection to the Divisor Sum $\sum d(n^2 + 1)$}
+
+
+The special three dimensional hyperboloid
+\begin{equation}
+  X^2 + Y^2 = Z^2 + 1
+\end{equation}
+is closely related to the divisor sum
+\begin{equation}
+  \sum_{n \leq R} d(n^2 + 1),
+\end{equation}
+which has been heavily studied by Hooley~\cite{Hooley63}.
+This relationship is visible through the following theorem.
+
+
+\begin{theorem}
+  Let $d_o(n)$ denote the number of positive odd divisors of $n$.
+  Then
+  \begin{equation}
+    \#\{\text{Integer points on } X^2 + Y^2 = Z^2 + 1 \; \text{with } \lvert Z \rvert \leq
+    R \} = \sum_{n \leq R} 4 d_o(n^2 + 1).
+  \end{equation}
+\end{theorem}
+
+
+
+To prove this theorem, we first prove this (classical) lemma.
+
+
+
+\begin{lemma}
+  Given an integer $Z$, we first show that $Z^2 + 1$ is not divisible by any prime
+  congruent to $3 \bmod 4$.
+\end{lemma}
+
+
+\begin{proof}
+  Indeed, factorize $Z + i$ as a product of Gaussian primes
+  \begin{equation}
+    Z + i = \pi_1^{k_1} \cdots \pi_r^{k_r}.
+  \end{equation}
+  Taking norms and letting $N(\pi_i) = p_i$, we have
+  \begin{equation}
+    Z^2 + 1 = p_1^{k_1} \cdots p_r^{k_r}.
+  \end{equation}
+  A Gaussian prime $\pi_j$ satisfies exactly one of the following:
+  \begin{enumerate}
+    \item $\pi_j = 1 + i$ or $\pi_j = 1 - i$ (in which case $\pi_j \mid 2$),
+    \item $N(\pi_j) \equiv 1 \bmod 4$, or
+    \item $\pi_j$ is inert, and is a prime congruent to $3 \bmod 4$ in $\mathbb{Z}$.
+  \end{enumerate}
+  Therefore if $Z^2+1$ is divisible by a prime congruent to $3 \bmod 4$, then there is an
+  inert prime $\pi_j$ dividing $Z+i$ and (by conjugation) also $Z-i$.
+  But then $\pi_j$ divides $Z+i - (Z-i) = 2i$, which is impossible as $\pi_j$ is inert and
+  thus doesn't divide $2$.
+  Therefore $Z^2+1$ is not divisible by a prime congruent to $3 \bmod 4$, and this
+  concludes the proof of the sublemma.
+\end{proof}
+
+
+
+Returning to the proof of the theorem, it is a classical result that the number of ways of
+writing a non-square $n$ as a sum of two squares is given by
+$\frac{1}{2}(e_1+1)(e_2+1)\cdots(e_r+1)$, where $e_j$ is the multiplicity of the prime
+$p_j$ congruent to $3 \bmod 4$ dividing $n$.
+(This is under the assumption that $n$ can be written as the sum of two squares, which is
+the case we are interested in).
+In this formulation, note that we consider $X^2 + Y^2$ and $(-X)^2 + Y^2$ to be the same
+representation.
+Therefore the number of ways of writing $Z^2 + 1$ is $\frac{1}{2}(k_1+1)(k_2+1) \cdots
+(k_r+1)$, excluding $2$ and its exponent from the list.
+This is exactly half the number of odd divisors of $Z^2 + 1$, which we denote as
+$\frac{1}{2}d_o(Z^2 + 1)$.
+
+
+
+As each individual representation $X^2 + Y^2 = Z^2 + 1$ comes with the eight lattice
+points $(\pm X, \pm Y, \pm Z)$, we see that the number of lattice point solutions to $X^2
++ Y^2 = Z^2 + 1$ with $\lvert Z \rvert \leq R$ is given by
+\begin{equation}
+  8 \sum_{Z \leq R}\tfrac{1}{2}d_o(Z^2+1).
+\end{equation}
+This completes the proof of the theorem. \qed{}
+
+
+
+
+Note that when $n$ is even, all the divisors of $n^2 + 1$ are odd and $d(n^2 + 1) =
+d_o(n^2 + 1)$.
+On the other hand, when $n$ is odd, then $n^2 + 1$ is divisible by $2$ exactly once, and
+$d(n^2 + 1)=2d_o(n^2 + 1)$.
+Therefore it is possible to convert the summation to $\sum d(n^2 + 1)$.
+
+
+
+As a corollary to the proof of the above theorem, one can prove the following.
+\begin{corollary}
+  \begin{align}
+    \#\{\text{Integer points on } X^2 + Y^2 = (2Z)^2 + 1 \; \text{with } \lvert Z \rvert
+    \leq R \} &= \sum_{n \leq R} 4 d_o(4n^2 + 1) \\
+    &= \sum_{n \leq R} 4 d(4n^2 + 1).
+  \end{align}
+\end{corollary}
+While this hyperboloid is not studied in this thesis, the methodology still applies and
+it is possible to obtain asymptotics with error term for this lattice counting problem as
+well.
+
+
+Further, if we denote
+\begin{align}
+  N_1(R) &:= \#\{\text{Integer points on } X^2 + Y^2 = Z^2 + 1 \; \text{with } \lvert Z
+  \rvert \leq R \}
+  \\
+  N_2(R) &:= \#\{\text{Integer points on } X^2 + Y^2 = (2Z)^2 + 1 \; \text{with } \lvert Z
+  \rvert \leq R \},
+\end{align}
+then one can now easily compute that
+\begin{equation}
+  \sum_{n \leq R} d(n^2 + 1) = \frac{A(R)}{2} - \frac{B(R/2)}{4}.
+\end{equation}
+In this way, we convert a classical, and still somewhat mysterious, divisor sum into two
+lattice counting problems.
+
+
+In the future, it would be a good idea to optimize the arguments in
+Chapter~\ref{c:hyperboloid} in order to try to improve estimates for divisor sums.
+In particular, in the integral analysis for proving the main theorems, it is possible to
+further shift lines of integration and handle resulting residue terms (although one would
+also need to get a deeper understanding of the underlying analytic behavior).
+
+
+
+\begin{remark}
+  Similar techniques may be applied to study
+  \begin{equation}
+    \sum_{n \leq R} d(n^2 + h)
+  \end{equation}
+  for any positive $h$, although the computations look progressively messier.
+\end{remark}
+
+
+
+
+
+% vim: tw=90 cc=90

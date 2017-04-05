@@ -1,0 +1,1844 @@
+
+
+\section{Introduction}
+
+
+Continuing with the notation as before, let $f$ be a holomorphic cusp form of positive
+weight $k$ on a congruence subgroup $\Gamma \subseteq \SL(2, \mathbb{Z})$, where $k \in
+\mathbb{Z} \cup ( \mathbb{Z} + \tfrac{1}{2})$.
+Denote the Fourier expansion of $f$ at $\infty$ by
+\begin{equation}
+  f(z) = \sum_{n \geq 1} a(n) e(nz).
+\end{equation}
+The individual coefficients $a(n)$ have long been of interest since the coefficients
+contain interesting arithmetic data.
+For example, the major insight leading to the resolution of Fermat's Last Theorem involved
+showing that for an elliptic curve $E$ there exists a corresponding modular form $f_E$
+whose coefficients (at prime indices) satisfy
+\begin{equation}
+  a(p) = p + 1 - \# E(\mathbb{F}_p),
+\end{equation}
+or rather that the $a(p)$ counted the number of points on the elliptic curve over finite
+fields.
+
+
+The first cusp form to be studied in depth was the Delta Function (as described in
+Chapter~\ref{c:introduction}), whose coefficients are the Ramanujan $\tau$ function,
+\index{Ramanujan tau}
+\begin{equation}
+  \Delta(z) = \sum_{n \geq 1} \tau(n) e(nz).
+\end{equation}
+Ramanujan conjectured that the coefficients of $\Delta$ should satisfy the bound
+\begin{equation}
+  \lvert \tau(n) \rvert \ll d(n) n^{\frac{11}{2}},
+\end{equation}
+where $d(n)$ is the number of positive divisors of $n$.
+This conjecture initiated an exploration that included a much wider set of objects than
+Ramanujan could have dreamt of.
+
+
+
+Ramanujan's Conjecture has been extended to include all modular and automorphic forms.
+For a cusp form $f$ of weight $k$ in $\GL(2)$, the conjecture states that
+\begin{equation}\label{eq:ramanujan_conjecture_an}
+  a(n) \ll n^{\frac{k-1}{2} + \epsilon}.
+\end{equation}
+This is now known as the Ramanujan-Petersson conjecture, and it is now known to be true
+for full integral weight $k$ holomorphic cusp forms on $\GL(2)$ as a consequence of
+Deligne's proof of the Weil Conjecture~\cite{Deligne}.
+
+
+It is an interesting coincidence that Hardy and Littlewood were investigating averaged
+estimates for the Gauss Circle and Dirichlet Divisor problems when Ramanujan was arriving
+in England, thinking about the Delta function.
+It is easy to look at the first several $\tau$ coefficients and believe that the sign of
+$\tau(n)$ changes approximately uniformly random in $n$.
+Under this assumption, and assuming Ramanujan's Conjecture that $\tau(n) \ll
+n^{\frac{11}{2} + \epsilon}$, it is very natural to conjecture that the summatory function
+of $\tau(n)$ satisfies the square-root cancellation phenomenon,
+\begin{equation}
+  \sum_{n \leq X} \tau(n) \ll X^{\frac{11}{2} + \frac{1}{2} + \epsilon}.
+\end{equation}
+As described in Chapter~\ref{c:introduction}, this is analogous to the error terms $E(R)$
+in the Gauss Circle or Dirichlet Divisor Problems.
+We similarly expect the even better bound,
+\begin{equation}
+  \sum_{n \leq X} \tau(n) \ll X^{\frac{11}{2} + \frac{1}{4} + \epsilon}.
+\end{equation}
+Although there is a clear qualitative connection with the Circle and Divisor problems, it
+seems unlikely that this common thread was recognized by Hardy, Littlewood, or Ramanujan.
+
+
+For our general cusp form $f$ of weight $k$ in $\GL(2)$, we expect an analogous conjecture
+to hold, which we refer to as the ``Classical Conjecture.''
+\index{Classical Conjecture}
+
+
+\begin{conjecture}[Classical Conjecture]
+  Let $f(z) = \sum_{n \geq 1} a(n) e(nz)$ be a holomorphic cusp form of weight $k$ on
+  $\GL(2)$, where $k \in \mathbb{Z}\cup(\mathbb{Z}+\frac{1}{2})$ and $k > 1$.
+  Then
+  \begin{equation}
+    S_f(n) := \sum_{n \leq X} a(n) \ll X^{\frac{k-1}{2} + \frac{1}{4} + \epsilon}.
+  \end{equation}
+\end{conjecture}
+
+
+In a seminal pair of works, Chandrasekharan and
+Narasimhan~\cite{chandrasekharan1962functional, chandrasekharan1964mean} showed that the
+Classical Conjecture is true \emph{on average} by showing that
+\begin{equation*}
+  \sum_{n \leq X} \lvert S_f(n) \rvert^2 = C X^{k-1 + \frac{3}{2}} + B(X)
+\end{equation*}
+where $B(X)$ is an error term satisfying
+\begin{equation}
+  B(X) = \begin{cases}
+    O(X^k \log^2 X) \\
+    \Omega(X^{k - \frac{1}{4}} \frac{(\log \log \log X)^2}{\log X}),
+  \end{cases}
+\end{equation}
+and where $C$ is an explicitly known constant.
+
+
+This should be thought of as a Classical Conjecture \emph{on average} due to the following
+classical argument:
+\begin{align}
+  \left( \sum_{n \leq X} \lvert S_f(n) \rvert \right)^2 &= \left( \sum_{n \leq X} \lvert
+  S_f(n) \rvert \cdot 1 \right)^2
+  \\
+  &\leq \sum_{n \leq X} \lvert S_f(n) \rvert^2 \sum_{m \leq X} 1 = X \sum_{n \leq X}
+  \lvert S_f(n) \rvert^2
+  \\
+  &\ll X^{k-1 + \frac{5}{2}}.
+\end{align}
+The Cauchy-Schwarz-Bunyakovsky inequality is used to pass from the first line to the
+second, and bound of Chandrasekharan and Narasimhan is used to pass from the second to the
+third.
+Taking the square root of each side and dividing by $X$ gives
+\begin{equation}
+  \frac{1}{X} \sum_{n \leq X} \lvert S_f(n) \rvert \ll X^{\frac{k-1}{2} + \frac{1}{4}},
+\end{equation}
+which is precisely the statement that the Classical Conjecture holds \emph{on average}.
+
+
+
+Building on this result, Hafner and Ivi\'c were able to show that for holomorphic cusp
+forms of full integral weight on $\SL(2, \mathbb{Z})$,
+\begin{equation}
+  S_f(n) \ll X^{\frac{k-1}{2} + \frac{1}{3}}.
+\end{equation}
+The argument of Hafner and Ivi\'c only applies for holomorphic forms of full-integral
+eight and of level one, but it is possible to give some extension to their result using
+their methodology.
+
+
+In the rest of this chapter, we will examine a new method for examining the behavior of $S_f(n)$.
+We will be able to study a slightly more general object.
+Let $g = \sum_{n \geq 1} b(n) e(nz)$ be another modular form of weight $k$ and of the same
+level as $f$.
+The fundamental idea is to study the Dirichlet series
+\index{Ds@$D(s, S_f \times S_f)$}
+\begin{align}
+  D(s, S_f) &= \sum_{n \geq 1} \frac{S_f(n)}{n^{s + \frac{k-1}{2}}} \\
+  D(s, S_f \times S_g) &= \sum_{n \geq 1} \frac{S_f(n) S_g(n)}{n^{s + k-1}} \\
+  D(s, S_f \times \overline{S_g}) &= \sum_{n \geq 1}
+  \frac{S_f(n) \overline{S_g(n)}}{n^{s + k-1}}.
+\end{align}
+In the sequel, we show that these three Dirichlet series have meromorphic continuation to
+$\mathbb{C}$.
+In \S\ref{sec:secondmoment}, we show how to analyze these Dirichlet series
+to prove results concerning average sizes of the partial sums $S_f(n)$.
+
+
+\begin{remark}
+  Note that the notation used in this thesis is different than the notation used in the
+  series of papers~\cite{hkldw, hkldwShort, hkldwSigns}.
+  In this thesis, we adopt the convention that has risen amidst the representation
+  theoretic point of view on automorphic forms.
+  Therefore $L(s, f \times f)$ in this thesis is the same as $L(s, f\times \overline{f})$
+  in the papers.
+  This difference is ultimately very minor, and does not change any aspect of the
+  analysis.
+\end{remark}
+
+
+
+
+\section{Useful Tools and Notation Reference}
+
+For ease of reference, we give a notational reference and a brief description of some of
+the tools necessary for the analysis.
+
+
+
+\subsection{The Rankin--Selberg $L$-function}\label{ssec:rankinselberg_lfunction}% chktex 8
+\index{Rankin--Selberg $L$-function} % chktex 8
+
+
+The Rankin--Selberg convolution $L$-function is described in detail % chktex 8
+in~\cite{Goldfeld2006automorphic, Bump98}, but we summarize its construction and
+properties.
+Note that there is a choice of convention concerning notation for conjugation.
+The more common convention is changing due to influence from more general lines of
+inquiry.
+
+
+Let $f(z) = \sum a(n) e(nz)$ and $g(z) = \sum b(n) e(nz)$ be modular forms of weight $k$
+on a congruence subgroup $\Gamma \subseteq \SL(2, \mathbb{Z})$, where at least one is
+cuspidal.
+Let $\Gamma \backslash \mathcal{H}$ denote the upper half plane modulo the group action
+due to $\Gamma$, and let $\langle f, g \rangle$ denote the Petersson inner product
+\index{Petersson inner product}
+\begin{equation}
+  \langle f, g \rangle = \iint_{\Gamma \backslash \mathcal{H}} f(z) \overline{g(z)}
+  \frac{dx dy}{y^2}.
+\end{equation}
+The Rankin--Selberg $L$-function is given by the Dirichlet series % chktex 8
+\begin{equation}
+  L(s, f\times \overline{g}) := \zeta(2s) \sum_{n \geq 1} \frac{a(n) \overline{b(n)}}{n^{s
+  + k - 1}},
+\end{equation}
+which is absolutely convergent for $\Re s > 1$.
+This $L$-function has a meromorphic continuation to all $s \in \mathbb{C}$ via the
+identity
+\begin{equation}\label{eq:Lsfgbar_equals_eisenstein}
+  L(s, f\times \overline{g}) := \frac{(4\pi)^{s + k - 1} \zeta(2s)}{\Gamma(s + k - 1)}
+  \langle \Im(\cdot)^k f \overline{g}, E(\cdot, \overline{s})\rangle,
+\end{equation}
+where $E(z,s)$ is the real-analytic Eisenstein series
+\begin{equation}\label{eq:eisenstein_def}
+  E(z,s) = \sum_{\gamma \in \Gamma_\infty \backslash \Gamma} \Im(\gamma z)^s.
+\end{equation}
+
+
+
+If, in~\eqref{eq:Lsfgbar_equals_eisenstein}, we replace $f \overline{g}$ with $f T_{-1}g$,
+where $T_{-1}$ is the Hecke operator giving the action
+\begin{equation}
+  T_{-1} F(x + iy) = F(-x + iy),
+\end{equation}
+then one gets a meromorphic continuation of
+\begin{equation}
+  L(s, f\times g) = \zeta(2s) \sum_{n \geq 1} \frac{a(n) b(n)}{n^{s + k - 1}}.
+\end{equation}
+More details on the $T_{-1}$ Hecke operator can be found in the discussion leading up to
+Theorem~3.12.6 of~\cite{Goldfeld2006automorphic}.
+As the meromorphic properties of both are determined by the zeta function, Gamma function,
+and Eisenstein series, we see that complex analytic arguments are very similar on either
+$L(s, f\times \overline{g})$ or $L(s, f\times g)$.
+We will only carry out the argument for $L(s, f\times \overline{g})$, and
+describe any changes necessary to perform the argument on the other.
+
+
+These Rankin--Selberg $L$-functions are holomorphic except for, % chktex 8
+at most, a simple pole at $s = 1$ with residue proportional to $\langle f, g \rangle$.
+When $\Gamma = \SL(2, \mathbb{Z})$, there is the functional equation
+\begin{equation}
+  (2\pi)^{-2s} \Gamma(s) \Gamma(s + k - 1) L(s, f\times \overline g) =: \Lambda(s, f\times
+  \overline{g}) = \Lambda(1 - s, f\times \overline{g}),
+\end{equation}
+coming from the functional equation of the completed Eisenstein series
+\begin{equation}
+  \pi^{-s} \Gamma(s) \zeta(2s) E(z,s) =: E^*(z,s) = E^*(z, 1-s).
+\end{equation}
+There are analogous transformations for higher levels, but their formulation is a bit more
+complicated due to the existence of other cusps.
+
+
+
+\subsection{Selberg spectral expansion}\label{ssec:selberg-spectral}
+\index{spectral expansion}
+\index{Maass forms}
+\index{mu@$\mu_j$ | see {Maass forms} }
+
+
+Let $L^2(\Gamma \backslash \mathcal{H})$ denote the space of square integrable functions
+on $\Gamma \backslash \mathcal{H}$ with respect to the Petersson norm.
+There is a complete orthonormal system for the residual and cuspidal spaces of $\Gamma
+\backslash \mathcal{H}$, which we denote by $\{\mu_j(z): j \geq 0\}$, consisting of the
+constant function $\mu_0(z)$ and infinitely many Maass cusp forms $\mu_j(z)$ for $j \geq
+1$ with associated eigenvalues $\tfrac{1}{4} + t_j^2$ with respect to the hyperbolic
+Laplacian.
+Without loss of generality, we assume that the $\mu_j$ are also simultaneous
+eigenfunctions of the standard Hecke operators, as well as the $T_{-1}$ operator.
+Then for any $f \in L^2(\Gamma \backslash \mathcal{H})$, we have the \emph{spectral
+decomposition} of $f$ given by
+\begin{equation}
+  f(z) = \sum_j \langle f, \mu_j \rangle \mu_j(z) + \sum_{\mathfrak{a}} \frac{1}{4\pi}
+  \int_\mathbb{R} \langle f, E_\mathfrak{a}(\cdot, \tfrac{1}{2} + it)\rangle
+  E_\mathfrak{a}(a, \tfrac{1}{2} + it) \; dt,
+\end{equation}
+where $\mathfrak{a}$ ranges of the cusps of $\Gamma \backslash \mathcal{H}$.  Throughout
+this thesis, we will refer to the first sum as the \emph{discrete spectrum} and the sums
+of integrals as the \emph{continuous spectrum}.
+\index{discrete spectrum}
+\index{continuous spectrum}
+The spectral decomposition as presented here is a consequence of Selberg's Spectral
+Theorem, as presented in Theorem~15.5 of~\cite{IwaniecKowalski04}.
+
+
+To each Maass form $\mu_j$ is associated a type $\tfrac{1}{2} + it_j$, and these $it_j$
+are expected to satisfy Selberg's Eigenvalue Conjecture, which says that all $t_j$ are
+real.
+In complete generality, it is known that $t_j$ is either purely real or purely imaginary.
+Selberg's Eigenvalue Conjecture has been proved for many congruence subgroups, including
+$\SL(2, \mathbb{Z})$, but it is not known in general.
+\index{Selberg's Eigenvalue Conjecture}
+We let $\theta = \sup_j \{ \lvert \Im(t_j) \rvert \}$ denote the best known progress
+towards Selberg's Eigenvalue Conjecture for $\Gamma$.
+\index{theta@$\theta$ in Selberg's Eigenvalue Conjecture}
+The current best result for $\theta$ in all congruence subgroups that $\theta \leq
+\tfrac{7}{64}$, due to Kim and Sarnak~\cite{KimSarnak03}.
+
+
+
+\subsection{Decoupling integral transform}\label{ssec:mellinbarnes_decouple}
+\index{Mellin Barnes transform}
+
+
+We will use an integral analogue of the binomial theorem, originally considered by
+Barnes~\cite{Barnes}, also presented in 6.422(3) of~\cite{GradshteynRyzhik07}.
+\begin{lemma}[Barnes, 1908]
+  If $0 > \gamma > - \Re s$ and $\lvert \arg t \rvert < \pi$, then
+  \begin{equation}\label{eq:mellinbarnes_base}
+    \frac{1}{2\pi i} \int_{(\gamma)} \Gamma(-z) \Gamma(s + z) t^z \; dz = \Gamma(s) (1 +
+    t)^{-s}.
+  \end{equation}
+\end{lemma}
+This is a corollary to an integral representation of the beta function,
+\begin{equation}
+  B(z, s) = \int_0^\infty \frac{x^z}{(1 + x)^{z + s}} \; \frac{dx}{x},
+\end{equation}
+which implies that
+\begin{equation}\label{eq:mellinbarnes_beta_is_mellin_transform}
+  B(z, s-z) = \int_0^\infty \frac{x^z}{(1+x)^{s}} \; \frac{dx}{x}.
+\end{equation}
+The right hand side is a Mellin transform,
+so~\eqref{eq:mellinbarnes_beta_is_mellin_transform} indicates that $B(z, s-z)$ is the
+Mellin transform of $(1+x)^{-s}$ (with auxiliary variable $z$).
+Applying the Mellin Inversion Theorem (as shown in~\cite{titchmarshfourier}) and the
+representation of the Beta function in terms of Gamma functions, $B(s,t) =
+\Gamma(s)\Gamma(t) / \Gamma(s+t)$, we recover a proof of the Lemma.
+
+
+We will apply this integral transform to decouple $m,n$ in $(m+n)^{-s} = m^{-s} (1 +
+\tfrac{n}{m})^{-s}$.
+It is easy to check that an application of the lemma (followed by a change of variables $z
+\mapsto -z$) gives
+\begin{equation}
+  \frac{1}{(n+m)^s} = \frac{1}{2\pi i} \int_{(\gamma)}
+  \frac{\Gamma(z)\Gamma(s-z)}{\Gamma(s)} \frac{1}{n^{s-z} m^z} \; dz.
+\end{equation}
+
+
+
+\subsection{Chandrasekharan and Narasimhan}
+\index{Chandrasekharan and Narasimhan}
+
+
+We will refer to a result of Chandrasekharan and Narasimhan through this thesis.
+We combine~\cite[Theorem~4.1]{CN1} and~\cite[Theorem~1]{CN2} to state the following
+theorem of theirs.
+
+
+\begin{theorem}[Chandrasekharan and Narasimhan, 1962 and 1964]
+  Let $f$ and $g$ be objects with meromorphic Dirichlet series
+  \begin{equation*}
+    L(s,f) = \sum_{n \geq 1} \frac{a(n)}{n^s}, \qquad L(s,g)=\sum_{n\geq 1}
+    \frac{b(n)}{n^s}.
+  \end{equation*}
+  Suppose $G(s) = Q^s\prod_{i=1}^\ell \Gamma(\alpha_i s + \beta_i)$ is a product of Gamma
+  factors with $Q>0$ and $\alpha_i > 0$.
+  Define $A = \sum_{i=1}^\ell \alpha_i$.
+  Let $w$ and $w'$ be numbers such that $\sum_{n \leq X} \lvert b(n) \rvert^2 \ll X^{2w -
+  1} \log^{w'} X$.
+  Let
+  \begin{equation*}
+    Q(X) = \frac{1}{2\pi i} \int_{\mathcal{C}} \frac{L(s,f)}{s} X^s \ ds,
+  \end{equation*}
+  where $\mathcal{C}$ is a smooth closed contour enclosing all the singularities of the
+  integrand.
+  Let $q$ be the maximum of the real parts of the singularities of $L(s,f)$ and let $r$ be
+  the maximum order of a pole of $L(s,f)$ with real part $q$.
+  Suppose the functional equation
+  \begin{equation}\label{eq:basic_feq}
+    G(s)L(s,f) = \epsilon(f) G(\delta-s)L(\delta-s,g)
+  \end{equation}
+  is satisfied for some $\lvert \epsilon(f) \rvert = 1$ and $\delta >0$.
+  Then we have that
+  \begin{equation}
+    \begin{split}\label{eq:CN_L1}
+      S_f(X) =& \sum_{n\leq X} a(n) =
+      Q(X) + O(X^{\frac{\delta}{2}-\frac{1}{4A}+2A(w-\frac{\delta}{2}-\frac{1}{4A})\eta +
+      \epsilon}) \\
+      & \quad + O(X^{q-\frac{1}{2A}-\eta}\log(X)^{r-1})+O\bigg( \sum_{X \leq n \leq X'}
+    |a(n)| \bigg)
+    \end{split}
+  \end{equation}
+  for any $\eta \geq 0$, and where $X' =X+O(X^{1-\frac{1}{2A}-\eta})$.
+  If all $a(n) \geq 0$, the final $O$-error term above does not contribute.
+
+  Suppose further that $A \geq 1$ and that $2w - \delta - \frac{1}{A} \leq 0$.
+  Then
+  \begin{equation*}
+    \sum_{n \leq X} \lvert S_f(n) - Q(n) \rvert^2 = cX^{\delta - \frac{1}{2A} + 1} +
+    O(X^{\delta} \log^{w' + 2} X)
+  \end{equation*}
+  for a constant $c$ that can be made explicit.
+\end{theorem}
+
+Thus from little more than a functional equation with understood Gamma factors, one can
+produce nontrivial bounds on first and second moments.
+
+
+
+\section{Meromorphic Continuation}
+
+
+We will now produce the meromorphic continuations of $D(s, S_f)$ and $D(s, S_f \times
+\overline{S_g})$.
+The meromorphic continuation of $D(s, S_f \times S_g)$ follows from applying the exact
+same methodology to $T_{-1} g$ in place of $g$, so we only write down the corresponding
+results.
+In this section, we explicitly show the results in the case when $\Gamma = \SL(2,
+\mathbb{Z})$.
+For higher level congruence subgroups, the same methodology will work.
+We remark on this in \S\ref{sec:higherlevel}.
+
+
+Throughout this section, let $f(z) = \sum a(n) e(nz)$ and $g(z) = \sum b(n) e(nz)$ be
+weight $k$ cusp forms on $\SL(2, \mathbb{Z})$.
+Define $S_f(n) := \sum_{m \leq n} a(m)$ to be the partial sum of the first $n$ Fourier
+coefficients of $f$.
+Define $S_g(n)$ similarly.
+
+
+We first describe the meromorphic continuation of $D(s, S_f)$.
+The main ideas of this continuation are very similar to those in the continuation of $D(s,
+S_f \times \overline{S_g})$, but the details are much simpler.
+We then produce the meromorphic continuation of $D(s, S_f \times \overline{S_g})$ in
+\S\ref{ssec:mero_DsSfSg}.
+We shall see that the main obstacle is understanding the shifted convolution sum
+\begin{equation}
+  \sum_{n,h \geq 1} \frac{a(n)\overline{b(n-h)}}{n^{s+k-1} h^w}.
+\end{equation}
+We then use these meromorphic continuations to understand $D(s, S_f \times
+\overline{S_g})$ in the next section.
+
+
+
+\subsection{Meromorphic continuation of $D(s, S_f)$}
+\index{D@$D(s, S_f)$}
+
+
+The meromorphic continuation of $D(s, S_f)$ is very simple.
+The pattern of the proof is similar to the pattern necessary for $D(s, S_f \times
+\overline{S_g})$, so it is useful to be very clear.
+The proof proceeds in two steps:
+\begin{enumerate}
+  \item Decompose the Dirichlet series into sums of Dirichlet series that are easier to
+    understand, and
+  \item Understand the reduced Dirichlet series by relating them to $L$-functions.
+\end{enumerate}
+
+
+\begin{proposition}
+  With $f$ and $S_f(n)$ as defined above, the Dirichlet series associated to $S_f(n)$
+  decomposes into
+  \begin{equation}\label{eq:DsSf_decomposition}
+    D(s, S_f) := \sum_{n \geq 1} \frac{S_f(n)}{n^{s + \frac{k-1}{2}}} = L(s, f) +
+    \frac{1}{2\pi i} \int_{(2)} L(s-z, f) \zeta(z) \frac{\Gamma(z) \Gamma(s +
+    \frac{k-1}{2} - z)}{\Gamma(s + \frac{k-1}{2})} \; dz,
+  \end{equation}
+  valid for $\Re s > 3$.
+  Here, $L(s, f)$ denotes the standard $L$-function associated to $f$, given by
+  \begin{equation}
+    L(s, f) := \sum_{n \geq 1} \frac{a(n)}{n^{s + \frac{k-1}{2}}},
+  \end{equation}
+  normalized to have functional equation of the form $s \mapsto 1-s$.
+\end{proposition}
+
+
+\begin{proof}
+  We directly manipulate the Dirichlet series.
+  \begin{equation}
+    D(s, S_f) = \sum_{n \geq 1} \frac{S_f(n)}{n^{s + \frac{k-1}{2}}} = \sum_{\substack{n
+    \geq 1 \\ m \geq 0}} \frac{a(n-m)}{n^{s + \frac{k-1}{2}}}.
+  \end{equation}
+  In this last equality, we adopt the convention that $a(n) = 0$ for $n \leq 0$ to
+  simplify notation.
+  Separate the $m = 0$ case and reindex the remaining sum with $n \mapsto n+m$ to get
+  \begin{equation}
+    \sum_{n \geq 1} \frac{a(n)}{n^{s + \frac{k-1}{2}}} + \sum_{m,n \geq 1}
+    \frac{a(n)}{(n+m)^{s + \frac{k-1}{2}}}.
+  \end{equation}
+
+
+  The first sum is exactly $L(s, f)$.
+  In the second sum, decouple $(n+m)^{-s}$ through the use of the Mellin-Barnes transform
+  detailed in \S\ref{ssec:mellinbarnes_decouple}.
+  For $ \gamma > 1$ and $\Re s$ sufficiently large, the $m$ sum can be collected into
+  $\zeta(z)$ and the $n$ sum can be collected into $L(s + \frac{k-1}{2})$.
+  Simplification completes the proof.
+\end{proof}
+
+
+The meromorphic continuation of the $L$-function $L(s,f)$ is well-understood.
+Note that in
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(2)} L(s - z, f) \zeta(z) \frac{\Gamma(z) \Gamma(s +
+  \frac{k-1}{2} - z)}{\Gamma(s + \frac{k-1}{2})} \; dz,
+\end{equation}
+the integrand is meromorphic in both $s$ and $z$, and has exponential decay in vertical
+strips in $\Im z$ for any individual $s$.
+Therefore one can use the meromorphic continuation of $L(s,f)$ to understand that this
+integral is meromorphic for all $s \in \mathbb{C}$.
+
+
+Note that it is also possible to shift the line of $z$ integration arbitrarily far in the
+negative direction, passing poles at $z = 1, 0, -1, \ldots$ and picking up their residues.
+Shifting the line of $z$ integration to $\epsilon$ for a small $\epsilon > 0$ passes
+exactly one pole, coming from $\zeta(z)$ at $z = 1$, with residue
+\begin{equation}
+  \Res_{z = 1} = L(s - 1, f) \frac{\Gamma(s + \frac{k-1}{2} - 1)}{\Gamma(s +
+  \frac{k-1}{2})} = \frac{L(s-1, f)}{s + \frac{k-1}{2} - 1}.
+\end{equation}
+Therefore, we have the equality
+\begin{equation}
+  D(s, S_f) = L(s, f) + \frac{L(s-1, f)}{s + \frac{k-1}{2} - 1} + \frac{1}{2\pi i}
+  \int_{(\epsilon)} L(s - z, f) \zeta(z) \frac{\Gamma(z)\Gamma(s + \frac{k-1}{2} -
+  z)}{\Gamma(s + \frac{k-1}{2})} \; dz.
+\end{equation}
+The first term is analytic, the third term is analytic in $s$ for $\Re s > \epsilon -
+\frac{k-1}{2}$, and the middle term appears to have a simple pole at $s = 1 -
+\frac{k-1}{2}$.
+However, the residue $L(-\tfrac{k-1}{2})$ is a trivial zero of the $L$-function, and $s =
+1 - \frac{k-1}{2}$ is not a pole after all.
+
+
+Further shifting the line of $z$ integration to $-M + \epsilon$ for small $\epsilon > 0$
+passes $(M)$ further poles, coming from $\Gamma(z)$ at $z = -j$ for $0 \leq j < M$.
+The $j$th pole, located at $z = -j, 0 \leq j < M$ has residue
+\begin{equation}
+  \Res_{z = -j} = L(s + j, f) \zeta(-j) \frac{\Gamma(s + \frac{k-1}{2} + j)}{\Gamma(s +
+  \frac{k-1}{2})} \frac{(-1)^j}{j!}.
+\end{equation}
+In each residue, the $L$-function is analytic, and all apparent poles of the Gamma
+function in the numerator are cancelled by poles of the Gamma function in the denominator.
+Therefore each residue is analytic in $s$.
+
+
+For any integer $M \geq 0$, we therefore have that
+\begin{equation}
+  D(s, S_f) = L(s, f) + \sum_{j = -1}^{M-1} \Res_j + \frac{1}{2\pi i} \int_{(-M +
+  \epsilon)} L(s - z, f)\zeta(z) \frac{\Gamma(z) \Gamma(s + \frac{k-1}{2} - z)}{\Gamma(s +
+\frac{k-1}{2})} dz.
+\end{equation}
+The $L$-function and residues are analytic in $s$.
+The integral term is analytic in $s$ for $\Re s > -\frac{k-1}{2} - M + \epsilon$.
+Since $M$ is arbitrary, we see that $D(s, S_f)$ is actually analytic for all $s \in
+\mathbb{C}$.
+We record this observation as a corollary to the decomposition of $D(s, S_f)$.
+
+
+\begin{corollary}
+  The Dirichlet series $D(s, S_f)$ has analytic continuation to the whole complex plane,
+  given by~\eqref{eq:DsSf_decomposition}.
+\end{corollary}
+
+
+\begin{remark}
+  I note that if $f$ is not cuspidal, then the decomposition and most of the analysis of
+  $D(s, S_f)$ carries over verbatim, with one key difference: the value
+  $L(-\tfrac{k-1}{2})$ is no longer a trivial zero.
+  Therefore it is possible to show in general that $D(s, S_f)$ is meromorphic in the plane
+  with at most several simple poles with residues given by special values of $L(s, f)$.
+
+  This indicates a very strong parallel between the properties of $L(s, f)$ and
+  $D(s, S_f)$.
+  But it should be noted that $D(s, S_f)$ does not have a simple functional equation or an
+  Euler product.
+\end{remark}
+
+
+
+\subsection{Meromorphic continuation of $D(s, S_f \times \overline{S_g})$}
+\label{ssec:mero_DsSfSg}
+
+
+The meromorphic continuation of $D(s, S_f \times \overline{S_g})$ is a bit involved, but
+the approach is very similar to the approach for $D(s, S_f)$.
+We proceed in three steps:
+\begin{enumerate}
+  \item Decompose $D(s, S_f \times \overline{S_g})$ into sums of Dirichlet series that are
+    easier to understand,
+  \item Related the reduced Dirichlet series to $L$-functions and convolution sums, and
+  \item Combine the analytic properties of the $L$-functions and convolution sums.
+\end{enumerate}
+The first two steps are fundamentally the same as in$D(s, S_f)$, except that convolution
+sums are necessary in the analysis.
+As the meromorphic properties of convolution sums are significantly more delicate,
+ascertaining the final analytic properties will take much more work.
+The final step is deferred to \S\ref{sec:analyticbehavior}.
+
+
+\index{Ds@$D(s, S_f \times S_f)$}
+\index{Ws@$W(s; f, f)$}
+\begin{proposition}\label{prop:SfSg_decomposition}
+  With $f, g, S_f(n)$, and $S_g(n)$ as defined above, the Dirichlet series associated to
+  $S_f(n)\overline{S_g(n)}$ decomposes into
+  \begin{equation}
+    \begin{split}
+      D(s, &S_f \times \overline{S_g}) := \sum_{n \geq 1} \frac{S_f(n)
+      \overline{S_g(n)}}{n^{s + k - 1}} \\
+      &= W(s; f,\overline{g}) + \frac{1}{2\pi i} \int_{(\gamma)} W(s - z; f,\overline{g})
+      \zeta(z) \frac{\Gamma(z) \Gamma(s - z + k - 1)}{\Gamma(s + k - 1)} \; dz,
+    \end{split}
+  \end{equation}
+  for $1 < \gamma < \Re(s-1)$.
+  Here, $W(s; f, \overline{g})$ denotes
+  \begin{equation}
+    W(s; f,\overline{g}) := \frac{L(s, f\times \overline{g})}{\zeta(2s)} + Z(s, 0, f\times
+    \overline{g}),
+  \end{equation}
+  $L(s, f\times \overline{g})$ denotes the Rankin--Selberg $L$-function % chktex 8
+  as in~\ref{ssec:rankinselberg_lfunction},
+  and $Z(s, w, f\times \overline{g})$ denotes the symmetrized
+  shifted convolution sum\index{Zs@$Z(s, w, f\times f)$}
+  \begin{equation}
+    Z(s,w,f\times \overline{g}) := \sum_{n,h \geq 1} \frac{a(n)\overline{b(n-h)} +
+    a(n-h)\overline{b(n)}}{n^{s + k - 1} h^w}.
+  \end{equation}
+\end{proposition}
+
+
+\begin{proof}
+  Expand and recollect the partial sums $S_f$ and $S_g$.
+  \begin{equation}
+    D(s, S_f \times \overline{S_g}) = \sum_{n \geq 1} \frac{S_f(n) \overline{S_g(n)}}{n^{s
+    + k - 1}} = \sum_{n \geq 1} \frac{1}{n^{s + k - 1}} \sum_{m = 1}^n a(m) \sum_{h = 1}^n
+    \overline{b(h)}.
+  \end{equation}
+  Separate the sums over $m$ and $h$ into the cases where $m=h, m>h$, and $m<h$.
+  We again adopt the convention that $a(n) = 0$ for $n \leq 0$ to simplify notation.
+  Reorder the sums, summing down from $n$ instead of up to $n$, giving
+  \begin{equation}
+    \sum_{n \geq 1} \frac{1}{n^{s + k - 1}} \Bigg( \sum_{h = m > 0} + \sum_{h > m \geq 0}
+    + \sum_{m > h \geq 0}\Bigg) a(n-m) \overline{b(n-h)}.
+  \end{equation}
+  In the first sum, take $h = m$.
+  In the second sum, when $h > m$, we let $h = m + \ell$ and then sum over $m$ and $\ell$.
+  Similarly in the third sum, when $m > h$, we let $m = h + \ell$.
+  Together, this yields
+  \begin{equation}
+    \begin{split}
+      \sum_{n \geq 1} &\frac{1}{n^{s + k - 1}} \bigg( \sum_{m \geq 0} a(n-m)
+      \overline{b(n-m)} \\
+      &+ \sum_{\substack{\ell \geq 1 \\ m \geq 0}} a(n-m) \overline{b(n-m-\ell)} +
+    \sum_{\substack{\ell \geq 1 \\ m \geq 0}} a(n-m-\ell)\overline{b(n-m)}\bigg).
+    \end{split}
+  \end{equation}
+
+
+  In each sum, the cases when $m = 0$ are distinguished.
+  Altogether, these contribute
+  \begin{equation}
+    W(s; f,\overline{g}) = \frac{L(s, f\times \overline{g})}{\zeta(2s)} + Z(s, 0, f\times
+    \overline{g}).
+  \end{equation}
+  Within $W(s; f, \overline{g})$, one should think of $L(s, f\times
+  \overline{g})\zeta(2s)^{-1}$ as the diagonal part of the double summation, while
+  $Z(s, 0, f\times \overline{g})$ contains the off-diagonal, written as the sum of the
+  above-diagonal and below-diagonal parts of the double summation.
+
+
+  Reindexing by changing $n \mapsto n + m$, the remaining sums with $m \geq 1$ can be rewritten as
+  \begin{equation}
+    \sum_{m,n \geq 1} \frac{1}{(n+m)^{s + k - 1}}\bigg( a(n) \overline{b(n)} + \sum_{\ell
+    \geq 1} a(n) \overline{b(n - \ell)} + \sum_{\ell \geq 1} a(n - \ell)
+  \overline{b(n)}\bigg).
+  \end{equation}
+  Decouple $(n+m)^{-(s + k - 1)}$ through the use of the Mellin-Barnes transform detailed
+  in~\S\ref{ssec:mellinbarnes_decouple}.
+  Restricting to $\gamma > 1$ and $\Re s$ sufficiently large, we can collect the $m$ sum
+  into $\zeta(z)$ and the $n$ sum can be colleced into $W(s; f,g)$.
+  Simplification completes the proof.
+\end{proof}
+
+
+As in the case of $D(s, S_f)$, the individual pieces $L(s, f\times \overline{g})
+\zeta(2s)^{-1}$ and $Z(s, w, f\times \overline{g})$ are known to have meromorphic
+continuation to the complex plane.
+The Rankin--Selberg $L$-function is classical, % chktex 8
+and its meromorphic continuation is explained in~\S\ref{ssec:rankinselberg_lfunction}.
+The meromorphic properties of $Z(s,w, f\times \overline{g})$ are extensively studied
+in~\cite{HoffsteinHulse13}.
+One should expect to be able to perform an analysis similar to the analysis for $D(s,
+S_f)$ to study $D(s, S_f \times \overline{S_g})$, perhaps by shifting the line of $z$
+integration and analyzing residue terms.
+
+
+However, the shifted sums $Z(s, 0, f\times \overline{g})$ show miraculous cancellation
+with the diagonal $L(s, f\times\overline{g}) \zeta(2s)^{-1}$ that does not occur in $Z(s,
+w, f\times \overline{g})$ for general $w$.
+We group $W(s; f,\overline{g})$ into a single object and study its analytic properties
+in the next section.
+
+
+
+
+\section{Analytic Behavior of $D(s, S_f \times \overline{S_g})$}\label{sec:analyticbehavior}
+\index{Zs@$Z(s, w, f\times f)$}
+
+
+In this section, we will understand the meromorphic continuation of $D(s, S_f \times
+\overline{S_g})$ by studying the analytic properties of $W(s; f, \overline{g})$.
+Although we work in level $1$, the methodology in this section generalizes to arbitrary
+level and half-integral weight forms.
+Therefore, we will use $\theta = \sup_j \{ \lvert \Im(t_j) \rvert \}$ to denote progress
+towards Selberg's Eigenvalue Conjecture (as described in~\S\ref{ssec:selberg-spectral})
+even though it is known that $\theta = 0$ in the level $1$ case.
+
+
+We first produce a spectral expansion for the off-diagonal component, the symmetrized
+shifted double Dirichlet series
+\begin{equation}
+  Z(s,w, f\times \overline{g}) := \sum_{m \geq 1} \sum_{\ell \geq 1} \frac{a(m)
+  \overline{b(m - \ell)} + a(m - \ell)\overline{b(m)}}{m^{s + k - 1} \ell^w}.
+\end{equation}
+We then use this to understand the analytic behavior of $W(s; f, \overline{g})$ and, from
+this, the analytic behavior of $D(s, S_f \times \overline{S_g})$.
+
+
+
+\subsubsection{Spectral expansion}
+
+
+For each integer $h \geq 1$, define the weight zero Poincar\'{e} series on $\Gamma$,
+\index{Poincar\'{e} series}
+\begin{equation}
+  P_h(z,s):=\sum_{\gamma \in\Gamma_\infty \backslash \Gamma} \Im(\gamma z)^s e\left(h
+  \gamma z\right),
+\end{equation}
+defined initially for $\Re(s)$ sufficiently large, but with meromorphic continuation to
+all $s\in\mathbb{C}$.
+
+
+Recall $T_{-1}$ from~\S\ref{ssec:rankinselberg_lfunction}.
+Let $\mathcal{V}_{f,\overline{g}}(z) :=y^k (f \overline{g}+T_{-1}(f\overline{g}))$.
+Note that $\mathcal{V}_{f, \overline{g}}(z) \in L^2(\Gamma \backslash \mathcal{H})$, so
+the Petersson inner product $\langle \mathcal{V}_{f, \overline{g}}, P_h(\cdot,
+\overline{s}) \rangle$ converges.
+By expanding this inner product, we get
+\begin{equation}
+  \langle \mathcal{V}_{f,\overline{g}} ,P_h(\cdot, \overline{s}) \rangle
+  =\frac{\Gamma\left({s}+k -1\right)}{\left(4\pi \right)^{{s}+ k -1}}
+  D_{f,\overline{g}}({s};h),
+\end{equation}
+where we define $D_{f, \overline{g}}$ to have analogous notation as
+in~\cite{HoffsteinHulse13},
+\index{D@$D_{f,f}(s;h)$}
+\begin{equation}
+  D_{f,g}(s;h) := \sum_{n \geq
+  1}\frac{a(n)\overline{b(n-h)}+a(n-h)\overline{b(n)}}{n^{s+k-1}},
+\end{equation}
+which converges absolutely for $\Re s$ sufficiently positive.
+Dividing by $h^w$ and summing over $h \geq 1$ recovers $Z(s, w, f\times \overline{g} )$,
+\begin{equation}\label{eq:Zsw_poincare}
+  Z(s, w, f\times \overline{g} ) := \sum_{n, h \geq 1} \frac{D_{f, \overline{g}
+  }(s;h)}{h^w} = \frac{(4\pi)^{s+k-1}}{\Gamma(s+k-1)} \sum_{h \geq 1} \frac{\langle
+  \mathcal{V}_{f,\overline{g} }, P_h \rangle}{h^w},
+\end{equation}
+for $\Re s$ and $\Re w$ sufficiently positive.
+
+
+We will obtain a meromorphic continuation of $Z(s, w, f\times \overline{g} )$ by using the
+spectral expansion of the Poincar\'e series and substituting it
+into~\eqref{eq:Zsw_poincare}.
+Let $\{\mu_j\}$ be an orthonormal basis of Maass eigenforms with associated types
+$\frac{1}{2} + it_j$ for $L^2(\Gamma \backslash \mathcal{H})$ as in
+\S\ref{ssec:selberg-spectral}, each with Fourier expansion
+\begin{equation}
+  \mu_j(z)=\sum_{n \neq 0} \rho_j(n)y^{\frac{1}{2}}K_{it_j}(2\pi \vert n \vert y)
+  e^{2\pi i n x}.
+\end{equation}
+
+
+The spectral expansion of the Poincar\'{e} series is given by
+\begin{align}\label{eq:Pspectral}
+  \begin{split}
+    P_h(z,s)&=\sum_j \langle P_h(\cdot,s),\mu_j \rangle \mu_j(z) \\
+            &\quad + \frac{1}{4\pi}\int_{-\infty}^\infty\langle
+    P_h(\cdot,s),E(\cdot,\tfrac{1}{2}+it)\rangle E(z,\tfrac{1}{2}+it)\,dt.
+  \end{split}
+\end{align}
+We shall refer to the above sum and integral as the discrete and continuous spectrum,
+respectively, similar to the convention in~\S\ref{ssec:selberg-spectral}.
+
+
+The inner product of $\mu_j$ against the Poincar\'{e} series gives
+\begin{equation}\label{eq:mujP}
+  \langle P_h(\cdot,s),\mu_j \rangle = \frac{\overline{\rho_j(h)}\sqrt{\pi}}{(4\pi
+  h)^{s-\frac{1}{2}}}
+  \frac{\Gamma(s-\frac{1}{2}+it_j)\Gamma(s-\frac{1}{2}-it_j)}{\Gamma(s)}.
+\end{equation}
+\begin{remark}
+  In the computation of this inner product and the inner product of the Eisenstein series
+  against the Poincar\'e series, we use formula~\cite[$\S$6.621(3)]{GradshteynRyzhik07} to
+  evaluate the final integrals.
+\end{remark}
+
+%%%%%%%%%% NOTE GR 6.621(3) for reference %%%%%%%%%%
+%
+% For completeness, and since I made an error before, let me copy down $\S$6.621(3).
+% \[
+%   \int_0^\infty x^{\mu-1}e^{-\alpha x}K_{\nu}(\beta x)dx = \frac{\sqrt \pi
+%   (2\beta)^\nu}{(\alpha + \beta)^{\nu + \mu}}\frac{\Gamma(\mu + \nu)\Gamma(\mu -
+%   \nu)}{\Gamma(\mu + \tfrac{1}{2})}F\left( \mu+\nu, \nu + \tfrac{1}{2}; \mu +
+%   \tfrac{1}{2}; \frac{\alpha- \beta}{\alpha + \beta} \right),
+% \]
+% and for us, we have
+% \[
+%   \begin{cases}
+%     \mu = s - \tfrac{1}{2} \\
+%     \nu = it_j \\
+%     \alpha = 1 \\
+%     \beta = 1
+%   \end{cases}
+% \]
+% and the hypergeometric function is (very conveniently) exactly $1$ as $\alpha - \beta =
+% 0$.
+%%%%%%%%%% END NOTE GR %%%%%%%%%%
+
+
+Let $E(z,w)$ be the Eisenstein series on $\SL(2, \mathbb{Z})$, given by
+\begin{equation}
+  E(z,w) = \sum_{\gamma \in \Gamma_\infty \backslash \SL(2, \mathbb{Z})} (\Im \gamma z)^s.
+\end{equation}
+Then $E(z,w)$ has Fourier expansion (as in~\cite[Chapter 3]{Goldfeld2006automorphic})
+\begin{align}\label{eq:sums:E_Fourier}
+  E(z,w)& =y^w + \phi(w)y^{1-w}  \\
+  &\quad +  \frac{2\pi^w \sqrt{y} }{\Gamma(w)\zeta(2w)}\sum_{m \neq 0} \vert m
+  \vert^{w-\frac{1}{2}}\sigma_{1-2w}(\vert m \vert) K_{w-\frac{1}{2}}(2\pi \vert m \vert
+  y)e^{2\pi i m x}, \notag
+\end{align}
+where
+\begin{equation}
+  \phi(w) = \sqrt{\pi} \frac{\Gamma(w - \tfrac{1}{2})\zeta(2w - 1)}{\Gamma(w)\zeta(2w)}.
+\end{equation}
+The Petersson inner product of the Poincar\'{e} series ($h \geq 1$) against the Eisenstein
+series $E(z,w)$ is given by
+\begin{align}\label{eq:PhE}
+  \left\langle P_h(\cdot,s),E(\cdot,w)\right\rangle =\frac{2\pi^{\overline{w}+\frac{1}{2}}
+  h^{\overline{w}-\frac{1}{2}}\sigma_{1-2\overline{w}}(h)}{\zeta(2\overline{w})(4\pi
+  h)^{s-\frac{1}{2}}}\frac{\Gamma(s+\overline{w}-1)\Gamma(s-\overline{w})}{\Gamma(\overline{w})\Gamma(s)},
+\end{align}
+provided that $\Re s >\frac{1}{2}+\vert \Re w-\frac{1}{2}\vert$.
+For $t$ real, $w=\frac{1}{2}+it$, and $\Re s>\frac{1}{2}$, we can
+specialize~\eqref{eq:PhE} to
+\begin{equation}\label{eq:PhEspecialized}
+  \langle P_h(\cdot,s),E(\cdot,\tfrac{1}{2}+it)\rangle=\frac{2\sqrt{\pi}
+  \sigma_{2it}(h)}{\Gamma(s)(4\pi
+  h)^{s-\frac{1}{2}}}\frac{\Gamma(s-\frac{1}{2}+it)\Gamma(s-\frac{1}{2}-it)}{h^{it}\zeta^*(1-2it)},
+\end{equation}
+in which $\zeta^*(2s):=\pi^{-s}\Gamma(s)\zeta(2s)$ denotes the completed zeta function.
+
+
+Now that we have computed the inner products of the Eisenstein series and Maass forms with
+the Poincar\'e series, we are ready to analyze the spectral expansion.
+After substituting~\eqref{eq:mujP} into the discrete part of~\eqref{eq:Pspectral}, the
+discrete spectrum takes the form
+\begin{equation}
+  \frac{\sqrt{\pi}}{(4\pi h)^{s-\frac{1}{2}}\Gamma(s)}\sum_j \overline{\rho_j(h)}
+  \Gamma(s-\tfrac{1}{2}+it_j)\Gamma(s-\tfrac{1}{2}-it_j) \mu_j(z)
+\end{equation}
+and is analytic in $s$ in the right half-plane $\Re s> \frac{1}{2}+\theta$.
+After inserting~\eqref{eq:PhEspecialized}, the continuous spectrum takes the form
+\begin{equation}
+  \frac{\sqrt{\pi}}{2\pi(4\pi h)^{s-\frac{1}{2}}}\int_{-\infty}^\infty
+  \frac{\sigma_{2it}(h)}{h^{it}}\frac{\Gamma(s-\frac{1}{2}+it)
+  \Gamma(s-\frac{1}{2}-it)}{\zeta^*(1-2it)\Gamma(s)}E(z,\tfrac{1}{2}+it)\,dt,
+\end{equation}
+which is analytic in $s$ for $\Re s > \frac{1}{2}$ and has apparent poles when $\Re
+s=\frac{1}{2}$.
+
+
+Substiting this spectral expansion into~\eqref{eq:Zsw_poincare} and summing over $h \geq
+1$ recovers an expression for all of $Z(s, w, f\times \overline{g})$.
+Recognizing the Dirichlet series (as described in~\cite{Goldfeld2006automorphic}, for
+instance)
+\begin{align}
+  \sum_{h \geq 1} \frac{\rho_j(h)}{h^{s + w - \frac{1}{2}}} &= L(s + w - \tfrac{1}{2},
+  \mu_j) \\
+  \sum \frac{\sigma_{1-2w}(h)}{h^{s + \frac{1}{2} - w}} &= L(s, E(\cdot, w)) = \zeta(s + w
+  - \tfrac{1}{2})\zeta(s - w + \tfrac{1}{2}),
+\end{align}
+we are able to execute the $h$ sum completely.
+Assembling it all together, we have proved the following proposition.
+
+
+\begin{proposition}\label{prop:spectralexpansionfull}
+  For $f,g$ weight $k$ forms on $\SL_2(\mathbb{Z})$, the shifted convolution sum $Z(s, w,
+  f\times \overline{g} )$ can be expressed as
+\begin{align}
+  Z(s&, w, f\times \overline{g} ) := \sum_{m=1}^\infty \frac{a(m)
+  \overline{b(m-h)}+a(m-h)\overline{b(m)} }{m^{s+k -1}h^w} \nonumber \\
+  &= \frac{(4\pi )^k}{2} \sum_j\rho_j(1) G(s, i t_j) L(s + w -\tfrac{1}{2},\mu_j)\langle
+\mathcal{V}_{f,\overline{g} },\mu_j \rangle \label{line:1spectralexp} \\
+  &\quad+\frac{(4\pi)^{k}}{4\pi i}\int_{(0)} G(s, z) \mathcal{Z}(s,w,z) \langle
+  \mathcal{V}_{f,\overline{g} },E(\cdot,\tfrac{1}{2}-\overline{z})\rangle \,dz,
+  \label{line:2spectralexp}
+\end{align}
+when $\Re (s+w)>\frac{3}{2}$, where $G(s, z)$ and $\mathcal{Z} (s,w,z)$ are the collected
+$\Gamma$ and $\zeta$ factors of the discrete and continuous spectra,
+\begin{align*}
+  G(s, z) &= \frac{\Gamma(s - \tfrac{1}{2} + z)\Gamma(s - \tfrac{1}{2} -
+  z)}{\Gamma(s)\Gamma(s+k-1)} \\
+  \mathcal{Z}(s,w,z) &= \frac{\zeta(s + w -\frac{1}{2} + z)\zeta(s + w -\frac{1}{2} -
+  z)}{\zeta^*(1+2z)}.
+\end{align*}
+\end{proposition}
+
+
+\begin{remark}\label{rem:extraremark}
+Let's verify that this spectral expansion converges.
+Recall Stirling's approximation: for $x,y \in \mathbb{R}$,
+\index{Stirling's approximation}
+\begin{equation}
+  \gamma(x+iy) \sim (1+|y|)^{x-\frac{1}{2}}e^{-\frac{\pi}{2}|y|}
+\end{equation}
+as $y \to \pm\infty$ with $x$ bounded.
+For vertical strips in $s$ and $z$,
+\begin{equation}
+  G(s,z) \sim P(s,z) e^{-\frac{\pi}{2}(2\max(|s|,|z|)-2|s|)},
+\end{equation}
+where $P(s,z)$ has at most polynomial growth in $s$ and $z$.
+When $k$ is a full-integer, Watson's triple product formula (given in Theorem 3
+of~\cite{watson2008rankin}) shows that
+\begin{equation}
+  \rho_j(1)\langle f\overline{g} \Im(\cdot)^k,\overline{\mu_j}\rangle, \quad \text{and}
+  \quad  \rho_j(1)\langle T_{-1}(f\overline{g}) \Im(\cdot)^k,\overline{\mu_j}\rangle
+\end{equation}
+has at most polynomial growth in $|t_j|$.
+When $k$ is a half-integer, K\i{}ral's bound (given in Proposition~13
+of~\cite{mehmet2015}) also proves polynomial growth, albeit of a higher degree.
+Through direct computation with the associated Rankin--Selberg $L$-function, % chktex 8
+the same can be said about
+\begin{equation}
+  \langle \mathcal{V}_{f,\overline{g} }, E(\cdot,\tfrac{1}{2}+z)\rangle / \zeta^*(1+2z).
+\end{equation}
+Both~\eqref{line:1spectralexp} and~\eqref{line:2spectralexp} converge uniformly on
+vertical strips in $t_j$ and have at most polynomial growth in $s$.
+\end{remark}
+
+
+We will now specialize to $w = 0$ and analyze the meromorphic properties of $Z(s, 0,
+f\times \overline{g})$.
+This very naturally breaks into two parts: the contribution from the discrete spectrum (in
+line~\eqref{line:1spectralexp}) and the contribution from the continuous spectrum (in
+line~\eqref{line:2spectralexp}).
+
+
+\subsubsection{Meromorphic continuation of $Z(s, 0, f\times \overline{g})$: discrete spectrum}
+
+
+Examination of line~\eqref{line:1spectralexp}, the contribution from the discrete
+spectrum, reveals that the poles come only from $G(s, it_j)$.
+There are apparent poles when $s = \tfrac{1}{2} \pm it_j - n$ for $n \in \mathbb{Z}_{\geq
+0}$.
+Interestingly, the first set of apparent poles are at $s = \frac{1}{2} \pm it_j$ do not
+actually occur.
+
+
+\begin{lemma}\label{lem:Litj_equals_zero}
+  For even Maass forms $\mu_j$, we have $L(-2n \pm it_j, \mu_j) = 0$ for $n \in
+  \mathbb{Z}_{\geq 0}$.
+\end{lemma}
+
+
+\begin{proof}
+  The completed $L$-function associated to a Maass form $\mu_j$ is given by
+  \begin{equation} \label{eq:feq}
+    \Lambda_j(s) = \pi^{-s} \Gamma\left( \tfrac{s + \epsilon + it_j}{2}
+    \right)\Gamma\left( \tfrac{s + \epsilon - it_j}{2} \right) L(s, \mu_j) = (-1)^\epsilon
+    \Lambda_j(1-s),
+  \end{equation}
+  as in~\cite[Sec 3.13]{Goldfeld2006automorphic}, where $\epsilon = 0$ if the Maass form
+  $\mu_j$ is even and $1$ if it is odd.
+  In the case of an even Maass form, the functional equation is of shape
+  \begin{equation}
+    \Lambda_j(s) = \pi^{-s} \Gamma\left( \tfrac{s + it_j}{2} \right)\Gamma\left( \tfrac{s
+    - it_j}{2} \right) L(s, \mu_j) = \Lambda_j(1-s).
+  \end{equation}
+  The completed $L$-function is entire.
+  Thus $L(-2n \pm it_j, \mu_j)$ must be trivial zeroes to cancel the apparent poles at $s
+  =-2n \pm it_j$ from the Gamma functions.
+\end{proof}
+
+
+It turns out that there are no poles appearing from odd Maass forms due to the symmetry of
+the above-diagonal and below-diagonal terms in $\mathcal{V}_{f, \overline{g}}$.
+
+
+\begin{lemma}\label{lem:oddorthogonaltoeven}
+  Suppose $f$ and $g$ are weight $k$ cusp forms, as above. For odd Maass forms $\mu_j$, we
+  have $\langle \mathcal{V}_{f,\overline{g}}, \mu_j \rangle = 0$.
+\end{lemma}
+
+
+\begin{proof}
+  Recall that $\mathcal{V}_{f,g} :=y^k(f\overline{g}+T_{-1}(f\overline{g}))$, so clearly
+  $T_{-1}\mathcal{V}_{f,\overline{g} }=\mathcal{V}_{f,\overline{g} }$.
+  Recall also that $T_{-1} \mu_j = -\mu_j$ for odd Maass forms $\mu_j$ (in fact, this is
+  the defining characteristic of an odd Maass form).
+  Since $T_{-1}$ is a self-adjoint operator with respect to the Petersson inner product we
+  have that
+  \begin{equation}
+    \langle \mathcal{V}_{f,\overline{g} },\mu_j \rangle
+    = \langle T_{-1}\mathcal{V}_{f,\overline{g} },\mu_j \rangle
+    = \langle \mathcal{V}_{f,\overline{g} },T_{-1}\mu_j \rangle
+    = - \langle \mathcal{V}_{f,\overline{g} },\mu_j \rangle.
+  \end{equation}
+  Thus $\langle \mathcal{V}_{f,\overline{g} },\mu_j \rangle  =0$.
+\end{proof}
+
+
+In the special case when $f = g$, it is possible to show that odd Maass forms $\mu_j$ do
+not contribute poles in \emph{either} the above-diagonal or below-diagonal terms in
+$\mathcal{V}_{f \overline{f}}$.
+We record this observation as a corollary to the above lines of thought, even though it is
+not necessary for the applications in this thesis.
+
+
+\begin{corollary*}
+  Suppose $f$ is a full-integral weight cuspidal Hecke eigenform, not necessarily with
+  real coefficients.
+  Then for odd Maass forms $\mu_j$, we have $\langle \lvert f \rvert^2 \Im(\cdot)^k, \mu_j
+  \rangle = 0$.
+  Similarly, we have $\langle f^2 \Im(\cdot)^k, \mu_j \rangle = 0$.
+\end{corollary*}
+
+
+\begin{proof}
+  We sketch the proof. From Watson's well-known triple product
+  formula~\cite{watson2008rankin}, we have
+  \begin{equation}
+    \langle \lvert f \rvert^2 \Im(\cdot)^k, \mu_j \rangle^2 \sim \frac{L(\frac{1}{2},
+    f\times \overline{f} \times \mu_j)}{L(1, f, \text{Ad}) L(1, \overline{f}, \text{Ad})
+    L(1, \mu_j, \text{Ad})}
+  \end{equation}
+  up to multiplication by a nonzero constant coming from the missing Gamma factors.
+  The $L$-functions in the denominator are all nonzero, and the numerator factors as
+  \begin{equation}
+    L(\tfrac{1}{2}, f \times \overline{f} \times \mu_j) = L(\tfrac{1}{2}, \text{Ad}^2 f
+    \times \mu_j) L(\tfrac{1}{2}, \mu_j).
+  \end{equation}
+  Since $\mu_j$ is odd, $L(\tfrac{1}{2}, \mu_j) = 0$ by the functional equation for odd
+  Maass forms, given in~\eqref{eq:feq}.
+
+
+  Applying Watson's triple product to $\langle f^2 \Im(\cdot)^k, \mu_j \rangle$ yields the
+  numerator
+  \begin{equation}
+    L(\tfrac{1}{2}, \text{Sym}^2 f \times \mu_j) L(\tfrac{1}{2}, \mu_j),
+  \end{equation}
+  which is zero for the same reason.
+\end{proof}
+
+
+
+Lemma~\ref{lem:oddorthogonaltoeven} guarantees that the only Maass forms appearing in
+line~\eqref{line:1spectralexp} are even. The first set of apparent poles from even Maass
+forms appear at $s = \frac{1}{2} \pm it_j$ and occur as simple poles of the Gamma
+functions in the numerator of $G(s, t_j)$. They come multiplied by the value of $L(it_j,
+\mu_j)$, which by Lemma~\ref{lem:Litj_equals_zero} is zero.
+
+
+In summary, $D(s, S_f \times S_g)$ has no poles at $s = \frac{1}{2} \pm it_j$.
+The next set of apparent poles are at $s = -\frac{1}{2} \pm it_j$, appearing at the next
+set of simple poles of the Gamma functions in the numerator.
+Unlike the previous poles, these do not coincide with trivial zeroes of the $L$-function.
+We have poles of the discrete spectrum at $s = -\frac{1}{2} \pm it_j$.
+
+
+
+\subsubsection{Meromorphic continuation of $Z(s, 0, f\times \overline{g})$: continuous spectrum}
+
+
+Examination of the line~\eqref{line:2spectralexp}, the contribution from the continuous
+spectrum, is substantially more involved than the discrete spectrum.
+It is here where the most remarkable cancellation occurs.
+For ease of reference, we repeat this line, the part we call the continuous spectrum:
+\begin{equation}\label{eq:line2-repeat}
+  \frac{(4\pi)^{k}}{4\pi i}\int_{(0)} G(s, z) \mathcal{Z}(s,w,z) \langle
+  \mathcal{V}_{f,\overline{g} },E(\cdot,\tfrac{1}{2}-\overline{z})\rangle \,dz
+  \tag{\ref{line:2spectralexp}}
+\end{equation}\noeqref{eq:line2-repeat} % <-- Necessary for automatic tagging to continue working
+where $G(s, z)$ and $\mathcal{Z} (s,w,z)$ are the collected $\Gamma$ and $\zeta$ factors
+\begin{align}
+  G(s, z) = \frac{\Gamma(s - \tfrac{1}{2} + z)\Gamma(s - \tfrac{1}{2} -
+  z)}{\Gamma(s)\Gamma(s+k-1)},
+  \; \mathcal{Z}(s,w,z) = \frac{\zeta(s + w -\frac{1}{2} + z)\zeta(s + w -\frac{1}{2} -
+  z)}{\zeta^*(1+2z)}.
+\end{align}
+The rightmost pole seems to occur from the pair of zeta functions in the numerator,
+occurring when $s + w - \frac{1}{2} \pm z = 1$. We must disentangle $s$ and $w$ from $z$
+in order to understand these poles.
+
+
+Line~\eqref{line:2spectralexp} is analytic for $\Re (s+w) > \frac{3}{2}$, $\Re s >
+\tfrac{1}{2}$.
+As we will shortly set $w = 0$, we treat the boundary $\Re (s+w) > \frac{3}{2}$.
+For $s$ with $\Re s \in (\frac{3}{2} - \Re w, \frac{3}{2} - \Re w + \epsilon)$ for some
+very small $\epsilon$, we want to shift the contour of integration, avoiding poles coming
+from the $\zeta^*(1 -2z)$ appearing in the denominator of the Fourier expansion of
+$E(\cdot,\frac{1}{2}+\overline{z})$ (described in~\eqref{eq:sums:E_Fourier}).
+
+
+We shift the $z$-contour to the right while staying within the zero-free region of
+$\zeta(1 - 2z)$.
+By an abuse of notation, we denote this shift here by $\Re z = \epsilon$ and let
+$\epsilon$ in this context actually refer to the real value of the $z$-contour at the
+relevant imaginary value.
+This argument can be made completely rigorous, cf.~\cite[p. 481-483]{HoffsteinHulse13}.
+
+
+We perform this shift in order to guarantee that the two poles in $z$ coming from $\zeta(s
++ w - \tfrac{1}{2} \pm z)$, occurring at $\pm z = \tfrac{3}{2} - s - w$, have different
+real parts; simultaneously, we pass the pole with more positive real part, occurring at
+$z = s + w - \frac{3}{2}$ from $\zeta(s + w - \tfrac{1}{2} - z)$.
+By the residue theorem,
+\begin{align}\label{eq:FEfirstpart}
+  &\frac{(4\pi)^k}{4\pi i} \int_{(0)}G(s,z) \mathcal{Z}(s,w,z) \langle
+  \mathcal{V}_{f,\overline{g} }, E\rangle  \ dz \\
+  &= \frac{(4\pi)^k}{4\pi i}\int_{(\epsilon)} G \mathcal{Z} \langle
+  \mathcal{V}_{f,\overline{g} }, E \rangle \  dz - \frac{(4\pi)^k}{2}\Res_{z = s + w -
+  \frac{3}{2}} G \mathcal{Z} \langle \mathcal{V}_{f,\overline{g} }, E\rangle \nonumber,
+\end{align}
+where the above residue is found to be
+\begin{equation}\label{eq:FEfirstresidue}
+  -\frac{\zeta(2s + 2w - 2)\Gamma(2s + w -
+  2)\Gamma(1-w)}{\zeta^*(2s+2w-2)\Gamma(s)\Gamma(s + k - 1)}\langle
+\mathcal{V}_{f,\overline{g} }, E(\cdot, 2-\overline{s}-\overline{w})\rangle.
+\end{equation}
+The residue is analytic in $s$ for $\Re s \in (1 - \Re w, \tfrac{3}{2} - \Re w +
+\epsilon)$, and has an easily understood meromorphic continuation to the whole plane.
+Notice also that the shifted contour integral has no poles in $s$ for $\Re s \in
+(\tfrac{3}{2} - \Re w - \epsilon, \tfrac{3}{2} - \Re w + \epsilon)$, so we have found an
+analytic (not meromorphic!) continuation in $s$ of Line~\eqref{line:2spectralexp} past the
+first apparent pole along $\Re s = \frac{3}{2} - \Re w$.
+
+
+
+For $s$ with $\Re s \in (\frac{3}{2} - \Re w - \epsilon, \frac{3}{2} - \Re w)$, we shift
+the contour of integration back to $\Re z = 0$.
+Since this passes a pole, we pick up a residue.
+But notice that this is the residue at the \emph{other} pole, $\tfrac{3}{2} - s - w$,
+coming from $\zeta(s + w - \tfrac{1}{2} + z)$,
+\begin{align}\label{eq:FEsecondpart}
+  &\frac{(4\pi)^k}{4\pi i} \int_{(\epsilon)}G(s, w, z) \mathcal{Z}(s,w,z) \langle
+  \mathcal{V}_{f,\overline{g} }, E\rangle dz  \\
+  =&\frac{(4\pi)^k}{4\pi i}\int_{(0)} G \mathcal{Z} \langle \mathcal{V}_{f,\overline{g} },
+  E \rangle dz + \frac{(4\pi)^k}{2}\Res_{z = \frac{3}{2} - s - w} G \mathcal{Z}  \langle
+  \mathcal{V}_{f,\overline{g} }, E\rangle \nonumber.
+\end{align}
+By using the functional equations of the Eisenstein series and zeta functions, one can
+check that
+\begin{equation}
+  \Res_{z = \frac{3}{2} - s - w} G \mathcal{Z} \langle \mathcal{V}_{f,\overline{g} },
+  E\rangle = - \Res_{z = s + w -  \frac{3}{2}} G \mathcal{Z}
+  \langle\mathcal{V}_{f,\overline{g} }, E\rangle,
+\end{equation}
+so the two residues combine together, and have well-understood meromorphic continuations
+to the whole plane.
+The shifted integral has clear meromorphic continuation until the next apparent poles at
+$\Re s = \tfrac{1}{2}$ coming from the Gamma functions $\Gamma(s - \tfrac{1}{2} \pm z)$ in
+the integrand.
+Thus~\eqref{line:2spectralexp}, originally defined for $\Re s > \frac{3}{2} - \Re w$, has
+meromorphic continuation for $\frac{1}{2} < \Re s < \frac{3}{2} - \Re w$ given by
+\begin{equation}
+  \frac{(4\pi)^k}{4\pi i}\int_{(0)}G \mathcal{Z} \langle \mathcal{V}_{f,\overline{g} },
+  E\rangle dz + (4\pi)^k \Res_{z = \frac{3}{2} - s - w} G \mathcal{Z} \langle
+\mathcal{V}_{f,\overline{g} }, E\rangle.
+\end{equation}
+
+
+A very similar argument works to extend the meromorphic continuation in $s$ of the contour
+integral past the next apparent poles at $\Re s  = \frac{1}{2}$ from the Gamma functions,
+leading to a meromorphic continuation in the region $-\frac{1}{2}< \Re s < \frac{1}{2}$
+given by
+\begin{align}\label{eq:fullcontinuation}
+  &\frac{(4\pi)^k}{4\pi i}\int_{(0)}G(s, w, z)\mathcal{Z}(s,w,z)\langle
+\mathcal{V}_{f,\overline{g} }, E(\cdot, \tfrac{1}{2} - \overline{z})\rangle dz \\
+  &\quad+ (4\pi)^k \Res_{z = \frac{3}{2} - s - w}  G(s, w, z) \mathcal{Z}(s,w,z) \langle
+  \mathcal{V}_{f,\overline{g} }, E(\cdot, \tfrac{1}{2} - \overline{z})\rangle
+  \label{line:firstresidual} \\
+  &\quad+ (4\pi)^k \Res_{z = \frac{1}{2} - s} G(s, w, z) \mathcal{Z}(s,w,z) \langle
+\mathcal{V}_{f,\overline{g} }, E(\cdot, \tfrac{1}{2} -\overline{z})\rangle.
+\label{line:secondresidual}
+\end{align}
+
+
+We iterate this argument, as in Section~4 of~\cite[p. 481-483]{HoffsteinHulse13}.
+Somewhat more specifically, when $\Re(s)$ approaches a negative half-integer,
+$\frac{1}{2}-n$, we can shift the line of integration for $z$ right past the pole due to
+$G(s,z)$ at $z=s-\frac{1}{2}+n$, move $s$ left past the line $\Re(s)=\frac{1}{2}-n$ and
+then shift the line of integration for $z$ left, back to zero and over the pole at
+$z=\frac{1}{2}-s-n$.
+This gives meromorphic continuation of~\eqref{line:2spectralexp} arbitrarily far to the
+left, accumulating an additional pair of residual terms each time $\Re s$ passes a
+half-integer, and of a similar form to the first residual term coming from $G(s,z)$,
+appearing in~\eqref{line:secondresidual}.
+
+
+\index{residual terms}
+We now specialize to $w = 0$.
+It is advantageous to codify some terminology for these additional terms appearing in the
+meromorphic continuation of the integral, i.e.\ terms like~\eqref{line:firstresidual}
+and~\eqref{line:secondresidual}.
+We call these terms \emph{residual} terms, as they come from residues in the $z$ variable;
+these are distinct from residues in $s$, as these residual terms are functions in $s$.
+We also introduce a notation for these residual terms.
+Substituting $w = 0$ into~\eqref{line:firstresidual}, we get the residual term
+\begin{equation}\label{eq:residual_0}
+  \rho_{\frac{3}{2}}(s) = \frac{(4\pi)^k \zeta(2s - 2)\Gamma(2s - 2)}{\Gamma(s) \Gamma(s +
+  k - 1) \zeta^*(2s - 2)} \langle \mathcal{V}_{f, \overline{g}}, \overline{E(\cdot, 2 -
+s)} \rangle.
+\end{equation}
+This residual term is distinguished as the only residual term appearing as a residue of
+the zeta functions.
+
+
+The remaining residual terms all come from residues of Gamma functions, and all have a
+similar form.
+For each $m \geq 1$, there is a residual term $\rho_{\frac{3}{2} - m}(s)$ appearing for
+$\Re s < \tfrac{3}{2} - m$, appearing from an apparent pole of Gamma functions in $G(s,z)$
+at $z = \tfrac{3}{2} - m - s$, given by
+\begin{equation}\label{eq:residual_m}
+  \begin{split}
+    \rho_{\frac{3}{2} - m}(s) = &\frac{(-1)^{m-1}(4\pi)^k \zeta(1 - m) \zeta(2s + m - 2)
+    \Gamma(2s + m - 2)}{\Gamma(m) \Gamma(s) \Gamma(s + k - 1) \zeta^*(4 - 2s - 2m)} \times
+    \\
+    &\quad\langle \mathcal{V}_{f, \overline{g}}, \overline{E(\cdot, s + m - 1)}\rangle.
+  \end{split}
+\end{equation}
+
+
+We summarize these computations with the following proposition.
+\begin{proposition}
+  The continuous spectrum component of $Z(s, 0, f\times \overline{g})$, as given
+  by~\eqref{line:2spectralexp} in Proposition~\ref{prop:spectralexpansionfull}, has
+  meromorphic continuation to the complex plane.
+  Further, the meromorphic continuation can be written explicitly as
+  \begin{equation}
+    \frac{(4\pi)^k}{4\pi i} \int_{(0)} G(s,z) \mathcal{Z}(s,0,z) \langle \mathcal{V}_{f,
+    \overline{g}}, \overline{E(\cdot, \tfrac{1}{2} - z)}\rangle dz + \sum_{\mathclap{0
+    \leq m < \frac{3}{2} - \Re s}} \rho_{\frac{3}{2} - m}(s),
+  \end{equation}
+  where each residual term $\rho_{\frac{3}{2} - m}(s)$ is given by~\eqref{eq:residual_0}
+  (in the case that $m = 0$) or~\eqref{eq:residual_m} (when $m \geq 1$), and
+  $\rho_{\frac{3}{2} - m}$ appears only when $\Re s < \tfrac{3}{2} - m$.
+\end{proposition}
+
+
+
+\subsection{Polar Analysis of $Z(s, 0, f\times \overline{g})$}
+
+
+Comparing the meromorphic continuations of the discrete spectrum component and continuous
+spectrum component of $Z(s, 0, f\times \overline{g})$ reveals that the rightmost pole of
+$Z(s, 0, f\times \overline{g})$ occurs in the first residual term,
+$\rho_{\frac{3}{2}}(s)$, appearing in~\eqref{eq:residual_0}.
+The pole occurs at $s = 1$, caused by the Eisenstein series.
+By comparison, the discrete spectrum component is analytic for $\Re s > -\tfrac{1}{2} \pm
+it_j$, and the rest of the continuous spectrum is analytic for $\Re s > \tfrac{1}{2}$.
+
+
+The residue at this pole is given by
+\begin{equation}\label{eq:Zresidue}
+  \Res_{s = 1} \rho_{\frac{3}{2}}(s) = \Res_{s = 1} \frac{(4\pi)^k \zeta(2s - 2)\Gamma(2s
+  - 2)}{\zeta^*(2s-2)\Gamma(s)\Gamma(s + k - 1)}\langle \mathcal{V}_{f,\overline{g} },
+E(\cdot, 2-\overline{s})\rangle.
+\end{equation}
+Expand $\zeta^*(2s-2) = \zeta(2s-2) \Gamma(s-1) \pi^{1-s}$ in the denominator, cancel the
+two zeta functions, and use the Gamma duplication identity
+\begin{equation}
+  \frac{\Gamma(2z)}{\Gamma(z)} = \frac{\Gamma(z + \tfrac{1}{2}) 2^{2z - 1}}{\sqrt \pi}
+\end{equation}
+with $z = s-1$ to rewrite the residue as
+\begin{align}
+  \Res_{s = 1} \rho_{\frac{3}{2}}(s) &= \Res_{s = 1} \frac{\Gamma(s - \tfrac{1}{2})
+  2^{2s-3}}{\sqrt \pi} \frac{\pi^{s-1}}{\Gamma(s)} \frac{(4\pi)^k}{\Gamma(s + k - 1)}
+  \langle \mathcal{V}_{f, \overline{g}}, E(\cdot, 2 - \overline{s}) \rangle \\
+  &= -\frac{(4\pi)^k}{\Gamma(k)} \Res_{s = 1} \langle f \overline{g} \Im(\cdot)^k,
+E(\cdot, \overline{s})\rangle.
+\end{align}
+Through the relationship between the Eisenstein series and the
+Rankin--Selberg $L$-function (cf.~\S\ref{ssec:rankinselberg_lfunction}), % chktex 8
+we can rewrite this as
+\begin{equation}\label{eq:first_residual_pole_1}
+  \Res_{s = 1} \rho_{\frac{3}{2}}(s) = -\Res_{s = 1} \frac{L(s, f\times
+  \overline{g})}{\zeta(2)}.
+\end{equation}
+
+
+The next pole of $Z(s, 0, f\times \overline{g})$ also comes from the first residual term
+$\rho_{\frac{3}{2}}(s)$, occurring at $s = \tfrac{1}{2}$ from the Gamma function in the
+numerator.
+Similar to the computation of the residue at $s = 1$, we expand $\zeta^*$, cancel the two
+zeta functions, and apply the Gamma duplication identity to recognize the residue as
+\begin{align}
+  \Res_{s = \frac{1}{2}} \rho_{\frac{3}{2}}(s) &= \Res_{s = \frac{1}{2}} \frac{(4\pi)^{s +
+  k - 1}}{2\sqrt \pi} \frac{\Gamma(s - \tfrac{1}{2})}{\Gamma(s) \Gamma(s + k - 1)} \langle
+  \mathcal{V}_{f, \overline{g}}, E(\cdot, 2 - \overline{s}) \rangle \\
+  &= \frac{1}{2 \pi }\frac{(4\pi)^{k - \frac{1}{2}}}{\Gamma(k - \frac{1}{2})}\langle
+\mathcal{V}_{f,\overline{g} }, E(\cdot, \tfrac{3}{2}) \rangle.
+\end{align}
+We rewrite this as a special value of the Rankin--Selberg $L$-function, % chktex 8
+\begin{equation}\label{eq:first_residual_pole_half}
+  \Res_{s = \frac{1}{2}} \rho_{\frac{3}{2}}(s) = \frac{1}{2 \pi}\frac{(k -
+  \frac{1}{2})}{4\pi} \frac{(4\pi)^{k + \frac{1}{2}}}{\Gamma(k + \frac{1}{2})}\langle
+\mathcal{V}_{f,\overline{g} }, E(\cdot, \tfrac{3}{2}) \rangle = \frac{(k -
+\frac{1}{2})}{4\pi^2} \frac{L(\frac{3}{2}, f\times \overline{g} )}{\zeta(3)}.
+\end{equation}
+
+
+Returning to the rest of the meromorphic continuation of the continuous spectrum, let us
+examine the second residual term $\rho_{\frac{3}{2} - 1}(s) = \rho_{\frac{1}{2}}(s)$,
+which appears as part of the meromorphic continuation only for $\Re s < \tfrac{1}{2}$.
+We simplify the expression in~\eqref{eq:residual_m}, with $m = 1$,
+\begin{equation}
+  \rho_{\frac{1}{2}}(s) = \frac{(4\pi)^k \zeta(0)}{\Gamma(s + k - 1)} \frac{\zeta(2s
+  -1)}{\zeta^*(2 - 2s)} \frac{\Gamma(2s - 1)}{\Gamma(s)} \langle
+\mathcal{V}_{f,\overline{g}}, E(\cdot, \overline{s})\rangle.
+\end{equation}
+By using the functional equation for $\zeta^*(2 - 2s)$, the Gamma duplication formula, and
+recognizing the Eisenstein series inner product as a sum of
+two Rankin--Selberg $L$-functions, this simplifies to % chktex 8
+\begin{equation}\label{eq:secondresidualsimple}
+  \rho_{\frac{1}{2}}(s) = -\frac{L(s, f\times \overline{g})}{\zeta(2s)}.
+\end{equation}
+We now recognize that $\rho_{\frac{1}{2}}(s)$ has poles at zeroes of $\zeta(2s)$.
+
+
+
+\begin{remark}
+  At first glance, it would appear that $\rho_{\frac{1}{2}}(s)$ also has a pole at $s=1$,
+  coming from the pole of the Rankin--Selberg convolution, % chktex 8
+  and that this term therefore contributes a pole to $Z(s, 0, f\times \overline{g})$ at
+  $s=1$.
+  However, the term $\rho_{\frac{1}{2}}(s)$ does not appear as part of the meromorphic
+  continuation of $Z(s, 0, f\times \overline{g})$ except when $\Re s < \frac{1}{2}$, so
+  this term does not contribute a pole at $s = 1$.
+\end{remark}
+
+
+More generally, for each $m \geq 1$, the residual term $\rho_{\frac{3}{2} - m}(s)$, which
+appears for $\Re s < \frac{3}{2} - m$, also contributes poles.
+As in~\eqref{eq:secondresidualsimple}, the Eisenstein series in $\rho_{\frac{3}{2} -
+m}(s)$ introduces poles at $s = \frac{\gamma}{2} - m + 1$ for each nontrivial zero
+$\gamma$ of $\zeta(s)$, in addition to potential poles at negative integers and
+half-integers from the Gamma function in the numerator.
+
+
+Poles appearing in the discrete spectrum component do not exhibit the same properties of
+cancellation, aside from those noted in Lemmas~\ref{lem:Litj_equals_zero}
+and~\ref{lem:oddorthogonaltoeven}.
+A quick analysis of the Gamma functions in the discrete component,
+in~\eqref{line:1spectralexp}, shows that there are potential simple poles at $s =
+\frac{1}{2} \pm it_j - n$ for $n \in \mathbb{Z}_{\geq 0}$.
+The Lemmas~\ref{lem:Litj_equals_zero} and~\ref{lem:oddorthogonaltoeven} show that those
+poles occurring at $s = \frac{1}{2} \pm it_j - n$ with $n$ even are cancelled by trivial
+zeroes.
+Together, these indicate that there are potential poles at $s = \frac{1}{2} \pm it_j - n$
+for each odd, positive integer $n$.
+
+
+
+\subsection{Analytic Behavior of $W(s; f, \overline{g})$}
+\index{Ws@$W(s; f, f)$}
+
+
+Recall that
+\begin{equation}
+  W(s; f, \overline{g}) = \frac{L(s, f\times \overline{g})}{\zeta(2s)} + Z(s, 0, f\times \overline{g}).
+\end{equation}
+As noted in~\eqref{eq:first_residual_pole_1}, the leading pole of $L(s, f\times
+\overline{g}) \zeta(2s)^{-1}$ perfectly cancels with the leading pole of $Z(s, 0, f\times
+\overline{g})$.
+Therefore $W(s, f, \overline{g})$ is analytic for $\Re s > \tfrac{1}{2}$ and has a pole at
+$s = \tfrac{1}{2}$, identified in~\eqref{eq:first_residual_pole_half}.
+
+
+Further, the second residual term, $\rho_{\frac{1}{2}}(s)$, was shown to be exactly $-L(s,
+f\times \overline{g}) \zeta(2s)^{-1}$ in~\eqref{eq:secondresidualsimple}, and appears for
+$\Re s < \frac{1}{2}$.
+Therefore the Rankin--Selberg $L$-function % chktex 8
+$L(s, f\times \overline{g})\zeta(2s)^{-1}$ perfectly cancels with $\rho_{\frac{1}{2}}(s)$
+for $\Re s < \frac{1}{2}$.
+For $\Re s < \frac{1}{2}$, the analytic behavior of $W(s; f, \overline{g})$ is determined
+entirely by the analytic behavior of $Z(s, 0, f\times \overline{g})$ (and omitting
+$\rho_{\frac{1}{2}}(s)$).
+
+
+Therefore $W(s; f, \overline{g})$ has meromorphic continuation to $\mathbb{C}$.
+For $\Re s > - \tfrac{1}{2}$, the only possible poles of $W(s; f, \overline{g})$ are at $s
+= \tfrac{1}{2}$, coming from~\eqref{eq:first_residual_pole_half}, and those at $s = -
+\tfrac{1}{2} \pm it_j$ coming from exceptional eigenvalues of the discrete spectrum.
+(There are no exceptional eigenvalues on $\SL(2, \mathbb{Z})$).
+Collecting the analytic data, we have proved the following.
+
+
+
+\begin{theorem}\label{thm:Wsfgmero}
+  Let $f,g$ be two holomorphic cusp forms on $\SL(2, \mathbb{Z})$.
+  Maintaining the same notation as above, the function $W(s; f,\overline{g})$ has a
+  meromorphic continuation to $\mathbb{C}$ given by the Rankin--Selberg % chktex 8
+  $L$-function~\eqref{eq:Lsfgbar_equals_eisenstein}
+  and spectral decomposition in Proposition~\ref{prop:spectralexpansionfull},
+  with potential poles at $s$ with $\Re s \leq \tfrac{1}{2}$ and $s \in
+  \mathbb{Z}\cup(\mathbb{Z} + \tfrac{1}{2})\cup\mathfrak{S}\cup\mathfrak{Z}$, where
+  $\mathfrak{Z}$ denotes the set of shifted zeta-zeroes $\{-1 + \frac{\gamma}{2} - n: n
+  \in \mathbb{Z}_{\geq 0}\}$, and $\mathfrak{S}$ denotes the set of shifted discrete types
+  $\{-\tfrac{1}{2} \pm it_j - n: n \in \mathbb{Z}_{\geq 0}, n \; \text{odd}\; \}$.
+
+  The leading pole is at $s = \frac{1}{2}$ and
+    \begin{equation}
+      \Res_{s = \frac{1}{2}} W(s; f, \overline{g}) = \frac{(k - \frac{1}{2})}{4\pi^2}
+      \frac{L(\tfrac{3}{2}, f\times \overline{g})}{\zeta(3)}.
+    \end{equation}
+\end{theorem}
+
+
+
+\subsection{Complete Meromorphic Continuation of $D(s, S_f\times \overline{S_{g}})$}
+
+
+With Theorem~\ref{thm:Wsfgmero} and the decomposition from
+Proposition~\ref{prop:SfSg_decomposition}, we can quickly give the meromorphic
+continuation of the Dirichlet series $D(s, S_f \times S_f)$.
+In particular, by Proposition~\ref{prop:SfSg_decomposition}, we know that
+\begin{equation}
+  D(s, S_f \times \overline{S_g}) = W(s; f, \overline{g}) + \frac{1}{2\pi i}
+  \int_{(\gamma)} W(s-z; f, \overline{g}) \zeta(z)\frac{\Gamma(z) \Gamma(s - z + k -
+  1)}{\Gamma(s + k - 1)} \; dz,
+\end{equation}
+where initially $\Re s$ is large and $\gamma \in (1, \Re(s) - 1)$.
+Notice that $W(s; f, \overline{g})$ can also be written as a single Dirichlet series as
+\begin{align}
+  W(s; f, \overline{g}) &= \frac{L(s, f\times \overline{g})}{\zeta(2s)} + Z(s, 0, f\times
+  \overline{g}) \\
+  &= \sum_{n,h \geq 1} \frac{a(n) \overline{b(n)} + a(n)\overline{b(n-h)} +
+  a(n-h)\overline{b(n)}}{n^{s + k - 1}} \\
+  &= \sum_{\substack{n \geq 1 \\ h \geq 0}} \frac{a(n)\overline{b(n-h)} +
+  a(n-h)\overline{b(n)} - a(n)\overline{b(n)}}{n^{s + k - 1}} \\
+  &= \sum_{n \geq 1} \frac{a(n) \overline{S_g(n)} + S_f(n) \overline{g(n)}}{n^{s + k - 1}}
+  =: \sum_{n \geq 1} \frac{w(n)}{n^{s + k - 1}}.
+\end{align}
+We denote the $n$th coefficient of this Dirichlet series.
+As $a(n) \ll n^{\frac{k-1}{2} + \epsilon}$ and $S_f(n) \ll n^{\frac{k-1}{2} +
+\frac{1}{3}}$, we know that $w(n) \ll n^{k-1 + \frac{1}{3} + \epsilon}$.
+Thus $W(s; f, \overline{g})$ converges absolutely for $\Re s > \frac{4}{3}$.
+
+Consider $D(s, S_f \times \overline{S_g})$ for $\Re s > 4$ and $\gamma = 2$ initially, so
+that both $W(s; f, \overline{g})$ and $W(s-z; f, \overline{g})$ are absolutely convergent
+series.
+Shifting the line of $z$ integration to $-M - \frac{1}{2}$ for some positive integer $M$
+passes several poles occurring when $z = 1$ (from $\zeta(z)$) or $z = -j$ with $j \in
+\mathbb{Z}_{\geq 0}$ (from $\Gamma(z)$).
+Notice that in this region, $W(s-z; f, \overline{g})$ converges absolutely, $\zeta(z)$ has
+at most polynomial growth in vertical strips, and the Gamma functions have exponential
+decay for any fixed $s$.
+By Cauchy's Theorem, we have
+\begin{align}
+  &D(s, S_f \times \overline{S_g}) =\\
+  &= W(s; f, \overline{g}) + \sum_{-M \leq j \leq 1} \Res_{z = j} W(s-z; f, \overline{g})
+  \zeta(z)\frac{\Gamma(z) \Gamma(s - z + k - 1)}{\Gamma(s + k - 1)} \\
+  &\quad + \frac{1}{2\pi i} \int_{(-M - \frac{1}{2})} W(s-z; f, \overline{g})
+  \zeta(z)\frac{\Gamma(z) \Gamma(s - z + k - 1)}{\Gamma(s + k - 1)} \; dz \\
+  &= W(s; f, \overline{g}) + \frac{W(s-1; f, \overline{g})}{s+k-2} + \sum_{j = 0}^{M}
+  \frac{(-1)^j}{j!} W(s + j; f, \overline{g}) \zeta(-j) \frac{\Gamma(s + j + k -
+  1)}{\Gamma(s + k - 1)} \\
+  &\quad + \frac{1}{2\pi i} \int_{(-M - \frac{1}{2})} W(s-z; f, \overline{g})
+  \zeta(z)\frac{\Gamma(z) \Gamma(s - z + k - 1)}{\Gamma(s + k - 1)} \; dz.
+\end{align}
+Each of the residues gives an expression containing $W(s; f, \overline{g})$ with clear
+meromorphic continuation to the plane.
+The remaining shifted integral contains $W(s-z; f, \overline{g})$ in its integrand, with
+$\Re z = -M-\tfrac{1}{2}$.
+Therefore $\Re s-z = \Re s + M + \tfrac{1}{2}$, and so $W(s-z; f, \overline{g})$ is
+absolutely convergent for $\Re s > -M + \tfrac{5}{2}$.
+As $\zeta(z)$ has only polynomial growth and $\Gamma(z)\Gamma(s-z+k-1)$ has exponential
+decay in vertical strips, we see that the integral represents an analytic function of $s$
+for $\Re s > -M + \tfrac{5}{2}$.
+Therefore the entire right hand side has meromorphic continuation to the region $\Re s >
+-M + \tfrac{5}{2}$.
+As $M$ is arbitrary, we have proved the following, which we record as a corollary to
+Theorem~\ref{thm:Wsfgmero}.
+
+
+\begin{corollary}\label{cor:DsSfSg_has_meromorphic}
+  The Dirichlet series $D(s, S_f \times \overline{S_g})$ has meromorphic continuation to
+  the entire complex plane.
+\end{corollary}
+
+
+\begin{remark}
+  Very similar work gives the meromorphic continuation for $D(s, S_f \times
+  \overline{S_g})$, mainly replacing $\overline{g}$ with $T_{-1}g$ in the above
+  formulation.
+  This distinction only matters at higher levels when $f$ and $g$ have nontrivial
+  nebentypus, and the spectral expansion is modified accordingly.
+\end{remark}
+
+
+Analysis of the exact nature of the poles of $D(s, S_f \times \overline{S_g})$ can be
+performed directly on this presentation of the meromorphic continuation.
+In many cases, the leading behavior of integral transforms on $D(s, S_f \times
+\overline{S_g})$ will come from $W(s-1; f, \overline{g})/(s+k-2)$, as this term contains
+the largest negative shift in $s$.
+For later reference, it will be useful to view $D(s, S_f \times \overline{S_g})$ in this
+form for clear arithmetic application.
+We codify this in the following lemma.
+\begin{lemma}\label{lem:D_is_lots_of_W}
+  \begin{equation}
+    \begin{split}
+    D(s, S_f \times \overline{S_g}) &= W(s; f, \overline{g})
+      + \frac{W(s-1; f, \overline{g})}{s+k-2} \\
+    &\quad + \sum_{j = 0}^M \frac{(-1)^j}{j!} W(s+j; f, \overline{g}) \zeta(-j)
+      \frac{\Gamma(s + j + k - 1)}{\Gamma(s + k - 1)} \\
+    &\quad + \frac{1}{2\pi i} \int_{(-M - \frac{1}{2})} W(s-z; f, \overline{g})
+      \zeta(z)\frac{\Gamma(z) \Gamma(s - z + k - 1)}{\Gamma(s + k - 1)} \; dz.
+    \end{split}
+  \end{equation}
+\end{lemma}
+
+
+
+\section{Second-Moment Analysis}\label{sec:secondmoment}
+
+
+It is now necessary to estimate the growth of $D(s, S_f \times \overline{S_g})$ and to use
+the analytic properties described above to study the sizes of sums of coefficients of cusp
+forms.
+It will be necessary to understand the size of growth of $D(s, S_f \times
+\overline{S_g})$, but it is relatively straightforward to see that $D(s, S_f \times
+\overline{S_g})$ has polynomial growth in vertical strips.
+
+
+\begin{lemma}\label{lem:DsSfSg_poly_growth}
+  For $\sigma < \Re s < \sigma'$ and $s$ uniformly away from poles, there exists some $A$
+  such that
+  \begin{equation}
+    D(s, S_f \times \overline{S_g}) \ll \lvert \Im s \rvert^A.
+  \end{equation}
+  Therefore $D(s, S_f \times \overline{S_g})$ is of polynomial growth in vertical strips.
+\end{lemma}
+
+
+\begin{proof}
+  From Lemma~\ref{lem:D_is_lots_of_W} it is only necessary to study the growth properties
+  of $W(s; f, \overline{g})$ and the Mellin-Barnes integral transform of $W(s; f,
+  \overline{g})$.
+
+
+  We first handle $W(s; f, \overline{g})$.
+  The diagonal component of $W(s; f, \overline{g})$ is just the Rankin--Selberg % chktex 8
+  $L$-function $L(s, f\times \overline{g}) \zeta(2s)^{-1}$, which has polynomial growth in
+  vertical strips as a consequence of the Phragm\'{e}n-Lindel\"{o}f convexity principle
+  and the functional equation.
+
+
+  As noted in Remark~\ref{rem:extraremark}, the discrete spectrum and integral term in the
+  continuous spectrum each have polynomial growth in vertical strips.
+  It remains to consider the possible contribution from the residual terms
+  $\rho_{\frac{3}{2}}(s)$ and $\rho_{\frac{3}{2} - m}(s)$.
+  These each consist of a product of zeta functions, Gamma functions,
+  and Rankin--Selberg % chktex 8
+  $L$-functions, and a quick analysis through Stirling's approximation shows that the
+  exponential contributions from the Gamma functions all perfectly cancel.
+  Therefore these are also of polynomial growth.
+
+
+  We now handle the Mellin-Barnes transform of $W(s; f, \overline{g})$.
+  We actually prove a slightly more general result.
+
+
+  Let $F(s)$ be a function of polynomial growth in $\lvert \Im s \rvert$ in vertical
+  strips containing $\sigma$.
+  Then the function
+  \begin{equation}
+    \frac{1}{2\pi i} \int_{(\sigma)}F(s-z)\zeta(z) \frac{\Gamma(z) \Gamma(s -
+    z)}{\Gamma(s)} dz
+  \end{equation}
+  has at most polynomial growth in $\lvert \Im s \rvert$.
+  Indeed, through Stirling's Approximation, the integrand is bounded by
+  \begin{equation}
+    \lvert \Im s \rvert^A \lvert \Im (s-z) \rvert^B \lvert \Im z \rvert^C
+    \exp\bigg(-\frac{\pi}{2}\Big(\lvert \Im z \rvert + \lvert \Im(s-z) \rvert - \lvert \Im
+    s \rvert \Big)\bigg).
+  \end{equation}
+  Therefore, for $\lvert \Im z \rvert > \lvert \Im s \rvert$, the integrand has
+  exponential decay and converges rapidly.
+  Thus the integral is essentially of in integrand of polynomial growth along an interval
+  of length $2 \lvert \Im s \rvert$, leading to an overall polynomial bound in $\lvert \Im
+  s \rvert$.
+\end{proof}
+
+
+This is already sufficient for many applications.
+Consider the integral transform
+\begin{equation}\label{eq:smooth_cutoff_ref}
+  \frac{1}{2\pi i} \int_{(\sigma)} D(s, S_f \times \overline{S_g}) X^s \Gamma(s) ds =
+  \sum_{n \geq 1} \frac{S_f(n) \overline{S_g(n)}}{n^{k-1}} e^{-n/X},
+\end{equation}
+as described in \S\ref{sec:cutoff_integrals}.
+Initially take $\sigma$ large enough to be in the domain of absolute convergence of $D(s,
+S_f \times \overline{S_g})$, say $\sigma \geq 4$.
+
+
+Through Lemma~\ref{lem:D_is_lots_of_W}, we rewrite~\eqref{eq:smooth_cutoff_ref} as
+\begin{equation}\label{eq:smooth_cutoff_in_W}
+  \begin{split}
+    &\frac{1}{2\pi i} \int_{(4)} \bigg(\frac{1}{2} W(s; f, \overline{g}) + \frac{W(s-1; f,
+\overline{g})}{s + k - 2} \bigg) X^s \Gamma(s) ds \\
+    &\quad+ \frac{1}{(2\pi i)^2} \int_{(4)} \int_{(-1 + \epsilon)} W(s-z; f, \overline{g})
+\zeta(z) \frac{\Gamma(z) \Gamma(s - z + k - 1)}{\Gamma(s + k - 1)}dz X^s \Gamma(s) ds.
+  \end{split}
+\end{equation}
+From the proof and statement of Theorem~\ref{thm:Wsfgmero}, we see that $W(s; f,
+\overline{g})$ is analytic in $\Re s > -\frac{1}{2}$ except for poles at $s = \frac{1}{2}$
+and at $s = -\frac{1}{2} \pm it_j$.
+Therefore when we shift lines of $s$-integration in~\eqref{eq:smooth_cutoff_in_W} to
+$\frac{1}{2} + 2\epsilon$ passes a pole at $s = \frac{3}{2}$ from $W(s-1; f,
+\overline{g})$, and otherwise no poles.
+
+
+\begin{remark}
+  For general level, we shift lines of $s$-integration to $\frac{1}{2} + \theta +
+  2\epsilon$, where $\theta < \frac{7}{64}$ is the best-known progress towards Selberg's
+  Eigenvalue Conjecture, as noted above.
+\end{remark}
+
+
+By Lemma~\ref{lem:DsSfSg_poly_growth}, this shift is justified and the resulting integral
+converges absolutely.
+Therefore
+\begin{equation}
+  \sum_{n \geq 1} \frac{S_f(n)\overline{S_g(n)}}{n^{k-1}} e^{-n/X} = C X^{\frac{3}{2}} +
+  O_{f,g,\epsilon}(X^{\frac{-1}{2}+\theta+\epsilon})
+\end{equation}
+We can evaluate the residue $C$ using Theorem~\ref{thm:Wsfgmero}.
+Note that the same analysis holds on $D(s, S_f \times S_g)$ as well.
+In total, we have proved the following theorem.
+
+
+
+\begin{theorem}\label{thm:second_moment_Sf}
+  Suppose $f$ and $g$ are weight $k$ holomorphic cusp forms on $\SL(2, \mathbb{Z})$.
+  For any $\epsilon > 0$,
+  \begin{align}
+    \sum_{n \geq 1} \frac{S_f(n) \overline{S_g(n)}}{n^{k-1}} e^{-n/X} &= C X^{\frac{3}{2}}
+    + O_{f,g,\epsilon} (X^{\frac{1}{2} + \epsilon}) \\
+    \sum_{n \geq 1} \frac{S_f(n) S_g(n)}{n^{k-1}} e^{-n/X} &= C' X^{\frac{3}{2}} +
+    O_{f,g,\epsilon} (X^{\frac{1}{2} + \epsilon})
+  \end{align}
+  where
+  \begin{equation}
+    C = \frac{\Gamma(\frac{3}{2})}{4\pi^2} \frac{L(\frac{3}{2}, f \times
+    \overline{g})}{\zeta(3)},
+    \qquad C' = \frac{\Gamma(\frac{3}{2})}{4\pi^2} \frac{L(\frac{3}{2}, f \times
+    g)}{\zeta(3)}.
+  \end{equation}
+\end{theorem}
+
+
+
+As an immediate corollary, we have the following smoothed analogue of the Classical
+Conjecture.
+\begin{corollary}
+  \begin{equation}
+    \sum_{n \geq 1} \frac{\lvert S_f(n) \rvert^2}{n^{k-1}} e^{-n/X} = C X^{\frac{3}{2}} +
+    O_{f,\epsilon} (X^{\frac{1}{2} + \epsilon}),
+  \end{equation}
+  where $C$ is the special value of $L(\frac{3}{2}, f \times \overline{f})
+  \Gamma(\frac{3}{2}) (\zeta(3) 4\pi^2)^{-1}$ as above.
+\end{corollary}
+
+
+
+\section{A General Cancellation Principle}\label{sec:higherlevel}
+
+
+
+While the techniques and methodology employed so far should work for general weight and
+level, it is not immediately obvious that that the miraculous cancellation that occurs in
+the level $1$ case should always occur.
+In particular, it is not clear that the continuous spectrum of $Z(s, 0,f \times
+\overline{g})$ will always perfectly cancel both the leading pole and potentially
+infinitely many poles from the zeta zeroes of $L(s, f\times g)\zeta(2s)^{-1}$.
+
+
+In the case when $f=g$ are the same cusp form, we can compare our methodology with the
+results of Chandrasekharan and Narasimhan to show that the leading polar cancellation does
+always occur.
+A more detailed analysis using the same methodology as the rest of this chapter would
+likely be able to show general cancellation.
+
+
+\begin{remark}
+  In Section~6 of the soon-to-be-published paper~\cite{hkldw}, my collaborators and I
+  explicitly show that this cancellation continues to hold for cusp forms $f$ and $g$ on
+  $\Gamma_0(N)$ when $N$ is square-free.
+  This is much stronger than what is showed in the rest of this section concerning general
+  cancellation between the diagonal and off-diagonal sums corresponding to $f \times
+  \overline{f}$.
+\end{remark}
+
+
+Suppose $f(z) = \sum a(n)e(nz)$ is a cusp form on $\Gamma_0(N)$ and of weight $k \in
+\mathbb{Z}\cup(\mathbb{Z} + \frac{1}{2})$ with $k > 2$.
+Theorem~1 of~\cite{chandrasekharan1964mean} gives that
+\begin{equation}\label{eq:CN_compare}
+  \frac{1}{X} \sum_{n \leq X} \frac{\lvert S_f(n) \rvert^2}{n^{k-1}}  = C X^{\frac{1}{2}}
+  + O(\log^2 X).
+\end{equation}
+
+
+Performing the decomposition from Proposition~\ref{prop:SfSg_decomposition} leads us to
+again study $Z(s, 0, f\times \overline{f})$ and $W(s; f,\overline{f})$.
+The Rankin--Selberg convolution % chktex 8
+$L(s, f\times f)/\zeta(2s)$ has a pole at $s = 1$.
+This pole must cancel with poles from $Z(s, 0, f\times \overline{f})$, as otherwise the
+methodology of this chapter contradicts~\eqref{eq:CN_compare}.
+Stated differently, we must have that the leading contribution of the diagonal term
+cancels perfectly with a leading contribution from the off-diagonal,
+\begin{equation*}
+  \Res_{s = 1}\sum_{n \geq 1}\frac{\lvert a(n) \rvert^2}{n^{s + k - 1}} = - \Res_{s =
+  1}\sum_{n,h \geq 1} \frac{a(n) \overline{a(n-h)} + \overline{a(n)}a(n-h)}{n^{s + k -
+  1}}.
+\end{equation*}
+We investigate this cancellation further by sketching the arguments of
+\S\ref{sec:analyticbehavior} and \S\ref{sec:secondmoment} in greater generality.
+
+
+The spectral decomposition corresponding to Proposition~\ref{prop:spectralexpansionfull}
+is more complicated since we must now use the Selberg Poincar\'{e} series on $\Gamma_0(N)$
+\begin{equation}
+  P_h(z,s) := \sum_{\gamma \in \Gamma_\infty \backslash \Gamma_0(N)} \Im(\gamma z)^s
+  e(h\gamma \cdot z).
+\end{equation}
+The spectral decomposition of $P_h$ will involve Eisenstein series associated to each cusp
+$\mathfrak{a}$ of $\Gamma_0(N)$.
+These Eisenstein series have expansions
+\begin{equation}
+  E_\mathfrak{a} (z,w) = \delta_\mathfrak{a} y^w + \varphi_\mathfrak{a}(0,w) y^{1-w} +
+  \sum_{m \neq 0} \varphi_\mathfrak{a} (m,w) W_w(\lvert m\rvert z),
+\end{equation}
+where $\delta_\mathfrak{a} = 1$ if $\mathfrak{a} = \infty$ and is $0$ otherwise,
+\begin{align}
+  \varphi(0, w) &= \sqrt \pi \frac{\Gamma(w - \frac{1}{2})}{\Gamma(w)} \sum_c
+  c^{-2w}S_\mathfrak{a}(0,0;c) \\
+  \varphi(m, w) &= \frac{\pi^w}{\Gamma(w)} \lvert m \rvert^{w-1} \sum_c c^{-2w}
+  S_\mathfrak{a}(0, n; c)
+\end{align}
+are generalized Whittaker-Fourier coefficients,
+\begin{equation}
+  W_w(z) = 2\sqrt y K_{w - \frac{1}{2}}(2\pi y) e(x)
+\end{equation}
+is a Whittaker function, $K_\nu(z)$ is a $K$-Bessel function, and
+\begin{equation}
+  S_\mathfrak{a}(m,n; c) = \sum_{\left(\begin{smallmatrix} a&\cdot \\ c&d
+  \end{smallmatrix}\right) \in \Gamma_\infty \backslash \sigma_\alpha^{-1} \Gamma_0(N) /
+  \Gamma_\infty} e\left( m \frac{d}{c} + n \frac{a}{c}\right)
+\end{equation}
+is a Kloosterman sum associated to double cosets of $\Gamma_0(N)$ with
+\begin{equation}
+  \Gamma_\infty = \left \langle \begin{pmatrix} 1&n \\ &1 \end{pmatrix} : n \in \mathbb{Z}
+\right\rangle \subset \SL_2(\mathbb{Z}).
+\end{equation}
+This expansion is given in Theorem 3.4 of~\cite{iwaniec2002spectral}.
+
+
+
+Letting $\mu_j$ be an orthonormal basis of the residual and cuspidal spaces, we may expand
+$P_h(z,s)$ by the Spectral Theorem (as presented in Theorem~15.5
+of~\cite{IwaniecKowalski04}) to get
+\begin{align}
+  P_h(z,s) &= \sum_j \langle P_h(\cdot, s), \mu_j \rangle \mu_j(z) \\
+           &\quad + \sum_\mathfrak{a} \frac{1}{4\pi} \int_\mathbb{R} \langle P_h(\cdot,
+           s), E_\mathfrak{a}(\cdot, \tfrac{1}{2} + it)\rangle E_\mathfrak{a}(z,
+           \tfrac{1}{2} + it) \ dt. \label{line:PoincareLevelNContinuous}
+\end{align}
+This is more complicated than the $\SL_2(\mathbb{Z})$ spectral expansion
+in~\eqref{eq:Pspectral} for two major reasons: we are summing over cusps and the
+Kloosterman sums within the Eisenstein series are trickier to handle.
+Continuing as before, we try to understand the shifted convolution sum
+\begin{equation}
+  Z(s,w,f\times f) = \frac{(4\pi)^{s + k - 1}}{\Gamma(s + k - 1)}\sum_{h \geq
+  1}\frac{\langle \lvert f \rvert^2 \Im(\cdot)^k, P_h\rangle}{h^w}
+\end{equation}
+by substituting the spectral expansion for $P_h(z,s)$ and producing a meromorphic
+continuation.
+
+
+
+The analysis of the discrete spectrum is almost exactly the same: it is analytic for $\Re
+s > -\frac{1}{2} + \theta$.
+The only new facet is understanding the continuous spectrum component corresponding
+to~\eqref{line:PoincareLevelNContinuous}.
+We expect that the continuous spectrum of $Z(s, 0, f\times \overline{f})$ has leading
+poles that perfectly cancel the leading pole of $L(s, f\times \overline{f})
+\zeta(2s)^{-1}$.
+
+Using analogous methods to those in Section~\ref{sec:analyticbehavior}, we compute the
+continuous spectrum of $Z(s, 0, f\times \overline{f})$ to get
+\begin{align}
+  &\sum_{h \geq 1}\frac{(4\pi)^{s + k - 1}}{\Gamma(s + k - 1)}\sum_{\mathfrak{a}}
+  \frac{1}{4\pi i} \int_{(\frac{1}{2})} \langle P_h(\cdot, s), E_\mathfrak{a}(\cdot,
+  t)\rangle \langle \lvert f \rvert^2 \Im(\cdot)^k, \overline{E_\mathfrak{a}(\cdot,
+  t)}\rangle \, dt \nonumber \\
+  \begin{split}
+  & = \frac{(4\pi)^k}{\Gamma(s + k - 1)\Gamma(s)}\sum_{\mathfrak{a}} \int_{-\infty}^\infty
+    \left( \sum_{h,c \geq 1} \frac{S_\mathfrak{a} (0, h; c)}{h^{s + it} c^{1 -
+    2it}}\frac{\pi^{\frac{1}{2} - it}}{\Gamma(\frac{1}{2} - it)}\right) \times \\
+  &\quad \times \Gamma(s - \tfrac{1}{2} + it)\Gamma(s - \tfrac{1}{2} - it) \langle \lvert
+    f \rvert^2 \Im(\cdot)^k, \overline{E_\mathfrak{a}(\cdot, \tfrac{1}{2} + it)} \rangle \,
+    dt.
+  \end{split}
+\end{align}
+We've placed parentheses around the arithmetic part, including the Kloosterman sums and
+factors for completing a zeta function that appears within the Kloosterman sums.
+
+
+The arithmetic part of the Eisenstein series are classically-studied $L$-functions, and
+each satisfies analogous analytic properties to the function denoted $\mathcal{Z}(s,0,z)$
+in \S\ref{sec:analyticbehavior}.
+We summarize the results of this section with the following theorem.
+
+
+\begin{theorem}\label{thm:general_weight_level_comparison}
+  Let $f$ be a weight $k > 2$ cusp form on $\Gamma_0(N)$. Then
+  \begin{align}\label{eq:general_level_general_comparison}
+    \Res_{s = 1} \sum_{n \geq 1} \frac{\lvert a(n) \rvert^2}{n^{s + k - 1}} = - \Res_{s =
+    1} \sum_{n,h \geq 1} \frac{a(n)\overline{a(n-h)}}{n^{s + k - 1}}- \Res_{s = 1}
+    \sum_{n,h \geq 1} \frac{\overline{a(n)} a(n-h)}{n^{s + k - 1}},
+  \end{align}
+  or equivalently
+  \begin{align}\label{eq:general_level_kloosterman}
+    -\frac{1}{2}\Res_{s = 1} &\frac{L(s, f\times f)}{\zeta(2s)} =\\
+    &= \Res_{s = 1}\sum_{\mathfrak{a}} \frac{1}{4\pi} \int_\mathbb{R} \langle P_h(\cdot,
+s), E_\mathfrak{a}(\cdot, \tfrac{1}{2} + it)\rangle \langle \lvert f \rvert^2
+\Im(\cdot)^k, \overline{E_\mathfrak{a}(\cdot, \tfrac{1}{2} + it)}\rangle \, dt \\
+    \begin{split}
+      &= \Res_{s = 1} \frac{(4\pi)^k}{\Gamma(s + k - 1)\Gamma(s)}\sum_{\mathfrak{a}}
+      \int_{-\infty}^\infty  \left( \sum_{h,c \geq 1} \frac{S_\mathfrak{a} (0, h; c)}{h^{s
+      + it} c^{1 - 2it}}\frac{\pi^{\frac{1}{2} - it}}{\Gamma(\frac{1}{2} - it)}\right) \\
+      &\quad \times \Gamma(s - \tfrac{1}{2} + it)\Gamma(s - \tfrac{1}{2} - it) \langle
+      \lvert f \rvert^2 \Im(\cdot)^k, \overline{E_\mathfrak{a}(\cdot, \tfrac{1}{2} + it)}
+      \rangle \, dt.
+    \end{split}
+  \end{align}
+\end{theorem}
+
+% vim: tw=90

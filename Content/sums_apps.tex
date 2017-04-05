@@ -1,0 +1,319 @@
+
+In this chapter, we highlight some applications of the Dirichlet series $D(s, S_f \times
+\overline{S_g})$ and $D(s, S_f \times S_g)$.
+We begin with completed applications, summarizing the results and methodology.
+Towards the end of the chapter, we highlight ongoing and future work.
+
+
+\vspace{-1in}
+\subsection*{\center{Reacknowledgements to my Collaborators}}
+
+\begin{quote}
+  Each of the applications in this chapter were carried out (or are being carried out)
+  with Alex Walker, Chan Ieong Kuan, and Tom Hulse, each of whom are my academic brothers,
+  collaborators, and friends.
+\end{quote}
+
+
+
+
+\section{Applications}
+
+
+The Dirichlet series $D(s, S_f \times \overline{S_g})$ and $D(s, S_f \times S_g)$ present
+a new avenue for investigating the behavior of $S_f$, $S_f(n)S_g(n)$, and related objects.
+As $S_f$ is analogous to the error term in the Gauss Circle Problem (cf.
+\S\ref{c:introduction}), it is perhaps most natural to ask about the sizes of $S_f(n)$.
+
+
+
+\subsection*{Long Sums}
+
+
+One result of this form was presented in \S\ref{c:sums}, in
+Theorem~\ref{thm:second_moment_Sf} giving smoothed averages for $S_f(n)\overline{S_g(n)}$
+and, if $f = g$, smoothed averages for $\lvert S_f(n) \rvert^2$.
+This theorem was proved completely for $f$ and $g$ on level $1$.
+
+
+In~\cite{hkldw}, my collaborators and I analyze further smoothed asymptotics for
+$S_f(n)\overline{S_g(n)}$ for forms $f$ and $g$ on $\Gamma_0(N)$ for $N$ squarefree,
+proving analogous results to Theorem~\ref{thm:second_moment_Sf} for forms even of
+half-integral weight.
+When $f = g$, this is a generalized smoothed analogue to the result of
+Cram\'er~\cite{cramer1922} giving that
+\begin{equation}
+  \frac{1}{X} \int_0^X \Big \lvert \sum_{n \leq t} r_2(n) - \pi t \Big \rvert^2 dt = c
+  X^{1/2} + O(X^{\frac{1}{4} + \epsilon}),
+\end{equation}
+giving evidence towards a generalized Circle problem.
+
+
+It is very interesting (and very new) that if $f \neq g$, then $S_f S_g$ still appears to
+satisfy a generalized Circle problem.
+Recalling Chandrasekharan and Narasimhan's result that $S_f(X) =
+\Omega_{\pm}(X^{\frac{k-1}{2} + \frac{1}{4}})$, it's apparent that both $S_f(n)$ and
+$S_g(n)$ oscillate in size between $\pm n^{\frac{k-1}{2} + \frac{1}{4}}$.
+From first principles alone, it seems possible that $S_f(n)$ might be small or negative
+with $S_g(n)$ is large and positive, leading to large cancellation in average sums $\sum
+S_f(n) S_g(n)$.
+But Theorem~\ref{thm:second_moment_Sf} indicates that there is not large cancellation of
+this sort.
+Indeed, Theorem~\ref{thm:second_moment_Sf} roughly indicates that the partial sums of
+Fourier coefficients of $f(z)$ correlate about as well with the partial sums of Fourier
+coefficients of $g(z)$ as with itself, up to the constant $L(\frac{3}{2}, f \times g)$ of
+proportionality.
+
+
+By mimicking the techniques of Chapter~\ref{c:sums}, it is possible to apply different
+integral transforms to $D(s, S_f \times \overline{S_g})$ or $D(s, S_f \times S_g)$, either
+to get different long-average estimates, or estimates of a different variety.
+
+
+
+\subsection*{Short-Interval Averages}
+
+
+Now restrict attention to $f$ a full-integer weight cusp form on $\SL(2, \mathbb{Z})$, and
+suppose that $f = g$.
+In~\cite{hkldwShort}, my collaborators and I analyze short-interval estimates of the type
+\begin{equation}\label{eq:short-interval-estimate}
+  \frac{1}{X^{2/3}(\log X)^{1/6}} \sum_{\lvert n-X \rvert < X^{2/3} (\log X)^{1/6}} \lvert
+  S_f(n) \rvert^2 \ll X^{k-1 + \frac{1}{2}},
+\end{equation}
+which says essentially that the Classical Conjecture holds \emph{on average} over short
+intervals of width $X^{\frac{2}{3}} (\log X)^{\frac{1}{6}}$ around $X$.
+This is qualitatively a  much stronger result than the long-interval estimate, and is a
+vast improvement over previously known results.
+
+
+It is interesting to note that it is possible to get bounds for individual sums $S_f(n)$
+from short-interval estimates.
+
+
+\begin{proposition}
+  Suppose that
+  \begin{equation}
+    \frac{1}{X^w} \sum_{\lvert n - X \rvert < X^w} \lvert S_f(n) \rvert^2 \ll X^{k - 1 +
+    \frac{1}{2}}
+  \end{equation}
+  for $w \geq \frac{1}{4}$.
+  Then also
+  \begin{equation}
+    S_f(X) \ll X^{\frac{k-1}{2} + \frac{1}{4} + (\frac{w}{3} - \frac{1}{12})}.
+  \end{equation}
+\end{proposition}
+
+
+\begin{proof}
+  We only sketch the proof.
+  For each individual Fourier coefficient $a(n)$, we have Deligne's bound $a(n) \ll
+  n^{\frac{k-1}{2}}$.
+  Suppose there is an $X$ such that $S_f(X) \gg X^{\frac{k-1}{2} + \frac{1}{4} + \alpha}$.
+  Then $S_f(X + \ell) \gg X^{\frac{k-1}{2} + \frac{1}{4} + \alpha}$ for $\ell <
+  X^{\frac{1}{4} + \alpha - \epsilon}$ for any $\epsilon > 0$, as it takes approximately
+  $X^{\frac{1}{4} + \alpha}$ coefficients $a(n)$ to combine together to cancel $S_f(X)$.
+  But then
+  \begin{equation}
+    \frac{1}{X^w} \sum_{\lvert n - X \rvert < X^w} \lvert S_f(X) \rvert^2 \gg
+    \frac{1}{X^w} X^{k-1 + \frac{1}{2} + 2\alpha} X^{\min(w, \frac{1}{4} + \alpha)}.
+  \end{equation}
+  The $X^{\min(w, \frac{1}{4} + \alpha)}$ term comes from the width of the interval where
+  each $S_f(X + \ell)$ is approximately $X^{\frac{k-1}{2} + \frac{1}{4} + \alpha}$.
+  Comparing exponents of $X$ with
+  \begin{equation}
+    \frac{1}{X^w} \sum_{\lvert n - X \rvert < X^w} \lvert S_f(n) \rvert^2 \ll X^{k - 1 +
+    \frac{1}{2}}
+  \end{equation}
+  shows that
+  \begin{equation}
+    2\alpha + \min(w, \tfrac{1}{4} + \alpha) \leq w,
+  \end{equation}
+  from which either $\alpha = 0$ or $\alpha < \tfrac{1}{3}( w - \tfrac{1}{4})$.
+\end{proof}
+
+
+\begin{corollary}
+  A short-interval estimate of the type~\eqref{eq:short-interval-estimate}, with interval
+  $\lvert n-X \rvert \leq X^{\frac{1}{4} + \epsilon}$, would prove the Classical
+  Conjecture.
+\end{corollary}
+
+The short-interval estimate~\eqref{eq:short-interval-estimate} only produces the
+individual estimate $S_f(n) \ll X^{\frac{k-1}{2} + \frac{1}{4} + \frac{5}{36}}$, which is
+$1/18$ worse than the current best-known individual bound $S_f(n) \ll X^{\frac{k-1}{2} +
+\frac{1}{3}}$.
+On the other hand, it is by far the strongest short-interval average estimate.
+(Note that the individual bound $S_f(n) \ll X^{\frac{k-1}{2} + \frac{1}{3}}$ doesn't give
+a Classical Conjecture on average type result for any interval length).
+
+
+\begin{remark}
+  It is possible to use the short-interval estimate~\eqref{eq:short-interval-estimate},
+  along with an argument used in Chapter~\ref{c:hyperboloid} which makes use of multiple
+  integral transforms in combination,
+\end{remark}
+
+
+To prove the estimate~\eqref{eq:short-interval-estimate}, one builds upon the meromorphic
+information of $D(s, S_f \times \overline{S_f})$ and applies an integral transform
+\begin{equation}
+  \frac{1}{2\pi i} \int_{(4)} D(s, S_f \times \overline{S_f}) \exp{\Big(\frac{\pi
+  s^2}{y^2} \Big)} \frac{X^s}{y} ds
+\end{equation}
+to understand (essentially) a sum over the interval $\lvert n - X \rvert < X/y$.
+For more details and analysis, refer to~\cite{hkldwShort}.
+
+
+\subsection*{Sign-Changes of Sums of Coefficients of Cusp Forms}
+
+As noted in Chapter~\ref{c:motivations}, the original guiding question that led to the
+investigation of $D(s, S_f \times \overline{S_g})$ was concerning the sign changes within
+the sequence $\{S_f(n)\}_{n \in \mathbb{N}}$.
+In~\cite{hkldwSigns}, my collaborators and I succeeded in answering our original guiding
+question.\footnote{The story behind the scope of this paper is a bit interesting, as it
+  was written at the same time as~\cite{hkldwShort}.
+  Tom Hulse had learned of a set of criteria guaranteeing sign changes from a paper of Ram
+  Murty, and he first thought of how to generalize the criteria to sequences of real and
+  complex coefficients.
+  I had thought it was possible to further generalize towards smoothed sums, but we failed
+  in this regard.
+  This morphed into our generalization, stating how to translate from analytic properties
+  of Dirichlet series directly into sign-change results of the coefficients.
+We each focused on the parts that interested us most: I was interested in $S_f(n)$ and
+$S_f^\nu(n)$ (defined below), Hulse was interested in real and complex coefficients, and
+Keong was interested in $\GL(3)$.
+In the end, each aspect strengthened the overall paper and led to a nice unified
+description of somewhat disjoint sign-change results.}
+
+In this paper, we proved a veritable cornucopia of results concerning the sign changes of
+coefficients and sums of coefficients of cusp forms on $\GL(2)$ and $\GL(3)$.
+Here, I emphasize what I focused on, and what follows most naturally from the
+considerations of Chapter~\ref{c:sums}.
+
+Let $f$ be a weight $0$ Maass form or a holomorphic cusp form of full or half-integer
+weight $k$ on a congruence subgroup $\Gamma \subseteq \SL(2, \mathbb{Z})$, possibly with
+nontrivial nebentypus.\index{sign change results}
+Write $f$ as either
+\begin{equation}
+  f(z) = \sum_{n \neq 0} A_f(n) \sqrt{y} K_{it_j} (2\pi \lvert y \rvert n) e^{2\pi i n x}
+\end{equation}
+if $f$ is a Maass form with eigenvalue $\lambda_j = \frac{1}{4} + t_j^2$, or
+\begin{equation}
+  f(z) = \sum_{n \geq 1} A_f(n)n^{\frac{k-1}{2}} e^{2 \pi i n z}
+\end{equation}
+if $f$ is a holomorphic cusp form.
+We write the coefficients of $f$ as $a_f(n) = A_f(n)n^{\kappa(f)}$ with
+\begin{equation}
+  \kappa(f) = \begin{cases}
+    \frac{k-1}{2} & \text{if } $f$ \; \text{is a holomorphic cusp form}, \\
+    0 & \text{if } $f$ \; \text{is a Maass form},
+  \end{cases}
+\end{equation}
+Then $n^{\kappa(f)}$ conjecturally normalizes the coefficients $A_f(n)$ correctly
+depending on whether $f$ is a holomorphic cusp form or a Maass form.
+It is expected that $A_f(n) \ll n^\epsilon$, but in general it is only known that
+\begin{equation}
+  A_f(n) \ll n^{\alpha(f) + \epsilon}
+\end{equation}
+where
+\begin{equation}
+  \alpha(f) = \begin{cases}
+    0 & \text{if f is full-integral weight holomorphic}, \\
+    \frac{3}{16} & \text{if f is half-integral weight holomorphic}, \\
+    \frac{7}{64} & \text{if f is a Maass form}.
+  \end{cases}
+\end{equation}
+Define the partial sums of normalized coefficients $S_f^\nu(n)$ as
+\index{S@$S_f^\nu(n)$}
+\begin{equation}
+  S_f^\nu(n) = \sum_{m \leq n} \frac{a_f(m)}{m^\nu}
+\end{equation}
+Then by studying the Dirichlet series $D(s, S_f^\nu, \overline{S_g^\nu})$ and $D(s,
+S_f^\nu)$ in~\cite{hkldwSigns}, we proved the following theorem.
+
+
+\begin{theorem}
+  Let $f$ be a weight $0$ Maass form or holomorphic cusp form as described above.
+  Suppose that $0 \leq \nu < \kappa(f) + \frac{1}{6} - \frac{2 \alpha(f)}{3}$.
+  If there is a coefficient $a_f(n)$ such that $\Re a_f(n) \neq 0$ (resp. $\Im a_f(n) \neq
+  0$), then the sequence $\{\Re S_f^\nu(n)\}_{n \in \mathbb{N}}$ (resp. $\{\Im
+S^\nu_f(n)\}_{n \in \mathbb{N}}$) has at least one sign change for some $n \in [X, X +
+X^{r(\nu)}]$ for $X \gg 1$, where
+  \begin{equation}
+    r(\nu) = \begin{cases}
+      \frac{2}{3} + \frac{2\alpha(f)}{3} + \epsilon & \text{if } \nu < \kappa(f) +
+      \frac{\alpha(f)}{3} - \frac{1}{6}, \\
+      \frac{2}{3} + \frac{2\alpha(f)}{3} + \Delta + \epsilon & \text{if } \nu = \kappa(f)
+      + \frac{\alpha(f)}{3} - \frac{1}{6} + \Delta, 0 \leq \Delta < \frac{1}{3} - \frac{2
+      \alpha(f)}{3}.
+    \end{cases}
+  \end{equation}
+\end{theorem}
+
+
+In other words, we showed high regularity of the sign changes of sums of normalized
+coefficients, depending on the amount of normalization.
+As should be expected, higher amounts of normalization lead to fewer guaranteed sign
+changes.
+
+
+However, we show that it is possible to take $\nu$ slightly larger than $\kappa(f)$, so
+that the individual coefficients $a_f(n)/n^\nu$ are each decaying in size.
+For example, for full-integer weight holomorphic cusp forms, we can take
+\begin{equation}
+  \nu = \frac{k-1}{2} + \frac{1}{6} - \epsilon
+\end{equation}
+and guarantee at least one sign change in $\{S_f^\nu(n)\}_{n \in \mathbb{N}}$ for some $n$
+in $[X, 2X]$ for sufficiently large $X$.
+Yet for this normalization, we have
+\begin{equation}
+  S_f^\nu(n) = \sum_{m \leq n} \frac{a_f(m)}{m^{\frac{k-1}{2} + \frac{1}{6} - \epsilon}},
+\end{equation}
+so that the coefficients are \emph{decaying} and look approximately like $n^{-1/6}$.
+It is a remarkable fact that the coefficients are arranged in such a way that there are
+still infinitely many sign regularly-spaced sign changes even though they are
+\emph{over-normalized}.
+
+This suggests a certain regularity of the sign changes of individual coefficients
+$a_f(n)$, but it is challenging to describe the exact nature of this regularity.
+
+
+
+\section{Directions for Further Investigation: Non-Cusp Forms}
+
+
+
+In the investigations carried out thus far, we have taken $f$ to be a cusp form.
+But one can attempt to perform the same argument on sums of coefficients of noncuspidal
+automorphic forms.
+
+
+One particular example would be to consider sums of the form
+\begin{equation}
+  S_{\theta^k}(n) = \sum_{m \leq n} r_k(m),
+\end{equation}
+where $r_k(m)$ is the number of ways of representing $m$ as a sum of $k$ squares.
+This is equivalent to the Gauss $k$-dimensional sphere problem, which asks how many
+integer lattice points are contained in a $k$-dimensional sphere of radius $\sqrt{n}$?
+
+
+My collaborators and I have been focusing our attention on this problem, and we expect to
+have a result by mid 2017.
+
+
+It is natural to consider a general case of non-cuspidal automorphic forms.
+The Gauss $k$-dimensional sphere problem suffers from the fact that the underlying
+automorphic form is of half-integral weight for odd $k$.
+
+
+\begin{remark}
+  There are limitations to this technique.
+  We can only consider forms $f$ for which we understand the shifted convolution sum
+  coming from $f \times f$ sufficiently well.
+  So we are not capable of understanding sums of coefficients of Maass forms at this time,
+  since shifted convolution sums of Maass forms with Maass forms remain mysterious.
+\end{remark}
+
+
+% vim: tw=90 cc=90

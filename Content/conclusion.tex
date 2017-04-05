@@ -1,0 +1,119 @@
+
+
+In the preceding, we considered two problems closely related to the classical Gauss
+Circle problem.
+
+
+We first considered partial sums $S_f(n) = \sum_{m \leq n} a(n)$ of Fourier coefficients
+of a cusp form $f(z) = \sum a(n) e(nz)$, and showed that on average these partial sums
+behave like the error term in the Gauss Circle problem.
+To study these partial sums, we constructed the Dirichlet series
+\begin{equation}
+  D(s, S_f \times S_g) = \sum_{n \geq 1} \frac{S_f(n) S_g(n)}{n^{s + k - 1}},
+\end{equation}
+as well as some related Dirichlet series, and showed that these Dirichlet series have
+meromorphic continuation to the plane.
+
+
+The primary challenge comes from understanding the properties of the shifted convolution
+sum
+\begin{equation}
+  \sum_{n,m \geq 1} \frac{a(n+m) a(n)}{(n+m)^s n^w}.
+\end{equation}
+In Chapter~\ref{c:sums}, we approached this sum through a spectral expansion of a Poincare
+series appearing in an inner product against an appropriately chosen product of cuspforms.
+We showed that this spectral expansion is, to a large extent, explicitly understandable.
+By relating the properties of partial sums of coefficients of cusp forms to a particular
+spectral expansion, we explicitly relate the arithmetic properties of the coefficients to
+the very analytic properties of the spectrum of the hyperbolic Laplacian.
+
+
+It is interesting to reflect on the successes and limitations of this approach.
+In Chapters~\ref{c:sums} and~\ref{c:sums_apps}, we showed that we are now able to prove
+many improvements to classical results.
+But we were unable to improve the estimate for the size of a single partial sum.
+Instead, we are only capable of matching the estimate due to Hafner and Ivi\'c that
+\begin{equation}
+  S_f(X) \ll X^{\frac{k-1}{2} + \frac{1}{3} + \epsilon}.
+\end{equation}
+From the point of view of this thesis, the obstacle to further improvement was directly
+seen to be lack of understanding of the discrete spectrum (in terms of their distribution
+and cancellation) and the Lindel\"{o}f Hypothesis (or rather subconvexity) type bounds for
+Rankin-Selberg convolutions.
+Fundamentally, the techniques in this thesis are very different from previously attempted
+techniques --- thus the similarity in the final bounds heuristically seems to represent an
+absolute bound on our current understanding.
+
+
+
+
+In Chapter~\ref{c:sums_apps} we noted several other applications of the Dirichlet series
+$D(s, S_f \times S_g)$, including several projects that have already led to published
+papers~\cite{hkldw, hkldwShort, hkldwSigns}.
+We have shown that the Dirichlet series $D(s, S_f \times S_g)$ present powerful tools to
+study a variety of questions related to the size, shape, and behavior of sums of
+coefficients of cusp forms.
+Through analysis of $D(s, S_f \times S_g)$, it is possible to prove results on long
+interval estimates, short interval estimates, and sign changes.
+More generally, one can apply many different Mellin integral transforms to $D(s, S_f
+\times S_g)$ in order to directly study different aspects.
+
+
+One avenue of exploration that my collaborators and I have begun to explore it to perform
+an analogous construction of $D(s, S_f \times S_f)$ in cases when $f$ is not a cusp form.
+This is proving to be a very interesting direction, and we will be able to explore more
+and different variants of the Gauss Circle problem.
+One particular direction is discussed at the very end of Chapter~\ref{c:sums_apps}.
+
+
+There is another interesting direction for further exploration, based on the techniques
+and observations from Chapters~\ref{c:sums} and~\ref{c:sums_apps}.
+As an individual Fourier coefficient is roughly of size $a(n) \sim n^{\frac{k-1}{2}}$ and
+the partial sum appears to satisfy $S_f(n) \ll n^{\frac{k-1}{2} + \frac{1}{4}}$, there is
+a large amount of cancellation among individual coefficients.
+
+
+But I ask the following question: What if we consider partial sums formed from the partial
+sums $S_f(n)$?
+That is, what should we expect from the sizes of
+\begin{equation}
+  \sum_{n \leq X} S_f(n)?
+\end{equation}
+Further, what if we iterate this process and consider sums of sums of sums, and so on?
+Initial numerical investigation suggests that there continues to be extreme amounts of
+cancellation, far more than would occur by merely random chance.
+
+
+In Chapter~\ref{c:hyperboloid}, we considered the question of how many points lie within
+the $d$-dimensional sphere of radius $\sqrt R$ and on the one-sheeted hyperboloid
+\begin{equation}
+  \mathcal{H}_{h,d} = X_1^2 + \cdots + X_{d-1}^2 = X_d^2 + h,
+\end{equation}
+which is essentially a constrained Gauss Sphere problem.
+We were able to prove improved bounds and asymptotics for this number of points.
+
+
+On comparing the main techniques of Chapter~\ref{c:hyperboloid} with those of
+Chapter~\ref{c:sums}, it is clear that there are many similarities.
+In both, we reduce the study towards sufficient understanding of a carefully chosen
+shifted convolution sum.
+And in both, we understand the convolution sum by translating the properties into
+properties of functions associated to the spectrum of the hyperbolic Laplacian.
+
+
+The analysis and proof of the main theorem of Chapter~\ref{c:hyperboloid} is not
+completely optimized.
+In particular, it is possible to perform a very close and detailed analytic argument,
+similar to the argument appearing in~\cite{hkldwShort}, in order to further improve the
+bound on the main error term of the lattice point estimate.
+It may even be possible to improve estimates for the divisor sum $\sum d(n^2 + 1)$, whose
+connection with lattice points on hyperboloids is explained in
+Chapter~\ref{c:hyperboloid_apps}.
+
+
+More generally, the ideas and techniques of Chapter~\ref{c:hyperboloid} can be extended to
+more general products of theta functions.
+By replacing the Jacobi theta function with theta functions associated to different
+quadratic forms, it should be possible to understand a wide variety of quadratic surfaces.
+
+% vim: tw=90

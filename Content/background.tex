@@ -1,0 +1,1202 @@
+
+In this chapter, we review and describe some topics that will be used heavily in later
+chapters of this thesis.
+This chapter should be used as a reference.
+The topics covered are classical and well-understood, but included for the sake of
+presenting a complete idea.
+
+
+
+\section{Notation Reference}
+
+\index{Landau!$\ll$}
+\index{Landau!$\Omega$}
+We use the basic notation of Landau, so that
+\begin{equation}
+  F(x) \ll G(x)
+\end{equation}
+means that there are constants $C$ and $X$ such that for all $x > X$, we have that
+\begin{equation}
+  \lvert F(x) \rvert \leq C G(x).
+\end{equation}
+We use $F(x) \ll G(x)$ and $F(x) = O(G(x))$ interchangeably.
+Similarly,
+\begin{equation}
+  F(x) = \Omega(G(x))
+\end{equation}
+means that $G(x)$ does not satisfy $G(x) \ll F(x)$.
+Stated differently, $F(x)$ is as least as large as $G(x)$ (up to a constant) infinitely
+often.
+
+
+
+We will use $r_d(n)$ to denote the number of representations of $n$ as a sum of $d$
+squares, i.e.\
+\index{r@$r_d(n)$}
+\begin{equation}
+  r_d(n) := \# \{ \bm x \in \mathbb{Z}^d : x_1^2 + \cdots + x_d^2 = n \}.
+\end{equation}
+We will denote partial sums of $r_d(n)$ by $S_d$, i.e.\
+\index{S@$S_d(X)$}
+\begin{equation}
+  S_d(X) := \sum_{n \leq X} r_d(n).
+\end{equation}
+
+
+\index{B@$B_d(R)$}
+We use $B(R)$ to denote the disk of radius $R$ centered at the origin.
+It is traditional to talk about the \emph{Gauss Circle problem} instead of the \emph{Gauss
+Disk problem}, and so we will frequently refer to $B(R)$ as a circle.
+We use $B_d(R)$ to denote the dimension $d$ ball of radius $R$ centered at the origin, and
+for similar conventional reasons we will frequently refer to $B_d(R)$ as a sphere.
+Throughout this work, we will never distinguish between points on the surface of a sphere
+and those points contained within the sphere, so we use these terms interchangeably.
+
+
+With respect to modular forms, we typically use the conventions and notations
+of~\cite{Bump98, Goldfeld2006automorphic}.
+
+
+Typically, $f$ will be a weight $k$ holomorphic modular form on a congruence subgroup of
+$\SL(2, \mathbb{Z})$.
+The Fourier expansion of $f$ will be written as
+\begin{equation}
+  f(z) = \sum_{n \geq 1} a(n) e(nz),
+\end{equation}
+where $e(nz) = e^{2\pi i n z}$.\index{e@$e(nz)$}
+Note that these coefficients are not normalized.
+When it is necessary to use a second holomorphic modular form, we will denote it by $g$
+and its Fourier expansion by
+\begin{equation}
+  g(z) = \sum_{n \geq 1} b(n) e(nz).
+\end{equation}
+Partial sums of these coefficients are denoted by
+\index{S@$S_f(X)$}
+\begin{equation}
+  S_f(X) := \sum_{n \leq X} a(n), \qquad S_g(X) := \sum_{n \leq X} b(n).
+\end{equation}
+
+
+Note that we will use $k$ to denote a full integer or a half integer in reference to
+``modular forms of weight $k$.''
+This is a different convention than some authors, who use $k/2$ in discussion of
+half-integral weight forms.
+
+
+Given two modular forms $f$ and $g$ defined on a congruence subgroup $\Gamma \subseteq
+\SL(2, \mathbb{Z})$, we will let $\langle f, g \rangle$ denote the Petersson inner
+product
+\index{Petersson inner product}
+\begin{equation}
+  \langle f, g \rangle := \iint_{\Gamma \backslash \mathcal{H}} f(z) \overline{g(z)}
+  d\mu(z).
+\end{equation}
+In this expression, $\mathcal{H}$ denotes the complex upper half plane and $d\mu(z)$
+denotes the Haar measure, which in this case is given by
+\begin{equation}
+  d\mu(z) = \frac{dx\, dy}{y^2}.
+\end{equation}
+
+
+We will use $\kron{a}{n}$ to denote the Jacobi symbol.
+Note that this sometimes may look very similar to a fraction.
+Generally, the Jacobi symbol involves only arithmetic data, while fractions will have
+complex valued arguments.
+
+
+We also roughly follow some conventions concerning variable names.
+
+
+The primary indices of summation will be $m$ and $n$.
+If there is a shifted summation, we will usually use $h$ to denote the shift.
+We will sometimes use $\ell$ to denote a distinguished index of summation (or more
+generally a distinguished variable in local discussion).
+The one major exception to this convention is the index $j$, which we reserve for spectral
+summations (and in particular the discrete spectrum) or as an index for residues and
+residual terms appearing from spectral analysis.
+
+
+Complex variables will be denoted by $z,s,w$, and $u$.
+Almost always $z = x + iy$ will be in the upper half plane $\mathcal{H}$, and denotes the complex
+variable of the underlying modular form.
+The other variables, $s,w$, and $u$ denote generic complex variables and usually appear as
+the variables of various Dirichlet series.
+We often follow the odd but classical convention of mixing Roman and Greek characters, and
+write $s = \sigma + it$.
+Note that we sometimes use $t$ to denote a generic real variable in integrals.
+
+
+\index{L@$L^{(q)}(s)$}
+If $L(s)$ is an $L$-function, then $L^{(q)}(s)$ denotes that $L$ -function, but with the
+Euler factors corresponding to primes $p$ dividing $q$ removed.
+
+
+\index{a@$\mathfrak{a}$}
+We use $\mathfrak{a}$ to denote a cusp of a modular curve.
+In this thesis, this almost always means that $\mathfrak{a}$ is one of the three cusps of
+$\Gamma_0(4) \backslash \mathcal{H}$.
+
+
+
+
+\section{On Full and Half-Integral Weight Eisenstein Series}\label{sec:Eisen_summary}
+\index{Eisenstein series!weight $k$}
+\index{Eisenstein series!half-integral weight}
+\index{E@$E_\mathfrak{a}^k(z,w)$| \\see {Eisenstein series!weight $k$} }
+
+
+The primary goal of this section is to describe some characteristics of the weight $k$
+Eisenstein series for $\Gamma_0(4)$, both for full-integral weight and half-integral
+weight $k$.
+These details are often considered standard exercises in the literature, and are usually
+tedious to compute.
+We will emphasize the important properties of the Eisenstein series necessary for the
+argument in this chapter --- some with complete proofs, and some with descriptions of the
+method of proof.
+
+
+\index{Eisenstein series!weight $0$}
+Selberg defined the weight $0$ classical real analytic Eisenstein series $E(z,w)$ on
+$\SL(2, \mathbb{Z})$ by
+\begin{equation}
+  E(z,w) = \sum_{\gamma \in \Gamma_\infty \backslash \SL(2, \mathbb{Z})} \Im (\gamma z)^s.
+\end{equation}
+The weight $0$ Eisenstein series $E(z,w)$ is very classical and very well-understood, and
+both~\cite[Chapter 3]{Goldfeld2006automorphic} and~\cite[Chapter 13]{Iwaniec97} provide an
+excellent description of its properties.
+
+
+Weight $k$ Eisenstein series are also very classical, but they appear less often and
+with much less exposition in the literature.
+Half-integral weight Eisenstein series occupy an even smaller role in the literature,
+although in recent years the study of metaplectic forms and metaplectic Eisenstein series
+has grown in popularity.
+
+
+We will use $E_\mathfrak{a}^k(z,w)$ to denote the weight $k$ Eisenstein series associated
+to the cusp $\mathfrak{a}$.
+In this expression, $k$ can be either a half-integer or a full-integer.
+In this thesis, we use the half-integral weight Eisenstein series on the congruence
+subgroup $\Gamma_0(4)$.
+The quotient $\Gamma_0(4) \backslash \mathcal{H}$ has three cusps, at $\infty, 0$, and
+$\frac{1}{2}$.
+
+
+We shall describe the three Eisenstein series $E^k_\infty(z,w), E^k_0(z,w)$, and
+$E^k_{\frac{1}{2}}(z,w)$, both for full-integral weight and half-integral weight $k$.
+These Eisenstein series are defined as
+\begin{align}
+  E_\infty^k(z,w) &= \sum_{\gamma \in \Gamma_\infty \backslash \Gamma_0(4)} \Im(\gamma
+  z)^w J(\gamma, z)^{-2k}
+  =
+  \sum_{\substack{\pm (c,d) \in \mathbb{Z}^2 \\ (c,d) \neq (0,0) \\ \gcd(4c,d) = 1}}
+  \frac{y^w \varepsilon_d^{2k} \kron{4c}{d}^{2k}}{\lvert 4cz + d \rvert^{2w-k}(4cz+d)^k}
+  \\
+  E_0^k(z,w) &= \Big( \frac{z}{\lvert z \rvert} \Big)^{-k} E_\infty^k(\tfrac{-1}{4z}, w)
+  =
+  \sum_{\substack{\pm(c,d) \in \mathbb{Z}^2 \\ (c,d) \neq (0,0) \\ \gcd(4c, d) = 1}}
+  \frac{(y/4)^w \varepsilon_d^{2k} \kron{4c}{d}^{2k}}{\lvert -c + dz \rvert^{2w - k} (-c +
+  dz)^k}
+  \\
+  E_{\frac{1}{2}}(z,w) &= \Big( \frac{2z+1}{\lvert 2z+1 \rvert} \Big)^{-k}
+  E_\infty^k(\tfrac{z}{2z+1}, w) =
+  \sum_{\substack{\pm(c,d) \in \mathbb{Z}^2 \\ (c,d) \neq (0,0) \\ \gcd(2c, d) = 1 \\
+  \gcd(c,2) = 1}} \frac{y^w \varepsilon_d^{2k} \kron{2c}{d}^{2k}}{\lvert 2cz+d \rvert^{2w -
+  k}(2cz+d)^k}.
+\end{align}
+In these expressions, $\varepsilon_d$ denotes the sign of the Gauss sum associated to the
+primitive real quadratic Dirichlet character $\chi_d$, and is given by
+\index{epsilon@$\varepsilon_d$}
+\begin{equation}
+  \varepsilon_d = \begin{cases}
+    1 & d \equiv 1 \bmod 4, \\
+    i & d \equiv 3 \bmod 4.
+  \end{cases}
+\end{equation}
+We use $J(\gamma, z)$ to denote the normalized half-integral weight cocycle
+\index{J@$J(\gamma, z)$}
+$J(\gamma, z) = j(\gamma, z)/\lvert j(\gamma, z) \rvert$,
+where $j(\gamma, z)$ is the standard $\theta$ cocycle\index{j@$j(gamma, z)$}
+\begin{equation}
+  j(\gamma, z) :=
+  \theta(\gamma z)/\theta(z) = \varepsilon_d^{-1} \kron{c}{d} (cz + d)^{\frac{1}{2}}.
+\end{equation}
+Here, $\theta(z)$ denotes the Jacobi theta function,\index{theta@$\theta(z)$}
+which is a modular form of weight $\frac{1}{2}$ on $\Gamma_0(4)$.
+Thus this cocycle law holds for $\gamma = \big( \begin{smallmatrix} a&b\\c&d
+\end{smallmatrix} \big) \in \Gamma_0(4)$.
+
+
+
+Notice that when $k$ is a full integer, the weighting factor simplifies to
+\begin{equation}
+  \varepsilon_d^{2k} \kron{4c}{d}^{2k} = \kron{-1}{d}^k,
+\end{equation}
+and when $k$ is a half-integer, the weighting factor simplifies slightly to
+\begin{equation}
+  \varepsilon_d^{2k} \kron{4c}{d}^{2k} = \varepsilon_d^{2k} \kron{4c}{d},
+\end{equation}
+(where in both cases the $4$ is replaced by $2$ for $E_\frac{1}{2}^k$).
+This is a restatement of the fact that when $k$ is a full integer, the transformation law
+is full-integral with character $\kron{-1}{\cdot}^k$, while for half-integers the
+transformation law is a power of a standard normalized theta cocycle.
+
+
+When $k$ is a half-integer, these three Eisenstein series are essentially the same three
+Eisenstein series that appear in~\cite{goldfeld1985eisenstein}, only with some notational
+differences.
+Firstly, in~\cite{goldfeld1985eisenstein}, half-integer weights are denoted by
+$\frac{k}{2}$, while in this work we denote all weights (both integral and half-integral)
+by $k$.
+Secondly, we shift the spectral argument, replacing $w$ with $w - \frac{k}{2}$ as compared
+to~\cite{goldfeld1985eisenstein}.
+This has the effect of using the normalized cocycle $J(\gamma,z)$ instead of
+$j(\gamma,z)$, and also normalizes the arguments of the $L$-functions that appear in the
+coefficients of the Eisenstein series.
+
+
+\index{rho@$\rho_\mathfrak{a}^k$}
+Each Eisenstein series has a Fourier-Whittaker expansion of the form
+\begin{equation}
+  E_\mathfrak{a}^k(z,w) = y^w + \rho_\mathfrak{a}^k(0, w) y^{1-w} + \sum_{n \neq 0}
+  \rho_\mathfrak{a}^k(n, w) W_{\frac{|n|}{n}\frac{k}{2}, w - \frac{1}{2}}(4\pi \lvert n
+  \rvert y) e^{2\pi i n x}
+\end{equation}
+for some coefficients $\rho_\mathfrak{a}^k(n,w)$, and where $W_{\alpha, \nu}(y)$ is the
+$\GL(2)$ Whittaker function.
+This is given by~\cite[3.6.3]{GoldfeldHundleyI}
+\index{Whittaker function}
+\index{W@$W_{\alpha, \nu}(y)$ | see{Whittaker function} }
+\begin{equation}
+  W_{\alpha, \nu}(y) = \frac{y^{\nu + \frac{1}{2}}
+  e^{-\frac{y}{2}}}{\Gamma(\nu - \alpha + \frac{1}{2})}
+  \int_0^\infty e^{-yt} t^{\nu - \alpha - \frac{1}{2}}
+  (1+t)^{\nu + \alpha - \frac{1}{2}} dt,
+\end{equation}
+valid for $\Re(\nu - \alpha) > \frac{-1}{2}$
+and $\lvert \text{arg}(y) \rvert < \pi$.
+
+
+When $\alpha = 0$, the Whittaker function is just the $K$-Bessel function
+\begin{equation}
+  W_{0, \nu}(y) = \big( \frac{y}{\pi}\big)^{\frac{1}{2}} K_\nu\big( \frac{y}{2} \big),
+  \quad
+  K_\nu(y) = \frac{1}{2} \int_0^\infty e^{-\frac{1}{2} y(u + u^{-1})}
+  u^\nu \frac{du}{u}.
+\end{equation}
+Thus in the weight $0$ case, the Whittaker functions simplify to $K$-Bessel functions (as
+noted and employed in~\cite{Goldfeld2006automorphic} for instance).
+This additional difficulty in weight $k$ is perhaps one reason why most expository
+accounts stop at the weight $0$ case.
+
+
+According to the general theory of Selberg (and described in~\cite[Theorem
+13.2]{Iwaniec97}), the potential poles of $E_\mathfrak{a}^k(z,w)$ for $w > \frac{1}{2}$
+can be recognized from the poles of the constant coefficient $\rho_{\mathfrak{a}}^k(0,w)$.
+
+
+
+
+Although the individual expansions vary, they are usually of a very similar form.
+For full integral weight, the coefficients have the shape
+\index{rho@$\rho_\mathfrak{a}^k$!\\full integral weight}
+\begin{align}
+  \rho_\mathfrak{a}^k(0, w) &= (*) \frac{L^k_\mathfrak{a}(2w-1)}{L^k_\mathfrak{a}(2w)}
+  \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})} \\
+  \rho_\mathfrak{a}^k(h, w) &= (*) \frac{\lvert h \rvert^{w-1}}{L^k_\mathfrak{a}(2w)}
+  \frac{1}{\Gamma(w + \frac{\lvert h \rvert}{h} \frac{k}{2})} D_\mathfrak{a}^k(h,w)
+\end{align}
+where $(*)$ is a (possibly zero) constant times a collection of powers of $2$ and $\pi$,
+$L^k_\mathfrak{a}(s)$ is a $\GL(1)$ $L$-function (maybe missing some Euler factors), and
+$D_\mathfrak{a}^k$ is a finite Dirichlet sum.
+For $\Re w > \frac{1}{2}$, the only potential pole of $E_\mathfrak{a}^k(z,w)$ is at $w = 1$.
+This is shown in general in~\cite{Iwaniec97}, and the calculations are very similar to
+those in~\cite[Chapter 3]{Goldfeld2006automorphic}.
+For completeness and as a unifying reference, we recompute and state the exact
+coefficients of $E_\infty^k$ in \S\ref{ssec:full_integral_eisenstein}.
+
+
+
+
+
+For half-integral weight, the coefficients have similar shape,
+\index{rho@$\rho_\mathfrak{a}^k$!\\half-integral weight}
+\begin{equation}
+  \begin{split}\label{eq:Eisenstein_halfweight_generalshape_coeffs}
+    \rho_\mathfrak{a}^k(0, w) &= (*) \frac{L^k_\mathfrak{a}(4w-2)}{L^k_\mathfrak{a}(4w-1)}
+    \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})} \\
+    \rho_\mathfrak{a}^k(h, w) &= (*) \lvert h \rvert^{w-1} \frac{1}{\Gamma(w +
+    \frac{\lvert h \rvert}{h} \frac{k}{2})} D_\mathfrak{a}^k(h,w),
+  \end{split}
+\end{equation}
+except that now $D_\mathfrak{a}^k(h,w)$ is a complete Dirichlet series formed from Gauss
+sums, and which factors as
+\begin{equation}\label{eq:Eisenstein_halfweight_Dirichletseries_factors}
+  D_\mathfrak{a}^k(h,w) = \frac{L(2w - \frac{1}{2}, \chi_{k,h})}{\zeta(4w-1)}
+  \widetilde{D}_\mathfrak{a}(h,w),
+\end{equation}
+where $\widetilde{D}_\mathfrak{a}(h,w)$ is a finite Dirichlet polynomial and $\chi_{k,h}$
+\index{chi@$\chi_{k,h}$}
+is the real quadratic character associated to the extension $\mathbb{Q}(\sqrt{\mu_k h})$,
+and where $\mu_k = (-1)^{k - \frac{1}{2}}$.
+In other words, these are almost the same as the full integral weight Eisenstein series,
+except with an additional $L$-function in the numerator, and with slightly different
+arguments of the involved $L$-functions.
+For $\Re w > \frac{1}{2}$, the only potential pole of $E_\mathfrak{a}^k(z,w)$ is at $w
+= \frac{3}{4}$.
+This is all described in~\cite{goldfeld1985eisenstein}, including the factorization
+in~\eqref{eq:Eisenstein_halfweight_Dirichletseries_factors}, which is given
+in~\cite[Corollary 1.3]{goldfeld1985eisenstein}.
+For completeness and as a unifying reference, we recompute and state the shape of the
+coefficients of $E_\infty^K$ in \S\ref{ssec:half_integral_eisenstein}, including a proof
+of the factorization~\eqref{eq:Eisenstein_halfweight_Dirichletseries_factors}.
+
+
+The rest of this section consists of a complete description of these coefficients.
+However, the general shapes of the coefficients are sufficient for the rest of this
+thesis.
+
+
+
+
+
+\subsection{Full Integral Weight}\label{ssec:full_integral_eisenstein}
+
+
+\begin{claim}
+  For $k \geq 1$ a full integer, the Fourier-Whittaker coefficients of $E_\infty^k(z,w)$
+  are given by \begin{align}
+    \rho_\infty^k(0,w) &= \begin{cases}
+    0 & \text{if } k \; \text{odd}  \\
+    \displaystyle y^{1-w} 2\pi 4^{1-3w} \frac{\zeta(2w-1)}{\zeta^{(2)}(2w)}
+    \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})}
+    & \text{if } k \; \text{even}
+    \end{cases}
+    \\
+    \rho_\infty^k(h,w) &= \frac{\pi^w  \lvert h \rvert^{w-1} e^{-\frac{i \pi k}{2}}}
+    {L\big( 2w, \kron{-4}{\cdot}^k\big) \Gamma(w + \frac{\lvert h \rvert}{h}
+    \frac{k}{2})} D_\infty^k(h,w)
+  \end{align}
+  where
+  \begin{equation}
+    D_\infty^k(h,w) = \sum_{c \mid h} \frac{c}{(4c)^{2w}}\Big( e^{\frac{\pi i h}{2c}} +
+    (-1)^k e^{\frac{3\pi i h}{2c}}\Big)
+\end{equation}
+  is a finite Dirichlet sum.
+\end{claim}
+
+This is a classical computation.
+For completeness and ease of reference, we go through this computation completely.
+The coefficients for other full integral weight Eisenstein coefficients are very similar,
+and are achieved through (essentially) the same work.
+
+\begin{proof}
+  In the expression for $E_\infty^k(z,w)$, when $(c,d) = (0,1)$, there is the single term $y^w$.
+  We compute the rest of the $0$th Fourier-Whittaker coefficient through
+  \begin{align}
+    \rho_\infty^k(0, w) &= \int_0^1 E_\infty^k(z,w) - y^w dx = \sum_{\substack{c > 0, d
+    \in \mathbb{Z} \\ \gcd(4c,d) = 1}} \int_0^1 \frac{y^s \kron{-4}{d}^k}{\lvert 4cz + d
+    \rvert^{2w - k} (4cz + d)^k}.
+  \end{align}
+  We write $\kron{-4}{d}$ in place of $\kron{-1}{d}$ to facilitate our next step, and as a
+  way of reinforcing that $\gcd(d,4) = 1$.  Multiplying through by $L\big(2w,
+  \kron{-4}{\cdot}^k\big)$ and distributing allows us to remove the $\gcd(4c, d) = 1$
+  condition from the sum, so that
+  \begin{align}
+    \rho_\infty^k(0,w) &= \frac{y^w}{L\big(2w, \kron{-4}{\cdot}^k\big)} \sum_{c > 0}
+    \sum_d \kron{-4}{d}^k \int_0^1  \frac{1}{\lvert 4cz+d \rvert^{2w-k}(4cz + d)^k} dx \\
+    &= \frac{y^w}{L\big(2w, \kron{-4}{\cdot}^k\big)} \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_d
+    \kron{-4}{d}^k \int_{\frac{d}{4c}}^{1 + \frac{d}{4c}}  \frac{1}{\lvert z
+    \rvert^{2w-k}z^k} dx.
+  \end{align}
+  We can write $d = d' + 4cq$ for each $d' \bmod{4c}$ and $q \in \mathbb{Z}$ uniquely, and
+  executing the resulting $q$ sum tiles the integral to the whole real line, giving
+  \begin{equation}
+    \rho_\infty^k(0,w) = \frac{y^w}{L\big(2w, \kron{-4}{\cdot}^k\big)} \sum_{c > 0}
+    \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \kron{-4}{d}^k \int_{-\infty}^{\infty}
+    \frac{1}{\lvert z \rvert^{2w-k}z^k} dx.
+  \end{equation}
+  Notice that the $d$ sum is $0$ if $k$ is odd, and is $2c$ (the number of odd integers up
+  to $4c$) when $k$ is even.  Further, when $k$ is even the $L$-function in the
+  denominator simplifies to a zeta function missing its $2$-factor.
+
+  It remains necessary to compute the integral.
+  By~\cite[Section 13.7]{Iwaniec97}, we have the classical integral transform
+  \begin{equation}\label{eq:IntegralIdentity_0th}
+    \int_{-\infty}^\infty \frac{1}{\lvert z \rvert^{2w - k} z^k} = y^{1-2w} \pi 4^{1-w}
+    \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})}.
+  \end{equation}
+  Therefore, we have for $k$ even that
+  \begin{equation}
+    \rho_\infty^k(0,w) = y^{1-w} 2\pi 4^{1-3w} \frac{\zeta(2w-1)}{\zeta^{(2)}(2w)}
+    \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})}
+  \end{equation}
+
+  For the $h$th Fourier coefficient, the method begins similarly.
+  Following the same initial steps, we compute
+  \begin{align}
+    \rho_\infty^k(h,w) &= \int_0^1 E_\infty^k(z,w) e^{-2\pi i h x} dx \\
+    &=
+    \frac{y^w}{L(2w, \kron{-4}{\cdot}^k)} \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_d
+    \kron{-4}{d}^k e^{2\pi i \frac{hd}{4c}} \int_{\frac{d}{4c}}^{1 + \frac{d}{4c}}
+    \frac{e^{-2\pi i h x}}{\lvert z \rvert^{2w - k} z^k} dx.
+  \end{align}
+  Writing $d = d' + 4cq$ as above again tiles out the integral, so that
+  \begin{equation}
+    \rho_\infty^k(h,w) = \frac{y^w}{L(2w, \kron{-4}{\cdot}^k)} \sum_{c > 0}
+    \frac{1}{(4c)^{2w}} \sum_{d\bmod 4c} \kron{-4}{d}^k e^{2\pi i \frac{hd}{4c}}
+    \int_{-\infty}^{\infty} \frac{e^{-2\pi i h x}}{\lvert z \rvert^{2w - k} z^k} dx.
+  \end{equation}
+
+  For $h \neq 0$, the integral can be evaluated as in~\cite[\S13.7]{Iwaniec97} or
+  using~\cite[3.385.9]{GradshteynRyzhik07} to be
+  \begin{equation}\label{eq:IntegralIdentity_hth}
+    \int_{-\infty}^{\infty} \frac{e^{-2\pi i h x}}{\lvert z \rvert^{2w - k} z^k} dx =
+    \frac{y^{-w} i^{-k} \pi^w \lvert h \rvert^{w-1}}{\Gamma(w + \frac{\lvert h \rvert}{h}
+    \frac{k}{2})} W_{\frac{\lvert h \rvert}{h}\frac{k}{2}, \frac{1}{2} - w}(4\pi \lvert h
+  \rvert y).
+  \end{equation}
+  To understand the arithmetic part,
+  \begin{equation}
+    \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \kron{-4}{d}^k e^{\pi i \frac{hd}{2c}},
+  \end{equation}
+  note that each $d$ can be written uniquely in the form $d = d' + 4q$ for $0 \leq d' < 4$
+  and $0 \leq q < c$.
+  Then the arithmetic part is written
+  \begin{equation}
+    \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4} \kron{-4}{d}^k e^{\pi i
+  \frac{hd}{2c}} \sum_{q \bmod c} e^{2\pi i \frac{hq}{c}}.  \end{equation}
+  The final sum over $q$ is
+  \begin{equation}
+    \sum_{q \bmod c} e^{2\pi i \frac{hq}{c}} = \begin{cases}
+      0 & \text{if } c \nmid h \\
+      c & \text{if } c \mid h.
+    \end{cases}
+  \end{equation}
+  Therefore the arithmetic part simplifies down to
+  \begin{equation}
+    \sum_{c \mid h} \frac{c}{(4c)^{2w}} \big( e^{\pi i \frac{h}{2c}} + (-1)^k
+  e^{\frac{3\pi i h}{2c}} \big).  \end{equation}
+  Simplification completes the proof.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Removed claims for the other two Eisenstein series. These are not necessary,
+% and in fact the exact claims here haven't been fully verified. But complete
+% coefficients are in Research Notebook I, pg 40-47.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Very similar techniques yield the following two Fourier-Whittaker expressions.
+%
+%\begin{claim}
+%  For $k$ a full integer, the Fourier-Whittaker coefficients of $E_0^k(z,w)$ are given by
+%  \begin{align}
+%    \rho_0^k(0,w) &= \frac{\pi}{4^w} \frac{L(2w-1, \kron{-4}{\cdot}^k)}{L(2w, \kron{-4}{\cdot}^k)} \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})}
+%    \\
+%    \rho_0^k(h,w) &= \frac{\pi^w i^{-k} \lvert h \rvert^{w-1} W_{\frac{\lvert h \rvert}{h} \frac{k}{2}, \frac{1}{2} - w}(4\pi \lvert h \rvert y)}{4^w L(2w, \kron{-4}{\cdot}^k) \Gamma(w + \frac{\lvert h \rvert}{h} \frac{k}{2})} D_0^k(h,w)
+%  \end{align}
+%  where
+%  \begin{equation}
+%    D_0^k(h,w) = \sum_{d \mid h} \frac{\kron{-4}{d}^k}{d^{2w-1}}
+%  \end{equation}
+%  is a finite Dirichlet sum.
+%\end{claim}
+%
+%\begin{claim}
+%  For $k$ a full integer, the Fourier-Whittaker coefficients of $E_\frac{1}{2}^k(z,w)$ is given by
+%  \begin{align}
+%    \rho_\frac{1}{2}^k(0,w) &= \begin{cases}
+%    0 & \text{if } k \; \text{odd}  \\
+%    \pi 4^{1-2w} \frac{\zeta^{(2)}(2w-1)}{\zeta^{(2)}(2w)} \frac{\Gamma(2w-1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})} & \text{if } k \; \text{even}
+%    \end{cases}
+%    \\
+%    \rho_\frac{1}{2}^k(h,w) &= \frac{2\pi^w i^{-k} \lvert h \rvert^{w-1}}{4^{w + 1} L(2w, \kron{-4}{\cdot}^k)} W_{\frac{\lvert h \rvert}{h} \frac{k}{2}, \frac{1}{2} - w} (4\pi \lvert h \rvert y) D_{\frac{1}{2}}^k(h,w)
+%  \end{align}
+%  where
+%  \begin{equation}
+%    D_{\frac{1}{2}}^k(h,w) = \sum_{\substack{c \mid h \\ \gcd(2,c) = 1}} \frac{1}{(c)^{2w}}\Big( e^{\frac{\pi i h}{c}} + (-1)^k e^{\frac{3\pi i h}{c}}\Big)
+%  \end{equation}
+%  is a finite Dirichlet sum.
+%\end{claim}
+
+
+\subsection{Half Integral Weight}\label{ssec:half_integral_eisenstein}
+
+The pattern here is almost the exact same as with full-integral weight.
+We will prove the expansion for $E_\infty^k(z,w)$ completely.
+The primary difference is that there is now a Dirichlet series of Gauss sums, which can be
+factored as a ratio of a Dirichlet $L$-function and a zeta function, up to a short
+correction factor.
+
+\begin{claim}
+  For $k \geq \frac{1}{2}$ a half integer, the Fourier-Whittaker coefficients of $E_\infty^k(z,w)$ is given by
+  \begin{align}
+    \rho_\infty^k(0,w) &= \bigg( \frac{1+i^{2k}}{2} \bigg) \frac{\pi 4^{1-w}}{2^{4w - 1} - 1}
+    \frac{\zeta(4w - 2)}{\zeta(4w - 1)}
+    \frac{\Gamma(2w - 1)}{\Gamma(w + \frac{k}{2}) \Gamma(w - \frac{k}{2})}
+    \\
+    \rho_\infty^k(h,w) &= \frac{e^{\frac{-i\pi k}{2}} \pi^w \lvert h \rvert^{w-1}}
+    {\Gamma(w + \frac{\lvert h \rvert}{h} \frac{k}{2})}
+    \sum_{c > 0} \frac{g_h(4c)}{(4c^{2w})},
+  \end{align}
+  where
+  \begin{equation}
+    g_h(c) = \sum_{d \bmod c} \varepsilon_d^{2k} \kron{c}{d} e \big( \tfrac{hd}{c} \big)
+  \end{equation}
+  is a Gauss sum.
+  The Dirichlet series associated to these Gauss sums can be written as
+  \begin{equation}
+    \sum_{c \geq 1} \frac{g_h(4c)}{(4c)^{2w}}
+    =
+    \frac{L^{(2)} (2w - \frac{1}{2}, \chi_{k,h})}{\zeta^{(2h)}(4w-1)}
+    \widetilde{D}_\infty^k(h,w),
+  \end{equation}
+  as proved in Proposition~\ref{prop:back:half_integral_L}.
+\end{claim}
+
+\begin{proof}
+  As in the full-integral weight case, we compute the constant Fourier coefficient through
+  \begin{equation}
+    \rho_\infty^k(0,w) = \int_0^1 E_\infty^k(z,w) - y^w dx =
+    \sum_{\substack{c > 0, d \in \mathbb{Z} \\ \gcd(4c, d) = 1}}
+    \int_0^1 \frac{y^w \varepsilon_d^{2k} \kron{4c}{d}}
+    {\lvert 4cz + d \rvert^{2w - k} (4cz + d)^k}.
+  \end{equation}
+  The only difference in comparison to the full-integral weight case is that the numerator
+  has $\varepsilon_d^{2k} \kron{4c}{d}$.
+  Notice that the character enforces $\gcd(4c, d) = 1$, so that this condition can be
+  dropped from the summation indices.
+
+  Factoring $(4c)^{-2w}$, writing $d = d' + 4cq$ for each $d' \bmod 4c$ and a unique
+  $q \in \mathbb{Z}$, performing the change of variables $x \mapsto x - \frac{d}{4c}$, and
+  tiling the integral functions exactly as in the full-integral proof, and leads to
+  \begin{equation}
+    y^w \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \varepsilon_d^{2k} \kron{4c}{d}
+    \int_{-\infty}^\infty \frac{1}{\lvert z \rvert^{2w-k} z^k} dx.
+  \end{equation}
+  Using the evaluation of this integral from~\eqref{eq:IntegralIdentity_0th}, we see that
+  the $0$th coefficient can be written as
+  \begin{equation}
+    y^{1-w} \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \varepsilon_d^{2k}
+    \kron{4c}{d} \frac{\pi 4^{1-w} \Gamma(2s - 1)}{\Gamma(w + \frac{k}{2})
+    \Gamma(w - \frac{k}{k})}.
+  \end{equation}
+
+  It is now necessary to understand the arithmetic part, given by
+  \begin{equation}\label{eq:back:E_halfk_0_I}
+    \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \varepsilon_d^{2k} \kron{4c}{d}.
+  \end{equation}
+  Noting that we can rewrite $\varepsilon_d$ as
+  \begin{equation}
+    \varepsilon_d = \frac{1}{2}\big( \chi_{-1}^2(d) + \chi_{-1}(d) \big) +
+    \frac{i}{2}\big( \chi_{-1}^2(d) - \chi_{-1}(d) \big),
+  \end{equation}
+  where $\chi_{-1}(d) = \kron{-1}{d}$ is the Legendre character associated to when $-1$ is
+  a square, we see that the $d$ summation is trivial unless the character $\kron{4c}{d}$
+  is trivial.
+  (This follows from classical observation that summing a non-trivial character over a
+  whole group gives zero).
+  Thus the sum is nontrivial if and only if $c$ is a square, and when $c$ is a square we
+  have that
+  \begin{equation}
+    \sum_{d \bmod 4c^2} \varepsilon_d^{2k}\kron{4c^2}{d}
+    = \sum_{\substack{d \bmod 4c^2 \\ \gcd(d,4c) = 1}} \varepsilon_d^{2k}
+    = \frac{1 + i^{2k}}{2} \varphi(4c^2).
+  \end{equation}
+  Therefore~\eqref{eq:back:E_halfk_0_I} can be written as
+  \begin{equation}
+     \frac{1+i^{2k}}{2} \sum_{c > 0} \frac{1}{(4c^2)^{2w}} \varphi(4c^2)
+     = \frac{1+i^{2k}}{2} \frac{1}{2^{4w - 1} - 1} \frac{\zeta(4w - 2)}{\zeta(4w - 1)}.
+  \end{equation}
+  The last equality follows from comparing Euler products, correcting the missing
+  $2$-factor, and simplifying.
+  Combining the arithmetic part with the analytic part gives the $\rho_\infty^k(0,w)$.
+
+
+  Computing the $h$th Fourier coefficient is very similar.
+  After following the same initial steps to tile out the integral, we get the equality
+  \begin{equation}
+    \int_0^1 E_\infty^k(z,w) e^{-2\pi i h x} dx = \sum_{c > 0} \frac{1}{(4c)^{2w}}
+    \sum_{d \bmod 4c} \varepsilon_d^{2k} \kron{4c}{d} e\big(\tfrac{hd}{4c}\big)
+    \int_{-\infty}^\infty \frac{y^w e^{-2\pi i h x}}{\lvert z \rvert^{2w-k} z^k} dx.
+  \end{equation}
+  This integral was evaluated in~\eqref{eq:IntegralIdentity_hth}, so we see that this
+  becomes
+  \begin{equation}
+     \frac{e^{-i\pi k/2} \pi^w \lvert h \rvert^{w-1}}
+    {\Gamma(w + \frac{\lvert h \rvert}{h}\frac{k}{2})}
+    W_{\frac{\lvert h \rvert}{h}\frac{k}{2}, \frac{1}{2} - w} (4 \pi \lvert h \rvert y)
+    \sum_{c > 0} \frac{1}{(4c)^{2w}}
+    \sum_{d \bmod 4c} \varepsilon_d^{2k} \kron{4c}{d} e\big(\tfrac{hd}{4c}\big).
+  \end{equation}
+  The arithmetic part is now a Dirichlet series of Gauss sums, and is not finite.
+  Simplifiying completes the computation.
+\end{proof}
+
+
+
+
+
+\subsection*{On the $L$-series associated to half-integral weight Eisenstein series
+coefficients}
+
+
+We now consider the Dirichlet series
+\begin{equation}
+  \sum_{c \geq 1} \frac{g_h(4c)}{(4c)^{2w}}
+\end{equation}
+appearing in the $h$th Fourier coefficients of $E_\infty^k(z,w)$ when $k$ is a half
+integer.
+The goal of this section is to show the following proposition.
+
+
+\begin{proposition}\label{prop:back:half_integral_L}
+  \begin{equation}
+    \sum_{c \geq 1} \frac{g_h(4c)}{(4c)^{2w}}
+    =
+    \frac{L^{(2)} (2w - \frac{1}{2}, \chi_{k,h})}{\zeta^{(2h)}(4w-1)}
+    \widetilde{D}_\infty^k(h,w),
+  \end{equation}
+  where $\widetilde{D}_\infty^k(h,w)$ is a finite Dirichlet polynomial.
+\end{proposition}
+
+
+We prove this proposition through a series of lemmata.\footnote{Yes, that is a real word.
+And it's a fantastic word.}
+First, we first consider just an individual Gauss sum
+$g_h(4c) = \sum_{d \bmod 4c} \varepsilon_d^{2k} e(\frac{hd}{4c}) \kron{4c}{d}$.
+It is necessary to break each Gauss sum into two pieces.
+
+\begin{lemma}\label{lem:back:gauss_two_pieces}
+  \begin{equation}
+    g_h(4c) = \sum_{d_2\bmod 2^\alpha} \varepsilon_{d_2c'}^{2k} (-1)^{\frac{c'-1}{2}
+    \frac{d_2c'-1}{2}}\varepsilon_{c'}^{-1} \kron{2^\alpha}{d_2}
+    \varepsilon_{c'}\sum_{d_1\bmod c'} \kron{d_1}{c'}  e\big( \tfrac{h d_1}{c'} \big).
+  \end{equation}
+\end{lemma}
+
+
+\begin{proof}
+
+Write $4c = 2^\alpha c'$ where $\gcd(c', 2) = 1$.
+Note that we necessarily have $\alpha \geq 2$.
+For any $d \bmod 4c$, we write $d = d_1 2^\alpha + d_2c'$ with $d_1$ varying mod $c'$ and
+$d_2$ varying mod $2^\alpha$.
+Using this, we can write
+\begin{align}
+    \sum_{d \bmod 4c} \varepsilon_d^{2k} e\big(\tfrac{hd}{4c}\big) \kron{4c}{d}
+    &=
+    \sum_{(d_1\bmod c')} \sum_{(d_2\bmod 2^\alpha)} \varepsilon_{d_2c'}^{2k}
+    e^{2\pi i h \frac{d_1 2^\alpha + d_2 c'}{2^\alpha c'}}
+    \kron{2^\alpha c'}{d_1 2^\alpha + d_2c'}
+    \\
+    &=
+    \sum_{d_2 \bmod 2^\alpha} \varepsilon_{d_2c'}^{2k}
+    e\big(\tfrac{h d_2}{2^\alpha}\big)
+    \kron{2^\alpha}{d_2c'} \sum_{d_1 \bmod c'}
+  \kron{c'}{d_1 2^\alpha+ d_2c'} e\big( \tfrac{h d_1}{c'} \big).
+\end{align}
+
+Note that $d_2$ is necessarily odd.
+Then by quadratic reciprocity, we can rewrite the inner sum as
+\begin{align}
+    \sum_{d_1 \bmod c'} \kron{c'}{d_1 2^\alpha+ d_2c'} e\big( \tfrac{h d_1}{c'} \big)
+    &=
+    \sum_{d_1 \bmod c'} \kron{d_1 2^\alpha + d_2 c'}{c'}
+    (-1)^{\frac{c'-1}{2} \frac{d_2c'-1}{2}} e \big( \tfrac{h d_1}{c'} \big)
+    \\
+    &=
+    \sum_{d_1 \bmod c'} \kron{d_1 2^\alpha}{c'} (-1)^{\frac{c'-1}{2}
+    \frac{d_2c'-1}{2}} e\big( \tfrac{h d_1}{c'}\big).
+\end{align}
+Inserting this back into $g_h(4c)$ gives
+\begin{align}
+  g_h(4c)
+  &=
+  \sum_{d_2\bmod 2^\alpha} \varepsilon_{d_2c'}^{2k} (-1)^{\frac{c'-1}{2}
+  \frac{d_2c'-1}{2}} e\big( \tfrac{h d_2}{2^\alpha} \big) \kron{2^\alpha}{d_2}
+  \kron{2^\alpha}{c'}\sum_{d_1\bmod c'} \kron{2^\alpha}{c'}\kron{d_1}{c'}
+  e\big( \tfrac{h d_1}{c'} \big) \\
+  &=
+  \sum_{d_2\bmod 2^\alpha} \varepsilon_{d_2c'}^{2k} (-1)^{\frac{c'-1}{2}
+  \frac{d_2c'-1}{2}} e\big( \tfrac{h d_2}{2^\alpha} \big)
+  \varepsilon_{c'}^{-1} \kron{2^\alpha}{d_2}
+  \varepsilon_{c'}\sum_{d_1\bmod c'} \kron{d_1}{c'}  e\big( \tfrac{h d_1}{c'} \big).
+\end{align}
+Note that we have introduced $\varepsilon_c \varepsilon_c^{-1}$.
+This ends the proof of the lemma.
+\end{proof}
+
+
+The $d_1$ sum is now completely decoupled from the $d_2$ sum, and they can be understood
+separately.
+We first understand the $d_1$ summation.
+
+
+\begin{lemma}\label{lem:back:Hh_multiplicative}
+  For odd $c$, define
+  \begin{equation}
+    H_h(c) := \varepsilon_c \sum_{d \bmod c} \kron{d}{c} e \big( \tfrac{h d}{c} \big),
+  \end{equation}
+  as occurs in the $d_1$ summation in $g_h(4c)$.
+  Then $H_h(c)$ is multiplicative.
+\end{lemma}
+
+
+\begin{proof}
+
+
+Let $n_1$ and $n_2$ be two odd relative prime integers.
+By the Chinese Remainder Theorem, and congruence class $d \bmod n_1 n_2$ can be uniquely
+written as $d = b_2 n_1 + b_1 n_2$ where $b_2$ is defined modulo $n_2$ and $b_1$ is
+defined modulo $n_1$.
+Then
+\begin{align}
+  H_h(n_1 n_2)
+  &=
+  \varepsilon_{n_1 n_2} \sum_{d \bmod n_1n_2} \kron{d}{n_1n_2}
+  e\big(\tfrac{d h}{n_1 n_2} \big)
+  \\
+  &= \varepsilon_{n_1 n_2} \sum_{b_1 \bmod n_1} \sum_{b_2 \bmod n_2}
+  \kron{b_2 n_1 +b_1 n_2}{n_1 n_2}  e \big( \tfrac{h b_2 n_1 +b_1 n_2}{n_1 n_2} \big)
+  \\
+  &= \varepsilon_{n_1 n_2}\kron{n_2}{n_1} \kron{n_1}{n_2}
+  \sum_{b_1 \bmod n_1} \kron{b_1}{n_1} e\big( \tfrac{h b_1}{n_1} \big)
+  \sum_{b_2 \bmod n_2} \kron{b_2}{n_2} e\big( \tfrac{h b_2}{n_2} \big)
+  \\
+  &= \varepsilon_{n_1 n_2} \varepsilon_{n_1}^{-1} \varepsilon_{n_2}^{-1}
+  \kron{n_2}{n_1} \kron{n_1}{n_2} H_h(n_1) H_{h}(n_2).
+\end{align}
+Casework and quadratic reciprocity shows that
+$\varepsilon_{n_1n_2} \varepsilon_{n_1^{-1}} \varepsilon_{n_2}^{-1}
+\kron{n_2}{n_1}\kron{n_1}{n_2}= 1$,
+so that $H_h(n_1 n_2) = H_h(n_1) H_h(n_2)$.
+%
+\end{proof}
+
+
+In order to understand a Dirichlet series featuring $H_h(c')$, it will be sufficient to
+understand $H_h(p^k)$ for odd primes $p$.
+When $p \nmid h$, these are particularly easy to understand.
+
+
+\begin{lemma}\label{lem:back:Hh_goodp_eval}
+  Suppose $p$ is an odd prime and $p \nmid h$.
+  Then
+  \begin{equation}
+    H_h(p^k) = \begin{cases}
+      \kron{-h}{p} \sqrt p & k = 1 \\
+      0 & k \geq 2.
+    \end{cases}
+  \end{equation}
+\end{lemma}
+
+
+\begin{proof}
+  When $k = 1$, we have
+  \begin{equation}
+    H_h(p) = \varepsilon_p \sum_{d \bmod p} \kron{d}{p} e \big( \tfrac{dh}{p} \big) =
+    \varepsilon_p^2 \kron{h}{p} \sqrt p = \kron{-h}{p} \sqrt p,
+  \end{equation}
+  as $H_h(p)$ is very nearly a standard Gauss Sum as considered in the beginning
+  of~\cite{Davenport1980}.
+
+  For $k \geq 2$, there are two cases.
+  If $k$ is even, then the sum is exactly a sum over the primitive $p^k$-roots of unity,
+  and therefore is zero.
+  If $k$ is odd, then writing $\eta = e^{2\pi i / p^k}$ as a primitive $p^k$-root of
+  unity, we have
+  \begin{align}
+    H_h(p^k) &= \sum_{d\bmod p^k} \eta^d \kron d {p^k} = \sum_{d\bmod p^k} \eta^d \kron{d}{p} =
+    \sum_{\substack{b \bmod p \\ c \bmod p^{k-1}}} \eta^{b+pc} \kron b p \\
+    &= \sum_{b\bmod p} \eta^b
+    \kron b p \sum_{c\bmod p^{k-1}} \eta^{pc} = 0,
+  \end{align}
+  as the inner sum is a sum over the primitive $p^{k-1}$ roots of unity.
+\end{proof}
+
+
+The case is substantially more complicated for primes $p$ dividing $h$.
+For this thesis, we do not need to calculate these explicitly.
+(Although we could, using these techniques).
+It is sufficient to know that only finitely many contribute.
+
+
+\begin{lemma}\label{lem:back:Hh_badp_eval}
+  Suppose $p$ is an odd prime and $p \mid h$.
+  Further, suppose $p^\ell \mid h$ but $p^{\ell + 1} \nmid h$.
+  Then for $k \geq \ell + 2$, we have $H_h(p^k) = 0$.
+\end{lemma}
+
+
+\begin{proof}
+
+  This is substantially similar to the case when $p \nmid h$, and the same proof carries
+  over.
+  When $k$ is even, $H_h(p^k)$ is a sum over primitive $p^{k-\ell}$ roots of unity.
+  When $k$ is odd, $H_h(p^k)$ has an inner exponential sum over the $p^{k - \ell - 1}$
+  roots of unity.
+%
+\end{proof}
+
+
+\begin{remark}
+  Although we do not compute it here, it is possible to compute the exact contribution
+  from each factor $p$ dividing $h$.
+  One complete reference can be found at the author's website~\cite{mixedmathGauss}.
+  Some subcases are included in~\cite{goldfeld1985eisenstein}.
+\end{remark}
+
+
+We now seek to understand the $d_2$ summation in Lemma~\ref{lem:back:gauss_two_pieces}.
+
+
+\begin{lemma}\label{lem:back:d2_sum_simplifies}
+  We have
+  \begin{equation}\label{eq:back:d2_sum_I}
+    \varepsilon^{2k}_{d_2 c'} (-1)^{\frac{c'-1}{2} \frac{d_2 c' - 1}{2}}
+    \varepsilon_{c'}^{-1}
+    =
+    \varepsilon_{d_2}^{2k} \kron{(-1)^{k + \frac{1}{2}}}{c'}.
+  \end{equation}
+  In particular,
+  \begin{equation}
+    \sum_{d_2 \bmod 2^\alpha}
+    \varepsilon^{2k}_{d_2 c'} (-1)^{\frac{c'-1}{2} \frac{d_2 c' - 1}{2}}
+    e\big( \tfrac{h d_2}{2^\alpha} \big)
+    \varepsilon_{c'}^{-1} \kron{2^\alpha}{d_2}
+    =
+    \sum_{d_2 \bmod 2^\alpha}
+    \varepsilon_{d_2}^{2k} \kron{(-1)^{k + \frac{1}{2}}}{c'} \kron{2^\alpha}{d_2}
+    e\big( \tfrac{h d_2}{2^\alpha} \big).
+  \end{equation}
+\end{lemma}
+
+\begin{proof}
+
+  First note that as $\varepsilon_d^4 = 1$, we can reduce the analysis into two cases: when
+  $2k \equiv 1 \bmod 4$ and when $2k \equiv 3 \bmod 4$.
+  After this reduction, the equality in~\eqref{eq:back:d2_sum_I} is quickly verified by
+  considering the possible values of $d_2$ and $c'$ modulo $4$ (recalling that both $d_2$
+  and $c'$ are odd).
+  The rest of the lemma follows immediately.
+%
+\end{proof}
+
+
+In this simplified $d_2$ summation, there appears $\varepsilon_{d_2}^{2k}$, which acts a bit
+like a character in $d_2$ modulo $4$, and $\kron{2^\alpha}{d_2}$, which acts a bit like a
+character modulo $8$, and an unrestrained exponential.
+Therefore we should expect that when $2^\alpha > 8$, or rather when $\alpha \geq 4$, then
+the entire $d_2$ sum vanishes unless $h$ is highly divisible by $2$.
+
+
+\begin{lemma}\label{lem:back:d2_sum_is_finite}
+  Suppose $2^\ell \mid h$ and $2^{\ell + 1} \nmid h$.
+  If $\alpha \geq \ell + 4$, then the $d_2$ summation vanishes, i.e.\
+  \begin{equation}
+    \sum_{d_2 \bmod 2^\alpha}
+    \varepsilon_{d_2}^{2k} \kron{2^\alpha}{d_2} e\big( \tfrac{h d_2}{2^\alpha} \big) = 0.
+  \end{equation}
+\end{lemma}
+
+
+\begin{proof}
+  Without loss of generality, choose least non-negative representations for each $d_2 \bmod
+  2^\alpha$.
+  Then write $d_2 = 8d' + d''$ where $0 \leq d' < 2^{\alpha - 3}$ and $0 \leq d'' < 8$.
+  Then $\varepsilon_{8d' + d''} = \varepsilon_{d''}$ and
+  $\kron{2^\alpha}{8d' + d''} = \kron{2^\alpha}{d''}$, so the $d'$ summation can be
+  considered separately.
+  This summation is
+  \begin{equation}
+    \sum_{d' = 0}^{2^{\alpha-3} - 1} e \bigg( \frac{h d'}{2^{\alpha - 3}} \bigg),
+  \end{equation}
+  which is $0$ unless $2^{\alpha - 3} \mid h$.
+%
+\end{proof}
+
+
+As $c = 2^\alpha c'$, we see that the $d_2$ summation constrains the contribution from the
+$2$-factor of $c$.
+We are now finally ready to prove Proposition~\ref{prop:back:half_integral_L}.
+
+
+\begin{proof}[Proof of Prop~\ref{prop:back:half_integral_L}]
+
+  We try to understand
+  \begin{align}
+    &\sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \varepsilon_d^{2k}
+    e \big( \tfrac{hd}{4c} \big) \kron{4c}{d}
+    \\
+    &= \sum_{\alpha \geq 2} \sum_{\substack{c \geq 1 \\ \gcd(2,c) = 1}}
+    \frac{1}{(2^\alpha c)^{2w}} \kron{(-1)^{k + \frac{1}{2}}}{c} H_h(c)
+    \sum_{d_2 \bmod 2^\alpha} \varepsilon_{d_2}^{2k}
+    e \big( \tfrac{d_2 h}{2^\alpha} \big) \kron{2^\alpha}{d_2}
+    \\
+    &= \Bigg( \sum_{\alpha \geq 2} \sum_{d_2 \bmod 2^\alpha}
+      \frac{1}{2^{2\alpha w}} \varepsilon_{d_2}^{2k} e \big( \tfrac{d_2 h}{2^\alpha} \big)
+      \kron{2^\alpha}{d_2}
+    \Bigg)
+    \Bigg( \sum_{\substack{c \geq 1 \\ \gcd(c,2) = 1}}
+      \frac{1}{c^{2w}}
+      \Big(\frac{(-1)^{k + \frac{1}{2}}}{c}\Big) H_h(c)
+    \Bigg). \label{eq:back:Lprop_proof_I}
+  \end{align}
+  We have used Lemma~\ref{lem:back:gauss_two_pieces} and
+  Lemma~\ref{lem:back:d2_sum_simplifies} to split and simplify this expression.
+  Let $\chi_k(c) := \kron{(-1)^{k + \frac{1}{2}}}{c}$ for ease of notation.
+  As the summands over $c$ are multiplicative (by Lemma~\ref{lem:back:Hh_multiplicative}),
+  the $c$ sum can be written (for $\Re w \gg 1$) as
+  \begin{equation}
+    \sum_{\substack{c \geq 1 \\ \gcd(c,2) = 1}}
+    \frac{1}{c^{2w}} \chi_k(c) H_h(c)
+    =
+    \prod_{\substack{p \\ p \neq 2}} \Big( 1 + \frac{\chi_k(p) H_h(p)}{p^{2w}} +
+    \frac{\chi_k(p^2) H_h(p^2)}{p^{4w}} + \cdots  \Big).
+  \end{equation}
+
+
+  For primes not dividing $h$, this expression simplifies significantly as $H_h(p^k) = 0$
+  for $k \geq 2$ (as shown in Lemma~\ref{lem:back:Hh_goodp_eval}).
+  The product over these primes is then
+  \begin{equation}
+    \prod_{\substack{p \\ p \neq 2 \\ p \nmid h}} \Big( 1 + \frac{\big(\frac{h (-1)^{k -
+    \frac{1}{2}}}{p}\big)} {p^{2w - \frac{1}{2}}} \Big).
+  \end{equation}
+  It's quickly checked that this perfectly matches the Euler product (on primes avoiding
+  $h$ and $2$) for $L(2w-\frac{1}{2}, \chi_{k,h}) \zeta(4w-1)^{-1}$, where
+  $\chi_{k,h}(\cdot) = \big( \frac{h (-1)^{k - \frac{1}{2}}}{\cdot} \big)$.
+  Therefore we can write the product over those primes avoiding $h$ and $2$ as
+  \begin{equation}
+    \prod_{\substack{p \\ p \neq 2 \\ p \nmid h}} \Big( 1 + \frac{\big(\frac{h (-1)^{k -
+    \frac{1}{2}}}{p}\big)} {p^{2w - \frac{1}{2}}} \Big)
+    =
+    \frac{L^{(2)} (2w - \frac{1}{2}, \chi_{k,h})}{\zeta^{(2h)}(4w-1)}.
+  \end{equation}
+  (Note that we are using the convention that $L^{(Q)}(s)$ denotes an $L$-function $L(s)$,
+  but with the Euler factors for primes $p$ dividing $Q$ removed).
+
+
+  We now consider the primes $p$ which do divide $h$ in the Euler product
+  in~\eqref{eq:back:Lprop_proof_I}.
+  By Lemma~\ref{lem:back:Hh_badp_eval}, we see that $H_h(p^k) = 0$ when $p^{k-1} \nmid h$.
+  Therefore the product over primes dividing $h$ is a product of finitely many terms of
+  finite length, and is thus just a Dirichlet polynomial.
+
+
+  Similarly, by Lemma~\ref{lem:back:d2_sum_is_finite}, the sum over $d_2$ and $\alpha$
+  in~\eqref{eq:back:Lprop_proof_I} is a finite sum whose length depends on the $2$-factor
+  of $h$, and is also a Dirichlet polynomial.
+
+
+  We group the product over primes dividing $h$ with the $d_2$ and $\alpha$ summation
+  in~\eqref{eq:back:Lprop_proof_I}, which are both finite Dirichlet polynomials, into a
+  single Dirichlet polynomial
+  \begin{equation}
+    \begin{split}
+      \widetilde{D}_\infty^k (h,w) :=
+      \sum_{\alpha \geq 2} \sum_{d_2 \bmod 2^\alpha}
+        \frac{1}{2^{2\alpha w}} \varepsilon_{d_2}^{2k} e \big( \tfrac{d_2 h}{2^\alpha} \big)
+        \kron{2^\alpha}{d_2}
+      \times
+      \prod_{\substack{p \\ p \mid h \\ p \neq 2}}
+        \sum_{j \geq 0} \frac{\chi_k(p^j) H_h(p^j)}{p^{2jw}}.
+    \end{split}
+  \end{equation}
+  Note carefully that although this is written as an infinite polynomial, it is a finite
+  Dirichlet polynomial.
+
+
+  Collecting these pieces together we have now shown that
+  \begin{equation}
+    \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4c} \varepsilon_d^{2k} e \big( \tfrac{hd}{4c} \big) \kron{4c}{d}
+    =
+    \frac{L^{(2)} (2w - \frac{1}{2}, \chi_{k,h})}{\zeta^{(2h)}(4w-1)}
+    \widetilde{D}_\infty^k(h,w),
+  \end{equation}
+  as we set out to show.
+%
+\end{proof}
+
+
+\begin{remark}
+  If $h$ is squarefree, then it is possible to show that $\widetilde{D}_\infty^k(h,w)$ has
+  the necessary Euler factors to ``fill in'' the $h$ factors of $\zeta^{(2h)}(4w - q)$
+  (although not the $2$ factor), and the expression for $\widetilde{D}_\infty^k(h,w)$
+  simplifies significantly.
+  Thus the case when $h$ is squarefree is significantly simpler.
+\end{remark}
+
+
+
+\section{Cutoff integrals and their properties}\label{sec:cutoff_integrals}
+
+
+We recall the Mellin transform and inverse Mellin transform, and use these to construct
+appropriate integral transforms to analyze properties of the coefficients of a Dirichlet
+series.
+In general, if
+\index{Mellin transform}
+\begin{equation}
+  F(s) = \int_0^\infty f(x) x^s \frac{dx}{x},
+\end{equation}
+then $F(s)$ is the \emph{Mellin transorm} of $f(x)$.
+Mellin transforms are deeply related to Laplace transforms and Fourier transforms, and
+when $f$ and $F$ are sufficiently nice, there is an analogous inversion theorem giving
+that
+\begin{equation}
+  f(x) = \frac{1}{2\pi i} \int_{(\sigma)} F(s) x^{-s} ds.
+\end{equation}
+
+
+
+\subsubsection*{Ces\`{a}ro Cutoff Transform}
+\index{Integral transform!Ces\'{a}ro Weights}
+\index{Integral transform!Riesz Means}
+
+
+In this thesis, we reintroduce and use Ces\`{a}ro weights.
+Note that these are sometimes referred to as ``Riesz Means.''
+Given a positive integer $k$ and a Dirichlet series
+\begin{equation}
+  D(s) = \sum_{n \geq 1} \frac{a(n)}{n^s},
+\end{equation}
+we have the fundamental relationship
+\begin{equation}\label{eq:cesaro_transform}
+  \begin{split}
+    \frac{1}{k!} \sum_{n \leq X} a(n) \Big(1 - \frac{n}{X}\Big)^k
+    &= \frac{1}{2\pi i} \int_{(\sigma)} D(s) \frac{X^s}{s(s+1)\cdots(s+k)} ds
+    \\
+    &= \frac{1}{2\pi i} \int_{(\sigma)} D(s) \frac{X^s\Gamma(s)}{\Gamma(s+k+1)} ds,
+  \end{split}
+\end{equation}
+where $\sigma$ is large enough that $D(s)$ and the integral absolutely converge.
+The individual weights $(1 - \frac{n}{X})^k$ on each $a(n)$ are the $k$-Ces\`{a}ro
+weights, and give access to smoothed asymptotics.
+
+The relationship~\eqref{eq:cesaro_transform} is follows from the following integral
+equality.
+\begin{lemma}
+  For $\sigma > 0$, we have
+  \begin{equation}
+    \frac{1}{2\pi i} \int_{(\sigma)} \frac{Y^s}{s(s+1)\cdots(s+k)} ds = \begin{cases}
+      \frac{1}{k!} \big(1 - \frac{1}{Y}\big)^k & \text{if } Y \geq 1, \\
+      0 & \text{if }Y < 1.
+    \end{cases}
+  \end{equation}
+\end{lemma}
+\begin{proof}
+  In the case when $Y \geq 1$, shifting the contour infinitely far to the left shows that
+  the integral can be evaluated as
+  \begin{equation}
+    \sum_{j = 0}^k \Res_{s = -j} \bigg( \frac{Y^s}{s(s+1)\cdots(s+k)} \bigg) = \sum_{j =
+    0}^k \frac{(-1)^j Y^{-j}}{j! (k-j)!} = \frac{1}{k!} \Big(1 - \frac{1}{Y}\Big)^k.
+  \end{equation}
+  Note that the last equality is an application of the binomial theorem.
+
+  In the case when $Y < 1$, shifting the contour infinitely far to the right shows that
+  the integral is $0$.
+\end{proof}
+
+To recover~\eqref{eq:cesaro_transform}, one expands $D(s)$ within the integral and applies
+the lemma to each individual term with $Y = (X/n)$.
+
+
+
+\subsubsection*{Exponentially Smoothed Integral}
+\index{Integral transform!exponential smoothing}
+
+The integral definition of the Gamma function
+\begin{equation}
+  \Gamma(s) = \int_0^\infty t^s e^{-t} \frac{dt}{t}
+\end{equation}
+is a Mellin integral, and gives the inverse Mellin integral
+\begin{equation}
+  e^{-x} = \frac{1}{2 \pi i} \int_{(\sigma)} x^{-s} \Gamma(s) ds.
+\end{equation}
+Applied to the Dirichlet series $D(s)$, we have
+\begin{equation}
+  \sum_{n \geq 1} a(n) e^{-n/X} = \frac{1}{2\pi i} \int_{(\sigma)} D(s) X^s \Gamma(s) ds.
+\end{equation}
+
+
+\subsubsection*{Concentrating Integral}
+\index{Integral transform!concentrating}
+
+We now produce an integral transform that has the effect of concentrating the mass of the
+integral around the parameter $X$.
+We claim that
+\begin{equation}\label{eq:back:conc_I}
+  \frac{1}{2\pi i} \int_{(2)} \exp\left(\frac{\pi s^2}{Y^2}\right) \frac{X^s}{Y}ds =
+  \frac{1}{2\pi} \exp\left(-\frac{Y^2 \log^2 X}{4\pi}\right).
+\end{equation}
+
+\begin{proof}
+  Write $X^s = e^{s\log X}$ and complete the square in the exponents.
+  Since the integrand is entire and the integral is absolutely convergent, performing the
+  change of variables $s \mapsto s-Y^2 \log X/2\pi$ and shifting the line of integration
+  back to the imaginary axis yields
+  \begin{equation*}
+    \frac{1}{2\pi i} \exp\left( - \frac{Y^2 \log^2 X}{4\pi}\right) \int_{(0)} e^{\pi
+    s^2/Y^2} \frac{ds}{Y}.
+  \end{equation*}
+  The change of variables $s \mapsto isY$ transforms the integral into the standard
+  Gaussian, completing the proof.
+\end{proof}
+
+
+Applied to a Dirichlet series $D(s)$, we have
+\begin{equation}
+  \frac{1}{2\pi} \sum_{n \geq 1} a(n) \exp \bigg( - \frac{Y^2 \log^2 (X/n)}{4\pi} \bigg) =
+  \frac{1}{2\pi i} \int_{(\sigma)} \exp \big( \frac{\pi s^2}{Y^s} \big) \frac{X^s}{Y} ds.
+\end{equation}
+Note in particular that when $\lvert n - X \rvert$ is large, there is significant
+exponential decay.
+Therefore this integral concentrates the mass of the expression very near $X$ (and in
+particular in an interval of width $X/Y$ around $X$).
+
+
+
+\subsubsection*{Cutoff Integrals from Smooth, Compactly Supported Functions}
+\index{Integral transform!compactly supported transform}
+
+
+It will also be useful to document a more general family of cutoff transforms.
+For $X,Y > 0$, let $v_Y(X)$ denote a smooth non-negative function with maximum value $1$,
+satisfying
+\begin{enumerate}
+  \item $v_Y(X) = 1$ for $X \leq 1$,
+  \item $v_Y(X) = 0$ for $X \geq 1 + \frac{1}{Y}$.
+\end{enumerate}
+Let $V_Y(s)$ denote the Mellin transform of $v_Y(x)$, given by
+\begin{equation}
+  V_Y(s) = \int_0^\infty t^s v_Y(t) \frac{dt}{t},
+\end{equation}
+defined initially for $\Re s > 0$.
+Repeated applications of integration by parts and differentiation under the integral shows
+that $V_Y(s)$ satisfies the following four properties:
+\begin{enumerate}
+  \item $V_Y(s) = \frac{1}{s} + O_s(\frac{1}{Y})$,
+  \item $V'_Y(s) = -\frac{1}{s^2} + O_s(\frac{1}{Y})$
+  \item $V_Y(s) = -\frac{1}{s} \int_1^{1 + \frac{1}{Y}} v'_Y(t) t^s dt$,
+  \item and for all positive integers $m$, for $s$ constrained within a vertical strip and
+    $\lvert s-1 \rvert > \epsilon$, we have
+    \begin{equation}
+      V_Y(s) \ll_\epsilon \frac{1}{Y} \Big( \frac{Y}{1 + \lvert s \rvert} \Big)^m.
+    \end{equation}
+\end{enumerate}
+Further, the last property can be extended to real $m > 1$ through the
+Phragm\'{e}n-Lindel\"{o}f principle.
+The Mellin transform pair $V_Y(s), v_Y(x)$ gives a general set of integral cutoff
+relations,
+\begin{equation}
+  \sum_{n \leq X} a(n) + \sum_{X < n \leq X + X/Y} a(n) v_Y\Big(\frac{n}{X}\Big) =
+  \frac{1}{2\pi i} \int_{(\sigma)} D(s) V_Y(s) X^s ds.
+\end{equation}
+
+\begin{remark}
+  We will sometimes use the notation $\Phi_Y(s)$ and $\phi_Y(n)$
+  in place of $V_Y(s)$ and $v_y(n)$.
+\end{remark}
+
+% vim: tw=90

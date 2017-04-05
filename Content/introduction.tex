@@ -1,0 +1,436 @@
+
+
+\hfill
+\begin{minipage}{4in}
+  \small
+  \singlespacing{}
+  Charles Darwin had a theory that once in a while one should perform a damn-fool
+  experiment.
+  It almost always fails, but when it does come off is terrific.\\
+
+  Darwin played the trombone to his tulips.
+  The result of this particular experiment was negative.
+  \vspace{.3ex}
+  \begin{flushright}
+    {Littlewood, \textit{A Mathematician's Miscellany}}
+  \end{flushright}
+\end{minipage}
+
+
+
+
+
+In this thesis, we study and introduce new methods to study problems that are closely
+related to the Gauss Circle problem.
+In this introductory chapter, we motivate and explain the Gauss Circle problem and how it
+relates to the other problems described in later chapters.
+In Section~\ref{sec:intro:GaussCircleExplanation}, we give a historical overview of the
+classical Gauss Circle and Dirichlet Hyperbola problems.
+
+
+
+
+\section{Gauss Circle Problem}\label{sec:intro:GaussCircleExplanation}
+
+
+
+
+The Gauss Circle problem is the following seemingly innocent question:
+\index{Gauss Circle problem}
+\begin{quote}
+  How many integer lattice points lie inside or on the circle of radius $\sqrt R$ centered
+  at the origin? That is, how many points $(x,y) \in \mathbb{Z}^2$ satisfy $x^2 + y^2 \leq
+  R$?
+\end{quote}
+We will use $S_2(R)$ to denote the number of lattice points inside or on the circle of
+radius $\sqrt R$ centered at the origin.
+Intuitively, it is clear that $S_2(R)$ should be approximately the area of the circle,
+$\Vol B(\sqrt R) = \pi R$.
+This can be made rigorous by thinking of each lattice point as being the center of a $1
+\times 1$ square in the plane and counting those squares fully contained within the circle
+and those squares lying on the boundary of the circle.
+Using this line of thought, Gauss proved (in 1798) that
+\begin{equation}
+  \lvert S_2(R) - \Vol B(\sqrt R) \rvert \ll \sqrt R,
+\end{equation}
+so that the \emph{lattice point discrepancy}\index{lattice point discrepancy} between the
+number of lattice points within the circle and the area of the circle was bounded by some
+constant times the circumference.
+
+
+It may appear intuitive that this is the best one could hope for.\footnote{Indeed, I am
+  not currently aware of an intuitive heuristic that explains \emph{why} the actual error
+term is so much better.}
+No further progress was made towards Gauss Circle problem until 1906, when
+Sierpi\'{n}ski~\cite{sierpinski1906pewnem} showed that
+\begin{equation}
+  \lvert S_2(R) - \Vol B(\sqrt R) \rvert \ll R^{\frac{1}{3}},
+\end{equation}
+a significant improvement over the bound from Gauss.
+This is already remarkable --- somehow lattice points in the plane are distributed in the
+plane in a way that a growing circle includes and omits points in a way that offsets each
+other.
+
+
+It is natural to ask: What is the correct exponent of growth on the error term?
+Hardy, Littlewood, and Cram\'{e}r~\cite{cramer1922} proved that, \emph{on average}, the
+correct exponent is $\frac{1}{4}$ when they proved
+\begin{equation}\label{eq:intro:hardy_littlewood_meansquare}
+  \int_0^X \lvert S_2(r) - \Vol B(\sqrt r) \rvert^2 dr = c X^{\frac{3}{2}} +
+  O(X^{\frac{5}{4} + \epsilon})
+\end{equation}
+for some constant $c$.
+At approximately the same time, Hardy~\cite{Hardy1917} showed that
+\begin{equation}
+  \lvert S_2(R) - \Vol B(\sqrt T) \rvert = \Omega(R^{\frac{1}{4}}),
+\end{equation}
+so that $\frac{1}{4}$ is both a lower bound and the average bound.
+
+
+
+
+
+At the same time (and often, even within the same works, such as in Hardy's work on the
+average and minimum values of the error in~\cite{Hardy1917}), mathematicians were studying
+Dirichlet's Divisor problem.
+Let $d(n)$ denote the number of positive divisors of $n$.
+Then Dirichlet's Divisor problem is to determine the average size of $d(n)$ on integers
+$n$ up to $R$.\index{Dirichlet Divisor problem}\index{Dirichlet Hyperbola problem | \\see
+{Dirichlet Divisor problem} }
+Noting that
+\begin{equation}
+  \sum_{n \leq R} d(n) =
+  \sum_{n \leq R} \sum_{d \mid n} 1 =
+  \sum_{d \leq R} \Big\lfloor \frac{R}{d} \Big\rfloor,
+\end{equation}
+we see that this is equivalent to counting the number of positive integer lattice points
+under the hyperbola $xy = R$.
+(For this reason, some refer to this as Dirichlet's Hyperbola problem).
+
+
+As noted already by Hardy~\cite{Hardy1917}, it's known that
+\begin{equation}
+  \sum_{n \leq R} d(n) = cR \log R + c' R + O(R^{\frac{1}{2}}),
+\end{equation}
+and that
+\begin{equation}
+  \int_1^X \Big\lvert \sum_{n \leq r} d(n) - c r \log r - c' r \Big\rvert^2 dr = c'' X^{\frac{3}{2}} +
+  O(X^{\frac{5}{4} + \epsilon}),
+\end{equation}
+exhibiting analogous to the Gauss Circle problem.
+Attempts to further understand the error terms in the Gauss Circle and Dirichlet Hyperbola
+problems have indicated that there is a strong connection between the two, and often an
+improvement to one of the problems yields an improvement to the other.
+
+
+It is interesting to note that much of the early work of Hardy and Littlewood on
+the Gauss Circle and Dirichlet Hyperbola problems occurred from 1914 to 1919, which are
+the years when Ramanujan studied and worked with them at Cambridge.
+Of particular import is a specific identity inspired by Ramanujan (as noted by Hardy
+in~\cite{Hardy1959onRamanujan}) that is now sometimes called ``Hardy's
+Identity''\footnote{This is another instance of Stigler's Law of Eponymy.},
+which states that
+\begin{equation}\label{eq:intro:HardysIdentity}
+  S_2(R) - \Vol B(\sqrt R) =  \sqrt{R} \sum_{n \geq 1} \frac{r_2(n)}{n^{1/2}} J_1(2\pi
+  \sqrt{n R}),
+\end{equation}
+in which $r_2(n)$ is the number of ways of writing $n$ as a sum of $2$ squares and $J_\nu$ is
+the ordinary Bessel function
+\begin{equation}
+  J_\nu(z) := \sum_{n \geq 0} \frac{(-1)^n}{\Gamma(n+1) \Gamma(\nu + n + 1)}
+  (z/2)^{\nu + 2n}.
+\end{equation}
+Ivi\'c has repeatedly noted in~\cite{ivic2004lattice} and~\cite{ivic1996} that  almost all
+significant progress towards both the Gauss Circle and Dirichlet Hyperbola problems have
+come from identities and approaches similar to~\eqref{eq:intro:HardysIdentity}, though
+sometimes obscured through technical details.
+
+
+
+
+
+\subsection{An Early Connection to Modular Forms}
+
+
+One of the topics that Ramanujan devoted himself to was what we now call the ``Ramanujan
+tau function,''\index{Ramanujan $\tau$}
+which can be defined by matching coefficients in
+\begin{equation}
+  \sum_{n \geq 1} \tau(n) q^n = q \prod_{n \geq 1} (1 - q^n)^{24}.
+\end{equation}
+Ramanujan noticed or conjectured that this function satisfies many nice properties,
+such as being multiplicative.
+The individual $\tau(n)$ satisfy the bound
+\begin{equation}
+  \tau(n) \ll n^{\frac{11}{2} + \epsilon},
+\end{equation}
+and numerical experimentation might lead one to conjecture that
+\begin{equation}
+  \sum_{n \leq R} \tau(n) \ll R^{\frac{11}{2} + \frac{1}{4} + \epsilon}.
+\end{equation}
+Just like the Gauss Circle and Dirichlet Hyperbola problem, it appears that summing over
+$R$ many terms contributes only $\frac{1}{4}$ to the exponent in the size.
+Further, Chandrasekharan and Narasimhan~\cite{chandrasekharan1962functional,
+chandrasekharan1964mean} showed a result analogous to the average estimate of Hardy and
+Littlewood, proving that
+\begin{equation}
+  \int_0^X \big\lvert \sum_{n \leq r} \tau(n) \big\rvert^2 dr = c X^{11 + \frac{3}{2}} + O(X^{12 +
+  \epsilon}).
+\end{equation}
+This also indicates that the average additional exponent is $\frac{1}{4}$.
+
+
+
+We now recognize that this is another analogy to the Gauss Circle problem (except that in
+this case there is no main term).
+This analogy readily generalizes.
+
+
+The Ramanujan $\tau$ function appears as the coefficients of the unique weight $12$
+holomorphic cusp form on $\SL(2, \mathbb{Z})$, usually written
+\begin{equation}
+  \Delta(z) = \sum_{n \geq 1} \tau(n) e(nz),
+\end{equation}
+where here and throughout this thesis, $e(nz) = e^{2\pi i n z}$.
+Generally, we can consider a holomorphic cusp form $f$ on a congruence subgroup $\Gamma
+\subseteq \SL(2, \mathbb{Z})$ of weight $k$, with Fourier expansion
+\begin{equation}
+  f(z) = \sum_{n \geq 1} a(n) e(nz).
+\end{equation}
+Let $S_f(R)$ denote the partial sum of the first $R$ Fourier coefficients,
+\begin{equation}
+  S_f(R) := \sum_{n \leq R} a(n).
+\end{equation}
+Then Chandrasekharan and Narasimhan also show that
+\begin{equation}
+  \int_0^X \lvert S_f(r) \rvert^2 dr = c X^{k + \frac{3}{2}} + O(X^{k + \epsilon}),
+\end{equation}
+indicating that \emph{on average}, the partial sums satisfy
+\begin{equation}
+  S_f(R) \ll R^{\frac{k-1}{2} + \frac{1}{4} + \epsilon}.
+\end{equation}
+In other words, partial sums of coefficients of cusp forms appear to satisfy a Gauss
+Circle problem type growth bound.
+
+
+
+
+
+Further, the Gauss Circle problem can be restated as a problem estimating
+\begin{equation}
+  S_2(R) = \sum_{n \leq R} r_2(n),
+\end{equation}
+where $r_2(n)$ denotes the number of representation of $n$ as a sum of two squares as
+above.
+The coefficients $r_2(n)$ appear as the coefficients of a the modular form $\theta^2(z)$,
+so the analogy between $S_f$ and $S_2$ is very strong.
+(However $\theta^2$ is not cuspidal, so there are some differences).
+
+
+
+In Chapter~\ref{c:sums}, we consider this ``Cusp Form Analogy'' and study $S_f(n)$.
+We introduce new techniques that are fundamentally different than most techniques employed
+in the past.
+Of particular interest is the introduction of Dirichlet series of the form
+\begin{equation}
+  \sum_{n \geq 1} \frac{S_f(n)^2}{n^s},
+\end{equation}
+including their meromorphic continuation and analysis.
+In Chapter~\ref{c:sums_apps}, we give an overview of the completed and currently planned
+applications of the analysis and techniques for studying $S_f(n)$ in Chapter~\ref{c:sums}.
+This includes an overview of several recent papers of the author and his collaborators
+where these techniques have been used successfully.
+
+
+
+
+
+
+\subsection{Further Generalizations of the Gauss Circle Problem}
+
+
+
+A very natural generalization of the Gauss Circle problem is to higher dimensions.
+We will call the following the Gauss $d$-Sphere problem:
+
+
+\begin{quote}
+  How many integer lattice points lie inside or on the $d$-dimensional sphere of radius
+  $\sqrt R$ centered at the origin? That is, how many points $\bm x \in \mathbb{Z}^d$
+  satisfy $\| \bm x \|^2 \leq R$?
+\end{quote}\index{Gauss $d$-Sphere problem}
+
+We use $S_d(R)$ to denote the number of lattice points inside or on the $d$-sphere of
+radius $\sqrt R$, as occurs in the Gauss $d$-Sphere problem.
+As with the Gauss Circle problem, it is intuitively clear that $S_d(R) \approx \Vol
+B_d(\sqrt R)$, where we use $B_d(\sqrt R)$ to denote a $d$-dimensional ball of radius
+$\sqrt R$ centered at the origin.
+Just as with the Gauss Circle problem, the true goal of the Gauss $d$-Sphere problem
+is to understand the lattice point discrepancy $S_d(R) - \Vol B_d(\sqrt R)$.
+
+
+The Gauss $d$-Sphere problem is most mysterious for low dimensions, but perhaps the
+dimension $3$ Gauss Sphere problem is the most mysterious.
+For an excellent survey on the status of this problem, see~\cite{ivic2004lattice}.
+
+
+The Gauss $d$-Sphere problem is not considered in detail in this thesis, but in
+Chapter~\ref{c:sums_apps} a new approach on aspects of the Gauss $d$-Sphere problem is
+outlined which builds on the techniques of Chapter~\ref{c:sums}.
+This is a project under current investigation by the author and his collaborators.
+
+
+
+
+Closely related to the Gauss $d$-Sphere problem is the problem of determining the number
+of lattice points that lie within $B_d(\sqrt R)$ \textbf{and} which lie on a one-sheeted
+hyperboloid\index{one-sheeted hyperboloid problem}
+\begin{equation}
+  \mathcal{H}_{d,h} := X_1^2 + \cdots + X_{d-1}^2 = X_d^2 + h
+\end{equation}
+for some $h \in \mathbb{Z}_{\geq 1}$.
+We use $N_{d,h}(R)$ to denote the number of lattice points within $B_d(\sqrt R)$ and on
+$\mathcal{H}_{d,h}$.
+This is a problem within the larger class of constrained lattice counting problems.
+
+
+The dimension $3$ one-sheeted hyperboloid problem is the first nontrivial dimension, and
+just as with the standard Gauss $d$-Sphere problem, the dimension $3$ hyperboloid is the
+most enigmatic.
+Very little is currently known.
+A significant reason for the mystery comes from the fact that this is too small of a
+dimension to apply the Circle Method of Hardy and Littlewood, and there doesn't seem to be
+an immediate analogue of Hardy's Identify~\eqref{eq:intro:HardysIdentity}.
+In fact, it's not quite clear what the correct separation between the main term and error
+term should be.
+The best known result is the recent result of Oh and Shah~\cite{ohshah2014}, which uses
+ergodic methods to prove that
+\begin{equation}\label{eq:intro:oh_shah}
+  N_{3,h}(R) = c R^{\frac{1}{2}} \log R + O\big( R^{\frac{1}{2}} (\log R)^{\frac{3}{4}}
+  \big)
+\end{equation}
+when $h$ is a positive square.
+
+
+
+From the perspective of modular forms, the underlying modular object is the modular form
+$\theta^{d-1}(z) \overline{\theta(z)}$.
+But in contrast to the variants of the Gauss Circle problem discussed above, $N_{d,h}(R)$
+is encoded within the $h$th Fourier coefficient of $\theta^{d-1}\overline{\theta}$, which
+affects the shape of the analysis significantly.
+
+
+In Chapter~\ref{c:hyperboloid}, we consider the problem of estimating the number
+$N_{d,h}(R)$ of points on one-sheeted hyperboloids.
+Along the way, we study the Dirichlet series
+\begin{equation}
+  \sum_{n \geq 1} \frac{r_{d-1}(n^2 + h)}{(2n^2 + h)^s}
+\end{equation}
+and its meromorphic properties, and use it to get improved estimates for $N_{d,h}(R)$.
+
+
+
+
+\section{Outline and Statements of Main Results}
+
+
+
+\subsubsection*{Chapter 2.}
+
+Chapter~\ref{c:background} consists of background information used in later sections.
+In particular, a variety of properties concerning Eisenstein series are discussed and
+referenced from the literature.
+The second half of Chapter~\ref{c:background} concerns a complete description of three
+Mellin integral transforms.
+It is shown that two smooth integral transforms can be used in tandem to establish a sharp
+cutoff result, which is employed in Chapter~\ref{c:hyperboloid} and in the applications
+described in Chapter~\ref{c:sums_apps}.
+
+
+
+\subsubsection*{Chapters 3 and 4.}
+
+Chapter~\ref{c:sums} is closely related to the journal article~\cite{hkldw}, which was
+published in 2017.
+In this Chapter, we introduce and study the meromorphic properties of the Dirichlet series
+\begin{equation}\label{eq:intro:sums_dirichlet_series}
+  \sum_{n \geq 1} \frac{S_f(n)}{n^s}, \quad \sum_{n \geq 1} \frac{S_f(n)
+  \overline{S_g(n)}}{n^s}, \quad \text{and} \quad \sum_{n \geq 1}
+  \frac{S_f(n)S_g(n)}{n^s},
+\end{equation}
+where $f$ and $g$ are weight $k$ cuspforms on a congruence subgroup $\Gamma \subseteq
+\SL(2, \mathbb{Z})$ and where $S_f(n)$ and $S_g(n)$ denote the partial sums of the first
+$n$ Fourier coefficients of $f$ and $g$, respectively.
+
+
+The first major result is in Theorem~\ref{thm:Wsfgmero} and
+Corollary~\ref{cor:DsSfSg_has_meromorphic}, which show that the series
+in~\eqref{eq:intro:sums_dirichlet_series} have meromorphic continuation to the plane with
+understandable analytic properties.
+
+
+As a first application of this meromorphic continuation, we prove the major analytic
+result of the chapter in Theorem~\ref{thm:second_moment_Sf}, which states that
+\begin{equation}
+  \sum_{n \geq 1} \frac{S_f(n) \overline{S_g(n)}}{n^{k-1}} e^{-n/X} = C X^{\frac{3}{2}} +
+  O(X^{\frac{1}{2} + \epsilon}),
+\end{equation}
+and related results, for an explicit constant $C$.
+In terms of the analogy to the Gauss Circle problem, this is a smoothed second moment and
+is comparable in nature to the mean-square moment bound of Hardy and
+Littlewood~\eqref{eq:intro:hardy_littlewood_meansquare}.
+As the Dirichlet series in~\eqref{eq:intro:sums_dirichlet_series} are new, this smoothed
+result is a new type of result.
+
+
+Chapter~\ref{c:sums_apps} is a description of further work using the Dirichlet
+series~\eqref{eq:intro:sums_dirichlet_series} and its meromorphic continuation.
+This includes the work in the papers~\cite{hkldwShort} and~\cite{hkldwSigns}.
+Further applications are described, as well as preliminary results from the author and his
+collaborators on this topic.
+
+
+
+
+\subsubsection*{Chapters 5 and 6}
+
+Chapter~\ref{c:hyperboloid} focuses on studying the One-Sheeted Hyperboloid problem.
+The Dirichlet series
+\begin{equation}
+  \sum_{n \in \mathbb{Z}} \frac{r_{d-1}(n^2 + h)}{(2n^2 + h)^s}
+\end{equation}
+is studied, and the first major result of the Chapter is in
+Theorem~\ref{thm:hyperboloid:mero_summary}, which states that this Dirichlet series has
+meromorphic continuation to the plane with understandable analytic behavior.
+
+Using this meromorphic continuation, three applications are given.
+Firstly, there is Theorem~\ref{thm:hyperboloid:smooth_full}, which gives a smoothed
+analogue of the number of lattice points $N_{d,h}(R)$ on the one-sheeted hyperboloid
+$\mathcal{H}_{d,h}$ and within $B_d(\sqrt R)$, including many second order main terms.
+This Theorem can be interpreted as a long-interval smoothed average, with many secondary
+main terms.
+
+
+Secondly, there is Theorem~\ref{thm:hyp:concentrating_theorem_full}, which proves a
+short-interval sharp average result.
+But the most important result of the chapter is Theorem~\ref{thm:hyp:sharp_theorem_full},
+which improves the state of the art estimate of Oh and Shah in~\eqref{eq:intro:oh_shah} by
+showing that
+\begin{equation}
+  N_{3,h}(R) = C' R^{\frac{1}{2}} \log R + C R^{\frac{1}{2}} + O(X^{\frac{1}{2} -
+  \frac{1}{20} + \epsilon})
+\end{equation}
+when $h$ is a positive square.
+(When $h$ is not a square, the first term does not appear).
+In fact, the theorem is more general and gives results for any dimension $d \geq 3$.
+
+
+In Chapter~\ref{c:hyperboloid_apps}, we describe an application of the methods and
+techniques of Chapter~\ref{c:hyperboloid} to asymptotics of sums of the form
+\begin{equation}
+  \sum_{n \leq X} d(n^2 + h),
+\end{equation}
+where $d(m)$ denotes the number of positive divisors of $m$.
+
+
+% vim: tw=90

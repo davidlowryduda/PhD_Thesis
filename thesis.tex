@@ -1,0 +1,339 @@
+\documentclass[12pt]{report}   % SUBMISSION TO GRAD SCHOOL
+%\documentclass[12pt,twoside]{report}  % TWOSIDE DUPLEX OUTPUT
+
+
+% Brown University Thesis Package
+\usepackage{setspace}
+\usepackage{buthesis}
+
+
+% Make sure all necessary math things usually in AMS latex are around
+%   I copied this list from someone before me, but this is redundant.
+%   For instance, latexsym is in amsfonts and amssymb
+% Some are not used, like amscd, which makes worse tikz diagrams
+\usepackage{amsmath,amssymb,graphicx,amsfonts,amsthm,amsbsy,array,graphicx}
+\usepackage{latexsym,amscd}
+\usepackage{verbatim}
+\usepackage{epsfig}
+\usepackage{wrapfig}
+\usepackage{changebar}
+
+
+
+% For index creation. One must add '\printindex' to make it appear
+\usepackage{makeidx}
+\makeindex
+
+% For improved bolds
+\usepackage{bm}
+
+% For improved tables and better hlines
+\usepackage{booktabs}
+
+% It's my thesis, and I'll cry if I want to
+% No need for starred equation/align environments
+\usepackage{mathtools}
+\mathtoolsset{showonlyrefs}
+
+% Fancy enumerations
+\usepackage{enumerate}
+
+%\usepackage{tikz}
+%\usepackage{pgfmath}
+%\usetikzlibrary{decorations}
+%\usetikzlibrary{shadows}
+
+
+% Presented to you by Technicolor, and the number 3
+\usepackage{hyperref}
+\usepackage[usenames, dvipsnames]{xcolor}
+
+
+% For pretty hyperlinks
+\definecolor{darkblue}{rgb}{0.0,0.0,0.3}
+\hypersetup{colorlinks,breaklinks,
+  linkcolor=darkblue,urlcolor=darkblue,
+anchorcolor=darkblue,citecolor=darkblue}
+
+
+% For ease in writing labels and references
+%\usepackage{showkeys}
+
+
+\usepackage[comma,numbers,square,sort&compress]{natbib}
+
+
+% Allow equations to wrap on pages always
+\allowdisplaybreaks
+
+%%%%%%%%%%%%%%%%% Footnotes %%%%%%%%%%%%%%%%%%%%%%%%%
+% I don't want numbered footnotes. And I like daggers.
+\makeatletter
+\newcommand*{\myfnsymbolsingle}[1]{%
+  \ensuremath{%
+    \ifcase#1% 0
+    \or % 2
+      \dagger
+    \or % 3
+      \ddagger
+    \or % 5
+      \dagger\dagger
+    \else % >= 6
+      \@ctrerr
+    \fi
+  }%
+}
+\makeatother
+
+\newcommand*{\myfnsymbol}[1]{%
+  \myfnsymbolsingle{\value{#1}}%
+}
+
+\renewcommand*{\thefootnote}{%
+  \myfnsymbolsingle{\value{footnote}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% Use fancy chapter headings. These look much better
+\usepackage[Bjarne]{ThesisFncychap}
+\include{BjarneThesisTitles}
+
+
+
+% Standard environments
+%\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{lemma*}{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem*{proposition*}{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem*{corollary*}{Corollary}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{question}[theorem]{Question}
+
+\theoremstyle{definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem*{remark*}{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+%\newtheorem{exercise}[theorem]{Exercise}
+
+%\numberwithin{equation}{chapter} % or section
+
+
+
+%	counters
+\renewcommand{\labelenumi}{(\roman{enumi})}
+\makeatletter\@addtoreset{equation}{section}\makeatother
+
+\renewcommand{\theequation}{\arabic{section}.\arabic{equation}}
+\renewcommand{\thelemma}{\arabic{chapter}.\arabic{section}.\arabic{lemma}}
+\renewcommand{\thecorollary}{\arabic{chapter}.\arabic{section}.\arabic{corollary}}
+\renewcommand{\thedefinition}{\arabic{chapter}.\arabic{section}.\arabic{definition}}
+%\renewcommand{\thehypothesis}{(h\arabic{hypothesis})}
+\renewcommand{\theproposition}{\arabic{chapter}.\arabic{section}.\arabic{proposition}}
+\renewcommand{\theremark}{\arabic{chapter}.\arabic{section}.\arabic{remark}}
+\renewcommand{\thetheorem}{\arabic{chapter}.\arabic{section}.\arabic{theorem}}
+\renewcommand{\theconjecture}{\arabic{chapter}.\arabic{section}.\arabic{conjecture}}
+
+
+
+% When stranded on a desert island, I only bring the following commands
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\renewcommand{\Im}{\operatorname{Im}}
+\renewcommand{\Re}{\operatorname{Re}}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator*{\Res}{Res}
+\DeclareMathOperator*{\const}{const}
+\DeclareMathOperator*{\Vol}{Vol}
+\newcommand{\discrete}{\operatorname{discrete}}
+\newcommand{\kron}[2]{\left(\frac{#1}{#2}\right)}
+\newcommand{\closepara}{\hfill $\blacktriangleleft$}
+
+
+
+% For easier notes to self
+%\newcommand{\marginnote}[1]{\marginpar{\footnotesize{\textcolor{red}{#1}}}}
+\newcommand{\marginnote}[1]{\normalmarginpar\marginpar{\tiny{#1}}}
+\newcommand{\marginnoteleft}[1]{\reversemarginpar\marginpar{\tiny{#1}}}
+
+
+
+% Control the fonts and formatting used in the table of contents,
+% list of figures, and list of tables
+\usepackage[titles]{tocloft}
+
+%% Aesthetic spacing redefines that look nicer to me than the defaults.
+\setlength{\cftbeforechapskip}{-1ex}
+\setlength{\cftbeforesecskip}{-3.5ex}
+\setlength{\cftbeforesubsecskip}{-3.5ex}
+\setlength{\cftbeforetabskip}{-3.5ex}
+\setlength{\cftbeforefigskip}{-3.5ex}
+
+
+
+
+\dissertation % At least, I hope so
+
+
+
+
+% Begin document data
+%-----------------------------------------------------------------
+\title{On Some Variants of the Gauss Circle Problem}
+\author{David Lowry-Duda}
+\degree{Doctor of Philosophy}
+\department{the Department of Mathematics}
+\previousdegrees{%
+		B.S.\ in Applied Mathematics,
+      Georgia Institute of Technology, Atlanta, GA, 2011 \\
+    B.S.\ in International Affairs and Modern Languages,
+      Georgia Institute of Technology, Atlanta, GA, 2011 \\
+    M.Sc.\ in Mathematics, Brown University, Providence, RI, 2015
+  }
+\thesismonth{May} \thesisyear{2017}
+%-----------------------------------------------------------------
+
+
+
+
+\begin{document}
+
+% TODO make double spaced for actual submission
+%\doublespacing
+
+
+\begin{preliminaries}
+\maketitle
+
+\copyrightpage
+
+
+\begin{abstract}
+  \input{Content/abstract}
+  \thispagestyle{empty}
+  % Do you want this page to exist in the numbering?
+%  \if@twoside
+%    \addtocounter{page}{-2}
+%  \else
+%    \addtocounter{page}{-1}
+%  \fi
+\end{abstract}
+
+
+\begin{signature}
+  \director{Jeff Hoffstein, Ph.D., Advisor}
+  \reader{Jill Pipher, Ph.D., Reader}
+  \reader{Dinakar Ramakrishnan, Ph.D., Reader}
+\end{signature}
+
+
+\begin{vita}
+  \input{Content/vita}
+\end{vita}
+
+
+\begin{dedication}
+  \input{Content/dedication}
+\end{dedication}
+
+
+\begin{acknowledgments}
+  \input{Content/acknowledgments}
+\end{acknowledgments}
+
+
+% Make ToC, LoT, LoF single spaced
+\begin{spacing}{1}
+  \tableofcontents
+  \clearpage{\pagestyle{empty}\cleardoublepage}
+
+  \footnotesize
+  \fontsize{11.5pt}{12.5pt}\selectfont
+  %  \listoftables
+  %  \clearpage{\pagestyle{empty}\cleardoublepage}
+
+  %\listoffigures
+  %\clearpage{\pagestyle{empty}\cleardoublepage}
+  \normalsize
+\end{spacing}
+
+\end{preliminaries}
+
+
+
+\pagestyle{myheadings}
+
+
+
+%------------------------ CONTENT ------------------------%
+
+% Sample content
+%\chapter{Introduction}\label{c:intro}
+%\input{content/introduction}
+%\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{Introduction}\label{c:introduction}
+\input{Content/introduction}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{Background}\label{c:background}
+\input{Content/background}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{On Dirichlet Series for Sums of Coefficients of Cusp Forms}\label{c:sums}
+\input{Content/sums}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{Applications of Dirichlet Series of Sums of Coefficients}\label{c:sums_apps}
+\input{Content/sums_apps}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{On Lattice Points on Hyperboloids}\label{c:hyperboloid}
+\input{Content/hyperboloid}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{An Application of Counting Lattice Points on Hyperboids}\label{c:hyperboloid_apps}
+\input{Content/hyperboloid_apps}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{Conclusion and Directions for Further Investigation}\label{c:conclusion}
+\input{Content/conclusion}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+\chapter{Original Motivations}\label{c:motivations}
+\input{Content/motivations}
+\clearpage{\pagestyle{empty}\cleardoublepage}
+
+%------------------------ APPENDIX ------------------------%
+%\appendix
+%\chapter{Definitions and estimates}\label{A1}
+%\input{content/appendix/app1}
+%\clearpage{\pagestyle{empty}\cleardoublepage}
+
+
+%------------------------  INDEX  -------------------------%
+\addcontentsline{toc}{chapter}{Index}
+\begin{spacing}{0.9}
+  \printindex
+\end{spacing}
+
+
+%---------------------- BIBLIOGRAPHY ----------------------%
+
+\addcontentsline{toc}{chapter}{Bibliography}
+%\bibliographystyle{elsevier}
+\bibliographystyle{alpha}
+\begin{spacing}{0.9}
+  \bibliography{thesisbiblio}
+\end{spacing}
+
+\end{document}

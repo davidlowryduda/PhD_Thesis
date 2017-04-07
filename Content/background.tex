@@ -20,11 +20,17 @@ means that there are constants $C$ and $X$ such that for all $x > X$, we have th
   \lvert F(x) \rvert \leq C G(x).
 \end{equation}
 We use $F(x) \ll G(x)$ and $F(x) = O(G(x))$ interchangeably.
-Similarly,
+We also use
+\begin{equation}
+  F(x) = o(G(x))
+\end{equation}
+to mean that for any $\epsilon > 0$, there exists an $X$ such that for all $x > X$, we
+have that $F(x) \leq \epsilon G(x)$.
+On the other hand,
 \begin{equation}
   F(x) = \Omega(G(x))
 \end{equation}
-means that $G(x)$ does not satisfy $G(x) \ll F(x)$.
+means that $F$ and $G$ do not satisfy $F(x) = o(G(x))$.
 Stated differently, $F(x)$ is as least as large as $G(x)$ (up to a constant) infinitely
 often.
 
@@ -151,8 +157,8 @@ weight $k$.
 These details are often considered standard exercises in the literature, and are usually
 tedious to compute.
 We will emphasize the important properties of the Eisenstein series necessary for the
-argument in this chapter --- some with complete proofs, and some with descriptions of the
-method of proof.
+argument in Chapter~\ref{c:hyperboloid} --- some with complete proofs, and some with
+descriptions of the method of proof.
 
 
 \index{Eisenstein series!weight $0$}
@@ -200,8 +206,8 @@ These Eisenstein series are defined as
   \\
   E_{\frac{1}{2}}(z,w) &= \Big( \frac{2z+1}{\lvert 2z+1 \rvert} \Big)^{-k}
   E_\infty^k(\tfrac{z}{2z+1}, w) =
-  \sum_{\substack{\pm(c,d) \in \mathbb{Z}^2 \\ (c,d) \neq (0,0) \\ \gcd(2c, d) = 1 \\
-  \gcd(c,2) = 1}} \frac{y^w \varepsilon_d^{2k} \kron{2c}{d}^{2k}}{\lvert 2cz+d \rvert^{2w -
+  \sum_{\substack{\pm(c,d) \in \mathbb{Z}^2 \\ (c,d) \neq (0,0) \\ \gcd(2c, d) = 1}}
+  \frac{y^w \varepsilon_d^{2k} \kron{2c}{d}^{2k}}{\lvert 2cz+d \rvert^{2w -
   k}(2cz+d)^k}.
 \end{align}
 In these expressions, $\varepsilon_d$ denotes the sign of the Gauss sum associated to the
@@ -216,7 +222,7 @@ primitive real quadratic Dirichlet character $\chi_d$, and is given by
 We use $J(\gamma, z)$ to denote the normalized half-integral weight cocycle
 \index{J@$J(\gamma, z)$}
 $J(\gamma, z) = j(\gamma, z)/\lvert j(\gamma, z) \rvert$,
-where $j(\gamma, z)$ is the standard $\theta$ cocycle\index{j@$j(gamma, z)$}
+where $j(\gamma, z)$ is the standard $\theta$ cocycle\index{j@$j(\gamma, z)$}
 \begin{equation}
   j(\gamma, z) :=
   \theta(\gamma z)/\theta(z) = \varepsilon_d^{-1} \kron{c}{d} (cz + d)^{\frac{1}{2}}.
@@ -258,15 +264,15 @@ coefficients of the Eisenstein series.
 \index{rho@$\rho_\mathfrak{a}^k$}
 Each Eisenstein series has a Fourier-Whittaker expansion of the form
 \begin{equation}
-  E_\mathfrak{a}^k(z,w) = y^w + \rho_\mathfrak{a}^k(0, w) y^{1-w} + \sum_{n \neq 0}
-  \rho_\mathfrak{a}^k(n, w) W_{\frac{|n|}{n}\frac{k}{2}, w - \frac{1}{2}}(4\pi \lvert n
-  \rvert y) e^{2\pi i n x}
+  E_\mathfrak{a}^k(z,w) = y^w + \rho_\mathfrak{a}^k(0, w) y^{1-w} + \sum_{h \neq 0}
+  \rho_\mathfrak{a}^k(h, w) W_{\frac{|h|}{h}\frac{k}{2}, w - \frac{1}{2}}(4\pi \lvert h
+  \rvert y) e^{2\pi i h x}
 \end{equation}
-for some coefficients $\rho_\mathfrak{a}^k(n,w)$, and where $W_{\alpha, \nu}(y)$ is the
+for some coefficients $\rho_\mathfrak{a}^k(h,w)$, and where $W_{\alpha, \nu}(y)$ is the
 $\GL(2)$ Whittaker function.
 This is given by~\cite[3.6.3]{GoldfeldHundleyI}
 \index{Whittaker function}
-\index{W@$W_{\alpha, \nu}(y)$ | see{Whittaker function} }
+\index{W@$W_{\alpha, \nu}(y)$ | see {Whittaker function } }
 \begin{equation}
   W_{\alpha, \nu}(y) = \frac{y^{\nu + \frac{1}{2}}
   e^{-\frac{y}{2}}}{\Gamma(\nu - \alpha + \frac{1}{2})}
@@ -278,6 +284,7 @@ and $\lvert \text{arg}(y) \rvert < \pi$.
 
 
 When $\alpha = 0$, the Whittaker function is just the $K$-Bessel function
+\index{K@$K$-Bessel function, $K_\nu(y)$}
 \begin{equation}
   W_{0, \nu}(y) = \big( \frac{y}{\pi}\big)^{\frac{1}{2}} K_\nu\big( \frac{y}{2} \big),
   \quad
@@ -348,7 +355,7 @@ This is all described in~\cite{goldfeld1985eisenstein}, including the factorizat
 in~\eqref{eq:Eisenstein_halfweight_Dirichletseries_factors}, which is given
 in~\cite[Corollary 1.3]{goldfeld1985eisenstein}.
 For completeness and as a unifying reference, we recompute and state the shape of the
-coefficients of $E_\infty^K$ in \S\ref{ssec:half_integral_eisenstein}, including a proof
+coefficients of $E_\infty^k$ in \S\ref{ssec:half_integral_eisenstein}, including a proof
 of the factorization~\eqref{eq:Eisenstein_halfweight_Dirichletseries_factors}.
 
 
@@ -464,7 +471,7 @@ and are achieved through (essentially) the same work.
   and $0 \leq q < c$.
   Then the arithmetic part is written
   \begin{equation}
-    \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d \bmod 4} \kron{-4}{d}^k e^{\pi i
+    \sum_{c > 0} \frac{1}{(4c)^{2w}} \sum_{d=0}^3 \kron{-4}{d}^k e^{\pi i
   \frac{hd}{2c}} \sum_{q \bmod c} e^{2\pi i \frac{hq}{c}}.  \end{equation}
   The final sum over $q$ is
   \begin{equation}
@@ -538,12 +545,13 @@ correction factor.
     {\Gamma(w + \frac{\lvert h \rvert}{h} \frac{k}{2})}
     \sum_{c > 0} \frac{g_h(4c)}{(4c^{2w})},
   \end{align}
-  where
+  where\index{g@$g_h(c)$}
   \begin{equation}
     g_h(c) = \sum_{d \bmod c} \varepsilon_d^{2k} \kron{c}{d} e \big( \tfrac{hd}{c} \big)
   \end{equation}
   is a Gauss sum.
-  The Dirichlet series associated to these Gauss sums can be written as
+  The Dirichlet series associated to these Gauss sums can be written
+  as\index{D@$\widetilde{D}_\infty^k(h,w)$}
   \begin{equation}
     \sum_{c \geq 1} \frac{g_h(4c)}{(4c)^{2w}}
     =
@@ -686,7 +694,7 @@ Using this, we can write
     \sum_{d \bmod 4c} \varepsilon_d^{2k} e\big(\tfrac{hd}{4c}\big) \kron{4c}{d}
     &=
     \sum_{(d_1\bmod c')} \sum_{(d_2\bmod 2^\alpha)} \varepsilon_{d_2c'}^{2k}
-    e^{2\pi i h \frac{d_1 2^\alpha + d_2 c'}{2^\alpha c'}}
+    e\big( \tfrac{h (d_1 2^\alpha + d_2 c')}{2^\alpha c'} \big)
     \kron{2^\alpha c'}{d_1 2^\alpha + d_2c'}
     \\
     &=
@@ -697,7 +705,7 @@ Using this, we can write
 \end{align}
 
 Note that $d_2$ is necessarily odd.
-Then by quadratic reciprocity, we can rewrite the inner sum as
+By quadratic reciprocity, we can rewrite the inner sum as
 \begin{align}
     \sum_{d_1 \bmod c'} \kron{c'}{d_1 2^\alpha+ d_2c'} e\big( \tfrac{h d_1}{c'} \big)
     &=
@@ -774,7 +782,7 @@ so that $H_h(n_1 n_2) = H_h(n_1) H_h(n_2)$.
 \end{proof}
 
 
-In order to understand a Dirichlet series featuring $H_h(c')$, it will be sufficient to
+In order to understand a Dirichlet series formed from $H_h(c')$, it will be sufficient to
 understand $H_h(p^k)$ for odd primes $p$.
 When $p \nmid h$, these are particularly easy to understand.
 
@@ -797,7 +805,7 @@ When $p \nmid h$, these are particularly easy to understand.
     H_h(p) = \varepsilon_p \sum_{d \bmod p} \kron{d}{p} e \big( \tfrac{dh}{p} \big) =
     \varepsilon_p^2 \kron{h}{p} \sqrt p = \kron{-h}{p} \sqrt p,
   \end{equation}
-  as $H_h(p)$ is very nearly a standard Gauss Sum as considered in the beginning
+  as $H_h(p)$ is very nearly a standard Gauss Sum, as considered in the beginning
   of~\cite{Davenport1980}.
 
   For $k \geq 2$, there are two cases.
@@ -903,7 +911,7 @@ the entire $d_2$ sum vanishes unless $h$ is highly divisible by $2$.
 \begin{proof}
   Without loss of generality, choose least non-negative representations for each $d_2 \bmod
   2^\alpha$.
-  Then write $d_2 = 8d' + d''$ where $0 \leq d' < 2^{\alpha - 3}$ and $0 \leq d'' < 8$.
+  Write $d_2 = 8d' + d''$ where $0 \leq d' < 2^{\alpha - 3}$ and $0 \leq d'' < 8$.
   Then $\varepsilon_{8d' + d''} = \varepsilon_{d''}$ and
   $\kron{2^\alpha}{8d' + d''} = \kron{2^\alpha}{d''}$, so the $d'$ summation can be
   considered separately.
@@ -963,8 +971,8 @@ We are now finally ready to prove Proposition~\ref{prop:back:half_integral_L}.
     \prod_{\substack{p \\ p \neq 2 \\ p \nmid h}} \Big( 1 + \frac{\big(\frac{h (-1)^{k -
     \frac{1}{2}}}{p}\big)} {p^{2w - \frac{1}{2}}} \Big).
   \end{equation}
-  It's quickly checked that this perfectly matches the Euler product (on primes avoiding
-  $h$ and $2$) for $L(2w-\frac{1}{2}, \chi_{k,h}) \zeta(4w-1)^{-1}$, where
+  On primes avoiding $h$ and $2$, it's quickly checked that this perfectly matches the
+  Euler product for $L(2w-\frac{1}{2}, \chi_{k,h}) \zeta(4w-1)^{-1}$, where
   $\chi_{k,h}(\cdot) = \big( \frac{h (-1)^{k - \frac{1}{2}}}{\cdot} \big)$.
   Therefore we can write the product over those primes avoiding $h$ and $2$ as
   \begin{equation}
@@ -1029,7 +1037,7 @@ We are now finally ready to prove Proposition~\ref{prop:back:half_integral_L}.
 
 
 
-\section{Cutoff integrals and their properties}\label{sec:cutoff_integrals}
+\section{Cutoff Integrals and Their Properties}\label{sec:cutoff_integrals}
 
 
 We recall the Mellin transform and inverse Mellin transform, and use these to construct
@@ -1159,44 +1167,40 @@ particular in an interval of width $X/Y$ around $X$).
 
 \subsubsection*{Cutoff Integrals from Smooth, Compactly Supported Functions}
 \index{Integral transform!compactly supported transform}
+\index{phi@$\Phi_Y(s) and \phi_Y(n)$}
 
 
 It will also be useful to document a more general family of cutoff transforms.
-For $X,Y > 0$, let $v_Y(X)$ denote a smooth non-negative function with maximum value $1$,
+For $X,Y > 0$, let $\phi_Y(X)$ denote a smooth non-negative function with maximum value $1$,
 satisfying
 \begin{enumerate}
-  \item $v_Y(X) = 1$ for $X \leq 1$,
-  \item $v_Y(X) = 0$ for $X \geq 1 + \frac{1}{Y}$.
+  \item $\phi_Y(X) = 1$ for $X \leq 1$,
+  \item $\phi_Y(X) = 0$ for $X \geq 1 + \frac{1}{Y}$.
 \end{enumerate}
-Let $V_Y(s)$ denote the Mellin transform of $v_Y(x)$, given by
+Let $\Phi_Y(s)$ denote the Mellin transform of $\phi_Y(x)$, given by
 \begin{equation}
-  V_Y(s) = \int_0^\infty t^s v_Y(t) \frac{dt}{t},
+  \Phi_Y(s) = \int_0^\infty t^s \phi_Y(t) \frac{dt}{t},
 \end{equation}
 defined initially for $\Re s > 0$.
 Repeated applications of integration by parts and differentiation under the integral shows
-that $V_Y(s)$ satisfies the following four properties:
+that $\Phi_Y(s)$ satisfies the following four properties:
 \begin{enumerate}
-  \item $V_Y(s) = \frac{1}{s} + O_s(\frac{1}{Y})$,
-  \item $V'_Y(s) = -\frac{1}{s^2} + O_s(\frac{1}{Y})$
-  \item $V_Y(s) = -\frac{1}{s} \int_1^{1 + \frac{1}{Y}} v'_Y(t) t^s dt$,
+  \item $\Phi_Y(s) = \frac{1}{s} + O_s(\frac{1}{Y})$,
+  \item $\Phi'_Y(s) = -\frac{1}{s^2} + O_s(\frac{1}{Y})$
+  \item $\Phi_Y(s) = -\frac{1}{s} \int_1^{1 + \frac{1}{Y}} \phi'_Y(t) t^s dt$,
   \item and for all positive integers $m$, for $s$ constrained within a vertical strip and
     $\lvert s-1 \rvert > \epsilon$, we have
     \begin{equation}
-      V_Y(s) \ll_\epsilon \frac{1}{Y} \Big( \frac{Y}{1 + \lvert s \rvert} \Big)^m.
+      \Phi_Y(s) \ll_\epsilon \frac{1}{Y} \Big( \frac{Y}{1 + \lvert s \rvert} \Big)^m.
     \end{equation}
 \end{enumerate}
 Further, the last property can be extended to real $m > 1$ through the
 Phragm\'{e}n-Lindel\"{o}f principle.
-The Mellin transform pair $V_Y(s), v_Y(x)$ gives a general set of integral cutoff
+The Mellin transform pair $\Phi_Y(s), \phi_Y(x)$ gives a general set of integral cutoff
 relations,
 \begin{equation}
-  \sum_{n \leq X} a(n) + \sum_{X < n \leq X + X/Y} a(n) v_Y\Big(\frac{n}{X}\Big) =
-  \frac{1}{2\pi i} \int_{(\sigma)} D(s) V_Y(s) X^s ds.
+  \sum_{n \leq X} a(n) + \sum_{X < n \leq X + X/Y} a(n) \phi_Y\Big(\frac{n}{X}\Big) =
+  \frac{1}{2\pi i} \int_{(\sigma)} D(s) \Phi_Y(s) X^s ds.
 \end{equation}
-
-\begin{remark}
-  We will sometimes use the notation $\Phi_Y(s)$ and $\phi_Y(n)$
-  in place of $V_Y(s)$ and $v_y(n)$.
-\end{remark}
 
 % vim: tw=90

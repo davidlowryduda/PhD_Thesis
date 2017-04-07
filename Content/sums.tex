@@ -3,7 +3,7 @@
 \section{Introduction}
 
 
-Continuing with the notation as before, let $f$ be a holomorphic cusp form of positive
+Continuing with same notation as before, let $f$ be a holomorphic cusp form of positive
 weight $k$ on a congruence subgroup $\Gamma \subseteq \SL(2, \mathbb{Z})$, where $k \in
 \mathbb{Z} \cup ( \mathbb{Z} + \tfrac{1}{2})$.
 Denote the Fourier expansion of $f$ at $\infty$ by
@@ -66,7 +66,8 @@ We similarly expect the even better bound,
   \sum_{n \leq X} \tau(n) \ll X^{\frac{11}{2} + \frac{1}{4} + \epsilon}.
 \end{equation}
 Although there is a clear qualitative connection with the Circle and Divisor problems, it
-seems unlikely that this common thread was recognized by Hardy, Littlewood, or Ramanujan.
+seems unlikely that this common thread was recognized by Hardy, Littlewood, or Ramanujan
+at the time.
 
 
 For our general cusp form $f$ of weight $k$ in $\GL(2)$, we expect an analogous conjecture
@@ -77,7 +78,7 @@ to hold, which we refer to as the ``Classical Conjecture.''
 \begin{conjecture}[Classical Conjecture]
   Let $f(z) = \sum_{n \geq 1} a(n) e(nz)$ be a holomorphic cusp form of weight $k$ on
   $\GL(2)$, where $k \in \mathbb{Z}\cup(\mathbb{Z}+\frac{1}{2})$ and $k > 1$.
-  Then
+  Then\index{S@$S_f(n)$}
   \begin{equation}
     S_f(n) := \sum_{n \leq X} a(n) \ll X^{\frac{k-1}{2} + \frac{1}{4} + \epsilon}.
   \end{equation}
@@ -112,23 +113,24 @@ classical argument:
   &\ll X^{k-1 + \frac{5}{2}}.
 \end{align}
 The Cauchy-Schwarz-Bunyakovsky inequality is used to pass from the first line to the
-second, and bound of Chandrasekharan and Narasimhan is used to pass from the second to the
-third.
+second, and the bound of Chandrasekharan and Narasimhan is used to pass from the second to
+the third.
 Taking the square root of each side and dividing by $X$ gives
 \begin{equation}
   \frac{1}{X} \sum_{n \leq X} \lvert S_f(n) \rvert \ll X^{\frac{k-1}{2} + \frac{1}{4}},
 \end{equation}
 which is precisely the statement that the Classical Conjecture holds \emph{on average}.
+Their result is described more completely in \S\ref{ssec:CN}.
 
 
 
 Building on this result, Hafner and Ivi\'c were able to show that for holomorphic cusp
-forms of full integral weight on $\SL(2, \mathbb{Z})$,
+forms of full integral weight on $\SL(2, \mathbb{Z})$, we know
 \begin{equation}
   S_f(n) \ll X^{\frac{k-1}{2} + \frac{1}{3}}.
 \end{equation}
 The argument of Hafner and Ivi\'c only applies for holomorphic forms of full-integral
-eight and of level one, but it is possible to give some extension to their result using
+eight and of level one, but it is possible to provide some extension to their result using
 their methodology.
 
 
@@ -173,6 +175,7 @@ the tools necessary for the analysis.
 
 \subsection{The Rankin--Selberg $L$-function}\label{ssec:rankinselberg_lfunction}% chktex 8
 \index{Rankin--Selberg $L$-function} % chktex 8
+\index{L@$L(s, f\times g)$}
 
 
 The Rankin--Selberg convolution $L$-function is described in detail % chktex 8
@@ -205,7 +208,7 @@ identity
   L(s, f\times \overline{g}) := \frac{(4\pi)^{s + k - 1} \zeta(2s)}{\Gamma(s + k - 1)}
   \langle \Im(\cdot)^k f \overline{g}, E(\cdot, \overline{s})\rangle,
 \end{equation}
-where $E(z,s)$ is the real-analytic Eisenstein series
+where $E(z,s)$ is the real-analytic Eisenstein series\index{E@$E(z,s)$}
 \begin{equation}\label{eq:eisenstein_def}
   E(z,s) = \sum_{\gamma \in \Gamma_\infty \backslash \Gamma} \Im(\gamma z)^s.
 \end{equation}
@@ -250,6 +253,7 @@ complicated due to the existence of other cusps.
 \index{spectral expansion}
 \index{Maass forms}
 \index{mu@$\mu_j$ | see {Maass forms} }
+\index{Selberg Eigenvalue Conjecture}
 
 
 Let $L^2(\Gamma \backslash \mathcal{H})$ denote the space of square integrable functions
@@ -332,12 +336,13 @@ It is easy to check that an application of the lemma (followed by a change of va
 
 
 
-\subsection{Chandrasekharan and Narasimhan}
+\subsection{Chandrasekharan and Narasimhan}\label{ssec:CN}
 \index{Chandrasekharan and Narasimhan}
 
 
 We will refer to a result of Chandrasekharan and Narasimhan through this thesis.
-We combine~\cite[Theorem~4.1]{CN1} and~\cite[Theorem~1]{CN2} to state the following
+We combine~\cite[Theorem~4.1]{chandrasekharan1962functional}
+and~\cite[Theorem~1]{chandrasekharan1964mean} to state the following
 theorem of theirs.
 
 
@@ -393,6 +398,7 @@ produce nontrivial bounds on first and second moments.
 
 
 \section{Meromorphic Continuation}
+\index{D@$D(s, S_f \times S_f)$}
 
 
 We will now produce the meromorphic continuations of $D(s, S_f)$ and $D(s, S_f \times
@@ -1005,7 +1011,7 @@ the above-diagonal and below-diagonal terms in $\mathcal{V}_{f, \overline{g}}$.
 
 In the special case when $f = g$, it is possible to show that odd Maass forms $\mu_j$ do
 not contribute poles in \emph{either} the above-diagonal or below-diagonal terms in
-$\mathcal{V}_{f \overline{f}}$.
+$\mathcal{V}_{f, \overline{f}}$.
 We record this observation as a corollary to the above lines of thought, even though it is
 not necessary for the applications in this thesis.
 
@@ -1344,7 +1350,7 @@ half-integers from the Gamma function in the numerator.
 Poles appearing in the discrete spectrum component do not exhibit the same properties of
 cancellation, aside from those noted in Lemmas~\ref{lem:Litj_equals_zero}
 and~\ref{lem:oddorthogonaltoeven}.
-A quick analysis of the Gamma functions in the discrete component,
+Analysis of the Gamma functions in the discrete component,
 in~\eqref{line:1spectralexp}, shows that there are potential simple poles at $s =
 \frac{1}{2} \pm it_j - n$ for $n \in \mathbb{Z}_{\geq 0}$.
 The Lemmas~\ref{lem:Litj_equals_zero} and~\ref{lem:oddorthogonaltoeven} show that those
@@ -1416,7 +1422,7 @@ Collecting the analytic data, we have proved the following.
 
 With Theorem~\ref{thm:Wsfgmero} and the decomposition from
 Proposition~\ref{prop:SfSg_decomposition}, we can quickly give the meromorphic
-continuation of the Dirichlet series $D(s, S_f \times S_f)$.
+continuation of the Dirichlet series $D(s, S_f \times \overline{S_g})$.
 In particular, by Proposition~\ref{prop:SfSg_decomposition}, we know that
 \begin{equation}
   D(s, S_f \times \overline{S_g}) = W(s; f, \overline{g}) + \frac{1}{2\pi i}
@@ -1441,8 +1447,7 @@ As $a(n) \ll n^{\frac{k-1}{2} + \epsilon}$ and $S_f(n) \ll n^{\frac{k-1}{2} +
 Thus $W(s; f, \overline{g})$ converges absolutely for $\Re s > \frac{4}{3}$.
 
 Consider $D(s, S_f \times \overline{S_g})$ for $\Re s > 4$ and $\gamma = 2$ initially, so
-that both $W(s; f, \overline{g})$ and $W(s-z; f, \overline{g})$ are absolutely convergent
-series.
+that both $W(s; f, \overline{g})$ and $W(s-z; f, \overline{g})$ are absolutely convergent.
 Shifting the line of $z$ integration to $-M - \frac{1}{2}$ for some positive integer $M$
 passes several poles occurring when $z = 1$ (from $\zeta(z)$) or $z = -j$ with $j \in
 \mathbb{Z}_{\geq 0}$ (from $\Gamma(z)$).
@@ -1740,7 +1745,7 @@ where $\delta_\mathfrak{a} = 1$ if $\mathfrak{a} = \infty$ and is $0$ otherwise,
   \varphi(0, w) &= \sqrt \pi \frac{\Gamma(w - \frac{1}{2})}{\Gamma(w)} \sum_c
   c^{-2w}S_\mathfrak{a}(0,0;c) \\
   \varphi(m, w) &= \frac{\pi^w}{\Gamma(w)} \lvert m \rvert^{w-1} \sum_c c^{-2w}
-  S_\mathfrak{a}(0, n; c)
+  S_\mathfrak{a}(0, m; c)
 \end{align}
 are generalized Whittaker-Fourier coefficients,
 \begin{equation}

@@ -54,7 +54,7 @@ Using this line of thought, Gauss proved (in 1798) that
   \lvert S_2(R) - \Vol B(\sqrt R) \rvert \ll \sqrt R,
 \end{equation}
 so that the \emph{lattice point discrepancy}\index{lattice point discrepancy} between the
-number of lattice points within the circle and the area of the circle was bounded by some
+number of lattice points within the circle and the area of the circle is bounded by some
 constant times the circumference.
 
 
@@ -68,8 +68,8 @@ Sierpi\'{n}ski~\cite{sierpinski1906pewnem} showed that
 \end{equation}
 a significant improvement over the bound from Gauss.
 This is already remarkable --- somehow lattice points in the plane are distributed in the
-plane in a way that a growing circle includes and omits points in a way that offsets each
-other.
+plane in a way that a growing circle includes and omits points in a way that partially
+offsets each other.
 
 
 It is natural to ask: What is the correct exponent of growth on the error term?
@@ -82,7 +82,7 @@ correct exponent is $\frac{1}{4}$ when they proved
 for some constant $c$.
 At approximately the same time, Hardy~\cite{Hardy1917} showed that
 \begin{equation}
-  \lvert S_2(R) - \Vol B(\sqrt T) \rvert = \Omega(R^{\frac{1}{4}}),
+  \lvert S_2(R) - \Vol B(\sqrt R) \rvert = \Omega(R^{\frac{1}{4}}),
 \end{equation}
 so that $\frac{1}{4}$ is both a lower bound and the average bound.
 
@@ -105,7 +105,7 @@ Noting that
 \end{equation}
 we see that this is equivalent to counting the number of positive integer lattice points
 under the hyperbola $xy = R$.
-(For this reason, some refer to this as Dirichlet's Hyperbola problem).
+For this reason, some refer to this as Dirichlet's Hyperbola problem.
 
 
 As noted already by Hardy~\cite{Hardy1917}, it's known that
@@ -181,8 +181,8 @@ This also indicates that the average additional exponent is $\frac{1}{4}$.
 
 
 
-We now recognize that this is another analogy to the Gauss Circle problem (except that in
-this case there is no main term).
+We now recognize that this is another analogy to the Gauss Circle problem, except that in
+this case there is no main term.
 This analogy readily generalizes.
 
 
@@ -224,7 +224,7 @@ where $r_2(n)$ denotes the number of representation of $n$ as a sum of two squar
 above.
 The coefficients $r_2(n)$ appear as the coefficients of a the modular form $\theta^2(z)$,
 so the analogy between $S_f$ and $S_2$ is very strong.
-(However $\theta^2$ is not cuspidal, so there are some differences).
+However $\theta^2$ is not cuspidal, so there are some differences.
 
 
 
@@ -285,12 +285,13 @@ This is a project under current investigation by the author and his collaborator
 Closely related to the Gauss $d$-Sphere problem is the problem of determining the number
 of lattice points that lie within $B_d(\sqrt R)$ \textbf{and} which lie on a one-sheeted
 hyperboloid\index{one-sheeted hyperboloid problem}
+\index{H@$\mathcal{H}_{d,h}$}
 \begin{equation}
   \mathcal{H}_{d,h} := X_1^2 + \cdots + X_{d-1}^2 = X_d^2 + h
 \end{equation}
 for some $h \in \mathbb{Z}_{\geq 1}$.
 We use $N_{d,h}(R)$ to denote the number of lattice points within $B_d(\sqrt R)$ and on
-$\mathcal{H}_{d,h}$.
+$\mathcal{H}_{d,h}$.\index{N@$N_{d,h}$}
 This is a problem within the larger class of constrained lattice counting problems.
 
 
@@ -417,12 +418,12 @@ But the most important result of the chapter is Theorem~\ref{thm:hyp:sharp_theor
 which improves the state of the art estimate of Oh and Shah in~\eqref{eq:intro:oh_shah} by
 showing that
 \begin{equation}
-  N_{3,h}(R) = C' R^{\frac{1}{2}} \log R + C R^{\frac{1}{2}} + O(X^{\frac{1}{2} -
+  N_{3,h}(R) = C' R^{\frac{1}{2}} \log R + C R^{\frac{1}{2}} + O(R^{\frac{1}{2} -
   \frac{1}{20} + \epsilon})
 \end{equation}
 when $h$ is a positive square.
-(When $h$ is not a square, the first term does not appear).
-In fact, the theorem is more general and gives results for any dimension $d \geq 3$.
+When $h$ is not a square, the $R^{\frac{1}{2}} \log R$ term does not appear.
+In fact, the theorem is very general and gives results for any dimension $d \geq 3$.
 
 
 In Chapter~\ref{c:hyperboloid_apps}, we describe an application of the methods and

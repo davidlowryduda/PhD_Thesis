@@ -220,6 +220,7 @@ integral analysis in order to prove our main theorems of this chapter.
 
 
 \section{Altering $\widetilde{V}$ to be Square-Integrable}
+\index{V@$\widetilde{V}(z)$}
 
 
 
@@ -311,7 +312,7 @@ associated to the cusp $\mathfrak{a}$, $E_\mathfrak{a}^k(z,w)$, as described mor
 \S\ref{sec:Eisen_summary}.
 In particular, it is shown in \S\ref{sec:Eisen_summary} that the constant terms in the
 Fourier series of the Eisenstein series $E_\mathfrak{a}^k(z,w)$, expanded at the cusp
-$\mathfrak{a}$, is of the shape
+$\mathfrak{a}$, is of the shape\index{E@$E_\mathfrak{a}^k(z,s)$}
 \begin{equation}
   y^w + c(w)y^{1-w}
 \end{equation}
@@ -326,7 +327,7 @@ $\infty$ cusp and is otherwise small at each other cusp (see~\cite{Iwaniec97} fo
 
 
 However, when $k$ is half-integral weight, the Eisenstein series
-$E_\mathfrak{a}(z,w)$ has a pole at $w = \frac{3}{4}$.
+$E^k_\mathfrak{a}(z,w)$ has a pole at $w = \frac{3}{4}$.
 When $k = \frac{1}{2}$, corresponding to the dimension $3$ hyperboloid,
 the two Eisenstein series $E^{\frac{1}{2}}_\infty(z,w)$ and
 $E_0^{\frac{1}{2}}(z,w)$ each have poles at
@@ -363,7 +364,7 @@ Chapter~\ref{c:background}.
 
 Our basic strategy is to understand the Petersson inner product $\langle P_h^k(\cdot, s),
 V(z) \rangle$ in two different ways.
-On the one hand, we will compute it directly, giving the Dirichlet series $D_h(s)$ with
+On the one hand, we will compute it directly, giving a Dirichlet series $D_h^k(s)$ with
 coefficients $r_{2k+1}(m^2 + h)$.
 On the other hand, we will take a spectral expansion of $P_h^k$ and understand the
 meromorphic properties of each part of the spectral expansion.
@@ -422,7 +423,7 @@ We compute the remaining $y$ integral
 
 
 
-Define
+Define\index{D@$D_h^k(s)$}
 \begin{equation}\label{eq:hyp:Dh_def}
   D^k_h(s) := \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \langle
   P_h^k(\cdot, s), V\rangle.
@@ -432,7 +433,7 @@ Then our computation above shows that for $k \geq 1$, $D^k_h(s)$ can be written 
   \sum_{m \in \mathbb{Z}}\frac{r_{2k+1}(m^2 + h)}{(2m^2 + h)^{s + \frac{k-1}{2}}} -
   \mathfrak{E}_h^k(s)
 \end{equation}
-where
+where\index{E@$\mathfrak{E}_h^k(s)$}
 \begin{equation}
   \mathfrak{E}_h^k(s) =  \frac{(2\pi)^{\frac{k+1}{2}} (\overline{\rho_\infty^k(h,
   \frac{k+1}{2}) + \rho_0^k(h, \frac{k+1}{2})})}{(2 h)^{s-1}} \frac{\Gamma(s - \frac{k}{2}
@@ -591,10 +592,10 @@ notation for $k \geq 1$.
 To roughly understand the growth of $\Gamma'(s)$, it suffices to use Cauchy's
 Integral Formula by examining (for $\lvert \Im s \rvert \gg 1$)
 \begin{equation}
-  \Gamma'(s) = \frac{1}{2\pi i} \int_{B_1(s)} \frac{\Gamma(z)}{(z - s)^2}dz \ll \max_{0
-  \leq \theta \leq 2\pi} \lvert \Gamma(s + e^{i \theta}) \rvert,
+  \Gamma'(s) = \frac{1}{2\pi i} \int_{\mathcal{B}_1(s)} \frac{\Gamma(z)}{(z - s)^2}dz \ll
+  \max_{0 \leq \theta \leq 2\pi} \lvert \Gamma(s + e^{i \theta}) \rvert,
 \end{equation}
-where $B_1(s)$ is the circle of radius $1$ around $s$.
+where $\mathcal{B}_1(s)$ is the circle of radius $1$ around $s$.
 It is then straightforward to get rough bounds on $\Gamma'(s)$ through
 Stirling's Approximation.
 
@@ -636,6 +637,7 @@ We gather the relevant details from this section into the following proposition.
 
 
 \subsection{Spectral Expansion}
+\index{mu@$\mu_j$}
 
 Fix an orthonormal basis of Maass forms of weight $k$ for $L^2(\Gamma_0(4)\backslash
 \mathcal{H}, k)$.
@@ -665,8 +667,8 @@ Goldfeld2006automorphic} of the form
   P_h^k(z,s) &= \sum_j \langle P_h^k(\cdot, s), \mu_j \rangle \mu_j(z) + \sum_{\frac{1}{2}
   \leq \ell \leq k} \sum_j \langle P_h^k(\cdot, s), \mu_{j, \ell}\rangle \mu_{j, \ell}(z)
   \label{line:1:Ph_discrete} \\
-  &\quad + \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R_{\mathfrak{a}} \rangle
-  R_{\mathfrak{a}}(z) \label{line:2:Ph_residual} \\
+  &\quad + \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R^k_{\mathfrak{a}} \rangle
+  R^k_{\mathfrak{a}}(z) \label{line:2:Ph_residual} \\
   &\quad + \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k(\cdot,
   s), E_{\mathfrak{a}}^k (\cdot, u)\rangle E_{\mathfrak{a}}^k (z, u) du.
   \label{line:3:Ph_continuous}
@@ -730,8 +732,8 @@ Inserting the spectral decomposition of $P_h^k(z,s)$ into $\langle P_h^k(\cdot, 
   \langle \mu_j, V \rangle + \sum_{\frac{1}{2} \leq \ell \leq k} \sum_j \langle
   P_h^k(\cdot, s), \mu_{j,\ell}\rangle \langle \mu_{j,\ell}, V \rangle
   \label{line:Ph_spectral_discrete} \\
-  &\quad + \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R_\mathfrak{a}\rangle \langle
-  R_\mathfrak{a}, V \rangle \label{line:Ph_spectral_residual} \\
+  &\quad + \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R^k_\mathfrak{a}\rangle \langle
+  R^k_\mathfrak{a}, V \rangle \label{line:Ph_spectral_residual} \\
   &\quad + \frac{1}{4\pi i} \sum_{\mathfrak{a}} \int_{(\frac{1}{2})} \langle P_h^k(\cdot,
   s), E^k_{\mathfrak{a}}(\cdot, u) \rangle \langle E^k_{\mathfrak{a}}(\cdot, u), V \rangle
   du, \label{line:Ph_spectral_continuous}
@@ -823,8 +825,9 @@ We first bound the infinite sum in the new discrete spectrum.
   \S\ref{ssec:direct_expansion}), taking the residue at $u = \frac{3}{4}$, and using
   Stirling's approximation shows that
   \begin{equation}
-    \langle \mu_j, \theta^{2k+1} \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll \rho_j(h)
-    (1 + \lvert t_j \rvert)^k e^{-\pi \lvert t_j \rvert}.
+    \rho_j(h) \langle \mu_j, \theta^{2k+1} \overline{\theta} y^{\frac{k+1}{2}} \rangle
+    \ll
+    \rho_j(h) (1 + \lvert t_j \rvert)^k e^{-\pi \lvert t_j \rvert}.
   \end{equation}
   As noted in~\cite{hulseCountingSquare}, it is possible to understand bound $\rho_j(h)$
   on average over $j$.
@@ -862,7 +865,7 @@ Maass forms on $\Gamma_0(4)$.
   Denote the type of $\mu_j$ by $\frac{1}{2} + it_j$, so that $\mu_j$ is an eigenfunction
   of the Laplacian with eigenvalue $\lambda = \frac{1}{4} + t_j^2$.
   Then $\lambda > \frac{1}{4}$.
-  That is, there are no exceptional eigenvalues.
+  That is, there are no exceptional eigenvalues.\index{Selberg Eigenvalue Conjecture}
 \end{lemma}
 
 
@@ -939,11 +942,11 @@ function in the denominator, but there are poles at $s = \frac{k}{2} - 1 - m$ fo
 Consider the residual spectrum appearing in line~\eqref{line:Ph_spectral_residual}, which
 we rewrite for convenience:
 \begin{equation}
-  \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R_{\mathfrak{a}} \rangle \langle
-  R_{\mathfrak{a}}, V \rangle.
+  \sum_{\mathfrak{a}} \langle P_h^k(\cdot, s), R^k_{\mathfrak{a}} \rangle \langle
+  R^k_{\mathfrak{a}}, V \rangle.
 \end{equation}
 The residual spectrum only occurs when $k$ is a half-integer.
-For each cusp, $\langle R_{\mathfrak{a}}, V \rangle$ evaluates to some constant and
+For each cusp, $\langle R^k_{\mathfrak{a}}, V \rangle$ evaluates to some constant and
 doesn't affect the analysis in $s$.
 Referring to Lemma~\ref{lem:inner_product_list}, we see that
 \begin{equation}
@@ -1041,7 +1044,7 @@ Similar expressions exist at the cusps $0$ and $\frac{1}{2}$.
 
 
 Using the functional equation of the Eisenstein series to give the functional equation of
-the DIrichlet series in~\eqref{eq:continuous_stepI} and applying the Phragm\'en-Lindel\"of
+the Dirichlet series in~\eqref{eq:continuous_stepI} and applying the Phragm\'en-Lindel\"of
 Convexity Principle guarantees that
 \begin{equation}
   \langle E_\mathfrak{a}^k(\cdot, \tfrac{1}{2} + it), V \rangle \ll (1 + \lvert t
@@ -1267,7 +1270,7 @@ Cauchy's Theorem shows that~\eqref{eq:integral_analysis_discrete_I} is equal to
   V(\tfrac{k+1}{2} - m - \tfrac{1}{2}) + \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)}
   \discrete_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds,
 \end{equation}
-where $R^k_{k - \frac{1}{2} - m}$ are the collected residues of the old discrete spectrum
+where $i^k_{k - \frac{1}{2} - m}$ are the collected residues of the old discrete spectrum
 at $s = \frac{k}{2} - m$.
 
 
@@ -1298,8 +1301,8 @@ The three integral transforms then give
 We now study the integral of the residual spectrum,
 \begin{equation}\label{eq:hyperboloid:integral_analysis_residual_I}
   \frac{1}{2\pi i} \int_{(\sigma)} \frac{(2\pi)^{s + \frac{k-1}{2}}}{\Gamma(s +
-  \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k, R_\mathfrak{a}\rangle \langle
-R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} V_Y(s) ds.
+    \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k, R^k_\mathfrak{a}\rangle \langle
+  R^k_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} V_Y(s) ds.
 \end{equation}
 From Theorem~\ref{thm:hyperboloid:mero_summary},
 Proposition~\ref{prop:hyperboloid_residual_props}, and the analytic properties of the
@@ -1311,7 +1314,7 @@ equal to the shifted integral
 \begin{equation}
   \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
   \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
-  R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} V_Y(s) ds.
+  R_\mathfrak{a}\rangle \langle R^k_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} V_Y(s) ds.
 \end{equation}
 As long as $V_Y(s) \ll (1 + \lvert s \rvert)^{-\frac{3}{2} + \epsilon}$, this converges
 absolutely.
@@ -1319,17 +1322,17 @@ The three integral transforms then satisfy the bounds
 \begin{align}
   &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
   \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
-    R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} \Gamma(s
+    R^k_\mathfrak{a}\rangle \langle R^k_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} \Gamma(s
     + \tfrac{k-1}{2}) ds \ll X^{\frac{k}{2} + \epsilon}
   \label{eq:hyperboloid:residual_gamma_integral_bound} \\
   &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
   \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
-  R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}}
+  R^k_\mathfrak{a}\rangle \langle R^k_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}}
   \frac{e^{\pi s^2/Y^2}}{Y} ds \ll X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + \epsilon}
   \label{eq:hyperboloid:residual_concentrating_integral_bound} \\
   &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \frac{(2\pi)^{s +
   \frac{k-1}{2}}}{\Gamma(s + \frac{k-1}{2})} \sum_\mathfrak{a} \langle P_h^k,
-  R_\mathfrak{a}\rangle \langle R_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} \Phi_Y(s)
+  R^k_\mathfrak{a}\rangle \langle R^k_\mathfrak{a}, V \rangle X^{s + \frac{k-1}{2}} \Phi_Y(s)
   ds \ll X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + 2\epsilon}.
   \label{eq:hyperboloid:residual_compact_integral_bound}
 \end{align}
@@ -1346,8 +1349,8 @@ We now consider the last integral, the integral of the continuous spectrum:
   E_\mathfrak{a}^k\rangle \langle E_\mathfrak{a}^k, V\rangle X^{s+\frac{k-1}{2}} V_Y(s)
   du \, ds.
 \end{equation}
-(Recall that we use $u$ to denote the variable within the Eisenstein series
-$E_\mathfrak{a}^k(z,u)$, though we omit this from the notation).
+Recall that we use $u$ to denote the variable within the Eisenstein series
+$E_\mathfrak{a}^k(z,u)$, though we omit this from the notation.
 By Theorem~\ref{thm:hyperboloid:mero_summary}, we know that the continuous spectrum is
 analytic for $\Re s > \frac{1}{2}$.
 By Cauchy's Theorem, the integral~\eqref{eq:hyperboloid:integral_analysis_continuous_I}

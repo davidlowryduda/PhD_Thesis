@@ -85,7 +85,12 @@ In~\cite{hkldwShort}, my collaborators and I analyze short-interval estimates of
 which says essentially that the Classical Conjecture holds \emph{on average} over short
 intervals of width $X^{\frac{2}{3}} (\log X)^{\frac{1}{6}}$ around $X$.
 This is qualitatively a  much stronger result than the long-interval estimate, and is a
-vast improvement over previously known results.
+vast improvement over the previous best result of this type due to
+Jarnik~\cite{jutila1987lectures},
+\begin{equation}
+  \frac{1}{X^{\frac{3}{4} + \epsilon}} \sum_{\lvert n - X \rvert < X^{\frac{3}{4} +
+  \epsilon}} \lvert S_f(n) \rvert^2 \ll X^{k - 1 + \frac{1}{2}}.
+\end{equation}
 
 
 It is interesting to note that it is possible to get bounds for individual sums $S_f(n)$
@@ -184,7 +189,7 @@ question.\footnote{The story behind the scope of this paper is a bit interesting
   of Dirichlet series directly into sign-change results of the coefficients.
 We each focused on the parts that interested us most: I was interested in $S_f(n)$ and
 $S_f^\nu(n)$ (defined below), Hulse was interested in real and complex coefficients, and
-Keong was interested in $\GL(3)$.
+Ieong Kuan was interested in $\GL(3)$.
 In the end, each aspect strengthened the overall paper and led to a nice unified
 description of somewhat disjoint sign-change results.}
 
@@ -297,16 +302,72 @@ One particular example would be to consider sums of the form
 \end{equation}
 where $r_k(m)$ is the number of ways of representing $m$ as a sum of $k$ squares.
 This is equivalent to the Gauss $k$-dimensional sphere problem, which asks how many
-integer lattice points are contained in a $k$-dimensional sphere of radius $\sqrt{n}$?
+integer lattice points are contained in $B_k(\sqrt n)$, the $k$-dimensional sphere of
+radius $\sqrt{n}$ centered at the origin?
+A (very good) first approximation is that there are approximately
+$\text{Vol} B_k(\sqrt n)$ points within the sphere, so the question is really to
+understand the size of the discrepancy
+\begin{equation}
+  P_k(n) := S_{\theta^k}(n) - \text{Vol} B_k(\sqrt n).
+\end{equation}
 
 
-My collaborators and I have been focusing our attention on this problem, and we expect to
-have a result by mid 2017.
+My collaborators and I have been focusing our attention on this problem.
+In the recently submitted paper~\cite{HulseGaussSphere}, we proved that
+$D(s, S_{\theta^k} \times S_{\theta^k})$ and $D(s, P_k \times P_k)$ have meromorphic
+continuation to the complex plane for $k \geq 3$.
+Using these continuations, we were able to prove a smooth estimate of a similar flavor as
+in Theorem~\ref{thm:second_moment_Sf}.
 
 
-It is natural to consider a general case of non-cuspidal automorphic forms.
-The Gauss $k$-dimensional sphere problem suffers from the fact that the underlying
-automorphic form is of half-integral weight for odd $k$.
+\begin{theorem}
+
+  For $k \geq 3$ and any $\epsilon > 0$,
+  \begin{equation}
+    \begin{split}
+      \sum_{n \geq 1} P_k(n)^2 e^{-n/X} &= \delta_{[k = 3]}C' X^2 \log X + C X^{k-1} +
+      \delta_{[k = 4]} C'' X^{\frac{5}{2}} + O(X^{k - 2 + \epsilon}),
+    \end{split}
+  \end{equation}
+  where $\delta_{[k = n]}$ is $1$ if $k = n$ and is $0$ otherwise.
+  Similarly,
+  \begin{equation}
+    \int_0^\infty P_k(t)^2 e^{-t/X} dt = \delta_{[k = 3]}D' X^2 \log X + D X^{k-1} +
+    \delta_{[k = 4]} D'' X^{\frac{5}{2}} + O(X^{k - 2 + \epsilon}).
+  \end{equation}
+
+\end{theorem}
+
+These two statements can be thought of as discrete and continuous Laplace transforms of
+the mean square error in the Gauss $k$-dimensional Sphere problem.
+We are also able to prove results concerning sharp sums and integrals.
+
+\begin{theorem}
+
+  For each $k \geq 3$, there exists $\lambda > 0$ such that
+  \begin{equation}
+    \sum_{n \leq X} P_k(n)^2 = \delta_{[k = 3]} C' X^{k-1} \log X + C X^{k-1} +
+    O_{\lambda}(X^{k - 1 - \lambda}).
+  \end{equation}
+  Similarly, we also have
+  \begin{equation}
+    \int_0^X (P_k(x))^2 dx = \delta_{[k = 3]} D' X^{k-1} \log X + D X^{k-1} +
+    O_{\lambda}(X^{k-1 - \lambda}).
+  \end{equation}
+
+\end{theorem}
+
+
+In the dimension $3$ case, this is the first known polynomial savings on the error term,
+and represents the first major improvement over a result from Jarnik in
+1940~\cite{Jarnik40}, which achieved only $\sqrt{\log X}$ savings.
+
+
+In~\cite{HulseGaussSphere}, we do not prove what $\lambda$ is.
+In forthcoming work, we will consider the size of $\lambda$.
+We are also working on extending the techniques and results to the classical Gauss circle
+problem, when $k = 2$.
+
 
 
 \begin{remark}

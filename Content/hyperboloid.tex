@@ -65,8 +65,8 @@ The primary result is the following theorem.
 
 This Theorem is presented in greater detail as Theorem~\ref{thm:hyp:sharp_theorem_full},
 including the description of $\lambda(d)$.
-When $d = 3$, the power savings $\lambda(d)$ is exactly $\frac{1}{20}$.
-As $d$ gets larger, $\lambda(d)$ grows and limits towards $\frac{1}{3}$.
+When $d = 3$, the power savings $\lambda(d)$ is exactly $\frac{1}{44}$.
+As $d$ gets larger, $\lambda(d)$ grows and limits towards $\frac{1}{6}$.
 Note that there is an error term with polynomial savings, which is a significant
 improvement over previous results.
 As a corollary, one recovers the Theorem of Oh and Shah.
@@ -461,7 +461,7 @@ following proposition.
   The function $\mathfrak{E}_h^k(s)$ is analytic for $\Re s > \frac{1}{2}$ except for
   simple poles at $s = \frac{k+1}{2} - m$ for $m \in \mathbb{Z}_{\geq 0}$, and has
   meromorphic continuation to the plane.
-  For $\Re s > \frac{1}{2}$, we have the bound
+  For $s$ away from poles with $\Re s > \frac{1}{2}$, we have the bound
   \begin{equation}
     \mathfrak{E}_h^k(s) \ll (1 + \lvert s \rvert)^{-\frac{1}{2}}.
   \end{equation}
@@ -627,7 +627,7 @@ We gather the relevant details from this section into the following proposition.
   If $h$ is a square, this is a double pole.
   If $h$ is not a square, then this is a simple pole.
 
-  For $\Re s > \frac{1}{2}$, we have the bound
+  For $s$ away from the pole at $\tfrac{3}{4}$, $\Re s > \frac{1}{2}$, we have the bound
   \begin{equation}
     \mathfrak{E}_h^{\frac{1}{2}}(s) \ll (1 + \lvert s \rvert)^{\frac{1}{2}}.
   \end{equation}
@@ -761,9 +761,9 @@ forms of weight $\ell$, and analysis of the infinitely many Maass forms $\{\mu_j
 with corresponding types $\tfrac{1}{2} = it_j$.
 Taking inspiration from~\cite[\S3.10]{GoldfeldHundleyI}, we refer to the Maass
 forms $\{\mu_{j, \ell}\}_{j, \ell}$ as the \emph{old discrete spectrum}, and
-the Maass forms $\{\mu_j\}_j$ as the \emph{new discrete spectrum}.
 \index{discrete spectrum!old}
 \index{discrete spectrum!new}
+the Maass forms $\{\mu_j\}_j$ as the \emph{new discrete spectrum}.
 We will prove the following proposition in this section.
 
 
@@ -776,7 +776,7 @@ We will prove the following proposition in this section.
       the bound
       \begin{equation}
         \sum_j \langle P_h^k(\cdot, s), \mu_j\rangle \langle \mu_j, V \rangle \ll_{h,
-        \epsilon} (1 + \lvert t \rvert)^{\frac{3k}{2} + \frac{5}{2} + \epsilon}
+        \epsilon} (1 + \lvert t \rvert)^{\frac{7k}{2} + \frac{15}{2} + \epsilon}
         e^{-\frac{\pi}{2} \lvert t \rvert}. \qquad (\tfrac{1}{2} < \Re s < 1)
       \end{equation}
       The new discrete spectrum has a line of poles on $\Re s = \frac{1}{2}$.
@@ -796,7 +796,6 @@ We will prove the following proposition in this section.
 
 
 In order to prove this proposition, we prove a sequence of lemmata.
-%Yep, still an awesome word
 We first bound the infinite sum in the new discrete spectrum.
 
 
@@ -806,7 +805,7 @@ We first bound the infinite sum in the new discrete spectrum.
   \begin{equation}
     \sum_{T \leq \lvert t_j \rvert \leq 2T} \rho_j(h) \langle \mu_j, V \rangle = \sum_{T
     \leq \lvert t_j \rvert \leq 2T} \rho_j(h) \langle \mu_j, \theta^{2k+1}
-    \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll T^{k + 3 + \epsilon}.
+    \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll T^{3k + 8 + \epsilon}.
   \end{equation}
 \end{lemma}
 
@@ -822,38 +821,81 @@ We first bound the infinite sum in the new discrete spectrum.
   \end{equation}
   Using the standard unfolding argument on the Eisenstein series (which uses similar
   methodology to the computations of $\langle P, V \rangle$ in
-  \S\ref{ssec:direct_expansion}), taking the residue at $u = \frac{3}{4}$, and using
-  Stirling's approximation shows that
+  \S\ref{ssec:direct_expansion}), we see that this is equal to
+  \begin{equation}
+    \Res_{u = \frac{3}{4}}
+    \sum_{n \geq 1} \frac{r_{2k+1}(n)\rho_j(n)}{(4\pi n)^{u + \frac{k}{2} - \frac{3}{4}}}
+    \frac{%
+      \Gamma(u + \frac{k}{2} - \frac{3}{4} + \frac{1}{2} + it_j)
+      \Gamma(u + \frac{k}{2} - \frac{3}{4} + \frac{1}{2} - it_j)
+    }
+    {\Gamma(u + \frac{1}{4})}.
+  \end{equation}
+  We bound the size of this residue by first proving a bound in $u$ using
+  the Phragm\'{e}n-Lindel\"{o}f principle, and then using Cauchy's Residue Theorem to
+  bound the sum.
+
+  From the average estimate $r_d(n) \approx n^{\frac{d}{2} - 1}$, one can show that
+  the summation converges trivially absolutely for $\Re u > \frac{k}{2} + \tfrac{5}{4}$.
+  Applying Phragm\'{e}-Lindel\"{o}f and using Stirling's approximation then shows that
   \begin{equation}
     \rho_j(h) \langle \mu_j, \theta^{2k+1} \overline{\theta} y^{\frac{k+1}{2}} \rangle
     \ll
-    \rho_j(h) (1 + \lvert t_j \rvert)^k e^{-\pi \lvert t_j \rvert}.
+    \rho_j(h) (1 + \lvert t_j \rvert)^{3k+6+\epsilon} e^{-\pi \lvert t_j \rvert}.
   \end{equation}
+
+
+  \begin{remark}
+    Note that as a residue in $u$ is being taken, the relevant bound from the $t_j$
+    contribution, which is entirely determined by the factors
+    \begin{equation}
+      \rho_j(1)
+      \Gamma(u + \tfrac{k}{2} - \tfrac{1}{4} + it_j)
+      \Gamma(u + \tfrac{k}{2} - \tfrac{1}{4} - it_j).
+    \end{equation}
+    Heuristically, the final bound can be attained just from using the Phragm\'{e}n-Lindel\"{o}f
+    Convexity principle on this piece.
+  \end{remark}
+
+
   As noted in~\cite{hulseCountingSquare}, it is possible to understand bound $\rho_j(h)$
   on average over $j$.
-  Through the standard Kuznetsof Trace Formula and arguing as in~\cite{HoffsteinHulse13},
-  one can show that $\rho_j(h) \ll_\epsilon e^{\frac{\pi}{2}\lvert t_j \rvert}(1 + \lvert
-  t_j \rvert)^\epsilon$ (on average) for full integral weight $k$.
+  Through the standard Kuznetsof Trace Formula and arguing as in~\cite[Section
+  4]{HoffsteinHulse13}, one can show that $\rho_j(h) \ll_{\epsilon, h}
+  e^{\frac{\pi}{2}\lvert t_j \rvert}(1 + \lvert t_j \rvert)^\epsilon$ (on average over
+  $j$) for full integral weight $k$.
   By using Proskurin's generalization of the Kuznetsof Trace Formula, described
   in~\cite{Duke88}, one can show the same for half integral weight $k$.
   (This is closely related to an argument in~\cite{hulseCountingSquare}).
 
 
-  Therefore we have that
+  \begin{remark}
+    For full-integral weight Maass forms, Goldfeld, Hoffstein, and
+    Lieman~\cite{goldfeld1994appendix} showed that $\rho_j(h) \ll h^\theta \log(1 + \lvert
+    t_j \rvert)  e^{-\frac{\pi}{2} \lvert t_j \rvert}$ for each \emph{individual} $t_j$,
+    where $\theta$ denotes the best known progress towards the non-achimedian Ramanujan
+    conjecture.
+    This is a superior bound than even the on-average bound given by the Kuznetsof Trace
+    Formula, but it doesn't immediately generalize to half-integral weight Maass forms.
+  \end{remark}
+
+
+The on-average bounds then give that
   \begin{equation}
     \langle \mu_j, \theta^{2k+1} \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll (1 +
-    \lvert t_j \rvert)^{k + 1 + \epsilon} e^{-\frac{\pi}{2} \lvert t_j \rvert}
+    \lvert t_j \rvert)^{3k + 6 + \epsilon} e^{-\frac{\pi}{2} \lvert t_j \rvert}
   \end{equation}
   on average.
   Recalling that there are $O(T^2 \log T)$ Maass forms with $T \leq \lvert t_j \rvert \leq
   2T$, summing these terms together gives
   \begin{equation}
     \sum_{T \leq \lvert t_j \rvert \leq 2T} \rho_j(h) \langle \mu_j, \theta^{2k+1}
-    \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll (1 + \lvert t_j \rvert)^{k + 3 +
+    \overline{\theta} y^{\frac{k+1}{2}} \rangle \ll (1 + \lvert t_j \rvert)^{3k + 8 +
     \epsilon}.
   \end{equation}
   This concludes the proof.
 \end{proof}
+
 
 
 It is also necessary to note that Selberg's Eigenvalue Conjecture is known for weight $k$
@@ -910,7 +952,7 @@ Then~\eqref{eq:discrete_newspectrum_stepI} is bounded by
 \end{equation}
 which, by Lemma~\ref{lem:discrete_newspectrum_innerproduct_bound}, is bounded by
 \begin{equation}
-  O_{h, \epsilon} \Big( (1 + \lvert t \rvert)^{\frac{3}{2}k + \frac{5}{2} + \epsilon}
+  O_{h, \epsilon} \Big( (1 + \lvert t \rvert)^{\frac{7}{2}k + \frac{15}{2} + \epsilon}
   e^{-\frac{\pi}{2}\lvert t \rvert}\Big).
 \end{equation}
 Summing dyadically gives the first part of the proposition.
@@ -1076,7 +1118,7 @@ Within this interval, the integral can be bounded by
 
 \begin{proposition}\label{prop:hyperboloid_continuous_props}
   The continuous spectrum in line~\eqref{line:Ph_spectral_continuous} has meromorphic
-  continuation tot he plane and is analytic for $\Re s > \frac{1}{2}$ and has apparent
+  continuation to the plane and is analytic for $\Re s > \frac{1}{2}$ and has apparent
   poles at $\Re s = \frac{1}{2}$.
   For $\frac{1}{2} < \Re s < 1$, the continuous spectrum satisfies the bound
   \begin{equation}
@@ -1198,7 +1240,7 @@ All of these poles are simple, except when $k = \frac{1}{2}$ and $h$ is a square
 case the leading pole at $s = \frac{k+1}{2} = \frac{3}{4}$ is a double pole.
 As $\mathfrak{E}_h^k$ is of moderate growth for $\Re s > \frac{1}{2}$ and each kernel
 $V_Y(s)$ is of rapid decay, we may shift the line of integration to $\frac{1}{2} +
-\epsilon$ by Cauchy's Theorem we have
+\epsilon$, and by Cauchy's Theorem we have
 \begin{equation}\label{eq:hyp:integral_MT}
   \begin{split}
     &\frac{1}{2\pi i} \int_{(\sigma)} \mathfrak{E}_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds \\
@@ -1270,7 +1312,7 @@ Cauchy's Theorem shows that~\eqref{eq:integral_analysis_discrete_I} is equal to
   V(\tfrac{k+1}{2} - m - \tfrac{1}{2}) + \frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)}
   \discrete_h^k(s) X^{s + \frac{k-1}{2}} V_Y(s) ds,
 \end{equation}
-where $i^k_{k - \frac{1}{2} - m}$ are the collected residues of the old discrete spectrum
+where $R^k_{k - \frac{1}{2} - m}$ are the collected residues of the old discrete spectrum
 at $s = \frac{k}{2} - m$.
 
 
@@ -1278,8 +1320,8 @@ at $s = \frac{k}{2} - m$.
 To estimate the shifted integral, note that from applying Stirling's Approximation to
 $\Gamma(s+\frac{k-1}{2})^{-1}$ and using the approximations from
 Proposition~\ref{prop:hyperboloid_discrete_props} that $\discrete_h^k(s) \ll (1 + \lvert s
-\rvert)^{k + \frac{7}{2} +\epsilon}$.
-Therefore as long as $V_Y(s) \ll (1 + \lvert s \rvert)^{-k - \frac{9}{2} - 2\epsilon}$,
+\rvert)^{3k + \frac{17}{2} +\epsilon}$.
+Therefore as long as $V_Y(s) \ll (1 + \lvert s \rvert)^{-3k - \frac{19}{2} - 2\epsilon}$,
 the integral converges absolutely.
 The three integral transforms then give
 \begin{align}
@@ -1287,10 +1329,10 @@ The three integral transforms then give
   \Gamma(s + \frac{k-1}{2})  ds \ll X^{\frac{k}{2} + \epsilon}
   \label{eq:hyperboloid:discrete_gamma_integral_bound}\\
   &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \discrete_h^k(s) X^{s + \frac{k-1}{2}}
-  \frac{e^\pi s^2/Y^2}{Y} ds \ll X^{\frac{k}{2} + \epsilon} Y^{k + \frac{7}{2} + \epsilon}
+  \frac{e^\pi s^2/Y^2}{Y} ds \ll X^{\frac{k}{2} + \epsilon} Y^{3k + \frac{17}{2} + \epsilon}
   \label{eq:hyperboloid:discrete_concentrating_integral_bound} \\
   &\frac{1}{2\pi i} \int_{(\frac{1}{2} + \epsilon)} \discrete_h^k(s) X^{s + \frac{k-1}{2}}
-  \Phi_Y(s) ds \ll X^{\frac{k}{2}+ \epsilon} Y^{k + \frac{7}{2} + 2\epsilon}.
+  \Phi_Y(s) ds \ll X^{\frac{k}{2}+ \epsilon} Y^{3k + \frac{17}{2} + 2\epsilon}.
   \label{eq:hyperboloid:discrete_compact_integral_bound}
 \end{align}
 
@@ -1497,40 +1539,26 @@ equal to
   &\delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg(R'_h X^{\frac{1}{2}}\log X +R'_h
 X^{\frac{1}{2}} \frac{\pi}{Y} \bigg)\frac{\exp(\frac{\pi}{4Y})}{Y} + R_k^k X^k
 \frac{\exp(\frac{\pi k^2}{Y})}{Y} \\
-  &\quad + O(\frac{X^{k-\frac{1}{2}}}{Y}) + O(X^{\frac{k}{2}+\epsilon} Y^{k + \frac{7}{2}
-  + \epsilon}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}).
+  &\quad + O(\frac{X^{k-\frac{1}{2}}}{Y})
+  + O(X^{\frac{k}{2} + \epsilon} Y^{3k + \frac{17}{2} + \epsilon}).
+%  + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}).
 \end{align}
 In this expression, we only kept the leading poles.
 As we are only seeking to create an upper bound, we simplify the above expression into the
 bound
 \begin{equation}\label{eq:hyp:short_interval_step_I}
-  O(\frac{X^{k+\epsilon}}{Y}) + O(X^{\frac{k}{2}+\epsilon} Y^{k + \frac{7}{2} + \epsilon})
-  + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}).
+  O(\frac{X^{k+\epsilon}}{Y})
+  + O(X^{\frac{k}{2}+\epsilon} Y^{3k + \frac{17}{2} + \epsilon}).
+  %+ O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + \epsilon}).
 \end{equation}
 
 
 We choose $Y$ to balance the expressions in~\eqref{eq:hyp:short_interval_step_I}.
-When $k \leq \frac{11}{2}$, the two terms
-\begin{equation}
-  O(\frac{X^{k+\epsilon}}{Y}) + O(X^{\frac{k}{2} + \epsilon} Y^{k + \frac{7}{2} +
-  \epsilon})
-\end{equation}
-dominate, and are balanced when $Y = X^{1/(2 + \frac{9}{k} + \frac{2\epsilon}{k})}$.
-This gives the overall bound
-\begin{equation}\label{eq:hyp:short_interval_bound_smallk}
-  O(X^{k + \epsilon - \lambda(k)}), \qquad \text{where } \lambda(k) = \frac{1}{2 +
-  \frac{9}{k}}.
-\end{equation}
-When $k \geq \frac{11}{2}$, the two terms
-\begin{equation}
-  O(\frac{X^{k+\epsilon}}{Y}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2} k +
-  \frac{3}{4} + \epsilon})
-\end{equation}
-dominate, and are balanced when $Y = X^{1/(3 + \frac{7}{2k} + \frac{2\epsilon}{k})}$.
+The two terms are balaned when $Y = X^{1/(6 + \frac{19}{k} + \frac{\epsilon}{k})}$.
 This gives the overall bound
 \begin{equation}\label{eq:hyp:short_interval_bound_largek}
-  O(X^{k + \epsilon - \lambda(k)}), \qquad \text{where } \lambda(k) = \frac{1}{3 +
-  \frac{7}{2k}}.
+  O(X^{k + \epsilon - \lambda(k)}), \qquad \text{where } \lambda(k) = \frac{1}{6 +
+  \frac{19}{k}}.
 \end{equation}
 
 
@@ -1539,8 +1567,7 @@ We have now shown that
   \sum_{\lvert 2m^2 + h - X \rvert < X^{1 + \epsilon - \lambda(k)}} r_{2k+1}(m^2 + h) \ll
   X^{k + \epsilon - \lambda(k)},
 \end{equation}
-where $\lambda(k)$ is defined by~\eqref{eq:hyp:short_interval_bound_smallk} or
-by~\eqref{eq:hyp:short_interval_bound_largek} depending on the size of $k$.
+where $\lambda(k)$ is defined by~\eqref{eq:hyp:short_interval_bound_largek}.
 This is the content of the second main theorem in this chapter.
 \begin{theorem}\label{thm:hyp:concentrating_theorem_full}
   Let $k \geq \frac{1}{2}$ be a full or half-integer.
@@ -1551,11 +1578,7 @@ This is the content of the second main theorem in this chapter.
   \end{equation}
   where $\lambda(k)$ is defined as
   \begin{equation}
-    \lambda(k) =
-    \begin{cases}
-      \frac{1}{2 + \frac{9}{k}} & \text{if } k \leq \frac{11}{2} \\
-      \frac{1}{3 + \frac{7}{2k}} & \text{if } k \geq \frac{11}{2}.
-    \end{cases}
+    \lambda(k) = \frac{1}{6 + \frac{19}{k}}.
   \end{equation}
 \end{theorem}
 
@@ -1601,14 +1624,15 @@ X \big(2 + O(\tfrac{1}{Y}) \big) + R'_h X^{\frac{1}{2}} \big( -4 + O(\tfrac{1}{Y
 \bigg) \\
   &\quad + \sum_{0 \leq m < \frac{k-1}{2}} R_{k - \frac{1}{2} - m,h}^k X^{k - \frac{1}{2}
 - m} \big( \tfrac{1}{k - \frac{1}{2} - m} + O(\tfrac{1}{Y})\big) \\
-  &\quad + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + \epsilon}) + O(X^{\frac{k}{2} +
-  \epsilon} Y^{k + \frac{7}{2} + 2\epsilon}) + O(X^{\frac{k}{2} + \epsilon}
-Y^{\frac{3}{2}k + \frac{3}{4} + 2\epsilon}).
+  &\quad
+  + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{1}{2} + \epsilon})
+  + O(X^{\frac{k}{2} + \epsilon} Y^{3k + \frac{17}{2} + 2\epsilon})
+  + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k + \frac{3}{4} + 2\epsilon}).
 \end{align}
 We note that we have used that $\Phi_Y(s) = \frac{1}{s} + O(\frac{1}{Y})$ and
 $\Phi_Y'(s) = -\frac{1}{s^2} + O(\frac{1}{Y})$ from \S\ref{sec:cutoff_integrals}
-to simplify the residual terms involving the weight function $\Phi_Y$, giving
-the various big Oh terms in this expression.
+to simplify the residual terms involving the weight function $\Phi_Y$.
+These contribute to the error terms in this expression.
 
 
 
@@ -1618,18 +1642,19 @@ Keeping only the leading terms of growth, we rewrite this as
   &\delta_{[k = \frac{1}{2}]} \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}} \log X -4
 R'_h X^{\frac{1}{2}} \bigg) + \tfrac{1}{k} R_{k, h}^k X^{k} +  O\big(\frac{X^{\frac{1}{2}}
 \log X}{Y}\big) \\
-  &\quad + \big(\frac{X^{k}}{Y}\big) + O(X^{\frac{k-1}{2}}) + O(X^{\frac{k}{2} + \epsilon}
-  Y^{k + \frac{7}{2} + 2\epsilon}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k +
-\frac{3}{4} + 2\epsilon}).
+  &\quad + O\big(\frac{X^{k}}{Y}\big)
+  + O(X^{\frac{k-1}{2}})
+  + O(X^{\frac{k}{2} + \epsilon} Y^{3k + \frac{17}{2} + 2\epsilon}).
 \end{align}
 The collected error terms can be written as
 \begin{equation}
-  O(X^{\frac{k-1}{2}}) + \big(\frac{X^{k+\epsilon}}{Y}\big) + O(X^{\frac{k}{2} + \epsilon}
-  Y^{k + \frac{7}{2} + 2\epsilon}) + O(X^{\frac{k}{2} + \epsilon} Y^{\frac{3}{2}k +
-\frac{3}{4} + 2\epsilon}).
+  O(X^{\frac{k-1}{2}})
+  + O\big(\frac{X^{k+\epsilon}}{Y}\big)
+  + O(X^{\frac{k}{2} + \epsilon} Y^{3k + \frac{17}{2} + 2\epsilon})
 \end{equation}
-Notice that this is the exact same expression as in~\eqref{eq:hyp:short_interval_step_I},
-and so the choice of $Y$ that optimizes the error bound is the same!
+Notice that the terms including $Y$ are the exact same expression as
+in~\eqref{eq:hyp:short_interval_step_I}, and so the choice of $Y$ that optimizes the error
+bound is the same!
 That is, we choose $Y = X^{\lambda(k)}$ where $\lambda(k)$ is defined as in
 Theorem~\ref{thm:hyp:concentrating_theorem_full}.
 
@@ -1671,18 +1696,14 @@ This concludes the proof of the following theorem.
   \end{align}
   where $\lambda(k)$ is defined as
   \begin{equation}
-    \lambda(k) =
-    \begin{cases}
-      \frac{1}{2 + \frac{9}{k}} & \text{if } k \leq \frac{11}{2} \\
-      \frac{1}{3 + \frac{7}{2k}} & \text{if } k \geq \frac{11}{2}.
-    \end{cases}
+    \lambda(k) = \frac{1}{6 + \frac{19}{k}}.
   \end{equation}
   In particular, if $k = \frac{1}{2}$ then
   \begin{align}
     &\sum_{\lvert 2m^2 + h - X \rvert \leq X} r_{2k+1}(m^2 + h) \\
     &\quad = \delta_{[h = a^2]} \bigg( 2 R'_h X^{\frac{1}{2}} \log X -4 R'_h
   X^{\frac{1}{2}} \bigg) + 2R_{1/2, h}^{1/2} X^{\frac{1}{2}} + O(X^{\frac{1}{2} -
-\frac{1}{20} + \epsilon}),
+\frac{1}{44} + \epsilon}),
   \end{align}
   and for $k \geq 1$
   \begin{equation}

@@ -518,8 +518,15 @@ Therefore, we have the equality
 The first term is analytic, the third term is analytic in $s$ for $\Re s > \epsilon -
 \frac{k-1}{2}$, and the middle term appears to have a simple pole at $s = 1 -
 \frac{k-1}{2}$.
-However, the residue $L(-\tfrac{k-1}{2})$ is a trivial zero of the $L$-function, and $s =
-1 - \frac{k-1}{2}$ is not a pole after all.
+However, from the functional equation equation of $L(s,f)$,
+%TODO maybe refer back to the % definition of a modular form
+\begin{equation}
+  \Lambda(s,f) := (2\pi)^{-(s + \tfrac{k-1}{2})} \Gamma(s + \tfrac{k-1}{2}) L(s,f)
+  =
+  \varepsilon \Lambda(1-s, f),
+\end{equation}
+we see that the residue $L(-\tfrac{k-1}{2})$ is a trivial zero of the $L$-function,
+and $s = 1 - \frac{k-1}{2}$ is not a pole after all.
 
 
 Further shifting the line of $z$ integration to $-M + \epsilon$ for small $\epsilon > 0$
@@ -952,7 +959,7 @@ Examination of line~\eqref{line:1spectralexp}, the contribution from the discret
 spectrum, reveals that the poles come only from $G(s, it_j)$.
 There are apparent poles when $s = \tfrac{1}{2} \pm it_j - n$ for $n \in \mathbb{Z}_{\geq
 0}$.
-Interestingly, the first set of apparent poles are at $s = \frac{1}{2} \pm it_j$ do not
+Interestingly, the first set of apparent poles at $s = \frac{1}{2} \pm it_j$ do not
 actually occur.
 
 
@@ -1438,10 +1445,10 @@ Notice that $W(s; f, \overline{g})$ can also be written as a single Dirichlet se
   a(n-h)\overline{b(n)}}{n^{s + k - 1}} \\
   &= \sum_{\substack{n \geq 1 \\ h \geq 0}} \frac{a(n)\overline{b(n-h)} +
   a(n-h)\overline{b(n)} - a(n)\overline{b(n)}}{n^{s + k - 1}} \\
-  &= \sum_{n \geq 1} \frac{a(n) \overline{S_g(n)} + S_f(n) \overline{g(n)}}{n^{s + k - 1}}
+  &= \sum_{n \geq 1} \frac{a(n) \overline{S_g(n)} + S_f(n) \overline{b(n)}}{n^{s + k - 1}}
   =: \sum_{n \geq 1} \frac{w(n)}{n^{s + k - 1}}.
 \end{align}
-We denote the $n$th coefficient of this Dirichlet series.
+We denote the $n$th coefficient of this Dirichlet series of $w(n)$.
 As $a(n) \ll n^{\frac{k-1}{2} + \epsilon}$ and $S_f(n) \ll n^{\frac{k-1}{2} +
 \frac{1}{3}}$, we know that $w(n) \ll n^{k-1 + \frac{1}{3} + \epsilon}$.
 Thus $W(s; f, \overline{g})$ converges absolutely for $\Re s > \frac{4}{3}$.
@@ -1585,7 +1592,7 @@ It will be necessary to understand the size of growth of $D(s, S_f \times
   \end{equation}
   Therefore, for $\lvert \Im z \rvert > \lvert \Im s \rvert$, the integrand has
   exponential decay and converges rapidly.
-  Thus the integral is essentially of in integrand of polynomial growth along an interval
+  Thus the integral is essentially of an integrand of polynomial growth along an interval
   of length $2 \lvert \Im s \rvert$, leading to an overall polynomial bound in $\lvert \Im
   s \rvert$.
 \end{proof}

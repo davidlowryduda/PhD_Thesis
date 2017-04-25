@@ -59,18 +59,44 @@ Throughout this work, we will never distinguish between points on the surface of
 and those points contained within the sphere, so we use these terms interchangeably.
 
 
-With respect to modular forms, we typically use the conventions and notations
+With respect to classical modular forms, we typically use the conventions and notations
 of~\cite{Bump98, Goldfeld2006automorphic}.
 
 
 Typically, $f$ will be a weight $k$ holomorphic modular form on a congruence subgroup of
-$\SL(2, \mathbb{Z})$.
-The Fourier expansion of $f$ will be written as
+$\SL(2, \mathbb{Z})$.\index{modular form (definition)}
+By this, we mean the following.
+A matrix $\gamma = \left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix}\right) \in
+\GL(2, \mathbb{R})$ acts on $z$ in the upper half plane $\mathcal{H}$ by
 \begin{equation}
-  f(z) = \sum_{n \geq 1} a(n) e(nz),
+  \gamma z = \frac{az + b}{cz + d}.
+\end{equation}
+A holomorphic modular form of (integral) weight $k$ on a congruence group
+$\Gamma \subseteq \SL(2, \mathbb{Z})$ is a holomorphic function
+$f: \mathcal{H} \longrightarrow \mathbb{C}$, which satisfies
+\begin{equation}\label{eq:back:full_integer_law}
+  f(\gamma z) = (cz+d)^k f(z) \qquad \text{for } \gamma =
+  \left(\begin{smallmatrix} a&b \\ c&d \end{smallmatrix}\right) \in \Gamma,
+\end{equation}
+and which is holomorphic at $\infty$.
+The latter condition requires some additional clarification, and an excellent overview of
+this concept is in the first chapter of Diamond's introductory
+text~\cite{diamondfirstcourse}.
+In the context of this thesis, this latter condition guarantees that $f$ has a Fourier
+expansion of the form
+\begin{equation}
+  f(z) = \sum_{n \geq 0} a(n) e(nz),
 \end{equation}
 where $e(nz) = e^{2\pi i n z}$.\index{e@$e(nz)$}
-Note that these coefficients are not normalized.
+If in addition $a(0) = 0$, so that the Fourier expansion does not have a constant term,
+then we call $f$ a holomorphic cusp form.
+
+
+Note that some authors adopt the convention of writing the Fourier coefficients as $a(n) =
+A(n) n^{\frac{k-1}{2}}$, which is normalized so that $A(n) \approx 1$ on average.
+We do not use normalized coefficients in this thesis.
+
+
 When it is necessary to use a second holomorphic modular form, we will denote it by $g$
 and its Fourier expansion by
 \begin{equation}
@@ -83,6 +109,25 @@ Partial sums of these coefficients are denoted by
 \end{equation}
 
 
+In Chapter~\ref{c:hyperboloid}, we will use half-integral weight modular forms
+extensively.
+Let $j(\gamma, z)$ be defined as
+\begin{equation}
+  j(\gamma, z) = \varepsilon_d^{-1} \kron{c}{d} (cz + d)^{\frac{1}{2}}, \qquad \gamma \in
+  \Gamma_0(4),
+\end{equation}
+where $\varepsilon_d = 1$ if $d \equiv 1 \bmod 4$ and $\varepsilon_d = i$ if $d \equiv 3
+\bmod 4$.
+This is the same transformation law that is satisfied by the Jacobi theta function
+$\theta(z) = \sum_{n \in \mathbb{Z}} e^{2\pi i n^2 z}$, which is the prototypical
+half-integral weight modular form.
+Then a half-integral weight modular form of weight $k$ on $\Gamma_0(4)$ is defined in the
+same was as a full-integral weight modular form, except that it satisfies the
+transformation law
+\begin{equation}
+  f(\gamma z) = j(\gamma, z)^{2k} f(z) \qquad \text{for } \gamma \in \Gamma_0(4)
+\end{equation}
+instead of~\eqref{eq:back:full_integer_law}.
 Note that we will use $k$ to denote a full integer or a half integer in reference to
 ``modular forms of weight $k$.''
 This is a different convention than some authors, who use $k/2$ in discussion of

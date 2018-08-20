@@ -309,12 +309,16 @@ coefficients of the Eisenstein series.
 \index{rho@$\rho_\mathfrak{a}^k$}
 Each Eisenstein series has a Fourier-Whittaker expansion of the form
 \begin{equation}
-  E_\mathfrak{a}^k(z,w) = y^w + \rho_\mathfrak{a}^k(0, w) y^{1-w} + \sum_{h \neq 0}
-  \rho_\mathfrak{a}^k(h, w) W_{\frac{|h|}{h}\frac{k}{2}, w - \frac{1}{2}}(4\pi \lvert h
+  E_\mathfrak{a}^k(\sigma_\mathfrak{b} z,w) = \delta_{[\mathfrak{a} = \mathfrak{b}]}y^w +
+  \rho_{\mathfrak{a}, \mathfrak{b}}^k(0, w) y^{1-w} + \sum_{h \neq 0}
+  \rho_{\mathfrak{a}, \mathfrak{b}}^k(h, w) W_{\frac{|h|}{h}\frac{k}{2}, w - \frac{1}{2}}(4\pi \lvert h
   \rvert y) e^{2\pi i h x}
 \end{equation}
-for some coefficients $\rho_\mathfrak{a}^k(h,w)$, and where $W_{\alpha, \nu}(y)$ is the
-$\GL(2)$ Whittaker function.
+for some coefficients $\rho_{\mathfrak{a}, \mathfrak{b}}^k(h,w)$, and where
+$\sigma_\mathfrak{b} z$ amounts to expanding at the cusp $\mathfrak{b}$.
+When $\mathfrak{b} = \infty$, we will omit $\mathfrak{b}$ from the notation in the
+coefficients and write instead $\rho_{\mathfrak{a}}^k(h,w)$.
+Here, $W_{\alpha, \nu}(y)$ is the $\GL(2)$ Whittaker function.
 This is given by~\cite[3.6.3]{GoldfeldHundleyI}
 \index{Whittaker function}
 \index{W@$W_{\alpha, \nu}(y)$ | see {Whittaker function } }
